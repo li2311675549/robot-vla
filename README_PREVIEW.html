@@ -1,28 +1,28 @@
 <!doctype html><html lang="zh-CN"><meta charset="utf-8"><title>Robot VLA · 本地首页预览</title><style>body{max-width:1120px;margin:32px auto;padding:0 26px 64px;color:#213047;font:16px/1.85 system-ui,"Microsoft YaHei",sans-serif;background:#fff}h1,h2,h3{line-height:1.4;color:#0f2940}h1{font-size:36px}h2{margin-top:42px;border-bottom:2px solid #dbeafe;padding-bottom:10px}a{color:#087f9b;text-decoration:none}a:hover{text-decoration:underline}img{max-width:100%;height:auto;border-radius:10px}table{width:100%;border-collapse:collapse;margin:20px 0;font-size:14px}th{background:#eaf4fa;color:#14364b}td,th{padding:10px 12px;border:1px solid #dbe5ed;vertical-align:top}tr:nth-child(even){background:#f7fafc}pre{overflow:auto;background:#102235;color:#d9edf5;padding:18px;border-radius:10px;font-size:13px;line-height:1.6}code{font-family:ui-monospace,monospace;font-size:.92em}blockquote{border-left:4px solid #06b6d4;margin-left:0;padding:8px 20px;background:#ecfeff}.subtitle{color:#61768c}@media print{body{max-width:none;margin:0;font-size:11pt}a{color:inherit}pre{white-space:pre-wrap;background:#f1f5f9;color:#111}h2,h3{break-after:avoid}tr,img{break-inside:avoid}}</style><body><div align="center">
-<img src="docs/media/hero.svg" alt="Husky and original UR5 mobile manipulation" width="100%" />
-
-# Robot VLA
-
-**真实接触移动操作 · 几何规划控制 · 双视角 π₀.₅**
-
-`Husky A200` · `Original UR5` · `Robotiq 2F-85` · `MuJoCo 3.6.0`
-
-[技术总结](docs/TECHNICAL_REPORT.md) · [离线HTML报告](docs/TECHNICAL_REPORT.html) · [问题与解决措施](docs/PROBLEMS_AND_SOLUTIONS.md) · [视频演示](#视频演示) · [运行说明](docs/RUNNING.md) · [实验原始记录](evidence/)
+<p><img src="docs/media/hero.svg" alt="Husky and original UR5 mobile manipulation" width="100%" /></p>
+<h1 id="robot-vla">Robot VLA</h1>
+<p><strong>真实接触移动操作 · 几何规划控制 · 双视角 π₀.₅</strong></p>
+<p><code>Husky A200</code> · <code>Original UR5</code> · <code>Robotiq 2F-85</code> · <code>MuJoCo 3.6.0</code></p>
+<p><a href="docs/TECHNICAL_REPORT.md">技术总结</a> · <a href="docs/TECHNICAL_REPORT.html">离线HTML报告</a> · <a href="docs/PROBLEMS_AND_SOLUTIONS.md">问题与解决措施</a> · <a href="#视频演示">视频演示</a> · <a href="docs/RUNNING.md">运行说明</a> · <a href="evidence/">实验原始记录</a></p>
 </div>
-
-<h2 id="_1">项目概览</h2>
+<h2 id="项目概览">项目概览</h2>
 <p>在同一个MuJoCo物理系统中完成门操作、十果分类、三书抽屉收纳，并将双视角π₀.₅接入正常机械臂执行器。传统导航/FSM与学习型短技能共存；没有通过物体瞬移、隐藏焊接或被动关节驱动伪造接触操作。</p>
 <table><tr><td width="33%"><b>移动与规划</b><br/>A*、外形膨胀、真实轮驱动、Dock与操作驻车</td><td width="33%"><b>接触与操作</b><br/>多初值IK、持物碰撞、推书侧抓、门臂协同</td><td width="33%"><b>视觉语言动作</b><br/>双RGB、实际状态、绝对关节动作、真实后训练与闭环推理</td></tr></table>
 
-<h2 id="_2">视频演示</h2>
+<h2 id="视频演示">视频演示</h2>
 <p>点击封面查看或下载真实连续视频。前三项是完整传统任务开发演示，后三项是驻车指定目标抓起保持；VLA录像没有放置或完整十果分类。演示实例不替代下方固定评测。</p>
 <table>
 <tr><td width="33%" align="center"><a href="media/demos/door_full.mp4"><img src="docs/media/door.png" width="100%" alt="开门入室关门"/></a><br/><b>开门 · 入室 · 关门</b><br/>锁边把手 / Oracle / 宽门洞</td><td width="33%" align="center"><a href="media/demos/fruit_full.mp4"><img src="docs/media/fruit.png" width="100%" alt="十果完整分类"/></a><br/><b>10果连续分类</b><br/>开发回合 / 全部正确入筐</td><td width="33%" align="center"><a href="media/demos/books_full.mp4"><img src="docs/media/books.png" width="100%" alt="三书收纳与返航"/></a><br/><b>三书 · 三层 · 返航</b><br/>120/180/240mm长书本 / Oracle</td></tr>
 <tr><td align="center"><a href="media/demos/vla_apple.mp4"><img src="docs/media/vla_apple.png" width="100%" alt="VLA苹果"/></a><br/><b>π₀.₅ 苹果抓取</b></td><td align="center"><a href="media/demos/vla_banana.mp4"><img src="docs/media/vla_banana.png" width="100%" alt="VLA香蕉"/></a><br/><b>π₀.₅ 香蕉抓取</b></td><td align="center"><a href="media/demos/vla_orange.mp4"><img src="docs/media/vla_orange.png" width="100%" alt="VLA橘子"/></a><br/><b>π₀.₅ 橘子抓取</b></td></tr>
 </table>
 
-<p><a href="media/index.json">逐段评分与来源</a>。浏览器不支持直接播放时，可下载MP4后播放。更多案例集拟作为<code>v1.0.0</code>发布附件，发布状态见<a href="https://github.com/li2311675549/robot-vla/releases">Releases</a>。</p>
-<h2 id="_3">架构</h2>
+<p><a href="media/index.json">逐段评分与来源</a>。浏览器不支持直接播放时，可下载MP4后播放。完整材料下载：</p>
+<ul>
+<li><a href="https://github.com/li2311675549/robot-vla/releases/download/v1.0.0/traditional-cases70.zip">traditional-cases70.zip</a></li>
+<li><a href="https://github.com/li2311675549/robot-vla/releases/download/v1.0.0/vla-cases30.zip">vla-cases30.zip</a></li>
+<li><a href="https://github.com/li2311675549/robot-vla/releases/download/v1.0.0/technical-report-and-evidence.zip">technical-report-and-evidence.zip</a></li>
+</ul>
+<h2 id="架构">架构</h2>
 <pre><code class="language-mermaid">flowchart LR
     TASK[任务FSM] --&gt; NAV[A*与轮式导航]
     TASK --&gt; GEO[几何专家与RGB-D]
@@ -37,7 +37,7 @@
     FEEDBACK --&gt; TASK
 </code></pre>
 <p>VLA只学习驻车机械臂七维动作；门/抽屉约束控制与底盘导航保留传统方案。机身理想RGB-D与腕部虚拟RGB不是完整D435i物理传感器模型。门/抽屉和部分书本使用声明的Oracle几何，接触/容纳评分有仿真辅助。</p>
-<h2 id="_4">关键问题与解决措施</h2>
+<h2 id="关键问题与解决措施">关键问题与解决措施</h2>
 <table>
 <thead>
 <tr>
@@ -75,7 +75,7 @@
 </tbody>
 </table>
 <p>以上是相应局部/开发对照结论，不外推成全部场景成功率。<a href="docs/PROBLEMS_AND_SOLUTIONS.md">完整问题证据链</a>。</p>
-<h2 id="_5">评测结果</h2>
+<h2 id="评测结果">评测结果</h2>
 <table>
 <thead>
 <tr>
@@ -114,7 +114,7 @@
 </table>
 <p>传统已执行水果抬升为53/57（苹果20/23、香蕉15/16、橘子18/18），含重试和提前终止，与完整任务分母不同。VLA固定验证按类为2/10、6/10、6/10。展示集按成功/失败数量整理，含重复初态和历史诊断，不用其构成估计独立成功率。</p>
 <p>本发布目录实际通过258/258本地回归测试（97.29s），另有流式ZIP发布辅助测试1/1通过。日志随证据保存；后续只补文档与归档，不改控制或评分。模块测试、数据重放和loss下降都不等于完整任务通过。</p>
-<h2 id="vla">VLA数据与训练</h2>
+<h2 id="vla数据与训练">VLA数据与训练</h2>
 <ul>
 <li>输入：front/wrist RGB、实测六关节与夹爪、语言；不输入隐藏物体位姿。</li>
 <li>动作：六关节高层绝对目标+夹爪，5Hz，10步chunk；内部32维填充。</li>
@@ -124,7 +124,7 @@
 <li>学习效果：已有真实抓取实例，尚未证明优于同条件专家或完成学习型完整分类。</li>
 </ul>
 <p><a href="docs/VLA_TECHNICAL.md">动作接口</a> · <a href="docs/VLA_DATA_TRAINING.md">数据与训练</a> · <a href="server/snapshots/actual_training_20261108/">实际服务器源码</a></p>
-<h2 id="_6">快速运行</h2>
+<h2 id="快速运行">快速运行</h2>
 <p>本地仿真使用Python3.10；服务器OpenPI使用独立Python3.11环境。不要把两套依赖混装。</p>
 <pre><code class="language-bash"># 在项目根目录，使用已安装的仿真环境
 MUJOCO_GL=egl python -m pytest -q
@@ -133,7 +133,7 @@ MUJOCO_GL=egl python -m pytest -q
 MUJOCO_GL=egl python scripts/run_stage7_isolated.py   --task door --mode oracle --seed 2101 --door-profile aligned_handles_v3   --config configs/door_continuous_contact_frozen_v4.json   --output outputs/new_door_demo --record
 </code></pre>
 <p>首次安装参考<code>requirements.lock.txt</code>、<code>environment.yml</code>和<code>scripts/setup_env.sh</code>。VLA推理/训练另需合法权重、Tokenizer、原始数据、对应GPU及独立环境，仓库不会自动下载或启动训练。</p>
-<h2 id="_7">目录与复现</h2>
+<h2 id="目录与复现">目录与复现</h2>
 <pre><code class="language-text">src/robot_exam/   控制、导航、感知、任务FSM、数据和VLA
 scripts/         构建、运行、评估、采数、训练、推理和资料导出
 configs/         模型来源、场景、控制器与冻结协议
