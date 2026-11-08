@@ -1,0 +1,133 @@
+{
+  "status": "PASS_NUMERIC_EXPLANATIONS_AND_THREE_MODEL_SMOKES",
+  "numerical_checks": {
+    "rgbd_unprojection_and_world_transform": true,
+    "book_near_edge_grasp_and_pregrasp_formula": true,
+    "side_grip_closes_vertical_on_thickness": true,
+    "oriented_cross_section_distinct_from_aabb": true,
+    "tool_frame_rigid_motion_invariance": true,
+    "scope": "Offline mathematical checks, not new contact-success experiments"
+  },
+  "scene_smokes": [
+    {
+      "task": "fruit",
+      "model_loaded": true,
+      "physical_steps": 50,
+      "sim_seconds": 0.10000000000000007,
+      "data_warning_counts": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "nu": 11,
+      "no_weld_or_mocap": true,
+      "passive_task_joints_without_actuators": true,
+      "scope": "Initial model/step smoke only; not task success"
+    },
+    {
+      "task": "door",
+      "model_loaded": true,
+      "physical_steps": 50,
+      "sim_seconds": 0.10000000000000007,
+      "data_warning_counts": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "nu": 11,
+      "no_weld_or_mocap": true,
+      "passive_task_joints_without_actuators": true,
+      "scope": "Initial model/step smoke only; not task success"
+    },
+    {
+      "task": "drawer",
+      "model_loaded": true,
+      "physical_steps": 50,
+      "sim_seconds": 0.10000000000000007,
+      "data_warning_counts": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "nu": 11,
+      "no_weld_or_mocap": true,
+      "passive_task_joints_without_actuators": true,
+      "scope": "Initial model/step smoke only; not task success"
+    }
+  ],
+  "audited_sources": [
+    {
+      "file": "src/robot_exam/perception/rgbd.py",
+      "sha256": "e13048c53b4a4e7abb5a0c80a2137209bb62d55e63413d96001c5fc822191e83",
+      "matches_project_source": true
+    },
+    {
+      "file": "src/robot_exam/perception/objects.py",
+      "sha256": "591577dd03cefd7f8746d2882ddf736ce745101a213bf8c2074fff991839bad5",
+      "matches_project_source": true
+    },
+    {
+      "file": "src/robot_exam/control/arm.py",
+      "sha256": "715ebfb3e85f398a8af744b7702596a6ad4fecbabefb36fcd6a4cde6b2956045",
+      "matches_project_source": true
+    },
+    {
+      "file": "src/robot_exam/control/base_pose.py",
+      "sha256": "4274a90349190a2593aa41da3c099d59fae929a6e64fa36c37d207ed9da155d5",
+      "matches_project_source": true
+    },
+    {
+      "file": "src/robot_exam/control/joint_rrt.py",
+      "sha256": "6780bd3c514f29c6b81d839a9ef8d8ac1026cfb6776a943091faa142c93fcbd5",
+      "matches_project_source": true
+    },
+    {
+      "file": "src/robot_exam/tasks/runtime.py",
+      "sha256": "178150bf768caa5a500bf7da796a5da6e2bc7c9d1fcba4e8eb0c68a756ead915",
+      "matches_project_source": true
+    },
+    {
+      "file": "src/robot_exam/skills/book_edge.py",
+      "sha256": "1d417519461dc798b25ba822316a5590337fa5a6a378df8802d0bfd7bf84b748",
+      "matches_project_source": true
+    },
+    {
+      "file": "src/robot_exam/tasks/drawer.py",
+      "sha256": "d19ca76a1cac64744dfbda1677d7055a8ddc56afe330bc93378bf36087ce72f8",
+      "matches_project_source": true
+    },
+    {
+      "file": "src/robot_exam/tasks/fruit.py",
+      "sha256": "3098cfa0fce168787afd1a4c6d1ed8139eabe18b5fbd2916bda6d966de3c0924",
+      "matches_project_source": true
+    },
+    {
+      "file": "src/robot_exam/tasks/door_contact.py",
+      "sha256": "86b4b4ffdd34189e54288e1ee75999fb8c3e412bc07b277152d8159f43dfea9b",
+      "matches_project_source": true
+    },
+    {
+      "file": "src/robot_exam/vla/interface.py",
+      "sha256": "c4595b23e724e2490c1e723d0e4750c2e995f2270b68782c1120698b705f2ed0",
+      "matches_project_source": true
+    }
+  ],
+  "real_task_success_inferred": false,
+  "new_model_training": false,
+  "checked_at": "2026-11-09T02:04:13.018176+08:00"
+}

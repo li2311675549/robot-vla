@@ -1,0 +1,38 @@
+{
+  "status": "PASS_FINAL_DOCUMENT_STRUCTURE_AND_SAFETY",
+  "local_links_and_anchors_checked": 96,
+  "checked_pages": [
+    "README.md",
+    "docs/IMPLEMENTATION_GUIDE.md",
+    "docs/PROBLEMS_AND_SOLUTIONS.md",
+    "docs/RUNNING.md",
+    "docs/VALIDATION.md",
+    "docs/DOCUMENTATION_REVIEW.md",
+    "docs/TECHNICAL_REPORT.md"
+  ],
+  "changed_files_checked": [
+    "README.md",
+    "README_PREVIEW.html",
+    "docs/DOCUMENTATION_REVIEW.md",
+    "docs/IMPLEMENTATION_GUIDE.html",
+    "docs/IMPLEMENTATION_GUIDE.md",
+    "docs/PROBLEMS_AND_SOLUTIONS.md",
+    "docs/RUNNING.md",
+    "docs/TECHNICAL_REPORT.html",
+    "docs/TECHNICAL_REPORT.md",
+    "docs/VALIDATION.md",
+    "docs/media/book_edge_grasp.svg",
+    "evidence/documentation_checks/document_links_and_structure.json",
+    "evidence/documentation_checks/ik_scratch_check.json",
+    "evidence/documentation_checks/principles_and_model_checks.json",
+    "evidence/documentation_checks/pytest_final_v1.log",
+    "evidence/documentation_checks/pytest_final_v2.log",
+    "evidence/documentation_checks/pytest_revision_environment_v2.log",
+    "evidence/documentation_checks/review.json",
+    "scripts/verify_documented_principles.py"
+  ],
+  "issues": [],
+  "task_statistics_and_criteria_preserved": true,
+  "core_code_and_configs_unchanged": true,
+  "checked_at": "2026-11-09T02:22:13.566253+08:00"
+}

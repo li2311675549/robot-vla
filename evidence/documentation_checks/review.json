@@ -1,0 +1,74 @@
+{
+  "status": "PASS_MULTI_PASS_DOCUMENTATION_AND_PUBLIC_SOURCE",
+  "review_passes": [
+    {
+      "pass": "源码对应",
+      "corrections": [
+        "明确当前大书推抓为Oracle分支，视觉接口与已评测策略分开",
+        "区分笛卡尔40ms更新和载荷20ms补偿",
+        "确认侧抓接近轴水平、闭合方向竖直",
+        "区分78mm候选余量、85mm标称开口和按厚度侧抓"
+      ]
+    },
+    {
+      "pass": "计算与模型",
+      "results": [
+        "5项实际函数数学检查",
+        "3场景各50物理步，11执行器无焊接/任务关节驱动",
+        "5mm目标的独立IK求解，实时qpos不变",
+        "两条真实CLI帮助验证"
+      ]
+    },
+    {
+      "pass": "初学者阅读",
+      "corrections": [
+        "定义世界/底盘/工具坐标、TCP、Oracle与RRT",
+        "补推书方向、15mm向内抓点、75mm预抓取与支撑阈值",
+        "分阶段解释驻车、带载方向补偿、持书关节保持、门协同",
+        "示意图两次栅格渲染，修正标注遮挡和比例"
+      ]
+    },
+    {
+      "pass": "交付与证据",
+      "results": [
+        "原始任务逐项映射到视频、源码、固定10回合记录",
+        "78本地链接/锚点检查",
+        "改动文件敏感项检查",
+        "原始评分和用户短VLA说明保留"
+      ]
+    }
+  ],
+  "checked_changed_files": [
+    "README.md",
+    "README_PREVIEW.html",
+    "docs/IMPLEMENTATION_GUIDE.md",
+    "docs/PROBLEMS_AND_SOLUTIONS.md",
+    "docs/RUNNING.md",
+    "docs/VALIDATION.md",
+    "docs/TECHNICAL_REPORT.md",
+    "docs/TECHNICAL_REPORT.html",
+    "docs/media/book_edge_grasp.svg",
+    "scripts/verify_documented_principles.py"
+  ],
+  "secret_scan": "PASS",
+  "new_task_scores": false,
+  "new_training": false,
+  "changed_controller_files": false,
+  "checked_at": "2026-11-09T02:20:43.885865+08:00",
+  "full_regression": {
+    "passed": 259,
+    "seconds": 96.85,
+    "first_run": {
+      "passed": 258,
+      "failed": 1,
+      "seconds": 97.2,
+      "cause": "basetemp inside an unrelated parent Git worktree changed exported-source test premise"
+    },
+    "targeted_repeat_passed": 1,
+    "test_or_controller_source_changed_for_fix": false
+  },
+  "resource_note": "Only byte-identical local media copies deduplicated; all evidence paths/content preserved.",
+  "final_local_links_and_anchors": 96,
+  "visible_readme_lines": 284,
+  "detailed_guide_lines": 249
+}

@@ -1,0 +1,14 @@
+{
+  "status": "PASS",
+  "checked_local_links_and_anchors": 78,
+  "files": [
+    "README.md",
+    "docs/IMPLEMENTATION_GUIDE.md",
+    "docs/PROBLEMS_AND_SOLUTIONS.md",
+    "docs/RUNNING.md",
+    "docs/VALIDATION.md"
+  ],
+  "errors": [],
+  "statistics_parameter_and_short_scope_tail_unchanged": true,
+  "new_model_or_task_scores": false
+}

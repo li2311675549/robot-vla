@@ -1,0 +1,13 @@
+{
+  "status": "PASS_REACHABLE_IK_SCRATCH_CHECK",
+  "metric": {
+    "position_error_m": 1.9702289680315182e-05,
+    "orientation_error_rad": 1.1590106482520702e-07,
+    "iterations": 1,
+    "solver": "damped_least_squares",
+    "approximate_convergence": false,
+    "elapsed_s": 0.007309635999263264
+  },
+  "live_state_unchanged": true,
+  "scope": "5mm target in copied kinematics; no claimed physical motion or grasp"
+}
