@@ -193,3 +193,9 @@ FSM定义导航、观察、选择、规划、接近、抓取、搬运、放置�
 核心代码为`src/robot_exam/{control,navigation,perception,tasks,vla,data}`；场景构建为`scripts/build_stage2.py`、`build_tasks.py`；任务入口`run_stage7_isolated.py`；VLA入口`openpi_ur5_train.py`、`serve_openpi_original_ur5.py`、`evaluate_multifruit_policy_phase.py`。
 
 GitHub发布目录只包含清理后的代码、小型模型、许可证、技术总结、统计证据和代表录像，不包含账号认证、环境缓存、权重或完整原始数据。完整资料及视频集使用另行下载入口，保留原始评分与来源。公开首页不使用个人考核背景作为项目名称。
+
+## 11. 技术决策的进一步分析
+
+进一步的设计推理集中在五个接口：监控量与坐标系、末端IK与持物路径、位置闭合与接触力矩、门轴约束与轮臂运动、学习目标与低层执行。每个接口先提出可区分的失败解释，再用现有记录界定支持程度；对剩余机制给出可证伪的后续实验，而不将未完成研究写成结果。
+
+[深入分析与公式](DESIGN_REASONING.md) · [问题证据索引](PROBLEMS_AND_SOLUTIONS.md) · [成功判据与控制参数](SUCCESS_CRITERIA_AND_PARAMETERS.md)。上述补充仅深化已有工程事实的解释，不新增仿真实验或改变统计。
