@@ -1,0 +1,65 @@
+[
+  {
+    "id": "door",
+    "title": "Door: open, enter, close",
+    "scope": "full_task_oracle_wide_door",
+    "source": "/home/li/projects/robot_exam/outputs/stage14/continuous_door/full_seed2101_recorded_v3/video/demo.mp4",
+    "video": "media/demos/door_full.mp4",
+    "sha256": "0f4cb872d1ce8ceaed57dc45edd403ce673b981c280206e9d80cd38a45d9bdae",
+    "result": "media/records/door_full.json",
+    "sim_seconds": 462.3360000014795
+  },
+  {
+    "id": "fruit",
+    "title": "Ten-fruit sorting",
+    "scope": "full_task_development_legacy_layout",
+    "source": "/home/li/projects/robot_exam/outputs/stage7/fruit_seed412_complete_recorded/video/demo.mp4",
+    "video": "media/demos/fruit_full.mp4",
+    "sha256": "1e1550f01be9c4e021708c84f1ec959bbed6fe3e867930e3a347fcdcacd0afe9",
+    "result": "media/records/fruit_full.json",
+    "sim_seconds": 1681.2219999740682
+  },
+  {
+    "id": "books",
+    "title": "Three books and return home",
+    "scope": "full_task_development_distinct_books",
+    "source": "/home/li/projects/robot_exam/outputs/stage20/books_dynamic_edge_dev200009_v27_recorded/video/demo.mp4",
+    "video": "media/demos/books_full.mp4",
+    "sha256": "feb45933bac43848b03dfbc95e455b82b9f7fa2f0b683ab19bc53557f5bf955d",
+    "result": "media/records/books_full.json",
+    "sim_seconds": 1206.0539999853045
+  },
+  {
+    "id": "vla_apple",
+    "title": "VLA instructed apple grasp",
+    "scope": "parked_single_target_grasp_hold_no_place",
+    "source": "/home/li/projects/robot_exam/outputs/stage24/ten_fruit_validation30_v1/000_2200002_apple/video/demo.mp4",
+    "video": "media/demos/vla_apple.mp4",
+    "sha256": "0cc8b33a8c5b9830f0fb45fd06604fa56677d8946ece233df07be3db6aef66ed",
+    "result": "media/records/vla_apple.json",
+    "scene_seed": 2200002,
+    "sim_seconds": 21.799999999997375
+  },
+  {
+    "id": "vla_banana",
+    "title": "VLA instructed banana grasp",
+    "scope": "parked_single_target_grasp_hold_no_place",
+    "source": "/home/li/projects/robot_exam/outputs/stage24/ten_fruit_validation30_v1/001_2200002_banana/video/demo.mp4",
+    "video": "media/demos/vla_banana.mp4",
+    "sha256": "180f0521bbfe681695d8a621accb633032c3584a857e7937e1060afc88da4019",
+    "result": "media/records/vla_banana.json",
+    "scene_seed": 2200002,
+    "sim_seconds": 9.000000000000652
+  },
+  {
+    "id": "vla_orange",
+    "title": "VLA instructed orange grasp",
+    "scope": "parked_single_target_grasp_hold_no_place",
+    "source": "/home/li/projects/robot_exam/outputs/stage24/ten_fruit_validation30_v1/005_2200003_orange/video/demo.mp4",
+    "video": "media/demos/vla_orange.mp4",
+    "sha256": "45e3d3517b2a3056dccc1dd48f0296be54e2d48723f0541d5919aaae2c6e41a8",
+    "result": "media/records/vla_orange.json",
+    "scene_seed": 2200003,
+    "sim_seconds": 10.200000000001053
+  }
+]

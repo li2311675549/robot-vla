@@ -1,0 +1,18 @@
+<mujoco model="actuated_pendulum_smoke">
+  <compiler angle="radian"/>
+  <option timestep="0.002" integrator="implicitfast"/>
+  <visual><global offwidth="640" offheight="480"/></visual>
+  <worldbody>
+    <light pos="0 -1 3"/>
+    <geom name="floor" type="plane" size="2 2 0.1" rgba="0.22 0.26 0.30 1"/>
+    <camera name="overview" pos="1.8 -2 1.4" xyaxes="0.743 0.669 0 -0.249 0.277 0.928"/>
+    <body name="pedestal" pos="0 0 0.5">
+      <geom type="cylinder" pos="0 0 -0.25" size="0.10 0.25"/>
+      <body name="arm">
+        <joint name="hinge" type="hinge" axis="0 0 1" range="-1.5 1.5" damping="1"/>
+        <geom name="link" type="capsule" fromto="0 0 0 0.65 0 0" size="0.05" mass="1" rgba="0.9 0.45 0.12 1"/>
+      </body>
+    </body>
+  </worldbody>
+  <actuator><position name="hinge_position" joint="hinge" kp="80" kv="12" ctrlrange="-1.5 1.5" forcerange="-20 20"/></actuator>
+</mujoco>

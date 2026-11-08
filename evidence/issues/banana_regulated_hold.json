@@ -1,0 +1,43 @@
+{
+  "seed": 420,
+  "body": "fruit_1",
+  "holding_closure": 0.7,
+  "turn_target_rad": 0.0,
+  "transport_success": true,
+  "failure": null,
+  "elapsed_sim_seconds": 12.357999999999068,
+  "travel_m": 0.3806066802123984,
+  "terminal_bilateral": true,
+  "warnings": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ],
+  "collision_events": 0,
+  "max_relative_drift_m": 0.0030382103020550584,
+  "max_relative_rotation_rad": 0.039921740218675235,
+  "video": {
+    "status": "PASS",
+    "fps": 5,
+    "frames": 62,
+    "stream": {
+      "width": 640,
+      "height": 480,
+      "duration": "12.400000",
+      "nb_read_frames": "62"
+    },
+    "opengl": {
+      "vendor": "Mesa",
+      "renderer": "llvmpipe (LLVM 15.0.7, 256 bits)"
+    },
+    "first_sim_seconds": 9.337999999999788,
+    "last_sim_seconds": 21.535999999998943,
+    "continuous": true,
+    "full_decode": "PASS"
+  }
+}

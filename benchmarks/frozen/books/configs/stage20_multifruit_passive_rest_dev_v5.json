@@ -1,0 +1,47 @@
+{
+  "protocol": "stage20_fruit_orange_visible_route_and_braking_dev_v7",
+  "task_sim_seconds_limit": 3000,
+  "task_wall_seconds_limit": 3600,
+  "fruit_world_stabilize": true,
+  "task_wrist_camera": false,
+  "stationary_manipulation": false,
+  "trajectory_log_interval_seconds": 0.5,
+  "payload_trace_interval_seconds": 0.5,
+  "note": "v6 phase boundary correction plus proven orange visible-corridor route, strict heading pivot, and independent precision braking. Apple/banana control unchanged. Final dock30mm/0.035rad/2s, task score/model/3000s retained. Development only. Registered local multi-fruit expert revision: same payload and physics, capture the original final dock envelope during local primitives and verify actual velocity/2s. No wheel torque/force/friction increases; original failed attempts retained. New initial-pose protocol: exact primitive fruit geometry/mass/inertia/friction preserved, same randomXY/scales, naturally settled orientations/heights from600s passive contact rig; initial MJCF/keyframes only. Same-seed1800s passive full-scene test has no fallen fruit vs original180s spontaneous apple drop. Parent quality also requires other fruit remain on the original table, not just the selected item in its bin.",
+  "apple_grasp_z_offset_m": -0.004,
+  "apple_hold_closure": 0.55,
+  "bin_label_profile": "upright_v2",
+  "parking_trace_interval_seconds": 0.5,
+  "banana_hold_closure": 0.65,
+  "fruit_preserve_settled_grip_recovery": true,
+  "compress_bulk_logs": true,
+  "fruit_contact_force_feedback": true,
+  "fruit_force_feedback_categories": [
+    "apple"
+  ],
+  "fruit_target_contact_force_n": 12.0,
+  "fruit_split_transport_deadlines": true,
+  "payload_strict_pivot_turn": true,
+  "payload_strict_pivot_categories": [
+    "orange"
+  ],
+  "payload_direct_visible_categories": [
+    "banana",
+    "orange"
+  ],
+  "payload_visible_handoff_categories": [
+    "banana",
+    "orange"
+  ],
+  "payload_precision_twist_slew": true,
+  "payload_twist_slew_categories": [
+    "orange"
+  ],
+  "local_dock_capture_goal_during_primitives": true,
+  "fruit_spawn_profile": "passive_rest_init_v2",
+  "fruit_rest_calibration": {
+    "2100002": "outputs/stage20/fruit_rest_calibration2100002_v1/calibration.json",
+    "2100001": "outputs/stage20/fruit_rest_calibration2100001_v1/calibration.json"
+  },
+  "require_non_target_scene_preservation": true
+}

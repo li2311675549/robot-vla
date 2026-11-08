@@ -1,0 +1,376 @@
+{
+  "status": "PASS_CONTINUOUS_DOOR_CONTACT_ORACLE_WIDE_DOOR_ONLY",
+  "date": "2026-10-31",
+  "request": "Keep the physical door grasp during coordinated wheel/arm motion, with safety-triggered release",
+  "starting_git_commit": "bd1962d",
+  "frozen_control_git_commit": "bd063ef4f3a07629bda235fcffa68ef1bd833f7a",
+  "control_config": "configs/door_continuous_contact_frozen_v4.json",
+  "formal_protocol": "configs/door_continuous_contact_formal_v4.json",
+  "formal": {
+    "summary": {
+      "episodes": 10,
+      "complete_successes": 10,
+      "complete_success_rate": 1.0,
+      "successful_sim_seconds_mean": 451.23720000142646,
+      "successful_wall_seconds_mean": 106.1680950126989,
+      "successful_sim_seconds_worst": 464.38200000148925,
+      "failures": {},
+      "recoveries": 30,
+      "phase_successes": {
+        "opened": 10,
+        "entered": 10,
+        "closed_after_entry": 10
+      }
+    },
+    "seeds": [
+      96001,
+      96002,
+      96003,
+      96004,
+      96005,
+      96006,
+      96007,
+      96008,
+      96009,
+      96010
+    ],
+    "execution": "Three isolated processes, frozen identical policy; all ten included, no retries or tuning",
+    "source_integrity": {
+      "source_hash_mismatches": [],
+      "episodes": 10,
+      "all_attempts_counted": true
+    },
+    "episodes": [
+      {
+        "seed": 96001,
+        "success": true,
+        "sim_seconds": 464.38200000148925,
+        "wall_seconds": 114.55404747400462,
+        "grasps": 5,
+        "safety_releases": 3,
+        "final_door_angle_rad": 6.565991500092252e-16,
+        "collision_events": [],
+        "warning_counts": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "isolated_text_linesearch_messages": 0,
+        "result": "outputs/stage14/continuous_door/formal_contact_v4/96001/result.json"
+      },
+      {
+        "seed": 96002,
+        "success": true,
+        "sim_seconds": 446.4300000014035,
+        "wall_seconds": 108.64639456100122,
+        "grasps": 5,
+        "safety_releases": 3,
+        "final_door_angle_rad": 6.247762237862811e-16,
+        "collision_events": [],
+        "warning_counts": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "isolated_text_linesearch_messages": 0,
+        "result": "outputs/stage14/continuous_door/formal_contact_v4/96002/result.json"
+      },
+      {
+        "seed": 96003,
+        "success": true,
+        "sim_seconds": 448.84200000141504,
+        "wall_seconds": 108.79916588299966,
+        "grasps": 5,
+        "safety_releases": 3,
+        "final_door_angle_rad": 9.686148788805891e-16,
+        "collision_events": [],
+        "warning_counts": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "isolated_text_linesearch_messages": 0,
+        "result": "outputs/stage14/continuous_door/formal_contact_v4/96003/result.json"
+      },
+      {
+        "seed": 96004,
+        "success": true,
+        "sim_seconds": 448.7040000014144,
+        "wall_seconds": 103.45701221099444,
+        "grasps": 5,
+        "safety_releases": 3,
+        "final_door_angle_rad": 5.97450137554656e-16,
+        "collision_events": [],
+        "warning_counts": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "isolated_text_linesearch_messages": 0,
+        "result": "outputs/stage14/continuous_door/formal_contact_v4/96004/result.json"
+      },
+      {
+        "seed": 96005,
+        "success": true,
+        "sim_seconds": 449.88200000142,
+        "wall_seconds": 104.05273774200032,
+        "grasps": 5,
+        "safety_releases": 3,
+        "final_door_angle_rad": 6.201767692729846e-16,
+        "collision_events": [],
+        "warning_counts": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "isolated_text_linesearch_messages": 0,
+        "result": "outputs/stage14/continuous_door/formal_contact_v4/96005/result.json"
+      },
+      {
+        "seed": 96006,
+        "success": true,
+        "sim_seconds": 445.7780000014004,
+        "wall_seconds": 103.25756700900092,
+        "grasps": 5,
+        "safety_releases": 3,
+        "final_door_angle_rad": 7.219692012020072e-16,
+        "collision_events": [],
+        "warning_counts": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "isolated_text_linesearch_messages": 0,
+        "result": "outputs/stage14/continuous_door/formal_contact_v4/96006/result.json"
+      },
+      {
+        "seed": 96007,
+        "success": true,
+        "sim_seconds": 452.6640000014333,
+        "wall_seconds": 104.16288381699997,
+        "grasps": 5,
+        "safety_releases": 3,
+        "final_door_angle_rad": 9.565152456935234e-16,
+        "collision_events": [],
+        "warning_counts": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "isolated_text_linesearch_messages": 0,
+        "result": "outputs/stage14/continuous_door/formal_contact_v4/96007/result.json"
+      },
+      {
+        "seed": 96008,
+        "success": true,
+        "sim_seconds": 460.99400000147307,
+        "wall_seconds": 107.3171824289966,
+        "grasps": 5,
+        "safety_releases": 3,
+        "final_door_angle_rad": 6.064343354644894e-16,
+        "collision_events": [],
+        "warning_counts": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "isolated_text_linesearch_messages": 0,
+        "result": "outputs/stage14/continuous_door/formal_contact_v4/96008/result.json"
+      },
+      {
+        "seed": 96009,
+        "success": true,
+        "sim_seconds": 446.5900000014043,
+        "wall_seconds": 104.40555628599395,
+        "grasps": 5,
+        "safety_releases": 3,
+        "final_door_angle_rad": 6.456282921464645e-16,
+        "collision_events": [],
+        "warning_counts": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "isolated_text_linesearch_messages": 0,
+        "result": "outputs/stage14/continuous_door/formal_contact_v4/96009/result.json"
+      },
+      {
+        "seed": 96010,
+        "success": true,
+        "sim_seconds": 448.10600000141153,
+        "wall_seconds": 103.02840271499736,
+        "grasps": 5,
+        "safety_releases": 3,
+        "final_door_angle_rad": 8.006447196134794e-16,
+        "collision_events": [],
+        "warning_counts": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "isolated_text_linesearch_messages": 0,
+        "result": "outputs/stage14/continuous_door/formal_contact_v4/96010/result.json"
+      }
+    ]
+  },
+  "paired_seed2101": {
+    "baseline_result": "outputs/stage14/continuous_door/baseline_seed2101_v1/result.json",
+    "candidate_result": "outputs/stage14/continuous_door/full_seed2101_recorded_v3/result.json",
+    "baseline_sim_seconds": 2144.8599999631047,
+    "new_sim_seconds": 462.3360000014795,
+    "baseline_grasps": 36,
+    "new_grasps": 5,
+    "baseline_open_close_grasps": [
+      16,
+      20
+    ],
+    "new_open_close_grasps": [
+      2,
+      3
+    ],
+    "grasp_reduction_fraction": 0.8611111111111112,
+    "sim_time_reduction_fraction": 0.7844446723751515,
+    "physical_model_and_initial_state_check": "outputs/stage14/continuous_door/paired_seed2101_final_model_identity_v3.json",
+    "comparison_note": "Same initial state and selected model arrays identical; only simulation time compared, because candidate was recorded"
+  },
+  "development_final_policy": [
+    {
+      "seed": 2101,
+      "sim_seconds": 462.3360000014795,
+      "result": "outputs/stage14/continuous_door/full_seed2101_recorded_v3/result.json"
+    },
+    {
+      "seed": 2102,
+      "sim_seconds": 458.0880000014592,
+      "result": "outputs/stage14/continuous_door/full_seed2102_dev_v3/result.json"
+    },
+    {
+      "seed": 2104,
+      "sim_seconds": 461.16000000147386,
+      "result": "outputs/stage14/continuous_door/full_seed2104_dev_v1/result.json"
+    }
+  ],
+  "safety": {
+    "arc_axial_slip_release_m": 0.012,
+    "slip_duration_s": 0.2,
+    "bilateral_loss_stop_s": 0.08,
+    "finger_normal_force_stop_n": 150,
+    "max_grasps_per_phase": 4,
+    "phase_end_normal_withdrawal_m": 0.045,
+    "original_close_threshold_rad": 0.035,
+    "current_formal_final_angle_abs_max_rad": 9.686148788805891e-16,
+    "final_video_sampled_contact_summary": {
+      "sample_count": 12224,
+      "max_tip_error_m": 0.011951852274491883,
+      "max_base_error_m": 0.06533205885815017,
+      "max_sampled_finger_normal_force_n": 74.27032149350748,
+      "bilateral_sample_fraction": 0.9998363874345549,
+      "note": "Sampled arc measurements, not a continuous-time proof; releases/approaches are separate phases"
+    },
+    "warning_scope": "All ten data.warning arrays zero and no Linesearch objective is not convex observed in their isolated logs; does not assert absence in historical/global logs"
+  },
+  "regression": {
+    "passed": 127,
+    "failed": 0,
+    "duration_seconds": 91.41,
+    "log": "outputs/stage14/continuous_door/pytest_release_final_v3.log",
+    "new_tests": 7,
+    "previous_tests_retained": 120,
+    "command": "MUJOCO_GL=egl .venv/bin/pytest -q"
+  },
+  "video": {
+    "path": "outputs/stage14/continuous_door/full_seed2101_recorded_v3/video/demo.mp4",
+    "sha256": "0f4cb872d1ce8ceaed57dc45edd403ce673b981c280206e9d80cd38a45d9bdae",
+    "validation": {
+      "status": "PASS",
+      "fps": 5,
+      "frames": 2312,
+      "stream": {
+        "width": 640,
+        "height": 480,
+        "duration": "462.400000",
+        "nb_read_frames": "2312"
+      },
+      "opengl": {
+        "vendor": "Mesa",
+        "renderer": "llvmpipe (LLVM 15.0.7, 256 bits)"
+      },
+      "first_sim_seconds": 0.002,
+      "last_sim_seconds": 462.20200000147884,
+      "continuous": true,
+      "cadence_validated": true,
+      "full_decode": "PASS"
+    }
+  },
+  "analysis": {
+    "summary": "outputs/stage14/continuous_door/analysis_final_v1/comparison.json",
+    "plot": "outputs/stage14/continuous_door/analysis_final_v1/comparison.png",
+    "samples_csv": "outputs/stage14/continuous_door/analysis_final_v1/contact_samples.csv"
+  },
+  "preserved_history": {
+    "old_normal_door_formal": "9/10 at 2a02e6f, seeds94001-94010; not pooled with new results",
+    "all_local_failures_root": "outputs/stage14/continuous_door",
+    "full_v1_failures": [
+      "full_seed2101_recorded_v1",
+      "full_seed2102_dev_v1"
+    ],
+    "experimental_direct_and_axis_bounded_dock": "Failed strict criteria; retained, not used in final production door strategy"
+  },
+  "limitations": [
+    "Oracle hinge/handle and contact state, not a sensor-only/VLA policy",
+    "Wide doorway1.57m, same physical model, not a narrow residential door test",
+    "Still five genuine grasps per task; safety regrasp remains necessary",
+    "No new fruit/book full-task regression experiments; their source/physics unchanged, retained module tests pass",
+    "Server, GPU, weights and training untouched in this task"
+  ]
+}

@@ -1,0 +1,504 @@
+{
+  "protocol": "stage24_ten_fruit_parked_grasp_validation30_v1",
+  "scope": "Only10 initial fruits; parked single-target instructed grasp/hold, not bin placement, five-metre navigation or full10fruit classification. Six distinct validation layouts,10 attempts/class, no new training.",
+  "phase_budget_seconds": 30.0,
+  "policy_noise_seed": 0,
+  "normalization_sha256": "2315f953b3ee8949915f315b9c938ef6f0ca7a5e9397562d82c238d90b4c67c8",
+  "policy_hz": 5,
+  "execute_prefix_actions": 1,
+  "action_horizon": 10,
+  "max_response_seconds": 2.0,
+  "network_image_size": 224,
+  "adapter": "bounded_projection_v1",
+  "checkpoint": "9999",
+  "selection": "All six10fruit validation layouts, no outcome filtering; first RNG0 for all6 then RNG1 for first4 layouts sorted by seed. Both success/failure expert parents retained. No adaptive success quota.",
+  "independent_layouts": 6,
+  "fresh_model_executions": 30,
+  "repetitions_do_not_count_as_new_layouts": true,
+  "formal_test_partition_used": false,
+  "model_performance_not_yet_known": true,
+  "matrices": {
+    "validation/grasp": [
+      {
+        "split": "validation",
+        "phase": "grasp",
+        "category": "apple",
+        "seed": 2200002,
+        "scene_object_count": 10,
+        "fixture": "evaluation_fixtures/validation/seed_2200002/apple/grasp_initialization",
+        "expert_parent_status": "PHYSICAL_PARENT_PASS_PENDING_REPLAY_AND_EXPORT",
+        "sha256": {
+          "episode.json": "24d5f069b1ac3d99e6919f79ec7d09f3616a44a8c998485b9e3fd6ae21e33d19",
+          "model.mjb": "2f48c141171c05416980e76003b01dee6850b07867d1908f72cb0e78c6d45bd1",
+          "replay.npz": "6fd3dd1b937fb9f6e0e21280fadad8d2c442b76c1de12254fc0c67be98b3312c"
+        },
+        "policy_noise_seed": 0,
+        "sampling_stratum": "six_layout_coverage"
+      },
+      {
+        "split": "validation",
+        "phase": "grasp",
+        "category": "banana",
+        "seed": 2200002,
+        "scene_object_count": 10,
+        "fixture": "evaluation_fixtures/validation/seed_2200002/banana/grasp_initialization",
+        "expert_parent_status": "PHYSICAL_PARENT_PASS_PENDING_REPLAY_AND_EXPORT",
+        "sha256": {
+          "episode.json": "1162f17abcb7ab5ca7b96bc4b93cf58fb3c4a1ff7f420c5424c216cede322367",
+          "model.mjb": "2f48c141171c05416980e76003b01dee6850b07867d1908f72cb0e78c6d45bd1",
+          "replay.npz": "f4286872383a211513cb1132676654fa4be6e0ad5dc5546fa639839506713133"
+        },
+        "policy_noise_seed": 0,
+        "sampling_stratum": "six_layout_coverage"
+      },
+      {
+        "split": "validation",
+        "phase": "grasp",
+        "category": "orange",
+        "seed": 2200002,
+        "scene_object_count": 10,
+        "fixture": "evaluation_fixtures/validation/seed_2200002/orange/grasp_initialization",
+        "expert_parent_status": "PHYSICAL_PARENT_PASS_PENDING_REPLAY_AND_EXPORT",
+        "sha256": {
+          "episode.json": "5a3564739cf4dab512dfd218b42072c76f14349c2252d76d3068ef7e8f49313b",
+          "model.mjb": "2f48c141171c05416980e76003b01dee6850b07867d1908f72cb0e78c6d45bd1",
+          "replay.npz": "777f405bd790b7081368fc7d76166dfb6682b2965ea2b6328d01763fdf5b42bd"
+        },
+        "policy_noise_seed": 0,
+        "sampling_stratum": "six_layout_coverage"
+      },
+      {
+        "split": "validation",
+        "phase": "grasp",
+        "category": "apple",
+        "seed": 2200003,
+        "scene_object_count": 10,
+        "fixture": "evaluation_fixtures/validation/seed_2200003/apple/grasp_initialization",
+        "expert_parent_status": "FAIL",
+        "sha256": {
+          "episode.json": "17cba48b90a281d54b4fd995ac6f77eaacbc7d746cd68a97bc52de7d4a70a5d2",
+          "model.mjb": "5ebd6c1b9e176dba11460da2c5664acb00af095276a09bf9fa25a0461e940b62",
+          "replay.npz": "07e0e179b33dbdf089d55efbb9650c49434920d682c74747b26a58dda56349b1"
+        },
+        "policy_noise_seed": 0,
+        "sampling_stratum": "six_layout_coverage"
+      },
+      {
+        "split": "validation",
+        "phase": "grasp",
+        "category": "banana",
+        "seed": 2200003,
+        "scene_object_count": 10,
+        "fixture": "evaluation_fixtures/validation/seed_2200003/banana/grasp_initialization",
+        "expert_parent_status": "PHYSICAL_PARENT_PASS_PENDING_REPLAY_AND_EXPORT",
+        "sha256": {
+          "episode.json": "f964be51a9e317c4ffe19169c8693b6550e20175a0f5d145bf3799782e3cdefe",
+          "model.mjb": "5ebd6c1b9e176dba11460da2c5664acb00af095276a09bf9fa25a0461e940b62",
+          "replay.npz": "fc2f1e783635120fb51e4e04ed0238d02f0a6d5e68766ac12ac3ab441744c8be"
+        },
+        "policy_noise_seed": 0,
+        "sampling_stratum": "six_layout_coverage"
+      },
+      {
+        "split": "validation",
+        "phase": "grasp",
+        "category": "orange",
+        "seed": 2200003,
+        "scene_object_count": 10,
+        "fixture": "evaluation_fixtures/validation/seed_2200003/orange/grasp_initialization",
+        "expert_parent_status": "PHYSICAL_PARENT_PASS_PENDING_REPLAY_AND_EXPORT",
+        "sha256": {
+          "episode.json": "d0666da04b1474530324c3019abafc297c7ba0d8b95a326646a5ef4d6123d358",
+          "model.mjb": "5ebd6c1b9e176dba11460da2c5664acb00af095276a09bf9fa25a0461e940b62",
+          "replay.npz": "bd18eb0e4154832534a859b4387e8307d914697343f0e2c4264a59551f6e4bef"
+        },
+        "policy_noise_seed": 0,
+        "sampling_stratum": "six_layout_coverage"
+      },
+      {
+        "split": "validation",
+        "phase": "grasp",
+        "category": "apple",
+        "seed": 2200004,
+        "scene_object_count": 10,
+        "fixture": "evaluation_fixtures/validation/seed_2200004/apple/grasp_initialization",
+        "expert_parent_status": "PHYSICAL_PARENT_PASS_PENDING_REPLAY_AND_EXPORT",
+        "sha256": {
+          "episode.json": "35f4fb101dcbfb745b77221f5314afb6a492eb54bc2893dba0091d6cd00c1b62",
+          "model.mjb": "684f49c237b8c73d50cff122245f1d436776bcac4f0f65f56b26bfc8ae79e36e",
+          "replay.npz": "0922e88598d46a3db201cacf76c8ad421d71eb43df66f6fb39037f29f0164d22"
+        },
+        "policy_noise_seed": 0,
+        "sampling_stratum": "six_layout_coverage"
+      },
+      {
+        "split": "validation",
+        "phase": "grasp",
+        "category": "banana",
+        "seed": 2200004,
+        "scene_object_count": 10,
+        "fixture": "evaluation_fixtures/validation/seed_2200004/banana/grasp_initialization",
+        "expert_parent_status": "FAIL",
+        "sha256": {
+          "episode.json": "c51975cc55bc3853abd0474d8a3e3dfd46dc46eeb8eabbdcf38acd275ce73fa6",
+          "model.mjb": "684f49c237b8c73d50cff122245f1d436776bcac4f0f65f56b26bfc8ae79e36e",
+          "replay.npz": "e1530c2a190d9c1208ce1b49ce69f46e8efc2be77bd40b3c008d88a88f390af2"
+        },
+        "policy_noise_seed": 0,
+        "sampling_stratum": "six_layout_coverage"
+      },
+      {
+        "split": "validation",
+        "phase": "grasp",
+        "category": "orange",
+        "seed": 2200004,
+        "scene_object_count": 10,
+        "fixture": "evaluation_fixtures/validation/seed_2200004/orange/grasp_initialization",
+        "expert_parent_status": "FAIL",
+        "sha256": {
+          "episode.json": "80e3b985281cc51f5301db88398dfbacfbd8d86876794d0d7f5f60f904241b52",
+          "model.mjb": "684f49c237b8c73d50cff122245f1d436776bcac4f0f65f56b26bfc8ae79e36e",
+          "replay.npz": "ce30a1073bf77dc505c28f52aa967a87d1bcaf9adc810009df44a315e238d911"
+        },
+        "policy_noise_seed": 0,
+        "sampling_stratum": "six_layout_coverage"
+      },
+      {
+        "split": "validation",
+        "phase": "grasp",
+        "category": "apple",
+        "seed": 2200005,
+        "scene_object_count": 10,
+        "fixture": "evaluation_fixtures/validation/seed_2200005/apple/grasp_initialization",
+        "expert_parent_status": "PHYSICAL_PARENT_PASS_PENDING_REPLAY_AND_EXPORT",
+        "sha256": {
+          "episode.json": "9bb4d6a850159edf01d7af9d9f144f634bf059f4994b2299a06f78426d616cd0",
+          "model.mjb": "b40036e7829eaf47227a25e52f63a42c201878820b943713cdbe29383ab4c833",
+          "replay.npz": "923d2216ecec8c63e4a4d3b8400b6bc655378df22e044e2ee35c24391cc791ff"
+        },
+        "policy_noise_seed": 0,
+        "sampling_stratum": "six_layout_coverage"
+      },
+      {
+        "split": "validation",
+        "phase": "grasp",
+        "category": "banana",
+        "seed": 2200005,
+        "scene_object_count": 10,
+        "fixture": "evaluation_fixtures/validation/seed_2200005/banana/grasp_initialization",
+        "expert_parent_status": "PHYSICAL_PARENT_PASS_PENDING_REPLAY_AND_EXPORT",
+        "sha256": {
+          "episode.json": "3c734dd8c2ba232e5c0aab69cbdb142be7b0add9e49c829b7258062cf5796056",
+          "model.mjb": "b40036e7829eaf47227a25e52f63a42c201878820b943713cdbe29383ab4c833",
+          "replay.npz": "5c9e31774e19aff3dbd91ef841de744936abd5ece436d2a8a26e7e4abe4c387b"
+        },
+        "policy_noise_seed": 0,
+        "sampling_stratum": "six_layout_coverage"
+      },
+      {
+        "split": "validation",
+        "phase": "grasp",
+        "category": "orange",
+        "seed": 2200005,
+        "scene_object_count": 10,
+        "fixture": "evaluation_fixtures/validation/seed_2200005/orange/grasp_initialization",
+        "expert_parent_status": "PHYSICAL_PARENT_PASS_PENDING_REPLAY_AND_EXPORT",
+        "sha256": {
+          "episode.json": "7cd6a85d8ed1f38664c30e6ef168bde0f93df9eaabd6db5c17823726bf55f9fb",
+          "model.mjb": "b40036e7829eaf47227a25e52f63a42c201878820b943713cdbe29383ab4c833",
+          "replay.npz": "e24bad3ced2f86656d26b70f0f0ee22468e3ec8f3ccbb85fc8de5886b2f36638"
+        },
+        "policy_noise_seed": 0,
+        "sampling_stratum": "six_layout_coverage"
+      },
+      {
+        "split": "validation",
+        "phase": "grasp",
+        "category": "apple",
+        "seed": 2200006,
+        "scene_object_count": 10,
+        "fixture": "evaluation_fixtures/validation/seed_2200006/apple/grasp_initialization",
+        "expert_parent_status": "PHYSICAL_PARENT_PASS_PENDING_REPLAY_AND_EXPORT",
+        "sha256": {
+          "episode.json": "1b36abffc53ee1e3919a56c01ceb0d38ccf1598bd36a71f873e5ceccde4a722e",
+          "model.mjb": "9b9baa3a86a92cf4ed9aa30665454e5eaf92452f2613fd580784f0f3d167fe08",
+          "replay.npz": "3b953319cd7742f3122ef81c08df439b32d7954105aafe51bd88e61b8dcc4c43"
+        },
+        "policy_noise_seed": 0,
+        "sampling_stratum": "six_layout_coverage"
+      },
+      {
+        "split": "validation",
+        "phase": "grasp",
+        "category": "banana",
+        "seed": 2200006,
+        "scene_object_count": 10,
+        "fixture": "evaluation_fixtures/validation/seed_2200006/banana/grasp_initialization",
+        "expert_parent_status": "PHYSICAL_PARENT_PASS_PENDING_REPLAY_AND_EXPORT",
+        "sha256": {
+          "episode.json": "4a5bcbfceb16ab89a38c38316bdd47c58377e271226856dfab7742496457100d",
+          "model.mjb": "9b9baa3a86a92cf4ed9aa30665454e5eaf92452f2613fd580784f0f3d167fe08",
+          "replay.npz": "9703c8690180f398d7642f5ea683f46baa1258dcdeb355371dc756ca3516f8dd"
+        },
+        "policy_noise_seed": 0,
+        "sampling_stratum": "six_layout_coverage"
+      },
+      {
+        "split": "validation",
+        "phase": "grasp",
+        "category": "orange",
+        "seed": 2200006,
+        "scene_object_count": 10,
+        "fixture": "evaluation_fixtures/validation/seed_2200006/orange/grasp_initialization",
+        "expert_parent_status": "FAIL",
+        "sha256": {
+          "episode.json": "6c13cf4b51c29bd0c96956e23d90372936401c333c998e512b6a3b3ca4f1e4ba",
+          "model.mjb": "9b9baa3a86a92cf4ed9aa30665454e5eaf92452f2613fd580784f0f3d167fe08",
+          "replay.npz": "1eb852978bd706363de3463771064d89c4ba065f7ac5dc59fb268ec3d2cdf17d"
+        },
+        "policy_noise_seed": 0,
+        "sampling_stratum": "six_layout_coverage"
+      },
+      {
+        "split": "validation",
+        "phase": "grasp",
+        "category": "apple",
+        "seed": 2200007,
+        "scene_object_count": 10,
+        "fixture": "evaluation_fixtures/validation/seed_2200007/apple/grasp_initialization",
+        "expert_parent_status": "PHYSICAL_PARENT_PASS_PENDING_REPLAY_AND_EXPORT",
+        "sha256": {
+          "episode.json": "6fab4902efdc982f6175b5b6ee38ce4c4d5c249c2f64cac4f505b23b565d3ef6",
+          "model.mjb": "5b70d0d52f5da65126686350b1a107f48a1cc2133da2072cac8d7492321d55dc",
+          "replay.npz": "e0a862ecc6afaca455cf78fa6501ce16a4fab8b47850a51a17a5d1129771a76a"
+        },
+        "policy_noise_seed": 0,
+        "sampling_stratum": "six_layout_coverage"
+      },
+      {
+        "split": "validation",
+        "phase": "grasp",
+        "category": "banana",
+        "seed": 2200007,
+        "scene_object_count": 10,
+        "fixture": "evaluation_fixtures/validation/seed_2200007/banana/grasp_initialization",
+        "expert_parent_status": "PHYSICAL_PARENT_PASS_PENDING_REPLAY_AND_EXPORT",
+        "sha256": {
+          "episode.json": "52831f4b4404f0b2dd852bb2009cb74ca44facf7e3952acb6652876afa8986c2",
+          "model.mjb": "5b70d0d52f5da65126686350b1a107f48a1cc2133da2072cac8d7492321d55dc",
+          "replay.npz": "6fd809b2fe961c2e310f6f895ad350ec489fa7a1c9eaff3ecce8291dc77e3f32"
+        },
+        "policy_noise_seed": 0,
+        "sampling_stratum": "six_layout_coverage"
+      },
+      {
+        "split": "validation",
+        "phase": "grasp",
+        "category": "orange",
+        "seed": 2200007,
+        "scene_object_count": 10,
+        "fixture": "evaluation_fixtures/validation/seed_2200007/orange/grasp_initialization",
+        "expert_parent_status": "PHYSICAL_PARENT_PASS_PENDING_REPLAY_AND_EXPORT",
+        "sha256": {
+          "episode.json": "18aabb3ea5cc859d5ddb8484658ae4f6368c4853746627d195ad0d9b9f7cd29b",
+          "model.mjb": "5b70d0d52f5da65126686350b1a107f48a1cc2133da2072cac8d7492321d55dc",
+          "replay.npz": "303fbdc2626a6bc4e11da4abc8eff813037707bead1cbe40dae3b13e7422344d"
+        },
+        "policy_noise_seed": 0,
+        "sampling_stratum": "six_layout_coverage"
+      },
+      {
+        "split": "validation",
+        "phase": "grasp",
+        "category": "apple",
+        "seed": 2200002,
+        "scene_object_count": 10,
+        "fixture": "evaluation_fixtures/validation/seed_2200002/apple/grasp_initialization",
+        "expert_parent_status": "PHYSICAL_PARENT_PASS_PENDING_REPLAY_AND_EXPORT",
+        "sha256": {
+          "episode.json": "24d5f069b1ac3d99e6919f79ec7d09f3616a44a8c998485b9e3fd6ae21e33d19",
+          "model.mjb": "2f48c141171c05416980e76003b01dee6850b07867d1908f72cb0e78c6d45bd1",
+          "replay.npz": "6fd3dd1b937fb9f6e0e21280fadad8d2c442b76c1de12254fc0c67be98b3312c"
+        },
+        "policy_noise_seed": 1,
+        "sampling_stratum": "predeclared_noise_repetition"
+      },
+      {
+        "split": "validation",
+        "phase": "grasp",
+        "category": "banana",
+        "seed": 2200002,
+        "scene_object_count": 10,
+        "fixture": "evaluation_fixtures/validation/seed_2200002/banana/grasp_initialization",
+        "expert_parent_status": "PHYSICAL_PARENT_PASS_PENDING_REPLAY_AND_EXPORT",
+        "sha256": {
+          "episode.json": "1162f17abcb7ab5ca7b96bc4b93cf58fb3c4a1ff7f420c5424c216cede322367",
+          "model.mjb": "2f48c141171c05416980e76003b01dee6850b07867d1908f72cb0e78c6d45bd1",
+          "replay.npz": "f4286872383a211513cb1132676654fa4be6e0ad5dc5546fa639839506713133"
+        },
+        "policy_noise_seed": 1,
+        "sampling_stratum": "predeclared_noise_repetition"
+      },
+      {
+        "split": "validation",
+        "phase": "grasp",
+        "category": "orange",
+        "seed": 2200002,
+        "scene_object_count": 10,
+        "fixture": "evaluation_fixtures/validation/seed_2200002/orange/grasp_initialization",
+        "expert_parent_status": "PHYSICAL_PARENT_PASS_PENDING_REPLAY_AND_EXPORT",
+        "sha256": {
+          "episode.json": "5a3564739cf4dab512dfd218b42072c76f14349c2252d76d3068ef7e8f49313b",
+          "model.mjb": "2f48c141171c05416980e76003b01dee6850b07867d1908f72cb0e78c6d45bd1",
+          "replay.npz": "777f405bd790b7081368fc7d76166dfb6682b2965ea2b6328d01763fdf5b42bd"
+        },
+        "policy_noise_seed": 1,
+        "sampling_stratum": "predeclared_noise_repetition"
+      },
+      {
+        "split": "validation",
+        "phase": "grasp",
+        "category": "apple",
+        "seed": 2200003,
+        "scene_object_count": 10,
+        "fixture": "evaluation_fixtures/validation/seed_2200003/apple/grasp_initialization",
+        "expert_parent_status": "FAIL",
+        "sha256": {
+          "episode.json": "17cba48b90a281d54b4fd995ac6f77eaacbc7d746cd68a97bc52de7d4a70a5d2",
+          "model.mjb": "5ebd6c1b9e176dba11460da2c5664acb00af095276a09bf9fa25a0461e940b62",
+          "replay.npz": "07e0e179b33dbdf089d55efbb9650c49434920d682c74747b26a58dda56349b1"
+        },
+        "policy_noise_seed": 1,
+        "sampling_stratum": "predeclared_noise_repetition"
+      },
+      {
+        "split": "validation",
+        "phase": "grasp",
+        "category": "banana",
+        "seed": 2200003,
+        "scene_object_count": 10,
+        "fixture": "evaluation_fixtures/validation/seed_2200003/banana/grasp_initialization",
+        "expert_parent_status": "PHYSICAL_PARENT_PASS_PENDING_REPLAY_AND_EXPORT",
+        "sha256": {
+          "episode.json": "f964be51a9e317c4ffe19169c8693b6550e20175a0f5d145bf3799782e3cdefe",
+          "model.mjb": "5ebd6c1b9e176dba11460da2c5664acb00af095276a09bf9fa25a0461e940b62",
+          "replay.npz": "fc2f1e783635120fb51e4e04ed0238d02f0a6d5e68766ac12ac3ab441744c8be"
+        },
+        "policy_noise_seed": 1,
+        "sampling_stratum": "predeclared_noise_repetition"
+      },
+      {
+        "split": "validation",
+        "phase": "grasp",
+        "category": "orange",
+        "seed": 2200003,
+        "scene_object_count": 10,
+        "fixture": "evaluation_fixtures/validation/seed_2200003/orange/grasp_initialization",
+        "expert_parent_status": "PHYSICAL_PARENT_PASS_PENDING_REPLAY_AND_EXPORT",
+        "sha256": {
+          "episode.json": "d0666da04b1474530324c3019abafc297c7ba0d8b95a326646a5ef4d6123d358",
+          "model.mjb": "5ebd6c1b9e176dba11460da2c5664acb00af095276a09bf9fa25a0461e940b62",
+          "replay.npz": "bd18eb0e4154832534a859b4387e8307d914697343f0e2c4264a59551f6e4bef"
+        },
+        "policy_noise_seed": 1,
+        "sampling_stratum": "predeclared_noise_repetition"
+      },
+      {
+        "split": "validation",
+        "phase": "grasp",
+        "category": "apple",
+        "seed": 2200004,
+        "scene_object_count": 10,
+        "fixture": "evaluation_fixtures/validation/seed_2200004/apple/grasp_initialization",
+        "expert_parent_status": "PHYSICAL_PARENT_PASS_PENDING_REPLAY_AND_EXPORT",
+        "sha256": {
+          "episode.json": "35f4fb101dcbfb745b77221f5314afb6a492eb54bc2893dba0091d6cd00c1b62",
+          "model.mjb": "684f49c237b8c73d50cff122245f1d436776bcac4f0f65f56b26bfc8ae79e36e",
+          "replay.npz": "0922e88598d46a3db201cacf76c8ad421d71eb43df66f6fb39037f29f0164d22"
+        },
+        "policy_noise_seed": 1,
+        "sampling_stratum": "predeclared_noise_repetition"
+      },
+      {
+        "split": "validation",
+        "phase": "grasp",
+        "category": "banana",
+        "seed": 2200004,
+        "scene_object_count": 10,
+        "fixture": "evaluation_fixtures/validation/seed_2200004/banana/grasp_initialization",
+        "expert_parent_status": "FAIL",
+        "sha256": {
+          "episode.json": "c51975cc55bc3853abd0474d8a3e3dfd46dc46eeb8eabbdcf38acd275ce73fa6",
+          "model.mjb": "684f49c237b8c73d50cff122245f1d436776bcac4f0f65f56b26bfc8ae79e36e",
+          "replay.npz": "e1530c2a190d9c1208ce1b49ce69f46e8efc2be77bd40b3c008d88a88f390af2"
+        },
+        "policy_noise_seed": 1,
+        "sampling_stratum": "predeclared_noise_repetition"
+      },
+      {
+        "split": "validation",
+        "phase": "grasp",
+        "category": "orange",
+        "seed": 2200004,
+        "scene_object_count": 10,
+        "fixture": "evaluation_fixtures/validation/seed_2200004/orange/grasp_initialization",
+        "expert_parent_status": "FAIL",
+        "sha256": {
+          "episode.json": "80e3b985281cc51f5301db88398dfbacfbd8d86876794d0d7f5f60f904241b52",
+          "model.mjb": "684f49c237b8c73d50cff122245f1d436776bcac4f0f65f56b26bfc8ae79e36e",
+          "replay.npz": "ce30a1073bf77dc505c28f52aa967a87d1bcaf9adc810009df44a315e238d911"
+        },
+        "policy_noise_seed": 1,
+        "sampling_stratum": "predeclared_noise_repetition"
+      },
+      {
+        "split": "validation",
+        "phase": "grasp",
+        "category": "apple",
+        "seed": 2200005,
+        "scene_object_count": 10,
+        "fixture": "evaluation_fixtures/validation/seed_2200005/apple/grasp_initialization",
+        "expert_parent_status": "PHYSICAL_PARENT_PASS_PENDING_REPLAY_AND_EXPORT",
+        "sha256": {
+          "episode.json": "9bb4d6a850159edf01d7af9d9f144f634bf059f4994b2299a06f78426d616cd0",
+          "model.mjb": "b40036e7829eaf47227a25e52f63a42c201878820b943713cdbe29383ab4c833",
+          "replay.npz": "923d2216ecec8c63e4a4d3b8400b6bc655378df22e044e2ee35c24391cc791ff"
+        },
+        "policy_noise_seed": 1,
+        "sampling_stratum": "predeclared_noise_repetition"
+      },
+      {
+        "split": "validation",
+        "phase": "grasp",
+        "category": "banana",
+        "seed": 2200005,
+        "scene_object_count": 10,
+        "fixture": "evaluation_fixtures/validation/seed_2200005/banana/grasp_initialization",
+        "expert_parent_status": "PHYSICAL_PARENT_PASS_PENDING_REPLAY_AND_EXPORT",
+        "sha256": {
+          "episode.json": "3c734dd8c2ba232e5c0aab69cbdb142be7b0add9e49c829b7258062cf5796056",
+          "model.mjb": "b40036e7829eaf47227a25e52f63a42c201878820b943713cdbe29383ab4c833",
+          "replay.npz": "5c9e31774e19aff3dbd91ef841de744936abd5ece436d2a8a26e7e4abe4c387b"
+        },
+        "policy_noise_seed": 1,
+        "sampling_stratum": "predeclared_noise_repetition"
+      },
+      {
+        "split": "validation",
+        "phase": "grasp",
+        "category": "orange",
+        "seed": 2200005,
+        "scene_object_count": 10,
+        "fixture": "evaluation_fixtures/validation/seed_2200005/orange/grasp_initialization",
+        "expert_parent_status": "PHYSICAL_PARENT_PASS_PENDING_REPLAY_AND_EXPORT",
+        "sha256": {
+          "episode.json": "7cd6a85d8ed1f38664c30e6ef168bde0f93df9eaabd6db5c17823726bf55f9fb",
+          "model.mjb": "b40036e7829eaf47227a25e52f63a42c201878820b943713cdbe29383ab4c833",
+          "replay.npz": "e24bad3ced2f86656d26b70f0f0ee22468e3ec8f3ccbb85fc8de5886b2f36638"
+        },
+        "policy_noise_seed": 1,
+        "sampling_stratum": "predeclared_noise_repetition"
+      }
+    ]
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "task_sim_seconds_limit": 3000,
+  "task_wall_seconds_limit": 3600,
+  "door_initial_dock_timeout_seconds": 45,
+  "aligned_door_close_step_rad": 0.08,
+  "protocol": "door_aligned_latch_multistart_oracle_v3_20261031",
+  "note": "Frozen normal-latch formal evaluation; identical numeric control settings to the verified development policy. Do not modify during or after held-out evaluation."
+}

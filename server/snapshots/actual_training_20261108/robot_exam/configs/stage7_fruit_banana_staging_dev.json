@@ -1,0 +1,5 @@
+{
+  "banana_staging_pure_yaw": true,
+  "task_sim_seconds_limit": 3000,
+  "task_wall_seconds_limit": 3600
+}

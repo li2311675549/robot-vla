@@ -1,0 +1,11 @@
+<mujoco model="robotiq_2f85_no_object_smoke">
+  <!-- Project scene: no suspended demo object or support tendon. -->
+  <include file="2f85.xml"/>
+  <option timestep="0.002" integrator="implicitfast"/>
+  <visual><global offwidth="640" offheight="480"/></visual>
+  <worldbody>
+    <light pos="0 -0.5 1"/>
+    <light pos="0.3 0.3 1"/>
+    <geom name="floor" type="plane" size="1 1 0.1" rgba="0.2 0.24 0.28 1"/>
+  </worldbody>
+</mujoco>

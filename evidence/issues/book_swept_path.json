@@ -1,0 +1,465 @@
+{
+  "status": "PARTIAL_LOCAL_RELIABILITY_AND_DATA_MILESTONE",
+  "server_contacted": false,
+  "new_training": false,
+  "historical_formal_unchanged": {
+    "door": {
+      "success": 10,
+      "attempts": 10
+    },
+    "fruit": {
+      "success": 2,
+      "attempts": 10
+    },
+    "distinct_books": {
+      "success": 4,
+      "attempts": 10
+    }
+  },
+  "new_books": {
+    "books_integrated_scatter_dev200006_v22": {
+      "path": "outputs/stage20/books_integrated_scatter_dev200006_v22/result.json",
+      "status": "PASS",
+      "success": true,
+      "completed": null,
+      "sim_seconds": 1234.4139999846338,
+      "error": null,
+      "warnings": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "video": null
+    },
+    "books_swept_assembly_dev200008_v23_recorded": {
+      "path": "outputs/stage20/books_swept_assembly_dev200008_v23_recorded/result.json",
+      "status": "PASS",
+      "success": true,
+      "completed": null,
+      "sim_seconds": 1222.5059999849154,
+      "error": null,
+      "warnings": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "video": {
+        "status": "PASS",
+        "fps": 5,
+        "frames": 6113,
+        "stream": {
+          "width": 640,
+          "height": 480,
+          "duration": "1222.600000",
+          "nb_read_frames": "6113"
+        },
+        "opengl": {
+          "vendor": "NVIDIA Corporation",
+          "renderer": "NVIDIA GeForce RTX 4070 Laptop GPU/PCIe/SSE2"
+        },
+        "first_sim_seconds": 0.002,
+        "last_sim_seconds": 1222.4039999849178,
+        "continuous": true,
+        "cadence_validated": true,
+        "full_decode": "PASS"
+      }
+    },
+    "books_swept_assembly_dev200007_v23": {
+      "path": "outputs/stage20/books_swept_assembly_dev200007_v23/result.json",
+      "status": "FAIL",
+      "success": false,
+      "completed": null,
+      "sim_seconds": 691.4879999974722,
+      "error": "RRT goal is in physical collision: tool0/book_1 penetration=0.004661m geoms=wrist_rgb_bracket/book_1_cover; wrist_rgb_mount/book_1 penetration=0.015884m geoms=wrist_rgb_housing/book_1_cover; wrist_rgb_mount/book_1 penetration=0.014859m geoms=wrist_rgb_housing/book_1_cover; wrist_rgb_mount/book_1 penetration=0.008070m geoms=wrist_rgb_housing/book_1_cover; wrist_rgb_mount/book_1 penetration=0.007045m geoms=wrist_rgb_housing/book_1_cover",
+      "warnings": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "video": null
+    },
+    "books_swept_exact_dev200006_v24": {
+      "path": "outputs/stage20/books_swept_exact_dev200006_v24/result.json",
+      "status": "PASS",
+      "success": true,
+      "completed": null,
+      "sim_seconds": 1234.4139999846338,
+      "error": null,
+      "warnings": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "video": null
+    },
+    "books_swept_exact_dev200007_v24": {
+      "path": "outputs/stage20/books_swept_exact_dev200007_v24/result.json",
+      "status": "PASS",
+      "success": true,
+      "completed": null,
+      "sim_seconds": 1210.0739999852094,
+      "error": null,
+      "warnings": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "video": null
+    },
+    "books_swept_exact_dev200008_v24_recorded": {
+      "path": "outputs/stage20/books_swept_exact_dev200008_v24_recorded/result.json",
+      "status": "PASS",
+      "success": true,
+      "completed": null,
+      "sim_seconds": 1222.5059999849154,
+      "error": null,
+      "warnings": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "video": {
+        "status": "PASS",
+        "fps": 5,
+        "frames": 6113,
+        "stream": {
+          "width": 640,
+          "height": 480,
+          "duration": "1222.600000",
+          "nb_read_frames": "6113"
+        },
+        "opengl": {
+          "vendor": "NVIDIA Corporation",
+          "renderer": "NVIDIA GeForce RTX 4070 Laptop GPU/PCIe/SSE2"
+        },
+        "first_sim_seconds": 0.002,
+        "last_sim_seconds": 1222.4039999849178,
+        "continuous": true,
+        "cadence_validated": true,
+        "full_decode": "PASS"
+      }
+    },
+    "books_swept_exact_dev200009_v24": {
+      "path": "outputs/stage20/books_swept_exact_dev200009_v24/result.json",
+      "status": "FAIL",
+      "success": false,
+      "completed": null,
+      "sim_seconds": 302.05200000071414,
+      "error": "No equivalent book-axis orientation admits a collision- and orientation-checked lowering",
+      "warnings": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "video": null
+    },
+    "books_all_rank_tilt_dev200009_v25_recorded": {
+      "path": "outputs/stage20/books_all_rank_tilt_dev200009_v25_recorded/result.json",
+      "status": "RUNNING_OR_PENDING"
+    }
+  },
+  "new_full_fruit": {
+    "fruit_rest_scatter_dev200004_v10_recorded": {
+      "path": "outputs/stage20/fruit_rest_scatter_dev200004_v10_recorded/result.json",
+      "status": "FAIL",
+      "success": false,
+      "completed": 1,
+      "sim_seconds": 395.86000000116206,
+      "error": "In-motion grasp witness lost: tool-frame relative error 0.0195m, rotation=0.1022rad, bilateral=False",
+      "warnings": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "video": {
+        "status": "PASS",
+        "fps": 5,
+        "frames": 1980,
+        "stream": {
+          "width": 640,
+          "height": 480,
+          "duration": "396.000000",
+          "nb_read_frames": "1980"
+        },
+        "opengl": {
+          "vendor": "NVIDIA Corporation",
+          "renderer": "NVIDIA GeForce RTX 4070 Laptop GPU/PCIe/SSE2"
+        },
+        "first_sim_seconds": 0.002,
+        "last_sim_seconds": 395.8020000011618,
+        "continuous": true,
+        "cadence_validated": true,
+        "full_decode": "PASS"
+      }
+    },
+    "fruit_rest_orange_depth_dev200004_v11_recorded": {
+      "path": "outputs/stage20/fruit_rest_orange_depth_dev200004_v11_recorded/result.json",
+      "status": "FAIL",
+      "success": false,
+      "completed": 0,
+      "sim_seconds": 213.50000000029132,
+      "error": "In-motion grasp witness lost: tool-frame relative error 0.0253m, rotation=0.0978rad, bilateral=True",
+      "warnings": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "video": {
+        "status": "PASS",
+        "fps": 5,
+        "frames": 1068,
+        "stream": {
+          "width": 640,
+          "height": 480,
+          "duration": "213.600000",
+          "nb_read_frames": "1068"
+        },
+        "opengl": {
+          "vendor": "NVIDIA Corporation",
+          "renderer": "NVIDIA GeForce RTX 4070 Laptop GPU/PCIe/SSE2"
+        },
+        "first_sim_seconds": 0.002,
+        "last_sim_seconds": 213.40200000029085,
+        "continuous": true,
+        "cadence_validated": true,
+        "full_decode": "PASS"
+      }
+    },
+    "fruit_rest_orange_feedback_dev200004_v12_recorded": {
+      "path": "outputs/stage20/fruit_rest_orange_feedback_dev200004_v12_recorded/result.json",
+      "status": "FAIL",
+      "success": false,
+      "completed": 1,
+      "sim_seconds": 421.64000000128516,
+      "error": "Bounded re-clamp could not restore a stable physical grasp",
+      "warnings": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "video": {
+        "status": "PASS",
+        "fps": 5,
+        "frames": 2109,
+        "stream": {
+          "width": 640,
+          "height": 480,
+          "duration": "421.800000",
+          "nb_read_frames": "2109"
+        },
+        "opengl": {
+          "vendor": "NVIDIA Corporation",
+          "renderer": "NVIDIA GeForce RTX 4070 Laptop GPU/PCIe/SSE2"
+        },
+        "first_sim_seconds": 0.002,
+        "last_sim_seconds": 421.602000001285,
+        "continuous": true,
+        "cadence_validated": true,
+        "full_decode": "PASS"
+      }
+    },
+    "fruit_rest_orange_deep_feedback_dev200004_v13_recorded": {
+      "path": "outputs/stage20/fruit_rest_orange_deep_feedback_dev200004_v13_recorded/result.json",
+      "status": "FAIL",
+      "success": false,
+      "completed": 3,
+      "sim_seconds": 746.4399999961728,
+      "error": "In-motion grasp witness lost: tool-frame relative error 0.0090m, rotation=0.0514rad, bilateral=False",
+      "warnings": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "video": {
+        "status": "PASS",
+        "fps": 5,
+        "frames": 3733,
+        "stream": {
+          "width": 640,
+          "height": 480,
+          "duration": "746.600000",
+          "nb_read_frames": "3733"
+        },
+        "opengl": {
+          "vendor": "NVIDIA Corporation",
+          "renderer": "NVIDIA GeForce RTX 4070 Laptop GPU/PCIe/SSE2"
+        },
+        "first_sim_seconds": 0.002,
+        "last_sim_seconds": 746.4039999961736,
+        "continuous": true,
+        "cadence_validated": true,
+        "full_decode": "PASS"
+      }
+    },
+    "fruit_rest_category_depth_dev200004_v14": {
+      "path": "outputs/stage20/fruit_rest_category_depth_dev200004_v14/result.json",
+      "status": "FAIL",
+      "success": false,
+      "completed": 3,
+      "sim_seconds": 758.1199999958966,
+      "error": "Bounded re-clamp could not restore a stable physical grasp",
+      "warnings": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "video": null
+    }
+  },
+  "door_regression": {
+    "path": "outputs/stage20/door_continuous_regression_dev501_c0472e6/result.json",
+    "status": "PASS",
+    "success": true,
+    "completed": null,
+    "sim_seconds": 450.98200000142526,
+    "error": null,
+    "warnings": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "video": null
+  },
+  "new_clean_data": {
+    "parents": 12,
+    "parked_phases": 24,
+    "frames": 1114,
+    "independent_train_contexts": 4,
+    "manifest": "outputs/stage20/multifruit_rest_clean_manifest_v6/manifest.json",
+    "fullrate_and5hz": "24/24 each PASS",
+    "all_non_targets_preserved": true,
+    "native_openpi_report": "outputs/stage20/multifruit_rest_clean_openpi_native_v6.json",
+    "not_full_tenfruit_success_rate": true,
+    "training_ready": false
+  },
+  "mixed_sampler": {
+    "old_train_frames": 12342,
+    "new_train_frames": 1114,
+    "total_frames": 13456,
+    "source_probability": [
+      0.2,
+      0.8
+    ],
+    "weighted20000_draws": {
+      "old": 3885,
+      "new": 16115
+    },
+    "native4_batches": "PASS",
+    "normalization": "train-only, actual source/class/phase/episode balanced10-action-chunk weighted statistics",
+    "preparation": "outputs/stage20/multifruit_mix20_80_pilot_v2/preparation.json",
+    "native_probe": "outputs/stage20/multifruit_mix_native_loader_v1/result.json",
+    "training_ready": false
+  },
+  "dock_new_ablation": {
+    "time_cost": {
+      "paired_attempts": 16,
+      "empty": {
+        "baseline": "4/4",
+        "timed": "4/4"
+      },
+      "loaded": {
+        "baseline": "3/4",
+        "timed": "3/4"
+      },
+      "budget_seconds": 45,
+      "adopted": false,
+      "source": "outputs/stage20/dock_time_model_pairs_v1/summary.json"
+    },
+    "stricter_radial_margin": {
+      "paired_attempts": 4,
+      "both_loaded": "1/2",
+      "adopted": false,
+      "source": "outputs/stage20/dock_radial_terminal_pair_v1/summary.json",
+      "experimental_source_preserved": true
+    }
+  },
+  "latest_complete_regression": {
+    "passed": 230,
+    "total": 230,
+    "seconds": 92.11,
+    "log": "outputs/stage20/pytest_full_local_resume_v17.log"
+  },
+  "ood_static_preparation": {
+    "seeds": [
+      2400001,
+      2400002,
+      2400003
+    ],
+    "protocol": "heldout_bin_slot_permutation_v1",
+    "scope": "compile/parameter tests only",
+    "rollouts": 0,
+    "training_eligible": false
+  },
+  "pending": [
+    "Finish current whole-task development runs",
+    "Book v25 full regression and any remaining geometry failures",
+    "Fruit remaining grip/dock failures; no new formal10 trials yet",
+    "Additional clean independent train contexts and heldout qualification",
+    "Weighted pilot is not a training-ready release"
+  ]
+}

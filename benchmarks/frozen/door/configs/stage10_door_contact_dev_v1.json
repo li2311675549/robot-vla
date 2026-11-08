@@ -1,0 +1,7 @@
+{
+  "task_sim_seconds_limit": 3000,
+  "task_wall_seconds_limit": 3600,
+  "door_initial_dock_timeout_seconds": 45,
+  "door_open_regrasp_attempts": 2,
+  "note": "New development seeds only. Oracle arc expert with bounded physical regrasp; no changes to old v2 formal results or scoring. RGB-D perception prototype evaluated separately."
+}

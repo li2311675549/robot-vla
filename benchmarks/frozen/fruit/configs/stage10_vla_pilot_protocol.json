@@ -1,0 +1,33 @@
+{
+  "protocol_id": "stage10_fixed_base_fruit_lora_pilot_v1",
+  "status": "PREPARED_NOT_TRAINED",
+  "dataset_manifest": "outputs/stage10/fruit_dataset_manifest_v1/manifest.json",
+  "repo_id": "local/robot_exam_stage10_fruit_train",
+  "assets": "outputs/stage10/fruit_dataset_manifest_v1/assets",
+  "action_semantics": "ur5_absolute_joint_goal_v1",
+  "joint_units": "radians",
+  "state_dim": 7,
+  "robot_action_dim": 7,
+  "model_padded_action_dim": 32,
+  "policy_hz": 5,
+  "action_chunk_length": 10,
+  "execute_actions_before_reobserve": 1,
+  "physics_hz": 500,
+  "max_joint_speed_rad_s": 0.7,
+  "max_joint_acceleration_rad_s2": 1.4,
+  "actual_cameras": ["front"],
+  "missing_camera_masks": {"left_wrist_0_rgb": false,"right_wrist_0_rgb": false},
+  "rollout_evaluation_seeds": {
+    "apple": [41001,41002,41003,41004,41005,41006,41007,41008,41009,41010],
+    "banana": [41101,41102,41103,41104,41105,41106,41107,41108,41109,41110],
+    "orange": [41201,41202,41203,41204,41205,41206,41207,41208,41209,41210]
+  },
+  "rollout_seconds_limit": 60,
+  "required_lift_m": 0.055,
+  "required_continuous_bilateral_lift_seconds": 1.5,
+  "placement_xy_tolerance_m": 0.04,
+  "placement_z_tolerance_m": 0.01,
+  "final_speed_limit_m_s": 0.01,
+  "training": {"lora": true,"batch_size": 2,"steps": 1000,"save_interval": 250,"wandb": false},
+  "note": "Prospective shared expert/model short-skill protocol, not run with model weights. Seed lists must be frozen with code/scene/checkpoint before policy evaluation. No payment, download or training authorization is granted by this file."
+}

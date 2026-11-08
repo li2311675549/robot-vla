@@ -1,0 +1,52 @@
+{
+  "protocol": "stage20_fruit_passive_rest_orange_feedback_equator_dev_v13",
+  "task_sim_seconds_limit": 3000,
+  "task_wall_seconds_limit": 3600,
+  "fruit_world_stabilize": true,
+  "task_wrist_camera": false,
+  "stationary_manipulation": false,
+  "trajectory_log_interval_seconds": 0.5,
+  "payload_trace_interval_seconds": 0.5,
+  "note": "v6 phase boundary correction plus proven orange visible-corridor route, strict heading pivot, and independent precision braking. Apple/banana control unchanged. Final dock30mm/0.035rad/2s, task score/model/3000s retained. Development only. v8 enables the same real-payload strict direct dock/revalidation tested in local multiobject parents; settled-entry2s avoids unnecessary final turn. All ten objects retained, approved scatter, no success-score/tolerance/force/friction changes. Development only. New explicit initial-pose protocol with exact-geometry600s passive calibration. Same seededXY/scales and physical parameters; initialize only before physics. Continuous final-goal capture is strictly checked2s, all original task scores and3000s development timeout retained. Not an old-protocol formal result. v12: reuse measured12N gripper feedback for orange too. Same-state orange size-pair local probes4/4PASS, fixed depth-4mm failed a larger orange in complete-task trial; do not generalize one depth across sizes. Original positions/forces/friction/guard/score unchanged. Full test pending. v13 combines depth-4mm with existing12N contact feedback: four same-checkpoint reverse/turn variants show depth-4mm retains orange through1.4rad yaw with fixed closure and12/20Nfeedback; zero offset still fails. First/larger orange force-feedback depth-4mm local reverse passed. No physical parameters/guard/score changes. Complete validation pending.",
+  "apple_grasp_z_offset_m": -0.004,
+  "apple_hold_closure": 0.55,
+  "bin_label_profile": "upright_v2",
+  "parking_trace_interval_seconds": 0.5,
+  "banana_hold_closure": 0.65,
+  "fruit_preserve_settled_grip_recovery": true,
+  "compress_bulk_logs": true,
+  "fruit_contact_force_feedback": true,
+  "fruit_force_feedback_categories": [
+    "apple",
+    "orange"
+  ],
+  "fruit_target_contact_force_n": 12.0,
+  "fruit_split_transport_deadlines": true,
+  "payload_strict_pivot_turn": true,
+  "payload_strict_pivot_categories": [
+    "orange"
+  ],
+  "payload_direct_visible_categories": [
+    "banana",
+    "orange"
+  ],
+  "payload_visible_handoff_categories": [
+    "banana",
+    "orange"
+  ],
+  "payload_precision_twist_slew": true,
+  "payload_twist_slew_categories": [
+    "apple",
+    "banana",
+    "orange"
+  ],
+  "fruit_guarded_precision_dock": true,
+  "local_dock_preserve_settled_entry": true,
+  "scene_layout_profile": "bounded_scatter_v3",
+  "fruit_spawn_profile": "passive_rest_init_v2",
+  "fruit_rest_calibration": {
+    "200004": "outputs/stage20/fruit_rest_calibration200004_v1/calibration.json"
+  },
+  "local_dock_capture_goal_during_primitives": true,
+  "orange_grasp_z_offset_m": -0.004
+}

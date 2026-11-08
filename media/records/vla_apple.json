@@ -1,0 +1,231 @@
+{
+  "status": "PASS",
+  "success": true,
+  "policy_kind": "openpi",
+  "scope": "Parked multi-fruit phase, not5m or complete10fruit classification",
+  "source_fixture": "/home/li/\u684c\u9762/VLA\u591a\u6c34\u679c\u53cc\u89c6\u89d2\u6570\u636e_2026-11-06/evaluation_fixtures/validation/seed_2200002/apple/grasp_initialization",
+  "model_inference": true,
+  "initial_state_restores": 1,
+  "runtime_state_restores": 0,
+  "phase_budget_seconds": 30.0,
+  "response_budget_seconds": 2.0,
+  "policy_input_keys": [
+    "front_rgb",
+    "wrist_rgb",
+    "state",
+    "prompt",
+    "timestamp"
+  ],
+  "simulation_paused_during_network": true,
+  "phase": "grasp",
+  "seed": 2200002,
+  "category": "apple",
+  "scene_object_count": 10,
+  "language_instruction": "Pick up the leftmost apple in the front camera image and hold it above the table.",
+  "score": {
+    "lift_m": 0.06640312028675843,
+    "last_second_bilateral_fraction": 1.0,
+    "final_bilateral": true
+  },
+  "non_target_preservation": {
+    "success": true,
+    "scope": "Additional demonstration QA, not a changed full-task score",
+    "table_center": [
+      0.49,
+      0.0,
+      0.705
+    ],
+    "table_halfsize": [
+      0.13,
+      0.29,
+      0.02
+    ],
+    "margin_m": 0.005,
+    "maximum_speed_m_s": 0.02,
+    "non_targets": [
+      {
+        "body": "fruit_0",
+        "position": [
+          0.531995097422055,
+          0.07567644167839016,
+          0.741353227020629
+        ],
+        "on_original_table": true,
+        "linear_speed_m_s": 1.1153755691150158e-15,
+        "quiet": true
+      },
+      {
+        "body": "fruit_1",
+        "position": [
+          0.5003327543427206,
+          -0.0020536242107143344,
+          0.7491919534178078
+        ],
+        "on_original_table": true,
+        "linear_speed_m_s": 1.0430340354542289e-08,
+        "quiet": true
+      },
+      {
+        "body": "fruit_3",
+        "position": [
+          0.4892421321159037,
+          -0.22108320082196992,
+          0.7417090220860435
+        ],
+        "on_original_table": true,
+        "linear_speed_m_s": 3.0881613190834474e-17,
+        "quiet": true
+      },
+      {
+        "body": "fruit_4",
+        "position": [
+          0.40396057414450354,
+          -0.11194974962834497,
+          0.7496140026152126
+        ],
+        "on_original_table": true,
+        "linear_speed_m_s": 4.556538584568096e-10,
+        "quiet": true
+      },
+      {
+        "body": "fruit_5",
+        "position": [
+          0.5848271742592042,
+          0.1508693355645746,
+          0.7525548960258418
+        ],
+        "on_original_table": true,
+        "linear_speed_m_s": 0.00010848387276836803,
+        "quiet": true
+      },
+      {
+        "body": "fruit_6",
+        "position": [
+          0.4829527705444829,
+          0.15253457260509257,
+          0.7509782988098489
+        ],
+        "on_original_table": true,
+        "linear_speed_m_s": 0.0015474463046257505,
+        "quiet": true
+      },
+      {
+        "body": "fruit_7",
+        "position": [
+          0.42004686852872,
+          0.2047020469063376,
+          0.7495003456262677
+        ],
+        "on_original_table": true,
+        "linear_speed_m_s": 5.858864490111425e-10,
+        "quiet": true
+      },
+      {
+        "body": "fruit_8",
+        "position": [
+          0.46488974188203264,
+          -0.07560869834553317,
+          0.7488246057394335
+        ],
+        "on_original_table": true,
+        "linear_speed_m_s": 5.035223897998652e-09,
+        "quiet": true
+      },
+      {
+        "body": "fruit_9",
+        "position": [
+          0.5627459092836983,
+          -0.1098597040724005,
+          0.742669382123319
+        ],
+        "on_original_table": true,
+        "linear_speed_m_s": 2.904708949883883e-17,
+        "quiet": true
+      }
+    ]
+  },
+  "max_lift_by_body_m": {
+    "fruit_0": 0.0,
+    "fruit_1": 7.175385496882569e-08,
+    "fruit_2": 0.06640312028675843,
+    "fruit_3": 0.0,
+    "fruit_4": 1.4302494744100613e-09,
+    "fruit_5": 0.0,
+    "fruit_6": 0.00037071224272600123,
+    "fruit_7": 3.0287408137041893e-09,
+    "fruit_8": 0.0,
+    "fruit_9": 0.0
+  },
+  "other_fruit_lifted": [],
+  "collision_events": [],
+  "sim_seconds": 21.799999999997375,
+  "warnings": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ],
+  "parking_final": {
+    "time": 24.4999999999973,
+    "pose": [
+      -3.1834979530998434e-05,
+      1.652996983749948e-05,
+      2.9646136353334663e-05
+    ],
+    "position_error_m": 4.716889356068e-05,
+    "heading_error_rad": 1.0532391134798758e-05,
+    "linear_speed_m_s": 1.0151976590382835e-05,
+    "yaw_rate_rad_s": 2.6530241800807064e-05
+  },
+  "parking_faulted": false,
+  "error": null,
+  "wall_seconds": 28.087190295991604,
+  "queries": 109,
+  "server_metadata": {
+    "robot": "original_ur5_2f85",
+    "action_semantics": "ur5_absolute_joint_goal_v1",
+    "policy_hz": 5,
+    "actual_cameras": [
+      "front",
+      "wrist"
+    ],
+    "wrist_cameras": true,
+    "checkpoint": "/root/autodl-tmp/robot_exam_stage22/checkpoints/pi05_original_ur5_lora_v1/multifruit_stage22_batch4_v2/9999",
+    "checkpoint_step_label": "9999",
+    "repo_id": "local/robot_exam_stage21_train",
+    "norm_stats_sha256": "2315f953b3ee8949915f315b9c938ef6f0ca7a5e9397562d82c238d90b4c67c8",
+    "gripper_adapter": "bounded_projection_v1",
+    "maximum_gripper_extrapolation": 0.1,
+    "websocket_compression": "deflate",
+    "transport_pixels": "lossless",
+    "jax_policy_seed_per_connection": null,
+    "evaluation_noise_seed_source": "transport_header_or_default_zero",
+    "serialized_evaluation_connections": true,
+    "episode_policy_noise_seed": 0,
+    "evaluation_noise_control_enabled": true
+  },
+  "video": {
+    "status": "PASS",
+    "fps": 5,
+    "frames": 109,
+    "stream": {
+      "width": 640,
+      "height": 480,
+      "duration": "21.800000",
+      "nb_read_frames": "109"
+    },
+    "opengl": {
+      "vendor": "NVIDIA Corporation",
+      "renderer": "NVIDIA GeForce RTX 4070 Laptop GPU/PCIe/SSE2"
+    },
+    "first_sim_seconds": 2.701999999999924,
+    "last_sim_seconds": 24.30199999999741,
+    "continuous": true,
+    "cadence_validated": true,
+    "full_decode": "PASS"
+  }
+}

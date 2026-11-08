@@ -1,0 +1,23 @@
+{
+  "protocol": "stage20_fruit_contact_feedback_development_v4",
+  "task_sim_seconds_limit": 3000,
+  "task_wall_seconds_limit": 3600,
+  "fruit_world_stabilize": true,
+  "task_wrist_camera": false,
+  "stationary_manipulation": false,
+  "trajectory_log_interval_seconds": 0.5,
+  "payload_trace_interval_seconds": 0.5,
+  "note": "Development only: initial slow closure and bounded measured normal-contact feedback for apples, ordinary regulated0.65 banana hold, and stopped-grasp revalidation before release. Original final score, guard thresholds, retry limits and physical model retained. Upright labels; lossless compressed bulk logs. No old final seeds or scene weakening.",
+  "apple_grasp_z_offset_m": -0.004,
+  "apple_hold_closure": 0.55,
+  "bin_label_profile": "upright_v2",
+  "parking_trace_interval_seconds": 0.5,
+  "banana_hold_closure": 0.65,
+  "fruit_preserve_settled_grip_recovery": true,
+  "compress_bulk_logs": true,
+  "fruit_contact_force_feedback": true,
+  "fruit_force_feedback_categories": [
+    "apple"
+  ],
+  "fruit_target_contact_force_n": 12.0
+}

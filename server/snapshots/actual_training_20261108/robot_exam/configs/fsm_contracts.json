@@ -1,0 +1,175 @@
+{
+  "INITIALIZE": {
+    "inputs": "model, seed, saved home",
+    "operation": "settle and validate model",
+    "success": "finite stable state",
+    "timeout_seconds": 20,
+    "recovery": "FAILURE",
+    "failure": "timeout, nonfinite simulation, failed physical predicate or exception",
+    "next_states": [
+      "task-defined next state",
+      "RECOVER",
+      "FAILURE"
+    ]
+  },
+  "NAVIGATE": {
+    "inputs": "map, current odometry, goal",
+    "operation": "A* and wheel tracking",
+    "success": "position and yaw tolerances",
+    "timeout_seconds": 240,
+    "recovery": "replan at most twice",
+    "failure": "timeout, nonfinite simulation, failed physical predicate or exception",
+    "next_states": [
+      "task-defined next state",
+      "RECOVER",
+      "FAILURE"
+    ]
+  },
+  "OBSERVE": {
+    "inputs": "RGB, depth, calibrated robot camera",
+    "operation": "color/PCA metric estimates",
+    "success": "required detections present",
+    "timeout_seconds": 15,
+    "recovery": "reobserve or FAILURE",
+    "failure": "timeout, nonfinite simulation, failed physical predicate or exception",
+    "next_states": [
+      "task-defined next state",
+      "RECOVER",
+      "FAILURE"
+    ]
+  },
+  "SELECT_TARGET": {
+    "inputs": "detections, remaining targets",
+    "operation": "choose next target",
+    "success": "one valid target",
+    "timeout_seconds": 10,
+    "recovery": "FAILURE",
+    "failure": "timeout, nonfinite simulation, failed physical predicate or exception",
+    "next_states": [
+      "task-defined next state",
+      "RECOVER",
+      "FAILURE"
+    ]
+  },
+  "PLAN": {
+    "inputs": "target, robot geometry and joint state",
+    "operation": "width check and multi-pose IK",
+    "success": "at least one feasible candidate",
+    "timeout_seconds": 30,
+    "recovery": "alternate pose or FAILURE",
+    "failure": "timeout, nonfinite simulation, failed physical predicate or exception",
+    "next_states": [
+      "task-defined next state",
+      "RECOVER",
+      "FAILURE"
+    ]
+  },
+  "APPROACH": {
+    "inputs": "planned pose and joint state",
+    "operation": "bounded arm trajectory",
+    "success": "tracking tolerance",
+    "timeout_seconds": 90,
+    "recovery": "bounded retry or FAILURE",
+    "failure": "timeout, nonfinite simulation, failed physical predicate or exception",
+    "next_states": [
+      "task-defined next state",
+      "RECOVER",
+      "FAILURE"
+    ]
+  },
+  "GRASP": {
+    "inputs": "target contact witnesses",
+    "operation": "close force-limited gripper",
+    "success": "bilateral contacts",
+    "timeout_seconds": 10,
+    "recovery": "at most three fruit attempts",
+    "failure": "timeout, nonfinite simulation, failed physical predicate or exception",
+    "next_states": [
+      "task-defined next state",
+      "RECOVER",
+      "FAILURE"
+    ]
+  },
+  "MANIPULATE": {
+    "inputs": "grasp or passive joint constraint",
+    "operation": "lift, arc or slide",
+    "success": "height or joint progress",
+    "timeout_seconds": 180,
+    "recovery": "stop on tracking/contact failure",
+    "failure": "timeout, nonfinite simulation, failed physical predicate or exception",
+    "next_states": [
+      "task-defined next state",
+      "RECOVER",
+      "FAILURE"
+    ]
+  },
+  "PLACE": {
+    "inputs": "bin or drawer pose",
+    "operation": "lower, release and retreat",
+    "success": "stable released object",
+    "timeout_seconds": 90,
+    "recovery": "FAILURE",
+    "failure": "timeout, nonfinite simulation, failed physical predicate or exception",
+    "next_states": [
+      "task-defined next state",
+      "RECOVER",
+      "FAILURE"
+    ]
+  },
+  "VERIFY": {
+    "inputs": "independent scorer and settled state",
+    "operation": "strict physical containment",
+    "success": "all requested predicates",
+    "timeout_seconds": 20,
+    "recovery": "FAILURE",
+    "failure": "timeout, nonfinite simulation, failed physical predicate or exception",
+    "next_states": [
+      "SUCCESS",
+      "FAILURE"
+    ]
+  },
+  "RECOVER": {
+    "inputs": "failure category and retry budget",
+    "operation": "reobserve, back off or replan",
+    "success": "budget remains and new plan",
+    "timeout_seconds": 90,
+    "recovery": "FAILURE when exhausted",
+    "failure": "timeout, nonfinite simulation, failed physical predicate or exception",
+    "next_states": [
+      "task-defined next state",
+      "RECOVER",
+      "FAILURE"
+    ]
+  },
+  "RETURN_HOME": {
+    "inputs": "saved initial pose and map",
+    "operation": "A* wheel return",
+    "success": "home position and yaw tolerances",
+    "timeout_seconds": 240,
+    "recovery": "replan at most twice",
+    "failure": "timeout, nonfinite simulation, failed physical predicate or exception",
+    "next_states": [
+      "task-defined next state",
+      "RECOVER",
+      "FAILURE"
+    ]
+  },
+  "SUCCESS": {
+    "inputs": "complete independent task score",
+    "operation": "persist results",
+    "success": "all task conditions true",
+    "timeout_seconds": 5,
+    "recovery": "terminal",
+    "failure": "timeout, nonfinite simulation, failed physical predicate or exception",
+    "next_states": []
+  },
+  "FAILURE": {
+    "inputs": "exception, robot and target state",
+    "operation": "persist traceback and screenshot",
+    "success": "evidence written",
+    "timeout_seconds": 5,
+    "recovery": "terminal",
+    "failure": "timeout, nonfinite simulation, failed physical predicate or exception",
+    "next_states": []
+  }
+}

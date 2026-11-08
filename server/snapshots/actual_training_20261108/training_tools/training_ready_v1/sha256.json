@@ -1,0 +1,8 @@
+{
+  "verify_official_pi05_assets.py": "df36d21001a1b8c14ed2ad4271ebfa7330965e72ac6828294758774519e89f44",
+  "download_official_pi05_assets.py": "21fdc7f88150efada6e86951710718b2798c857b4866dee29bae214715b69495",
+  "autodl_tomorrow.sh": "133295fee7bc5436826a98550844f215f39e296ad1c9a1e8d4370bf455711ed3",
+  "run_resource_guarded.py": "7a749d19eb31df150f2a223845a05ff40d75ac32d257a2d5a340830d616ef384",
+  "pi05_official_assets_20261030.json": "48de96a8f10cf9f21d692701088de6d2ad9220ffa54b91afeb6ce51e3e8d016d",
+  "requirements-openpi-server-extra.in": "f46fd0db8f92a4e3363d8ecd20f9ad65fa4fff6a080e7c20e7898390ab61fd94"
+}

@@ -1,0 +1,4 @@
+# The pinned OpenPI gemma_pytorch module imports pytest at runtime even in JAX mode.
+# It is declared only in its dev group; --no-dev therefore needs this tiny supplement.
+# Version already present in the unchanged upstream uv.lock.
+pytest==8.3.5

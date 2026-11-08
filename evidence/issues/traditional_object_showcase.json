@@ -1,0 +1,56 @@
+{
+  "status": "COMPLETE70",
+  "planned": 70,
+  "completed": 70,
+  "new_simulation_or_inference": false,
+  "last_group": "large_book",
+  "last_file": "07_大书收纳/视频/10_失败_seed1011.mp4",
+  "wall_seconds": 165.23061354699894,
+  "desktop_path": "/home/li/桌面/传统方法_门与六类物体各10条展示_2026-11-08",
+  "free_gib": 25.40673828125,
+  "all70_full_decode_pass": true,
+  "all70_frame_counts_pass": true,
+  "all70_video_sha256_pass": true,
+  "quotas": {
+    "door": {
+      "success": 10,
+      "failure": 0,
+      "records": 10
+    },
+    "apple": {
+      "success": 10,
+      "failure": 0,
+      "records": 10
+    },
+    "banana": {
+      "success": 9,
+      "failure": 1,
+      "records": 10
+    },
+    "orange": {
+      "success": 10,
+      "failure": 0,
+      "records": 10
+    },
+    "small_book": {
+      "success": 10,
+      "failure": 0,
+      "records": 10
+    },
+    "medium_book": {
+      "success": 10,
+      "failure": 0,
+      "records": 10
+    },
+    "large_book": {
+      "success": 7,
+      "failure": 3,
+      "records": 10
+    }
+  },
+  "source_parent_episodes": 34,
+  "successes": 66,
+  "failures": 4,
+  "original_results_modified": false,
+  "selection_and_partial_initializations_disclosed": true
+}

@@ -1,0 +1,42 @@
+{
+  "protocol": {
+    "protocol_id": "fruit_rgbd_tristation_3000_baseline_stage11_v1",
+    "split": "held_out_formal",
+    "task": "fruit",
+    "mode": "vision",
+    "config": "configs/stage11_fruit_formal_baseline_v1.json",
+    "seeds": [
+      62001,
+      62002,
+      62003,
+      62004,
+      62005,
+      62006,
+      62007,
+      62008,
+      62009,
+      62010
+    ],
+    "record_seeds": [],
+    "note": "Ten predeclared independent complete attempts, no seed-specific tuning/retries or exclusion. Legacy single camera geometry with actual contact/containment verification. Failed episodes all count."
+  },
+  "summary": {
+    "episodes": 10,
+    "complete_successes": 2,
+    "complete_success_rate": 0.2,
+    "successful_sim_seconds_mean": 1771.2899999719384,
+    "successful_wall_seconds_mean": 652.4006743319997,
+    "successful_sim_seconds_worst": 1826.2339999706392,
+    "failures": {
+      "grasp_contact": 1,
+      "dock": 2,
+      "gripper_slip": 5
+    },
+    "recoveries": 24,
+    "phase_successes": {
+      "opened": 0,
+      "entered": 0,
+      "closed_after_entry": 0
+    }
+  }
+}

@@ -1,0 +1,418 @@
+{
+  "comparison_scope": "Same development seed; complete five-metre task; simulation time only",
+  "grasp_count_definition": "Recorded gripper actuator ctrl index10 crossing 127.5 upward; model nu=11",
+  "baseline": {
+    "path": "outputs/stage14/continuous_door/baseline_seed2101_v1",
+    "success": true,
+    "sim_seconds": 2144.8599999631047,
+    "actual_grasp_command_edges": 36,
+    "grasp_edges": [
+      {
+        "time": 39.250000000002004,
+        "stage": "door_outer_handle"
+      },
+      {
+        "time": 101.74999999994427,
+        "stage": "door_outer_handle"
+      },
+      {
+        "time": 164.75000000005855,
+        "stage": "door_outer_handle"
+      },
+      {
+        "time": 226.60000000035387,
+        "stage": "door_outer_handle"
+      },
+      {
+        "time": 289.6000000006547,
+        "stage": "door_outer_handle"
+      },
+      {
+        "time": 353.0000000009574,
+        "stage": "door_outer_handle"
+      },
+      {
+        "time": 415.8000000012573,
+        "stage": "door_outer_handle"
+      },
+      {
+        "time": 479.0500000015593,
+        "stage": "door_outer_handle"
+      },
+      {
+        "time": 540.6500000010391,
+        "stage": "door_outer_handle"
+      },
+      {
+        "time": 602.6999999995718,
+        "stage": "door_outer_handle"
+      },
+      {
+        "time": 665.3999999980891,
+        "stage": "door_outer_handle"
+      },
+      {
+        "time": 728.6499999965935,
+        "stage": "door_outer_handle"
+      },
+      {
+        "time": 790.6499999951274,
+        "stage": "door_outer_handle"
+      },
+      {
+        "time": 851.7499999936825,
+        "stage": "door_outer_handle"
+      },
+      {
+        "time": 913.8499999922141,
+        "stage": "door_outer_handle"
+      },
+      {
+        "time": 975.4499999907574,
+        "stage": "door_outer_handle"
+      },
+      {
+        "time": 1085.5999999881528,
+        "stage": "aligned_inner_latch_pregrasp"
+      },
+      {
+        "time": 1135.9499999869622,
+        "stage": "aligned_inner_latch_pregrasp"
+      },
+      {
+        "time": 1187.9499999857326,
+        "stage": "aligned_inner_latch_pregrasp"
+      },
+      {
+        "time": 1240.2499999844958,
+        "stage": "aligned_inner_latch_pregrasp"
+      },
+      {
+        "time": 1314.6499999827365,
+        "stage": "aligned_inner_latch_pregrasp"
+      },
+      {
+        "time": 1389.0499999809772,
+        "stage": "aligned_inner_latch_pregrasp"
+      },
+      {
+        "time": 1462.6999999792356,
+        "stage": "aligned_inner_latch_pregrasp"
+      },
+      {
+        "time": 1516.049999977974,
+        "stage": "aligned_inner_latch_pregrasp"
+      },
+      {
+        "time": 1568.1999999767409,
+        "stage": "aligned_inner_latch_pregrasp"
+      },
+      {
+        "time": 1614.499999975646,
+        "stage": "aligned_inner_latch_pregrasp"
+      },
+      {
+        "time": 1660.7499999745523,
+        "stage": "aligned_inner_latch_pregrasp"
+      },
+      {
+        "time": 1706.4499999734717,
+        "stage": "aligned_inner_latch_pregrasp"
+      },
+      {
+        "time": 1752.399999972385,
+        "stage": "aligned_inner_latch_pregrasp"
+      },
+      {
+        "time": 1798.3999999712973,
+        "stage": "aligned_inner_latch_pregrasp"
+      },
+      {
+        "time": 1844.1499999702155,
+        "stage": "aligned_inner_latch_pregrasp"
+      },
+      {
+        "time": 1890.5499999691183,
+        "stage": "aligned_inner_latch_pregrasp"
+      },
+      {
+        "time": 1939.149999967969,
+        "stage": "aligned_inner_latch_pregrasp"
+      },
+      {
+        "time": 1988.2999999668068,
+        "stage": "aligned_inner_latch_pregrasp"
+      },
+      {
+        "time": 2038.699999965615,
+        "stage": "aligned_inner_latch_pregrasp"
+      },
+      {
+        "time": 2088.899999964428,
+        "stage": "aligned_inner_latch_pregrasp"
+      }
+    ],
+    "safety_releases": null,
+    "final_door_angle_rad": 7.491014646582266e-16,
+    "warnings": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "collision_events": [],
+    "video": null
+  },
+  "candidate": {
+    "path": "outputs/stage14/continuous_door/full_seed2101_recorded_v3",
+    "success": true,
+    "sim_seconds": 462.3360000014795,
+    "actual_grasp_command_edges": 5,
+    "grasp_edges": [
+      {
+        "time": 52.60000000001832,
+        "stage": "continuous_outer_pregrasp"
+      },
+      {
+        "time": 133.5999999999098,
+        "stage": "continuous_outer_pregrasp"
+      },
+      {
+        "time": 300.25000000070554,
+        "stage": "continuous_inner_pregrasp"
+      },
+      {
+        "time": 357.55000000097914,
+        "stage": "continuous_inner_pregrasp"
+      },
+      {
+        "time": 413.20000000124486,
+        "stage": "continuous_inner_pregrasp"
+      }
+    ],
+    "safety_releases": 3,
+    "final_door_angle_rad": 6.342871377134842e-16,
+    "warnings": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "collision_events": [],
+    "video": {
+      "status": "PASS",
+      "fps": 5,
+      "frames": 2312,
+      "stream": {
+        "width": 640,
+        "height": 480,
+        "duration": "462.400000",
+        "nb_read_frames": "2312"
+      },
+      "opengl": {
+        "vendor": "Mesa",
+        "renderer": "llvmpipe (LLVM 15.0.7, 256 bits)"
+      },
+      "first_sim_seconds": 0.002,
+      "last_sim_seconds": 462.20200000147884,
+      "continuous": true,
+      "cadence_validated": true,
+      "full_decode": "PASS"
+    }
+  },
+  "grasp_reduction_fraction": 0.8611111111111112,
+  "sim_time_reduction_fraction": 0.7844446723751515,
+  "speedup_ratio": 4.63918016324976,
+  "candidate_contact_summary": {
+    "sample_count": 12224,
+    "max_tip_error_m": 0.011951852274491883,
+    "max_base_error_m": 0.06533205885815017,
+    "max_sampled_finger_normal_force_n": 74.27032149350748,
+    "bilateral_sample_fraction": 0.9998363874345549,
+    "note": "Sampled arc measurements, not a continuous-time proof; releases/approaches are separate phases"
+  },
+  "formal": {
+    "summary": {
+      "protocol": {
+        "protocol_id": "door_tangent_contact_oracle_v4_20261031",
+        "split": "held_out_formal",
+        "task": "door",
+        "mode": "oracle",
+        "door_profile": "aligned_handles_v3",
+        "config": "configs/door_continuous_contact_frozen_v4.json",
+        "seeds": [
+          96001,
+          96002,
+          96003,
+          96004,
+          96005,
+          96006,
+          96007,
+          96008,
+          96009,
+          96010
+        ],
+        "record_seeds": [],
+        "note": "First generation of new reserved seeds after development2101-2104; same normal wide-door multistart geometry/distribution as prior v3, new controller. All episodes counted. Three isolated physics processes; no formal-seed tuning. Full development video recorded separately."
+      },
+      "summary": {
+        "episodes": 10,
+        "complete_successes": 10,
+        "complete_success_rate": 1.0,
+        "successful_sim_seconds_mean": 451.23720000142646,
+        "successful_wall_seconds_mean": 106.1680950126989,
+        "successful_sim_seconds_worst": 464.38200000148925,
+        "failures": {},
+        "recoveries": 30,
+        "phase_successes": {
+          "opened": 10,
+          "entered": 10,
+          "closed_after_entry": 10
+        }
+      }
+    },
+    "integrity": {
+      "source_hash_mismatches": [],
+      "episodes": 10,
+      "all_attempts_counted": true
+    },
+    "frozen_git_commit": "bd063ef4f3a07629bda235fcffa68ef1bd833f7a",
+    "sampled_text_linesearch_messages": 0,
+    "warning_counts": [
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    ],
+    "actual_grasp_counts": [
+      5,
+      5,
+      5,
+      5,
+      5,
+      5,
+      5,
+      5,
+      5,
+      5
+    ],
+    "sim_seconds": [
+      464.38200000148925,
+      446.4300000014035,
+      448.84200000141504,
+      448.7040000014144,
+      449.88200000142,
+      445.7780000014004,
+      452.6640000014333,
+      460.99400000147307,
+      446.5900000014043,
+      448.10600000141153
+    ],
+    "final_angle_abs_max_rad": 9.686148788805891e-16,
+    "whole_robot_min_x_m": 0.506733761410193
+  }
+}

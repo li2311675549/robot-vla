@@ -1,0 +1,865 @@
+{
+  "status": "PASS_COMPLETE_30_TRIAL_LEDGER_AND_VIDEO_AUDIT",
+  "scope": "Fixed ten-fruit parked single-target validation30,6layouts; not quota-based supplementary gallery or full task",
+  "protocol_sha256": "226b0d65c021f3fc38161667f13e6e3d3a3589f448b24d0ad6fdf5f0a493840a",
+  "checkpoint_directory_label": 9999,
+  "optimizer_updates": 10000,
+  "new_training": false,
+  "independent_initial_layouts": 6,
+  "fresh_policy_rollouts": 30,
+  "formal_test_used": false,
+  "all_trials": {
+    "attempts": 30,
+    "successes": 14,
+    "failures": 16,
+    "observed_success_rate": 0.4666666666666667,
+    "mean_success_sim_seconds": 11.300000000000043,
+    "mean_all_attempt_sim_seconds": 21.273333333330193,
+    "mean_all_attempt_wall_seconds": 25.792245956632055,
+    "failure_categories": {
+      "phase_timeout_or_target_not_verified": 15,
+      "wrong_target_or_multiple_grasp": 1
+    }
+  },
+  "by_class": {
+    "apple": {
+      "attempts": 10,
+      "successes": 2,
+      "failures": 8,
+      "observed_success_rate": 0.2,
+      "mean_success_sim_seconds": 20.299999999998207,
+      "mean_all_attempt_sim_seconds": 28.0599999999949,
+      "mean_all_attempt_wall_seconds": 33.74767346379667,
+      "failure_categories": {
+        "phase_timeout_or_target_not_verified": 7,
+        "wrong_target_or_multiple_grasp": 1
+      }
+    },
+    "banana": {
+      "attempts": 10,
+      "successes": 6,
+      "failures": 4,
+      "observed_success_rate": 0.6,
+      "mean_success_sim_seconds": 8.633333333333862,
+      "mean_all_attempt_sim_seconds": 17.179999999997946,
+      "mean_all_attempt_wall_seconds": 21.05120078300097,
+      "failure_categories": {
+        "phase_timeout_or_target_not_verified": 4
+      }
+    },
+    "orange": {
+      "attempts": 10,
+      "successes": 6,
+      "failures": 4,
+      "observed_success_rate": 0.6,
+      "mean_success_sim_seconds": 10.966666666666836,
+      "mean_all_attempt_sim_seconds": 18.57999999999773,
+      "mean_all_attempt_wall_seconds": 22.57786362309853,
+      "failure_categories": {
+        "phase_timeout_or_target_not_verified": 4
+      }
+    }
+  },
+  "primary18_all_six_layouts_rng0": {
+    "attempts": 18,
+    "successes": 9,
+    "failures": 9,
+    "observed_success_rate": 0.5,
+    "mean_success_sim_seconds": 11.222222222222017,
+    "mean_all_attempt_sim_seconds": 20.611111111108045,
+    "mean_all_attempt_wall_seconds": 24.99127467327667,
+    "failure_categories": {
+      "phase_timeout_or_target_not_verified": 8,
+      "wrong_target_or_multiple_grasp": 1
+    }
+  },
+  "supplementary12_first_four_layouts_rng1": {
+    "attempts": 12,
+    "successes": 5,
+    "failures": 7,
+    "observed_success_rate": 0.4166666666666667,
+    "mean_success_sim_seconds": 11.44000000000049,
+    "mean_all_attempt_sim_seconds": 22.266666666663415,
+    "mean_all_attempt_wall_seconds": 26.993702881665133,
+    "failure_categories": {
+      "phase_timeout_or_target_not_verified": 7
+    }
+  },
+  "by_layout": {
+    "2200002": {
+      "attempts": 6,
+      "successes": 4,
+      "failures": 2,
+      "observed_success_rate": 0.6666666666666666,
+      "mean_success_sim_seconds": 14.899999999999512,
+      "mean_all_attempt_sim_seconds": 19.933333333331035,
+      "mean_all_attempt_wall_seconds": 24.325026655661834,
+      "failure_categories": {
+        "phase_timeout_or_target_not_verified": 2
+      }
+    },
+    "2200003": {
+      "attempts": 6,
+      "successes": 3,
+      "failures": 3,
+      "observed_success_rate": 0.5,
+      "mean_success_sim_seconds": 8.800000000000585,
+      "mean_all_attempt_sim_seconds": 19.39999999999733,
+      "mean_all_attempt_wall_seconds": 23.554913751332304,
+      "failure_categories": {
+        "phase_timeout_or_target_not_verified": 3
+      }
+    },
+    "2200004": {
+      "attempts": 6,
+      "successes": 2,
+      "failures": 4,
+      "observed_success_rate": 0.3333333333333333,
+      "mean_success_sim_seconds": 15.199999999999303,
+      "mean_all_attempt_sim_seconds": 25.066666666662485,
+      "mean_all_attempt_wall_seconds": 30.320085949499724,
+      "failure_categories": {
+        "phase_timeout_or_target_not_verified": 4
+      }
+    },
+    "2200005": {
+      "attempts": 6,
+      "successes": 2,
+      "failures": 4,
+      "observed_success_rate": 0.3333333333333333,
+      "mean_success_sim_seconds": 9.800000000000919,
+      "mean_all_attempt_sim_seconds": 23.26666666666302,
+      "mean_all_attempt_wall_seconds": 27.934775820833845,
+      "failure_categories": {
+        "phase_timeout_or_target_not_verified": 4
+      }
+    },
+    "2200006": {
+      "attempts": 3,
+      "successes": 2,
+      "failures": 1,
+      "observed_success_rate": 0.6666666666666666,
+      "mean_success_sim_seconds": 7.900000000000285,
+      "mean_all_attempt_sim_seconds": 15.26666666666488,
+      "mean_all_attempt_wall_seconds": 19.030432477996026,
+      "failure_categories": {
+        "wrong_target_or_multiple_grasp": 1
+      }
+    },
+    "2200007": {
+      "attempts": 3,
+      "successes": 1,
+      "failures": 2,
+      "observed_success_rate": 0.3333333333333333,
+      "mean_success_sim_seconds": 6.399999999999784,
+      "mean_all_attempt_sim_seconds": 22.13333333332931,
+      "mean_all_attempt_wall_seconds": 26.62242273366913,
+      "failure_categories": {
+        "phase_timeout_or_target_not_verified": 2
+      }
+    }
+  },
+  "all30_initial_scene_fruit_counts_verified": true,
+  "all30_video_full_decode_pass": true,
+  "all30_model_norm_rng_and_camera_contracts_pass": true,
+  "runtime_state_restores": 0,
+  "data_warning_total": 0,
+  "matrix_wall_seconds": 784.1524071830063,
+  "failure_diagnostics": [
+    {
+      "index": 2,
+      "seed": 2200002,
+      "category": "orange",
+      "noise_seed": 0,
+      "official_failure_category": "phase_timeout_or_target_not_verified",
+      "derived_diagnostic_only_not_rescoring": "no_effective_target_lift",
+      "maximum_target_lift_m": 0.0001527574540427512,
+      "final_score": {
+        "lift_m": 3.5417747623611717e-09,
+        "last_second_bilateral_fraction": 0.0,
+        "final_bilateral": false
+      },
+      "error": null
+    },
+    {
+      "index": 3,
+      "seed": 2200003,
+      "category": "apple",
+      "noise_seed": 0,
+      "official_failure_category": "phase_timeout_or_target_not_verified",
+      "derived_diagnostic_only_not_rescoring": "no_effective_target_lift",
+      "maximum_target_lift_m": 1.8007393143282258e-07,
+      "final_score": {
+        "lift_m": 1.8007393143282258e-07,
+        "last_second_bilateral_fraction": 0.0,
+        "final_bilateral": false
+      },
+      "error": null
+    },
+    {
+      "index": 6,
+      "seed": 2200004,
+      "category": "apple",
+      "noise_seed": 0,
+      "official_failure_category": "phase_timeout_or_target_not_verified",
+      "derived_diagnostic_only_not_rescoring": "no_effective_target_lift",
+      "maximum_target_lift_m": 0.0,
+      "final_score": {
+        "lift_m": -1.4134162729106947e-09,
+        "last_second_bilateral_fraction": 0.0,
+        "final_bilateral": false
+      },
+      "error": null
+    },
+    {
+      "index": 7,
+      "seed": 2200004,
+      "category": "banana",
+      "noise_seed": 0,
+      "official_failure_category": "phase_timeout_or_target_not_verified",
+      "derived_diagnostic_only_not_rescoring": "no_effective_target_lift",
+      "maximum_target_lift_m": 0.0,
+      "final_score": {
+        "lift_m": 0.0,
+        "last_second_bilateral_fraction": 0.0,
+        "final_bilateral": false
+      },
+      "error": null
+    },
+    {
+      "index": 9,
+      "seed": 2200005,
+      "category": "apple",
+      "noise_seed": 0,
+      "official_failure_category": "phase_timeout_or_target_not_verified",
+      "derived_diagnostic_only_not_rescoring": "no_effective_target_lift",
+      "maximum_target_lift_m": 1.6712710748656434e-07,
+      "final_score": {
+        "lift_m": 1.6712710748656434e-07,
+        "last_second_bilateral_fraction": 0.0,
+        "final_bilateral": false
+      },
+      "error": null
+    },
+    {
+      "index": 11,
+      "seed": 2200005,
+      "category": "orange",
+      "noise_seed": 0,
+      "official_failure_category": "phase_timeout_or_target_not_verified",
+      "derived_diagnostic_only_not_rescoring": "no_effective_target_lift",
+      "maximum_target_lift_m": 8.107744475793766e-10,
+      "final_score": {
+        "lift_m": 8.107744475793766e-10,
+        "last_second_bilateral_fraction": 0.0,
+        "final_bilateral": false
+      },
+      "error": null
+    },
+    {
+      "index": 12,
+      "seed": 2200006,
+      "category": "apple",
+      "noise_seed": 0,
+      "official_failure_category": "wrong_target_or_multiple_grasp",
+      "derived_diagnostic_only_not_rescoring": "wrong_target_or_multiple_grasp",
+      "maximum_target_lift_m": 1.3717808855506775e-07,
+      "final_score": {
+        "lift_m": 1.3717808855506775e-07,
+        "last_second_bilateral_fraction": 0.0,
+        "final_bilateral": false
+      },
+      "error": null
+    },
+    {
+      "index": 15,
+      "seed": 2200007,
+      "category": "apple",
+      "noise_seed": 0,
+      "official_failure_category": "phase_timeout_or_target_not_verified",
+      "derived_diagnostic_only_not_rescoring": "no_effective_target_lift",
+      "maximum_target_lift_m": 1.2631634782600543e-07,
+      "final_score": {
+        "lift_m": 1.2631634782600543e-07,
+        "last_second_bilateral_fraction": 0.0,
+        "final_bilateral": false
+      },
+      "error": null
+    },
+    {
+      "index": 16,
+      "seed": 2200007,
+      "category": "banana",
+      "noise_seed": 0,
+      "official_failure_category": "phase_timeout_or_target_not_verified",
+      "derived_diagnostic_only_not_rescoring": "no_effective_target_lift",
+      "maximum_target_lift_m": 0.005965200500608447,
+      "final_score": {
+        "lift_m": -1.1102230246251565e-15,
+        "last_second_bilateral_fraction": 0.0,
+        "final_bilateral": false
+      },
+      "error": null
+    },
+    {
+      "index": 19,
+      "seed": 2200002,
+      "category": "banana",
+      "noise_seed": 1,
+      "official_failure_category": "phase_timeout_or_target_not_verified",
+      "derived_diagnostic_only_not_rescoring": "no_effective_target_lift",
+      "maximum_target_lift_m": 0.0033697930306660906,
+      "final_score": {
+        "lift_m": -1.1102230246251565e-15,
+        "last_second_bilateral_fraction": 0.0,
+        "final_bilateral": false
+      },
+      "error": null
+    },
+    {
+      "index": 21,
+      "seed": 2200003,
+      "category": "apple",
+      "noise_seed": 1,
+      "official_failure_category": "phase_timeout_or_target_not_verified",
+      "derived_diagnostic_only_not_rescoring": "no_effective_target_lift",
+      "maximum_target_lift_m": 1.8007393143282258e-07,
+      "final_score": {
+        "lift_m": 1.8007393143282258e-07,
+        "last_second_bilateral_fraction": 0.0,
+        "final_bilateral": false
+      },
+      "error": null
+    },
+    {
+      "index": 23,
+      "seed": 2200003,
+      "category": "orange",
+      "noise_seed": 1,
+      "official_failure_category": "phase_timeout_or_target_not_verified",
+      "derived_diagnostic_only_not_rescoring": "no_effective_target_lift",
+      "maximum_target_lift_m": 0.00018825787246357084,
+      "final_score": {
+        "lift_m": 8.03547672845184e-10,
+        "last_second_bilateral_fraction": 0.0,
+        "final_bilateral": false
+      },
+      "error": null
+    },
+    {
+      "index": 24,
+      "seed": 2200004,
+      "category": "apple",
+      "noise_seed": 1,
+      "official_failure_category": "phase_timeout_or_target_not_verified",
+      "derived_diagnostic_only_not_rescoring": "no_effective_target_lift",
+      "maximum_target_lift_m": 0.0,
+      "final_score": {
+        "lift_m": -1.4134162729106947e-09,
+        "last_second_bilateral_fraction": 0.0,
+        "final_bilateral": false
+      },
+      "error": null
+    },
+    {
+      "index": 25,
+      "seed": 2200004,
+      "category": "banana",
+      "noise_seed": 1,
+      "official_failure_category": "phase_timeout_or_target_not_verified",
+      "derived_diagnostic_only_not_rescoring": "no_effective_target_lift",
+      "maximum_target_lift_m": 0.0,
+      "final_score": {
+        "lift_m": 0.0,
+        "last_second_bilateral_fraction": 0.0,
+        "final_bilateral": false
+      },
+      "error": null
+    },
+    {
+      "index": 27,
+      "seed": 2200005,
+      "category": "apple",
+      "noise_seed": 1,
+      "official_failure_category": "phase_timeout_or_target_not_verified",
+      "derived_diagnostic_only_not_rescoring": "no_effective_target_lift",
+      "maximum_target_lift_m": 1.6712710748656434e-07,
+      "final_score": {
+        "lift_m": 1.6712710748656434e-07,
+        "last_second_bilateral_fraction": 0.0,
+        "final_bilateral": false
+      },
+      "error": null
+    },
+    {
+      "index": 29,
+      "seed": 2200005,
+      "category": "orange",
+      "noise_seed": 1,
+      "official_failure_category": "phase_timeout_or_target_not_verified",
+      "derived_diagnostic_only_not_rescoring": "no_effective_target_lift",
+      "maximum_target_lift_m": 8.107744475793766e-10,
+      "final_score": {
+        "lift_m": 8.107744475793766e-10,
+        "last_second_bilateral_fraction": 0.0,
+        "final_bilateral": false
+      },
+      "error": null
+    }
+  ],
+  "videos": [
+    {
+      "index": 0,
+      "seed": 2200002,
+      "category": "apple",
+      "scene_fruit_count": 10,
+      "policy_noise_seed": 0,
+      "success": true,
+      "failure_category": null,
+      "video": "/home/li/projects/robot_exam/outputs/stage24/ten_fruit_validation30_v1/000_2200002_apple/video/demo.mp4",
+      "video_sha256": "0cc8b33a8c5b9830f0fb45fd06604fa56677d8946ece233df07be3db6aef66ed",
+      "result": "/home/li/projects/robot_exam/outputs/stage24/ten_fruit_validation30_v1/000_2200002_apple/result.json",
+      "result_sha256": "ff1f97ae6e84ea7b37e2ae8873c6b64fb405217649adab3839b2a3bbea0bc25b",
+      "sim_seconds": 21.799999999997375,
+      "wall_seconds": 28.087190295991604
+    },
+    {
+      "index": 1,
+      "seed": 2200002,
+      "category": "banana",
+      "scene_fruit_count": 10,
+      "policy_noise_seed": 0,
+      "success": true,
+      "failure_category": null,
+      "video": "/home/li/projects/robot_exam/outputs/stage24/ten_fruit_validation30_v1/001_2200002_banana/video/demo.mp4",
+      "video_sha256": "180f0521bbfe681695d8a621accb633032c3584a857e7937e1060afc88da4019",
+      "result": "/home/li/projects/robot_exam/outputs/stage24/ten_fruit_validation30_v1/001_2200002_banana/result.json",
+      "result_sha256": "64f60825dbf9d9daf1ad83171065dc8cb5a50804fe1932847cb2f3ec840a835f",
+      "sim_seconds": 9.000000000000652,
+      "wall_seconds": 11.570444069991936
+    },
+    {
+      "index": 2,
+      "seed": 2200002,
+      "category": "orange",
+      "scene_fruit_count": 10,
+      "policy_noise_seed": 0,
+      "success": false,
+      "failure_category": "phase_timeout_or_target_not_verified",
+      "video": "/home/li/projects/robot_exam/outputs/stage24/ten_fruit_validation30_v1/002_2200002_orange/video/demo.mp4",
+      "video_sha256": "1c471555bb8f20c6c72b0e08b12f1caa473f2c92ba5f13b14a05539d9b7e065a",
+      "result": "/home/li/projects/robot_exam/outputs/stage24/ten_fruit_validation30_v1/002_2200002_orange/result.json",
+      "result_sha256": "b11413318c4d3b96e1cd17701ef740babb353ccd1e5cbace55f61ed6526cdd07",
+      "sim_seconds": 29.999999999994074,
+      "wall_seconds": 35.63756911500241
+    },
+    {
+      "index": 3,
+      "seed": 2200003,
+      "category": "apple",
+      "scene_fruit_count": 10,
+      "policy_noise_seed": 0,
+      "success": false,
+      "failure_category": "phase_timeout_or_target_not_verified",
+      "video": "/home/li/projects/robot_exam/outputs/stage24/ten_fruit_validation30_v1/003_2200003_apple/video/demo.mp4",
+      "video_sha256": "bbd0f78287d8fad2c616c1ecabb0638c0fa52de65d31a18fe31617034644d8ea",
+      "result": "/home/li/projects/robot_exam/outputs/stage24/ten_fruit_validation30_v1/003_2200003_apple/result.json",
+      "result_sha256": "539948512e9322f68880dfdfe24b9295f8b1826e884a1f55b377220429a47780",
+      "sim_seconds": 29.999999999994074,
+      "wall_seconds": 35.131647098998656
+    },
+    {
+      "index": 4,
+      "seed": 2200003,
+      "category": "banana",
+      "scene_fruit_count": 10,
+      "policy_noise_seed": 0,
+      "success": true,
+      "failure_category": null,
+      "video": "/home/li/projects/robot_exam/outputs/stage24/ten_fruit_validation30_v1/004_2200003_banana/video/demo.mp4",
+      "video_sha256": "988819deb97aac85439342b09bb2ed4e38b226c1fcdf313d6ddc2b9659ee3262",
+      "result": "/home/li/projects/robot_exam/outputs/stage24/ten_fruit_validation30_v1/004_2200003_banana/result.json",
+      "result_sha256": "c5ea3b88e82912b4380815231aefae73785eb6c0d8fdbf810ec80265c764211c",
+      "sim_seconds": 7.800000000000251,
+      "wall_seconds": 9.93351984799665
+    },
+    {
+      "index": 5,
+      "seed": 2200003,
+      "category": "orange",
+      "scene_fruit_count": 10,
+      "policy_noise_seed": 0,
+      "success": true,
+      "failure_category": null,
+      "video": "/home/li/projects/robot_exam/outputs/stage24/ten_fruit_validation30_v1/005_2200003_orange/video/demo.mp4",
+      "video_sha256": "45e3d3517b2a3056dccc1dd48f0296be54e2d48723f0541d5919aaae2c6e41a8",
+      "result": "/home/li/projects/robot_exam/outputs/stage24/ten_fruit_validation30_v1/005_2200003_orange/result.json",
+      "result_sha256": "2011a602ae0e64b9a33a8f1c908614b8c39695d0001c0e33a53bb702e1034f67",
+      "sim_seconds": 10.200000000001053,
+      "wall_seconds": 12.92710658699798
+    },
+    {
+      "index": 6,
+      "seed": 2200004,
+      "category": "apple",
+      "scene_fruit_count": 10,
+      "policy_noise_seed": 0,
+      "success": false,
+      "failure_category": "phase_timeout_or_target_not_verified",
+      "video": "/home/li/projects/robot_exam/outputs/stage24/ten_fruit_validation30_v1/006_2200004_apple/video/demo.mp4",
+      "video_sha256": "35da312cc2a3422c75e5830e4f6a4e4f666588d1320a6567ba81b046a802e9ea",
+      "result": "/home/li/projects/robot_exam/outputs/stage24/ten_fruit_validation30_v1/006_2200004_apple/result.json",
+      "result_sha256": "262eac7d916b0ecc839e1578776c493559cb3e8378c44326c105e8357755b532",
+      "sim_seconds": 29.999999999994074,
+      "wall_seconds": 36.04092883299745
+    },
+    {
+      "index": 7,
+      "seed": 2200004,
+      "category": "banana",
+      "scene_fruit_count": 10,
+      "policy_noise_seed": 0,
+      "success": false,
+      "failure_category": "phase_timeout_or_target_not_verified",
+      "video": "/home/li/projects/robot_exam/outputs/stage24/ten_fruit_validation30_v1/007_2200004_banana/video/demo.mp4",
+      "video_sha256": "2b34e350ab866e5a7363e7773f086bded50c5e76f67b96b89aad155b1fd8647f",
+      "result": "/home/li/projects/robot_exam/outputs/stage24/ten_fruit_validation30_v1/007_2200004_banana/result.json",
+      "result_sha256": "e69a86f27d9ec1d096ca0999e76729cd3ef9437262fc5126bf53e513d1151a9b",
+      "sim_seconds": 29.999999999994074,
+      "wall_seconds": 36.15729949400702
+    },
+    {
+      "index": 8,
+      "seed": 2200004,
+      "category": "orange",
+      "scene_fruit_count": 10,
+      "policy_noise_seed": 0,
+      "success": true,
+      "failure_category": null,
+      "video": "/home/li/projects/robot_exam/outputs/stage24/ten_fruit_validation30_v1/008_2200004_orange/video/demo.mp4",
+      "video_sha256": "d41345f87ec68adc88af544046a9bdfd051fb11817d8e582ccb33767cbb7d124",
+      "result": "/home/li/projects/robot_exam/outputs/stage24/ten_fruit_validation30_v1/008_2200004_orange/result.json",
+      "result_sha256": "8bbb682c6cb35a1900adade80f2211894818b2317af7dd9a56de213d6850c472",
+      "sim_seconds": 20.99999999999782,
+      "wall_seconds": 25.42202360299416
+    },
+    {
+      "index": 9,
+      "seed": 2200005,
+      "category": "apple",
+      "scene_fruit_count": 10,
+      "policy_noise_seed": 0,
+      "success": false,
+      "failure_category": "phase_timeout_or_target_not_verified",
+      "video": "/home/li/projects/robot_exam/outputs/stage24/ten_fruit_validation30_v1/009_2200005_apple/video/demo.mp4",
+      "video_sha256": "7049a6a1d8bd83d8169efc835fa494ddf792b8d01fa2b941cbf87cbe7ee6f4f5",
+      "result": "/home/li/projects/robot_exam/outputs/stage24/ten_fruit_validation30_v1/009_2200005_apple/result.json",
+      "result_sha256": "70043d9def5f4596d4c49f38fc3d2277206e5fec7793975c81c1c88fab86eb38",
+      "sim_seconds": 29.999999999994074,
+      "wall_seconds": 35.230941547997645
+    },
+    {
+      "index": 10,
+      "seed": 2200005,
+      "category": "banana",
+      "scene_fruit_count": 10,
+      "policy_noise_seed": 0,
+      "success": true,
+      "failure_category": null,
+      "video": "/home/li/projects/robot_exam/outputs/stage24/ten_fruit_validation30_v1/010_2200005_banana/video/demo.mp4",
+      "video_sha256": "6a58f9bfdfb2e2d0fc791341266d9898eaf39eb215e2d12bdf8c796e1492aa0e",
+      "result": "/home/li/projects/robot_exam/outputs/stage24/ten_fruit_validation30_v1/010_2200005_banana/result.json",
+      "result_sha256": "dfcaf5bb479f2c4ff66dca1a0c86bf0866b8d996f6e1b291cc8bc1849265581c",
+      "sim_seconds": 9.000000000000652,
+      "wall_seconds": 11.198879260002286
+    },
+    {
+      "index": 11,
+      "seed": 2200005,
+      "category": "orange",
+      "scene_fruit_count": 10,
+      "policy_noise_seed": 0,
+      "success": false,
+      "failure_category": "phase_timeout_or_target_not_verified",
+      "video": "/home/li/projects/robot_exam/outputs/stage24/ten_fruit_validation30_v1/011_2200005_orange/video/demo.mp4",
+      "video_sha256": "2805d852b82837985c930bd799388f0c36ef9b1036f6cfc305342cf898482f2c",
+      "result": "/home/li/projects/robot_exam/outputs/stage24/ten_fruit_validation30_v1/011_2200005_orange/result.json",
+      "result_sha256": "b25c6800e860324f06da569e57a6d790e8bdffdc75fcca5096093ba7f9eae376",
+      "sim_seconds": 29.999999999994074,
+      "wall_seconds": 35.546828731006826
+    },
+    {
+      "index": 12,
+      "seed": 2200006,
+      "category": "apple",
+      "scene_fruit_count": 10,
+      "policy_noise_seed": 0,
+      "success": false,
+      "failure_category": "wrong_target_or_multiple_grasp",
+      "video": "/home/li/projects/robot_exam/outputs/stage24/ten_fruit_validation30_v1/012_2200006_apple/video/demo.mp4",
+      "video_sha256": "5c5716d6c6e5f40da605eba2a719d30c7ae5097a4561605af8362db88938689c",
+      "result": "/home/li/projects/robot_exam/outputs/stage24/ten_fruit_validation30_v1/012_2200006_apple/result.json",
+      "result_sha256": "6476339d1213ec21158337a4a474826c2e295de061ba21dac817ffb757d487bc",
+      "sim_seconds": 29.999999999994074,
+      "wall_seconds": 35.70600494899554
+    },
+    {
+      "index": 13,
+      "seed": 2200006,
+      "category": "banana",
+      "scene_fruit_count": 10,
+      "policy_noise_seed": 0,
+      "success": true,
+      "failure_category": null,
+      "video": "/home/li/projects/robot_exam/outputs/stage24/ten_fruit_validation30_v1/013_2200006_banana/video/demo.mp4",
+      "video_sha256": "5efd6fec3b24e0765f1a070443c072aa16636207839a46eb8a646eb41f29ec6e",
+      "result": "/home/li/projects/robot_exam/outputs/stage24/ten_fruit_validation30_v1/013_2200006_banana/result.json",
+      "result_sha256": "93d29f1e0d79e8204567e38028267ecd048fa5ea9d0407a03a30b7998b484cbe",
+      "sim_seconds": 6.999999999999984,
+      "wall_seconds": 9.091552668993245
+    },
+    {
+      "index": 14,
+      "seed": 2200006,
+      "category": "orange",
+      "scene_fruit_count": 10,
+      "policy_noise_seed": 0,
+      "success": true,
+      "failure_category": null,
+      "video": "/home/li/projects/robot_exam/outputs/stage24/ten_fruit_validation30_v1/014_2200006_orange/video/demo.mp4",
+      "video_sha256": "e234e7c725b9b10b673108ca11fe1a7832bb5bd9c9bd8506ffdaeb3369cf81d1",
+      "result": "/home/li/projects/robot_exam/outputs/stage24/ten_fruit_validation30_v1/014_2200006_orange/result.json",
+      "result_sha256": "0148187de767e060127346eaa5dfee4b62596ab00ce92531c0bd7fd133a52a05",
+      "sim_seconds": 8.800000000000585,
+      "wall_seconds": 12.293739815999288
+    },
+    {
+      "index": 15,
+      "seed": 2200007,
+      "category": "apple",
+      "scene_fruit_count": 10,
+      "policy_noise_seed": 0,
+      "success": false,
+      "failure_category": "phase_timeout_or_target_not_verified",
+      "video": "/home/li/projects/robot_exam/outputs/stage24/ten_fruit_validation30_v1/015_2200007_apple/video/demo.mp4",
+      "video_sha256": "ac9c1cb590f6a3102e4776797d2b81978aba61aae60ce704d0c0e87985ccaa60",
+      "result": "/home/li/projects/robot_exam/outputs/stage24/ten_fruit_validation30_v1/015_2200007_apple/result.json",
+      "result_sha256": "61731b54da59ac54e2ff293b3dc89c7c9252b15fc191cf88f9bfda5047fecff9",
+      "sim_seconds": 29.999999999994074,
+      "wall_seconds": 35.386199208005564
+    },
+    {
+      "index": 16,
+      "seed": 2200007,
+      "category": "banana",
+      "scene_fruit_count": 10,
+      "policy_noise_seed": 0,
+      "success": false,
+      "failure_category": "phase_timeout_or_target_not_verified",
+      "video": "/home/li/projects/robot_exam/outputs/stage24/ten_fruit_validation30_v1/016_2200007_banana/video/demo.mp4",
+      "video_sha256": "26529d5bf46271d7eb1af1501935cf43aba42b4c5b86d68064f7273907bfc24c",
+      "result": "/home/li/projects/robot_exam/outputs/stage24/ten_fruit_validation30_v1/016_2200007_banana/result.json",
+      "result_sha256": "a797f77f21bd2f468b673a330372991914e6390e4c2fcb0349521357de815034",
+      "sim_seconds": 29.999999999994074,
+      "wall_seconds": 36.35525507500279
+    },
+    {
+      "index": 17,
+      "seed": 2200007,
+      "category": "orange",
+      "scene_fruit_count": 10,
+      "policy_noise_seed": 0,
+      "success": true,
+      "failure_category": null,
+      "video": "/home/li/projects/robot_exam/outputs/stage24/ten_fruit_validation30_v1/017_2200007_orange/video/demo.mp4",
+      "video_sha256": "b54915c80bc44ebf7871a50d616da22eda2c1906d84673f3de5ac867865a05c6",
+      "result": "/home/li/projects/robot_exam/outputs/stage24/ten_fruit_validation30_v1/017_2200007_orange/result.json",
+      "result_sha256": "73d82d7d6816d5be7f1a940cb9c873b1c225462c970672c0d0561614cb3518b3",
+      "sim_seconds": 6.399999999999784,
+      "wall_seconds": 8.12581391799904
+    },
+    {
+      "index": 18,
+      "seed": 2200002,
+      "category": "apple",
+      "scene_fruit_count": 10,
+      "policy_noise_seed": 1,
+      "success": true,
+      "failure_category": null,
+      "video": "/home/li/projects/robot_exam/outputs/stage24/ten_fruit_validation30_v1/018_2200002_apple/video/demo.mp4",
+      "video_sha256": "7c3ed9196e365cb4d113176002570836014a3adcf1cc570682c97702c0aa068d",
+      "result": "/home/li/projects/robot_exam/outputs/stage24/ten_fruit_validation30_v1/018_2200002_apple/result.json",
+      "result_sha256": "bad75d5a91f7c66123fbb484b140eade7a8664b83e68287015de4917c553cf10",
+      "sim_seconds": 18.799999999999038,
+      "wall_seconds": 22.869966286991257
+    },
+    {
+      "index": 19,
+      "seed": 2200002,
+      "category": "banana",
+      "scene_fruit_count": 10,
+      "policy_noise_seed": 1,
+      "success": false,
+      "failure_category": "phase_timeout_or_target_not_verified",
+      "video": "/home/li/projects/robot_exam/outputs/stage24/ten_fruit_validation30_v1/019_2200002_banana/video/demo.mp4",
+      "video_sha256": "58404accecdfc9e2229ad9c73aef84169182d0e5b9423883aad3bf335cf4ab7a",
+      "result": "/home/li/projects/robot_exam/outputs/stage24/ten_fruit_validation30_v1/019_2200002_banana/result.json",
+      "result_sha256": "29b5eb2bfeaf49c0b6a457591770af9dbcafdc1dc0da644752a6be90b319ae32",
+      "sim_seconds": 29.999999999994074,
+      "wall_seconds": 35.4508150670008
+    },
+    {
+      "index": 20,
+      "seed": 2200002,
+      "category": "orange",
+      "scene_fruit_count": 10,
+      "policy_noise_seed": 1,
+      "success": true,
+      "failure_category": null,
+      "video": "/home/li/projects/robot_exam/outputs/stage24/ten_fruit_validation30_v1/020_2200002_orange/video/demo.mp4",
+      "video_sha256": "2b8932bb3d814c3f24c683a817ddbb7002ea3694813e4dcce7f50262cbbab139",
+      "result": "/home/li/projects/robot_exam/outputs/stage24/ten_fruit_validation30_v1/020_2200002_orange/result.json",
+      "result_sha256": "514e5ee7cc02be7724b9dee4cce129d33369b8db2116ed795a467fd760a2e202",
+      "sim_seconds": 10.000000000000986,
+      "wall_seconds": 12.334175098993
+    },
+    {
+      "index": 21,
+      "seed": 2200003,
+      "category": "apple",
+      "scene_fruit_count": 10,
+      "policy_noise_seed": 1,
+      "success": false,
+      "failure_category": "phase_timeout_or_target_not_verified",
+      "video": "/home/li/projects/robot_exam/outputs/stage24/ten_fruit_validation30_v1/021_2200003_apple/video/demo.mp4",
+      "video_sha256": "d60a0680153c612f68d6056f383da58491429d70083b43d5fb16a50cc4f97f71",
+      "result": "/home/li/projects/robot_exam/outputs/stage24/ten_fruit_validation30_v1/021_2200003_apple/result.json",
+      "result_sha256": "a95ffb37c30313f581b46f992295787d593e1ad59eaa07bd62f8164a866a1580",
+      "sim_seconds": 29.999999999994074,
+      "wall_seconds": 35.7924481509981
+    },
+    {
+      "index": 22,
+      "seed": 2200003,
+      "category": "banana",
+      "scene_fruit_count": 10,
+      "policy_noise_seed": 1,
+      "success": true,
+      "failure_category": null,
+      "video": "/home/li/projects/robot_exam/outputs/stage24/ten_fruit_validation30_v1/022_2200003_banana/video/demo.mp4",
+      "video_sha256": "298cb1e7d7288505bc46c223654ed0d5ee4f806a34bdc78d9159407fab8bd23d",
+      "result": "/home/li/projects/robot_exam/outputs/stage24/ten_fruit_validation30_v1/022_2200003_banana/result.json",
+      "result_sha256": "f78f2cdee8c9522376adcb6e3d83fabb1fc714bd6e8ce18c2bf6283070feeafc",
+      "sim_seconds": 8.400000000000452,
+      "wall_seconds": 11.140839104002225
+    },
+    {
+      "index": 23,
+      "seed": 2200003,
+      "category": "orange",
+      "scene_fruit_count": 10,
+      "policy_noise_seed": 1,
+      "success": false,
+      "failure_category": "phase_timeout_or_target_not_verified",
+      "video": "/home/li/projects/robot_exam/outputs/stage24/ten_fruit_validation30_v1/023_2200003_orange/video/demo.mp4",
+      "video_sha256": "00a7a0d795f4349b4c29573fa26fa3ad8e16f8c4970acbe3486773055c3e4fb6",
+      "result": "/home/li/projects/robot_exam/outputs/stage24/ten_fruit_validation30_v1/023_2200003_orange/result.json",
+      "result_sha256": "597c0e5c8cbfdc916b16983245e1d037f05c3ecfbabc81fe2745e0938125e5b6",
+      "sim_seconds": 29.999999999994074,
+      "wall_seconds": 36.40392171900021
+    },
+    {
+      "index": 24,
+      "seed": 2200004,
+      "category": "apple",
+      "scene_fruit_count": 10,
+      "policy_noise_seed": 1,
+      "success": false,
+      "failure_category": "phase_timeout_or_target_not_verified",
+      "video": "/home/li/projects/robot_exam/outputs/stage24/ten_fruit_validation30_v1/024_2200004_apple/video/demo.mp4",
+      "video_sha256": "cf0e78173ea5b90adb9b6041f04341854d8a0a049342cbf72206dc4ee41e6969",
+      "result": "/home/li/projects/robot_exam/outputs/stage24/ten_fruit_validation30_v1/024_2200004_apple/result.json",
+      "result_sha256": "8036bbd61f1f9fad9ac0a30710ebf6f34980439d14bd917ba8a8c6af75062fef",
+      "sim_seconds": 29.999999999994074,
+      "wall_seconds": 36.16087625799992
+    },
+    {
+      "index": 25,
+      "seed": 2200004,
+      "category": "banana",
+      "scene_fruit_count": 10,
+      "policy_noise_seed": 1,
+      "success": false,
+      "failure_category": "phase_timeout_or_target_not_verified",
+      "video": "/home/li/projects/robot_exam/outputs/stage24/ten_fruit_validation30_v1/025_2200004_banana/video/demo.mp4",
+      "video_sha256": "ea7d59a439bc89446ba7141aca705e5dc0e4d09f09f2932c97008ad627d79038",
+      "result": "/home/li/projects/robot_exam/outputs/stage24/ten_fruit_validation30_v1/025_2200004_banana/result.json",
+      "result_sha256": "40326b3d441c62e4a08d4c0658144c63cd6df5001c66c1f245dfbfd2114837a7",
+      "sim_seconds": 29.999999999994074,
+      "wall_seconds": 35.885964971006615
+    },
+    {
+      "index": 26,
+      "seed": 2200004,
+      "category": "orange",
+      "scene_fruit_count": 10,
+      "policy_noise_seed": 1,
+      "success": true,
+      "failure_category": null,
+      "video": "/home/li/projects/robot_exam/outputs/stage24/ten_fruit_validation30_v1/026_2200004_orange/video/demo.mp4",
+      "video_sha256": "361566039d7dc8a33d9fccb08d32b27be656f8cca616f17be26361b965b1f3a7",
+      "result": "/home/li/projects/robot_exam/outputs/stage24/ten_fruit_validation30_v1/026_2200004_orange/result.json",
+      "result_sha256": "1a45d95c82272aca36119080e602561cafa6c084764f27f763b1213460f12040",
+      "sim_seconds": 9.400000000000786,
+      "wall_seconds": 12.253422537993174
+    },
+    {
+      "index": 27,
+      "seed": 2200005,
+      "category": "apple",
+      "scene_fruit_count": 10,
+      "policy_noise_seed": 1,
+      "success": false,
+      "failure_category": "phase_timeout_or_target_not_verified",
+      "video": "/home/li/projects/robot_exam/outputs/stage24/ten_fruit_validation30_v1/027_2200005_apple/video/demo.mp4",
+      "video_sha256": "45f0a351900da3d57b5bf5352918dabaea3cd498beafc6113cbe8200450b055e",
+      "result": "/home/li/projects/robot_exam/outputs/stage24/ten_fruit_validation30_v1/027_2200005_apple/result.json",
+      "result_sha256": "526ae0cf28efb5320f426a116decf74c54550b5e963bd6a77441b84b0bf9a188",
+      "sim_seconds": 29.999999999994074,
+      "wall_seconds": 37.070532008990995
+    },
+    {
+      "index": 28,
+      "seed": 2200005,
+      "category": "banana",
+      "scene_fruit_count": 10,
+      "policy_noise_seed": 1,
+      "success": true,
+      "failure_category": null,
+      "video": "/home/li/projects/robot_exam/outputs/stage24/ten_fruit_validation30_v1/028_2200005_banana/video/demo.mp4",
+      "video_sha256": "8c49a69b548a5220b9b06cfc10b7ea180ffb320df7373a9be1536d52ea3264aa",
+      "result": "/home/li/projects/robot_exam/outputs/stage24/ten_fruit_validation30_v1/028_2200005_banana/result.json",
+      "result_sha256": "385b4d7e56f90cb6bcc947257ce4dbecdbaa3307a78e7b8c048f478e3b71295c",
+      "sim_seconds": 10.600000000001186,
+      "wall_seconds": 13.727438272006111
+    },
+    {
+      "index": 29,
+      "seed": 2200005,
+      "category": "orange",
+      "scene_fruit_count": 10,
+      "policy_noise_seed": 1,
+      "success": false,
+      "failure_category": "phase_timeout_or_target_not_verified",
+      "video": "/home/li/projects/robot_exam/outputs/stage24/ten_fruit_validation30_v1/029_2200005_orange/video/demo.mp4",
+      "video_sha256": "5698210ee621b6f26bac8271b61c6453f11313f0df61e023b938e10ed64208da",
+      "result": "/home/li/projects/robot_exam/outputs/stage24/ten_fruit_validation30_v1/029_2200005_orange/result.json",
+      "result_sha256": "b59255e67f440e60a0f9506af67dedb4d8bd2b30deaef7c3175114bb12111e58",
+      "sim_seconds": 29.999999999994074,
+      "wall_seconds": 34.8340351049992
+    }
+  ],
+  "diagnostic_note": "Derived10mm/200mm bins describe failure traces only; original55mm/contact/parking/scene score unchanged.",
+  "comparison_note": "Earlier3/9 and known-context40-video showcase remain separate. New inference GPU is Blackwell, earlier Ada; no controlled causal claim or new training.",
+  "gpu_service_after_fixed_matrix": "Stopped intentionally before user authorized a new supplementary collection"
+}

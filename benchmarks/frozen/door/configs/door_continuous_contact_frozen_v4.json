@@ -1,0 +1,11 @@
+{
+  "task_sim_seconds_limit": 3000,
+  "task_wall_seconds_limit": 3600,
+  "door_contact_controller": "tangent_arc_v4",
+  "door_contact_angle_speed_rad_s": 0.020,
+  "door_contact_arc_timeout_seconds": 180,
+  "door_contact_max_grasps_per_phase": 4,
+  "door_contact_release": "normal_withdraw",
+  "protocol": "door_tangent_contact_oracle_v4_20261031",
+  "note": "Frozen unchanged physical aligned_handles_v3 scene and original final criteria; adaptive collision-checked measured-base arcs, only safety-triggered regrasp, coordinated withdrawal. Never modify while evaluating the reserved seeds."
+}

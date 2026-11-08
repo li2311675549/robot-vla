@@ -1,0 +1,6 @@
+{
+  "task_sim_seconds_limit": 3000,
+  "task_wall_seconds_limit": 3600,
+  "book_pick_strategy": "oracle_push_side",
+  "note": "Explicit Oracle geometry development baseline for distinct_v2 books. Original physical scoring and robot model unchanged; not a visual policy."
+}

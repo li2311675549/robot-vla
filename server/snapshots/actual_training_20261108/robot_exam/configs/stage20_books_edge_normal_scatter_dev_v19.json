@@ -1,0 +1,68 @@
+{
+  "task_sim_seconds_limit": 3000,
+  "task_wall_seconds_limit": 3600,
+  "book_pick_strategy": "oracle_push_side",
+  "side_book_release_clearance_m": 0.23,
+  "side_book_place_joint_path": true,
+  "side_book_align_long_axis": true,
+  "side_book_drop_center_x": 0.4,
+  "side_book_max_pre_height_m": 1.02,
+  "book_safe_bay_lower_y": -0.8,
+  "book_safe_bay_upper_y": -0.45,
+  "side_book_world_carry": false,
+  "side_book_joint_carry": true,
+  "side_book_joint_carry_rank": 2,
+  "payload_dock_angular_speed_rad_s": 0.9,
+  "stationary_manipulation": true,
+  "task_wrist_camera": true,
+  "collision_planned_joint_moves": true,
+  "collision_planned_reorientation": true,
+  "book_feedback_push": true,
+  "side_book_collision_planned_withdrawal": true,
+  "book_push_base_precheck": true,
+  "trajectory_log_interval_seconds": 0.5,
+  "payload_trace_interval_seconds": 0.5,
+  "parking_trace_interval_seconds": 0.5,
+  "note": "Versioned contact dynamics4ms for book covers/drawer bottoms to prevent observed bottom tunneling; same mass/friction/geometry/actuator forces/score. Whole-effector carry clearance and independent terminal braking enabled. Development, not controller-only comparison or formal evaluation. Full joint collision planning also required for the raised carry clearance, rather than an unchecked Cartesian lift. Release center x=.40 leaves forward room; after releasing, use a bounded real contact push only if the book is upright beyond the existing height limit. Toppling approach stays35mm above actual book; retreat uses existing collision-planned stow, avoiding unreachable extra vertical motion. Refresh passive handle position before contact; align the rectangular long axis modulo pi; small/medium release centers retain.45, largest.40 for toppling room. No score/size/force/friction changes. Integrate the separately verified handle-position feedback and modulo-pi axis alignment in the user-reviewed scatter layout; unchanged sizes and strict final book/closure/home score. Development seed only. New gated medium/large pusher:30deg forward tilt, TCP contact height.755m, closed-gripper precheck, every-step table penetration guard2mm. Old small-book path, model/friction/forces/score unchanged. Derived from actual medium-book275mm push and95mm side lift, not yet full-task passed. Use actual centre-line rectangle support for push stopping and grasp placement; AABB corners may put a side grasp outside a rotated book. Same .252edge/.27gripper-clearance and original scoring. New small-book raised push candidate: all ranks use tilted pusher,15mm small book entry.750; same per-step2mm table guard, sizes/score unchanged. Must pass local/fresh evaluation; not yet validated. v15 gated complete held-book orientation/geometry path preflight and equivalent rectangular-axis candidates, independent live slip guard, vertical released-gripper retreat. Preserves all sizes/forces/friction/score and prior profiles; checkpoint-only proof first. v16 fixes fruit-specific75mm centre-distance misuse for edge-held rectangular books; original90% bilateral fraction,15mm maximum relative motion and55mm lift remain, final drawer score unchanged. Geometry bound=actual book half-diagonal+existing18mm Cartesian endpoint margin; source failed attempts preserved. v18 prevents observed upright landing by lowering the highest drawer release to50mm above its floor. Lower two ranks unchanged; all paths still preflighted for collision/orientation/open-gripper clearance. No model/score changes; former upright contact pushing attempt retained as failure. v19 largest-book eligible long-edge-normal side grasp: overhang and pinching frame are calculated from the actual local short axis, so drawer long-axis alignment does not put the bulky gripper diagonally into the drawer side. Geometrically unsupported edge orientations reject rather than fabricate support. Original sizes/masses/forces/score.",
+  "compress_bulk_logs": true,
+  "book_contact_profile": "wood_support_v2",
+  "side_book_assembly_clearance": true,
+  "payload_precision_twist_slew": true,
+  "payload_linear_speed_m_s": 0.06,
+  "book_release_contact_trace": true,
+  "side_book_collision_planned_clearance": true,
+  "side_book_settle_released_book": true,
+  "drawer_handle_feedback": true,
+  "side_book_axis_alignment_mod_pi": true,
+  "side_book_drop_center_x_by_rank": [
+    0.45,
+    0.45,
+    0.4
+  ],
+  "scene_layout_profile": "bounded_scatter_v3",
+  "book_push_pose_profile": "raised_tilt_v2",
+  "book_raised_tilt_push_ranks": [
+    0,
+    1,
+    2
+  ],
+  "book_push_centerline_clearance": true,
+  "book_raised_push_entry_by_rank": [
+    0.75,
+    0.755,
+    0.755
+  ],
+  "side_book_lowering_cartesian_path": true,
+  "side_book_axis_path_precheck": true,
+  "side_book_vertical_withdrawal": true,
+  "book_geometry_aware_grasp_witness": true,
+  "side_book_release_clearance_by_rank": [
+    0.23,
+    0.23,
+    0.05
+  ],
+  "book_edge_grasp_profile": "long_edge_normal_v2",
+  "book_edge_normal_grasp_ranks": [
+    2
+  ]
+}

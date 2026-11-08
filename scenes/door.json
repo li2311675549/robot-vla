@@ -1,0 +1,51 @@
+{
+  "task": "door",
+  "seed": 0,
+  "start": [
+    -5.09,
+    0,
+    0
+  ],
+  "hinge": [
+    -0.09,
+    -0.8,
+    0
+  ],
+  "door_width": 1.56,
+  "doorway_clear_width": 1.57,
+  "handle_height": 0.7921913869971433,
+  "inner_handle_height": 0.65,
+  "inner_handle_radius": 0.22,
+  "handle_r": 1.22,
+  "open_angle": 1.56,
+  "obstacles": [
+    [
+      -0.07,
+      0.07,
+      -3,
+      -0.78
+    ],
+    [
+      -0.07,
+      0.07,
+      0.78,
+      3
+    ]
+  ],
+  "opening_base": [
+    -0.905,
+    0.42,
+    0.59
+  ],
+  "closing_base": [
+    0.5,
+    -0.3,
+    -1.5707963267948966
+  ],
+  "model": {
+    "nq": 26,
+    "nv": 25,
+    "nu": 11,
+    "path": "scenes/door.xml"
+  }
+}

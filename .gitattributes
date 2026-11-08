@@ -1,0 +1,5 @@
+*.mp4 -text
+*.png -text
+*.stl -text
+*.md text eol=lf
+*.py text eol=lf

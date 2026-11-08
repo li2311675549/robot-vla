@@ -1,0 +1,51 @@
+{
+  "name": "fixed_seen_classwise_deployment20_v1",
+  "expected_attempts": 60,
+  "execution_prefix_by_class": {
+    "apple": 5,
+    "banana": 1,
+    "orange": 2
+  },
+  "note": "Capability review of one trained checkpoint with explicitly different execution settings, not one uniform-prefix or prospective formal benchmark. Banana original20 kept in full14/20, appleprefix5 andorangeprefix2 pilot0/2 both retained regardless outcomes. Older failed/censored protocols remain separate and are not erased. No aggregate formal success rate. Geometry fixed15001.",
+  "prior_cohorts": [
+    {
+      "matrix": "outputs/stage17/train_seen_20_each_continuation_v6/banana/matrix",
+      "skills": [
+        "banana"
+      ],
+      "execution_prefix": 1,
+      "expected_retained": 20
+    },
+    {
+      "matrix": "outputs/stage17/prefix5_deployment_diagnostic_v1/matrix",
+      "skills": [
+        "apple"
+      ],
+      "execution_prefix": 5,
+      "expected_retained": 2
+    },
+    {
+      "matrix": "outputs/stage17/orange_prefix2_matched_pilot_v1/matrix",
+      "skills": [
+        "orange"
+      ],
+      "execution_prefix": 2,
+      "expected_retained": 2
+    }
+  ],
+  "phases": [
+    {
+      "skill": "apple",
+      "config": "configs/pi05_hybrid_fixed_apple_v1.json"
+    },
+    {
+      "skill": "orange",
+      "config": "configs/pi05_orange_prefix2_continue_to20_v1.json"
+    }
+  ],
+  "retained_comparisons": [
+    "outputs/stage17/train_seen_20_each_local_v4",
+    "outputs/stage17/train_seen_20_each_continuation_v6",
+    "outputs/stage17/prefix5_deployment_diagnostic_v1"
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "seed": 420,
+  "body": "fruit_1",
+  "holding_closure": 1.0,
+  "turn_target_rad": 0.0,
+  "transport_success": false,
+  "failure": {
+    "category": "RuntimeError",
+    "message": "Static hold lost physical grasp"
+  },
+  "elapsed_sim_seconds": 3.500000000001169,
+  "travel_m": -1.0565741654913676e-08,
+  "terminal_bilateral": true,
+  "warnings": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ],
+  "collision_events": 0,
+  "max_relative_drift_m": 0.018120363110154865,
+  "max_relative_rotation_rad": 0.15878652489509848,
+  "video": {
+    "status": "PASS",
+    "fps": 5,
+    "frames": 18,
+    "stream": {
+      "width": 640,
+      "height": 480,
+      "duration": "3.600000",
+      "nb_read_frames": "18"
+    },
+    "opengl": {
+      "vendor": "Mesa",
+      "renderer": "llvmpipe (LLVM 15.0.7, 256 bits)"
+    },
+    "first_sim_seconds": 9.337999999999788,
+    "last_sim_seconds": 12.736000000000923,
+    "continuous": true,
+    "full_decode": "PASS"
+  }
+}

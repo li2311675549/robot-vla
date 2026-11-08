@@ -1,0 +1,1320 @@
+{
+  "protocol": "stage23_instruction_grasp_video_collection_v1",
+  "scope": "Adaptive display collection: repeat known successful held-out validation initializations and vary inference RNG. NOT independent formal evaluation or full fruit classification. Each video is one actual run, never copied as a new trial.",
+  "checkpoint_label": "9999",
+  "model_source_commit": "5fe28ff093b3e9f77713635c60bc88ba9b2ef9b4",
+  "frozen_physics_protocol_sha256": "6c5c8e6253cb0d5ccbf4318c23909267601599100f476f89cb15c3453c7679ef",
+  "safety_adapter": "bounded_projection_v1",
+  "normalization_sha256": "2315f953b3ee8949915f315b9c938ef6f0ca7a5e9397562d82c238d90b4c67c8",
+  "dataset_root": "/home/li/\u684c\u9762/VLA\u591a\u6c34\u679c\u53cc\u89c6\u89d2\u6570\u636e_2026-11-06",
+  "port": 18050,
+  "goal": {
+    "total_display_videos": 40,
+    "minimum_success_each_class": 8,
+    "minimum_real_failure_videos": 4
+  },
+  "maximum_wall_seconds": 7200,
+  "maximum_new_attempts": 90,
+  "stopping_rule": "Stop once 40 eligible decoded videos exist and every class has>=8 successes with>=4 real failures; exact RNG0 repetitions skipped for a class once quota is met. All trials retained and reported separately from display.",
+  "failure_policy": "Every model/physics/infra failure retained; no hidden resets during execution, no changed target/shape/friction/score; test partition untouched.",
+  "baseline": [
+    {
+      "category": "apple",
+      "scene_seed": 2200011,
+      "scene_fruit_count": 3,
+      "fixture": "evaluation_fixtures/validation/seed_2200011/apple/grasp_initialization",
+      "fixture_sha256": {
+        "episode.json": "27bb3399940722f2fb850845c4fc70627cf565a98d5bbbff9010efa601bbcc37",
+        "model.mjb": "adc98f3fd8be85180d4573ab536ece84f46191eff3e6d84ca9f26d17242fc929",
+        "replay.npz": "66edaa11b73348286a07696798154fa67b52f46620b73d1ec78e8c41f4853627"
+      },
+      "policy_noise_seed": 0,
+      "condition": "original_frozen_validation",
+      "result": "/home/li/projects/robot_exam/outputs/stage22/model9999_validation_grasp_projection_v1/000_2200011_apple/result.json"
+    },
+    {
+      "category": "apple",
+      "scene_seed": 2200008,
+      "scene_fruit_count": 5,
+      "fixture": "evaluation_fixtures/validation/seed_2200008/apple/grasp_initialization",
+      "fixture_sha256": {
+        "episode.json": "70f6a8e98b7dd1943f01a4c2609b8ab8a167a718ce33e0c1fd740b48dd8bc74c",
+        "model.mjb": "abd8a45d29cd625a6fe932c913fda5888bf19f289fee14f62f350e09c1d6a5b1",
+        "replay.npz": "d2d7d3aea01ed13f76bebfb06aa34f4f2ab4ffcf36994dc2079307dab48e3a1a"
+      },
+      "policy_noise_seed": 0,
+      "condition": "original_frozen_validation",
+      "result": "/home/li/projects/robot_exam/outputs/stage22/model9999_validation_grasp_projection_v1/001_2200008_apple/result.json"
+    },
+    {
+      "category": "apple",
+      "scene_seed": 2200002,
+      "scene_fruit_count": 10,
+      "fixture": "evaluation_fixtures/validation/seed_2200002/apple/grasp_initialization",
+      "fixture_sha256": {
+        "episode.json": "24d5f069b1ac3d99e6919f79ec7d09f3616a44a8c998485b9e3fd6ae21e33d19",
+        "model.mjb": "2f48c141171c05416980e76003b01dee6850b07867d1908f72cb0e78c6d45bd1",
+        "replay.npz": "6fd3dd1b937fb9f6e0e21280fadad8d2c442b76c1de12254fc0c67be98b3312c"
+      },
+      "policy_noise_seed": 0,
+      "condition": "original_frozen_validation",
+      "result": "/home/li/projects/robot_exam/outputs/stage22/model9999_validation_grasp_projection_v1/002_2200002_apple/result.json"
+    },
+    {
+      "category": "banana",
+      "scene_seed": 2200011,
+      "scene_fruit_count": 3,
+      "fixture": "evaluation_fixtures/validation/seed_2200011/banana/grasp_initialization",
+      "fixture_sha256": {
+        "episode.json": "68c99dd348bac8fc112d7ea71d7d236de3220465bc9e4e03d557fac45590e08e",
+        "model.mjb": "adc98f3fd8be85180d4573ab536ece84f46191eff3e6d84ca9f26d17242fc929",
+        "replay.npz": "1329b265a930be8ed05251e73c2d9464b4192fcead5bf9673374ff44f1445436"
+      },
+      "policy_noise_seed": 0,
+      "condition": "original_frozen_validation",
+      "result": "/home/li/projects/robot_exam/outputs/stage22/model9999_validation_grasp_projection_v1/003_2200011_banana/result.json"
+    },
+    {
+      "category": "banana",
+      "scene_seed": 2200008,
+      "scene_fruit_count": 5,
+      "fixture": "evaluation_fixtures/validation/seed_2200008/banana/grasp_initialization",
+      "fixture_sha256": {
+        "episode.json": "359e9b6eecfd776838832906a21f86c99ffb2ef0c3a0cf744918357b4463c2ae",
+        "model.mjb": "abd8a45d29cd625a6fe932c913fda5888bf19f289fee14f62f350e09c1d6a5b1",
+        "replay.npz": "2440d5c1dab2d47de9e859ff751b3c4f24b4542f71623e50d0252f01698d22b9"
+      },
+      "policy_noise_seed": 0,
+      "condition": "original_frozen_validation",
+      "result": "/home/li/projects/robot_exam/outputs/stage22/model9999_validation_grasp_projection_v1/004_2200008_banana/result.json"
+    },
+    {
+      "category": "banana",
+      "scene_seed": 2200002,
+      "scene_fruit_count": 10,
+      "fixture": "evaluation_fixtures/validation/seed_2200002/banana/grasp_initialization",
+      "fixture_sha256": {
+        "episode.json": "1162f17abcb7ab5ca7b96bc4b93cf58fb3c4a1ff7f420c5424c216cede322367",
+        "model.mjb": "2f48c141171c05416980e76003b01dee6850b07867d1908f72cb0e78c6d45bd1",
+        "replay.npz": "f4286872383a211513cb1132676654fa4be6e0ad5dc5546fa639839506713133"
+      },
+      "policy_noise_seed": 0,
+      "condition": "original_frozen_validation",
+      "result": "/home/li/projects/robot_exam/outputs/stage22/model9999_validation_grasp_projection_v1/005_2200002_banana/result.json"
+    },
+    {
+      "category": "orange",
+      "scene_seed": 2200011,
+      "scene_fruit_count": 3,
+      "fixture": "evaluation_fixtures/validation/seed_2200011/orange/grasp_initialization",
+      "fixture_sha256": {
+        "episode.json": "2b247f44e9865a5bff3f1fa47bddca7048a7d4fa9097191dcfb36ed27b992617",
+        "model.mjb": "adc98f3fd8be85180d4573ab536ece84f46191eff3e6d84ca9f26d17242fc929",
+        "replay.npz": "1c8d7ff89a4c44d3f542e07a186b3d4d4a8a29c1c534cdf94fb0fdc929a0d06b"
+      },
+      "policy_noise_seed": 0,
+      "condition": "original_frozen_validation",
+      "result": "/home/li/projects/robot_exam/outputs/stage22/model9999_validation_grasp_projection_v1/006_2200011_orange/result.json"
+    },
+    {
+      "category": "orange",
+      "scene_seed": 2200008,
+      "scene_fruit_count": 5,
+      "fixture": "evaluation_fixtures/validation/seed_2200008/orange/grasp_initialization",
+      "fixture_sha256": {
+        "episode.json": "a41ddfaae263c2f0ab5db4f0930c368b479ea1122a24b6f47b7e5e239729ba6f",
+        "model.mjb": "abd8a45d29cd625a6fe932c913fda5888bf19f289fee14f62f350e09c1d6a5b1",
+        "replay.npz": "95bb7a64a366fd1faa37a995ca6de42e4a25664e42940aabe3693a71ac852215"
+      },
+      "policy_noise_seed": 0,
+      "condition": "original_frozen_validation",
+      "result": "/home/li/projects/robot_exam/outputs/stage22/model9999_validation_grasp_projection_v1/007_2200008_orange/result.json"
+    },
+    {
+      "category": "orange",
+      "scene_seed": 2200002,
+      "scene_fruit_count": 10,
+      "fixture": "evaluation_fixtures/validation/seed_2200002/orange/grasp_initialization",
+      "fixture_sha256": {
+        "episode.json": "5a3564739cf4dab512dfd218b42072c76f14349c2252d76d3068ef7e8f49313b",
+        "model.mjb": "2f48c141171c05416980e76003b01dee6850b07867d1908f72cb0e78c6d45bd1",
+        "replay.npz": "777f405bd790b7081368fc7d76166dfb6682b2965ea2b6328d01763fdf5b42bd"
+      },
+      "policy_noise_seed": 0,
+      "condition": "original_frozen_validation",
+      "result": "/home/li/projects/robot_exam/outputs/stage22/model9999_validation_grasp_projection_v1/008_2200002_orange/result.json"
+    }
+  ],
+  "plan": [
+    {
+      "category": "apple",
+      "scene_seed": 2200011,
+      "scene_fruit_count": 3,
+      "fixture": "evaluation_fixtures/validation/seed_2200011/apple/grasp_initialization",
+      "fixture_sha256": {
+        "episode.json": "27bb3399940722f2fb850845c4fc70627cf565a98d5bbbff9010efa601bbcc37",
+        "model.mjb": "adc98f3fd8be85180d4573ab536ece84f46191eff3e6d84ca9f26d17242fc929",
+        "replay.npz": "66edaa11b73348286a07696798154fa67b52f46620b73d1ec78e8c41f4853627"
+      },
+      "policy_noise_seed": 1,
+      "condition": "noise_variation_known_context"
+    },
+    {
+      "category": "banana",
+      "scene_seed": 2200008,
+      "scene_fruit_count": 5,
+      "fixture": "evaluation_fixtures/validation/seed_2200008/banana/grasp_initialization",
+      "fixture_sha256": {
+        "episode.json": "359e9b6eecfd776838832906a21f86c99ffb2ef0c3a0cf744918357b4463c2ae",
+        "model.mjb": "abd8a45d29cd625a6fe932c913fda5888bf19f289fee14f62f350e09c1d6a5b1",
+        "replay.npz": "2440d5c1dab2d47de9e859ff751b3c4f24b4542f71623e50d0252f01698d22b9"
+      },
+      "policy_noise_seed": 1,
+      "condition": "noise_variation_known_context"
+    },
+    {
+      "category": "orange",
+      "scene_seed": 2200008,
+      "scene_fruit_count": 5,
+      "fixture": "evaluation_fixtures/validation/seed_2200008/orange/grasp_initialization",
+      "fixture_sha256": {
+        "episode.json": "a41ddfaae263c2f0ab5db4f0930c368b479ea1122a24b6f47b7e5e239729ba6f",
+        "model.mjb": "abd8a45d29cd625a6fe932c913fda5888bf19f289fee14f62f350e09c1d6a5b1",
+        "replay.npz": "95bb7a64a366fd1faa37a995ca6de42e4a25664e42940aabe3693a71ac852215"
+      },
+      "policy_noise_seed": 1,
+      "condition": "noise_variation_known_context"
+    },
+    {
+      "category": "apple",
+      "scene_seed": 2200011,
+      "scene_fruit_count": 3,
+      "fixture": "evaluation_fixtures/validation/seed_2200011/apple/grasp_initialization",
+      "fixture_sha256": {
+        "episode.json": "27bb3399940722f2fb850845c4fc70627cf565a98d5bbbff9010efa601bbcc37",
+        "model.mjb": "adc98f3fd8be85180d4573ab536ece84f46191eff3e6d84ca9f26d17242fc929",
+        "replay.npz": "66edaa11b73348286a07696798154fa67b52f46620b73d1ec78e8c41f4853627"
+      },
+      "policy_noise_seed": 2,
+      "condition": "noise_variation_known_context"
+    },
+    {
+      "category": "banana",
+      "scene_seed": 2200008,
+      "scene_fruit_count": 5,
+      "fixture": "evaluation_fixtures/validation/seed_2200008/banana/grasp_initialization",
+      "fixture_sha256": {
+        "episode.json": "359e9b6eecfd776838832906a21f86c99ffb2ef0c3a0cf744918357b4463c2ae",
+        "model.mjb": "abd8a45d29cd625a6fe932c913fda5888bf19f289fee14f62f350e09c1d6a5b1",
+        "replay.npz": "2440d5c1dab2d47de9e859ff751b3c4f24b4542f71623e50d0252f01698d22b9"
+      },
+      "policy_noise_seed": 2,
+      "condition": "noise_variation_known_context"
+    },
+    {
+      "category": "orange",
+      "scene_seed": 2200008,
+      "scene_fruit_count": 5,
+      "fixture": "evaluation_fixtures/validation/seed_2200008/orange/grasp_initialization",
+      "fixture_sha256": {
+        "episode.json": "a41ddfaae263c2f0ab5db4f0930c368b479ea1122a24b6f47b7e5e239729ba6f",
+        "model.mjb": "abd8a45d29cd625a6fe932c913fda5888bf19f289fee14f62f350e09c1d6a5b1",
+        "replay.npz": "95bb7a64a366fd1faa37a995ca6de42e4a25664e42940aabe3693a71ac852215"
+      },
+      "policy_noise_seed": 2,
+      "condition": "noise_variation_known_context"
+    },
+    {
+      "category": "apple",
+      "scene_seed": 2200011,
+      "scene_fruit_count": 3,
+      "fixture": "evaluation_fixtures/validation/seed_2200011/apple/grasp_initialization",
+      "fixture_sha256": {
+        "episode.json": "27bb3399940722f2fb850845c4fc70627cf565a98d5bbbff9010efa601bbcc37",
+        "model.mjb": "adc98f3fd8be85180d4573ab536ece84f46191eff3e6d84ca9f26d17242fc929",
+        "replay.npz": "66edaa11b73348286a07696798154fa67b52f46620b73d1ec78e8c41f4853627"
+      },
+      "policy_noise_seed": 3,
+      "condition": "noise_variation_known_context"
+    },
+    {
+      "category": "banana",
+      "scene_seed": 2200008,
+      "scene_fruit_count": 5,
+      "fixture": "evaluation_fixtures/validation/seed_2200008/banana/grasp_initialization",
+      "fixture_sha256": {
+        "episode.json": "359e9b6eecfd776838832906a21f86c99ffb2ef0c3a0cf744918357b4463c2ae",
+        "model.mjb": "abd8a45d29cd625a6fe932c913fda5888bf19f289fee14f62f350e09c1d6a5b1",
+        "replay.npz": "2440d5c1dab2d47de9e859ff751b3c4f24b4542f71623e50d0252f01698d22b9"
+      },
+      "policy_noise_seed": 3,
+      "condition": "noise_variation_known_context"
+    },
+    {
+      "category": "orange",
+      "scene_seed": 2200008,
+      "scene_fruit_count": 5,
+      "fixture": "evaluation_fixtures/validation/seed_2200008/orange/grasp_initialization",
+      "fixture_sha256": {
+        "episode.json": "a41ddfaae263c2f0ab5db4f0930c368b479ea1122a24b6f47b7e5e239729ba6f",
+        "model.mjb": "abd8a45d29cd625a6fe932c913fda5888bf19f289fee14f62f350e09c1d6a5b1",
+        "replay.npz": "95bb7a64a366fd1faa37a995ca6de42e4a25664e42940aabe3693a71ac852215"
+      },
+      "policy_noise_seed": 3,
+      "condition": "noise_variation_known_context"
+    },
+    {
+      "category": "apple",
+      "scene_seed": 2200011,
+      "scene_fruit_count": 3,
+      "fixture": "evaluation_fixtures/validation/seed_2200011/apple/grasp_initialization",
+      "fixture_sha256": {
+        "episode.json": "27bb3399940722f2fb850845c4fc70627cf565a98d5bbbff9010efa601bbcc37",
+        "model.mjb": "adc98f3fd8be85180d4573ab536ece84f46191eff3e6d84ca9f26d17242fc929",
+        "replay.npz": "66edaa11b73348286a07696798154fa67b52f46620b73d1ec78e8c41f4853627"
+      },
+      "policy_noise_seed": 4,
+      "condition": "noise_variation_known_context"
+    },
+    {
+      "category": "banana",
+      "scene_seed": 2200008,
+      "scene_fruit_count": 5,
+      "fixture": "evaluation_fixtures/validation/seed_2200008/banana/grasp_initialization",
+      "fixture_sha256": {
+        "episode.json": "359e9b6eecfd776838832906a21f86c99ffb2ef0c3a0cf744918357b4463c2ae",
+        "model.mjb": "abd8a45d29cd625a6fe932c913fda5888bf19f289fee14f62f350e09c1d6a5b1",
+        "replay.npz": "2440d5c1dab2d47de9e859ff751b3c4f24b4542f71623e50d0252f01698d22b9"
+      },
+      "policy_noise_seed": 4,
+      "condition": "noise_variation_known_context"
+    },
+    {
+      "category": "orange",
+      "scene_seed": 2200008,
+      "scene_fruit_count": 5,
+      "fixture": "evaluation_fixtures/validation/seed_2200008/orange/grasp_initialization",
+      "fixture_sha256": {
+        "episode.json": "a41ddfaae263c2f0ab5db4f0930c368b479ea1122a24b6f47b7e5e239729ba6f",
+        "model.mjb": "abd8a45d29cd625a6fe932c913fda5888bf19f289fee14f62f350e09c1d6a5b1",
+        "replay.npz": "95bb7a64a366fd1faa37a995ca6de42e4a25664e42940aabe3693a71ac852215"
+      },
+      "policy_noise_seed": 4,
+      "condition": "noise_variation_known_context"
+    },
+    {
+      "category": "apple",
+      "scene_seed": 2200011,
+      "scene_fruit_count": 3,
+      "fixture": "evaluation_fixtures/validation/seed_2200011/apple/grasp_initialization",
+      "fixture_sha256": {
+        "episode.json": "27bb3399940722f2fb850845c4fc70627cf565a98d5bbbff9010efa601bbcc37",
+        "model.mjb": "adc98f3fd8be85180d4573ab536ece84f46191eff3e6d84ca9f26d17242fc929",
+        "replay.npz": "66edaa11b73348286a07696798154fa67b52f46620b73d1ec78e8c41f4853627"
+      },
+      "policy_noise_seed": 0,
+      "condition": "exact_initialization_and_rng_repetition"
+    },
+    {
+      "category": "banana",
+      "scene_seed": 2200008,
+      "scene_fruit_count": 5,
+      "fixture": "evaluation_fixtures/validation/seed_2200008/banana/grasp_initialization",
+      "fixture_sha256": {
+        "episode.json": "359e9b6eecfd776838832906a21f86c99ffb2ef0c3a0cf744918357b4463c2ae",
+        "model.mjb": "abd8a45d29cd625a6fe932c913fda5888bf19f289fee14f62f350e09c1d6a5b1",
+        "replay.npz": "2440d5c1dab2d47de9e859ff751b3c4f24b4542f71623e50d0252f01698d22b9"
+      },
+      "policy_noise_seed": 0,
+      "condition": "exact_initialization_and_rng_repetition"
+    },
+    {
+      "category": "orange",
+      "scene_seed": 2200008,
+      "scene_fruit_count": 5,
+      "fixture": "evaluation_fixtures/validation/seed_2200008/orange/grasp_initialization",
+      "fixture_sha256": {
+        "episode.json": "a41ddfaae263c2f0ab5db4f0930c368b479ea1122a24b6f47b7e5e239729ba6f",
+        "model.mjb": "abd8a45d29cd625a6fe932c913fda5888bf19f289fee14f62f350e09c1d6a5b1",
+        "replay.npz": "95bb7a64a366fd1faa37a995ca6de42e4a25664e42940aabe3693a71ac852215"
+      },
+      "policy_noise_seed": 0,
+      "condition": "exact_initialization_and_rng_repetition"
+    },
+    {
+      "category": "apple",
+      "scene_seed": 2200011,
+      "scene_fruit_count": 3,
+      "fixture": "evaluation_fixtures/validation/seed_2200011/apple/grasp_initialization",
+      "fixture_sha256": {
+        "episode.json": "27bb3399940722f2fb850845c4fc70627cf565a98d5bbbff9010efa601bbcc37",
+        "model.mjb": "adc98f3fd8be85180d4573ab536ece84f46191eff3e6d84ca9f26d17242fc929",
+        "replay.npz": "66edaa11b73348286a07696798154fa67b52f46620b73d1ec78e8c41f4853627"
+      },
+      "policy_noise_seed": 0,
+      "condition": "exact_initialization_and_rng_repetition"
+    },
+    {
+      "category": "banana",
+      "scene_seed": 2200008,
+      "scene_fruit_count": 5,
+      "fixture": "evaluation_fixtures/validation/seed_2200008/banana/grasp_initialization",
+      "fixture_sha256": {
+        "episode.json": "359e9b6eecfd776838832906a21f86c99ffb2ef0c3a0cf744918357b4463c2ae",
+        "model.mjb": "abd8a45d29cd625a6fe932c913fda5888bf19f289fee14f62f350e09c1d6a5b1",
+        "replay.npz": "2440d5c1dab2d47de9e859ff751b3c4f24b4542f71623e50d0252f01698d22b9"
+      },
+      "policy_noise_seed": 0,
+      "condition": "exact_initialization_and_rng_repetition"
+    },
+    {
+      "category": "orange",
+      "scene_seed": 2200008,
+      "scene_fruit_count": 5,
+      "fixture": "evaluation_fixtures/validation/seed_2200008/orange/grasp_initialization",
+      "fixture_sha256": {
+        "episode.json": "a41ddfaae263c2f0ab5db4f0930c368b479ea1122a24b6f47b7e5e239729ba6f",
+        "model.mjb": "abd8a45d29cd625a6fe932c913fda5888bf19f289fee14f62f350e09c1d6a5b1",
+        "replay.npz": "95bb7a64a366fd1faa37a995ca6de42e4a25664e42940aabe3693a71ac852215"
+      },
+      "policy_noise_seed": 0,
+      "condition": "exact_initialization_and_rng_repetition"
+    },
+    {
+      "category": "apple",
+      "scene_seed": 2200011,
+      "scene_fruit_count": 3,
+      "fixture": "evaluation_fixtures/validation/seed_2200011/apple/grasp_initialization",
+      "fixture_sha256": {
+        "episode.json": "27bb3399940722f2fb850845c4fc70627cf565a98d5bbbff9010efa601bbcc37",
+        "model.mjb": "adc98f3fd8be85180d4573ab536ece84f46191eff3e6d84ca9f26d17242fc929",
+        "replay.npz": "66edaa11b73348286a07696798154fa67b52f46620b73d1ec78e8c41f4853627"
+      },
+      "policy_noise_seed": 0,
+      "condition": "exact_initialization_and_rng_repetition"
+    },
+    {
+      "category": "banana",
+      "scene_seed": 2200008,
+      "scene_fruit_count": 5,
+      "fixture": "evaluation_fixtures/validation/seed_2200008/banana/grasp_initialization",
+      "fixture_sha256": {
+        "episode.json": "359e9b6eecfd776838832906a21f86c99ffb2ef0c3a0cf744918357b4463c2ae",
+        "model.mjb": "abd8a45d29cd625a6fe932c913fda5888bf19f289fee14f62f350e09c1d6a5b1",
+        "replay.npz": "2440d5c1dab2d47de9e859ff751b3c4f24b4542f71623e50d0252f01698d22b9"
+      },
+      "policy_noise_seed": 0,
+      "condition": "exact_initialization_and_rng_repetition"
+    },
+    {
+      "category": "orange",
+      "scene_seed": 2200008,
+      "scene_fruit_count": 5,
+      "fixture": "evaluation_fixtures/validation/seed_2200008/orange/grasp_initialization",
+      "fixture_sha256": {
+        "episode.json": "a41ddfaae263c2f0ab5db4f0930c368b479ea1122a24b6f47b7e5e239729ba6f",
+        "model.mjb": "abd8a45d29cd625a6fe932c913fda5888bf19f289fee14f62f350e09c1d6a5b1",
+        "replay.npz": "95bb7a64a366fd1faa37a995ca6de42e4a25664e42940aabe3693a71ac852215"
+      },
+      "policy_noise_seed": 0,
+      "condition": "exact_initialization_and_rng_repetition"
+    },
+    {
+      "category": "apple",
+      "scene_seed": 2200011,
+      "scene_fruit_count": 3,
+      "fixture": "evaluation_fixtures/validation/seed_2200011/apple/grasp_initialization",
+      "fixture_sha256": {
+        "episode.json": "27bb3399940722f2fb850845c4fc70627cf565a98d5bbbff9010efa601bbcc37",
+        "model.mjb": "adc98f3fd8be85180d4573ab536ece84f46191eff3e6d84ca9f26d17242fc929",
+        "replay.npz": "66edaa11b73348286a07696798154fa67b52f46620b73d1ec78e8c41f4853627"
+      },
+      "policy_noise_seed": 0,
+      "condition": "exact_initialization_and_rng_repetition"
+    },
+    {
+      "category": "banana",
+      "scene_seed": 2200008,
+      "scene_fruit_count": 5,
+      "fixture": "evaluation_fixtures/validation/seed_2200008/banana/grasp_initialization",
+      "fixture_sha256": {
+        "episode.json": "359e9b6eecfd776838832906a21f86c99ffb2ef0c3a0cf744918357b4463c2ae",
+        "model.mjb": "abd8a45d29cd625a6fe932c913fda5888bf19f289fee14f62f350e09c1d6a5b1",
+        "replay.npz": "2440d5c1dab2d47de9e859ff751b3c4f24b4542f71623e50d0252f01698d22b9"
+      },
+      "policy_noise_seed": 0,
+      "condition": "exact_initialization_and_rng_repetition"
+    },
+    {
+      "category": "orange",
+      "scene_seed": 2200008,
+      "scene_fruit_count": 5,
+      "fixture": "evaluation_fixtures/validation/seed_2200008/orange/grasp_initialization",
+      "fixture_sha256": {
+        "episode.json": "a41ddfaae263c2f0ab5db4f0930c368b479ea1122a24b6f47b7e5e239729ba6f",
+        "model.mjb": "abd8a45d29cd625a6fe932c913fda5888bf19f289fee14f62f350e09c1d6a5b1",
+        "replay.npz": "95bb7a64a366fd1faa37a995ca6de42e4a25664e42940aabe3693a71ac852215"
+      },
+      "policy_noise_seed": 0,
+      "condition": "exact_initialization_and_rng_repetition"
+    },
+    {
+      "category": "apple",
+      "scene_seed": 2200011,
+      "scene_fruit_count": 3,
+      "fixture": "evaluation_fixtures/validation/seed_2200011/apple/grasp_initialization",
+      "fixture_sha256": {
+        "episode.json": "27bb3399940722f2fb850845c4fc70627cf565a98d5bbbff9010efa601bbcc37",
+        "model.mjb": "adc98f3fd8be85180d4573ab536ece84f46191eff3e6d84ca9f26d17242fc929",
+        "replay.npz": "66edaa11b73348286a07696798154fa67b52f46620b73d1ec78e8c41f4853627"
+      },
+      "policy_noise_seed": 0,
+      "condition": "exact_initialization_and_rng_repetition"
+    },
+    {
+      "category": "banana",
+      "scene_seed": 2200008,
+      "scene_fruit_count": 5,
+      "fixture": "evaluation_fixtures/validation/seed_2200008/banana/grasp_initialization",
+      "fixture_sha256": {
+        "episode.json": "359e9b6eecfd776838832906a21f86c99ffb2ef0c3a0cf744918357b4463c2ae",
+        "model.mjb": "abd8a45d29cd625a6fe932c913fda5888bf19f289fee14f62f350e09c1d6a5b1",
+        "replay.npz": "2440d5c1dab2d47de9e859ff751b3c4f24b4542f71623e50d0252f01698d22b9"
+      },
+      "policy_noise_seed": 0,
+      "condition": "exact_initialization_and_rng_repetition"
+    },
+    {
+      "category": "orange",
+      "scene_seed": 2200008,
+      "scene_fruit_count": 5,
+      "fixture": "evaluation_fixtures/validation/seed_2200008/orange/grasp_initialization",
+      "fixture_sha256": {
+        "episode.json": "a41ddfaae263c2f0ab5db4f0930c368b479ea1122a24b6f47b7e5e239729ba6f",
+        "model.mjb": "abd8a45d29cd625a6fe932c913fda5888bf19f289fee14f62f350e09c1d6a5b1",
+        "replay.npz": "95bb7a64a366fd1faa37a995ca6de42e4a25664e42940aabe3693a71ac852215"
+      },
+      "policy_noise_seed": 0,
+      "condition": "exact_initialization_and_rng_repetition"
+    },
+    {
+      "category": "apple",
+      "scene_seed": 2200011,
+      "scene_fruit_count": 3,
+      "fixture": "evaluation_fixtures/validation/seed_2200011/apple/grasp_initialization",
+      "fixture_sha256": {
+        "episode.json": "27bb3399940722f2fb850845c4fc70627cf565a98d5bbbff9010efa601bbcc37",
+        "model.mjb": "adc98f3fd8be85180d4573ab536ece84f46191eff3e6d84ca9f26d17242fc929",
+        "replay.npz": "66edaa11b73348286a07696798154fa67b52f46620b73d1ec78e8c41f4853627"
+      },
+      "policy_noise_seed": 0,
+      "condition": "exact_initialization_and_rng_repetition"
+    },
+    {
+      "category": "banana",
+      "scene_seed": 2200008,
+      "scene_fruit_count": 5,
+      "fixture": "evaluation_fixtures/validation/seed_2200008/banana/grasp_initialization",
+      "fixture_sha256": {
+        "episode.json": "359e9b6eecfd776838832906a21f86c99ffb2ef0c3a0cf744918357b4463c2ae",
+        "model.mjb": "abd8a45d29cd625a6fe932c913fda5888bf19f289fee14f62f350e09c1d6a5b1",
+        "replay.npz": "2440d5c1dab2d47de9e859ff751b3c4f24b4542f71623e50d0252f01698d22b9"
+      },
+      "policy_noise_seed": 0,
+      "condition": "exact_initialization_and_rng_repetition"
+    },
+    {
+      "category": "orange",
+      "scene_seed": 2200008,
+      "scene_fruit_count": 5,
+      "fixture": "evaluation_fixtures/validation/seed_2200008/orange/grasp_initialization",
+      "fixture_sha256": {
+        "episode.json": "a41ddfaae263c2f0ab5db4f0930c368b479ea1122a24b6f47b7e5e239729ba6f",
+        "model.mjb": "abd8a45d29cd625a6fe932c913fda5888bf19f289fee14f62f350e09c1d6a5b1",
+        "replay.npz": "95bb7a64a366fd1faa37a995ca6de42e4a25664e42940aabe3693a71ac852215"
+      },
+      "policy_noise_seed": 0,
+      "condition": "exact_initialization_and_rng_repetition"
+    },
+    {
+      "category": "apple",
+      "scene_seed": 2200011,
+      "scene_fruit_count": 3,
+      "fixture": "evaluation_fixtures/validation/seed_2200011/apple/grasp_initialization",
+      "fixture_sha256": {
+        "episode.json": "27bb3399940722f2fb850845c4fc70627cf565a98d5bbbff9010efa601bbcc37",
+        "model.mjb": "adc98f3fd8be85180d4573ab536ece84f46191eff3e6d84ca9f26d17242fc929",
+        "replay.npz": "66edaa11b73348286a07696798154fa67b52f46620b73d1ec78e8c41f4853627"
+      },
+      "policy_noise_seed": 0,
+      "condition": "exact_initialization_and_rng_repetition"
+    },
+    {
+      "category": "banana",
+      "scene_seed": 2200008,
+      "scene_fruit_count": 5,
+      "fixture": "evaluation_fixtures/validation/seed_2200008/banana/grasp_initialization",
+      "fixture_sha256": {
+        "episode.json": "359e9b6eecfd776838832906a21f86c99ffb2ef0c3a0cf744918357b4463c2ae",
+        "model.mjb": "abd8a45d29cd625a6fe932c913fda5888bf19f289fee14f62f350e09c1d6a5b1",
+        "replay.npz": "2440d5c1dab2d47de9e859ff751b3c4f24b4542f71623e50d0252f01698d22b9"
+      },
+      "policy_noise_seed": 0,
+      "condition": "exact_initialization_and_rng_repetition"
+    },
+    {
+      "category": "orange",
+      "scene_seed": 2200008,
+      "scene_fruit_count": 5,
+      "fixture": "evaluation_fixtures/validation/seed_2200008/orange/grasp_initialization",
+      "fixture_sha256": {
+        "episode.json": "a41ddfaae263c2f0ab5db4f0930c368b479ea1122a24b6f47b7e5e239729ba6f",
+        "model.mjb": "abd8a45d29cd625a6fe932c913fda5888bf19f289fee14f62f350e09c1d6a5b1",
+        "replay.npz": "95bb7a64a366fd1faa37a995ca6de42e4a25664e42940aabe3693a71ac852215"
+      },
+      "policy_noise_seed": 0,
+      "condition": "exact_initialization_and_rng_repetition"
+    },
+    {
+      "category": "apple",
+      "scene_seed": 2200011,
+      "scene_fruit_count": 3,
+      "fixture": "evaluation_fixtures/validation/seed_2200011/apple/grasp_initialization",
+      "fixture_sha256": {
+        "episode.json": "27bb3399940722f2fb850845c4fc70627cf565a98d5bbbff9010efa601bbcc37",
+        "model.mjb": "adc98f3fd8be85180d4573ab536ece84f46191eff3e6d84ca9f26d17242fc929",
+        "replay.npz": "66edaa11b73348286a07696798154fa67b52f46620b73d1ec78e8c41f4853627"
+      },
+      "policy_noise_seed": 0,
+      "condition": "exact_initialization_and_rng_repetition"
+    },
+    {
+      "category": "banana",
+      "scene_seed": 2200008,
+      "scene_fruit_count": 5,
+      "fixture": "evaluation_fixtures/validation/seed_2200008/banana/grasp_initialization",
+      "fixture_sha256": {
+        "episode.json": "359e9b6eecfd776838832906a21f86c99ffb2ef0c3a0cf744918357b4463c2ae",
+        "model.mjb": "abd8a45d29cd625a6fe932c913fda5888bf19f289fee14f62f350e09c1d6a5b1",
+        "replay.npz": "2440d5c1dab2d47de9e859ff751b3c4f24b4542f71623e50d0252f01698d22b9"
+      },
+      "policy_noise_seed": 0,
+      "condition": "exact_initialization_and_rng_repetition"
+    },
+    {
+      "category": "orange",
+      "scene_seed": 2200008,
+      "scene_fruit_count": 5,
+      "fixture": "evaluation_fixtures/validation/seed_2200008/orange/grasp_initialization",
+      "fixture_sha256": {
+        "episode.json": "a41ddfaae263c2f0ab5db4f0930c368b479ea1122a24b6f47b7e5e239729ba6f",
+        "model.mjb": "abd8a45d29cd625a6fe932c913fda5888bf19f289fee14f62f350e09c1d6a5b1",
+        "replay.npz": "95bb7a64a366fd1faa37a995ca6de42e4a25664e42940aabe3693a71ac852215"
+      },
+      "policy_noise_seed": 0,
+      "condition": "exact_initialization_and_rng_repetition"
+    },
+    {
+      "category": "apple",
+      "scene_seed": 2200011,
+      "scene_fruit_count": 3,
+      "fixture": "evaluation_fixtures/validation/seed_2200011/apple/grasp_initialization",
+      "fixture_sha256": {
+        "episode.json": "27bb3399940722f2fb850845c4fc70627cf565a98d5bbbff9010efa601bbcc37",
+        "model.mjb": "adc98f3fd8be85180d4573ab536ece84f46191eff3e6d84ca9f26d17242fc929",
+        "replay.npz": "66edaa11b73348286a07696798154fa67b52f46620b73d1ec78e8c41f4853627"
+      },
+      "policy_noise_seed": 0,
+      "condition": "exact_initialization_and_rng_repetition"
+    },
+    {
+      "category": "banana",
+      "scene_seed": 2200008,
+      "scene_fruit_count": 5,
+      "fixture": "evaluation_fixtures/validation/seed_2200008/banana/grasp_initialization",
+      "fixture_sha256": {
+        "episode.json": "359e9b6eecfd776838832906a21f86c99ffb2ef0c3a0cf744918357b4463c2ae",
+        "model.mjb": "abd8a45d29cd625a6fe932c913fda5888bf19f289fee14f62f350e09c1d6a5b1",
+        "replay.npz": "2440d5c1dab2d47de9e859ff751b3c4f24b4542f71623e50d0252f01698d22b9"
+      },
+      "policy_noise_seed": 0,
+      "condition": "exact_initialization_and_rng_repetition"
+    },
+    {
+      "category": "orange",
+      "scene_seed": 2200008,
+      "scene_fruit_count": 5,
+      "fixture": "evaluation_fixtures/validation/seed_2200008/orange/grasp_initialization",
+      "fixture_sha256": {
+        "episode.json": "a41ddfaae263c2f0ab5db4f0930c368b479ea1122a24b6f47b7e5e239729ba6f",
+        "model.mjb": "abd8a45d29cd625a6fe932c913fda5888bf19f289fee14f62f350e09c1d6a5b1",
+        "replay.npz": "95bb7a64a366fd1faa37a995ca6de42e4a25664e42940aabe3693a71ac852215"
+      },
+      "policy_noise_seed": 0,
+      "condition": "exact_initialization_and_rng_repetition"
+    },
+    {
+      "category": "apple",
+      "scene_seed": 2200011,
+      "scene_fruit_count": 3,
+      "fixture": "evaluation_fixtures/validation/seed_2200011/apple/grasp_initialization",
+      "fixture_sha256": {
+        "episode.json": "27bb3399940722f2fb850845c4fc70627cf565a98d5bbbff9010efa601bbcc37",
+        "model.mjb": "adc98f3fd8be85180d4573ab536ece84f46191eff3e6d84ca9f26d17242fc929",
+        "replay.npz": "66edaa11b73348286a07696798154fa67b52f46620b73d1ec78e8c41f4853627"
+      },
+      "policy_noise_seed": 0,
+      "condition": "exact_initialization_and_rng_repetition"
+    },
+    {
+      "category": "banana",
+      "scene_seed": 2200008,
+      "scene_fruit_count": 5,
+      "fixture": "evaluation_fixtures/validation/seed_2200008/banana/grasp_initialization",
+      "fixture_sha256": {
+        "episode.json": "359e9b6eecfd776838832906a21f86c99ffb2ef0c3a0cf744918357b4463c2ae",
+        "model.mjb": "abd8a45d29cd625a6fe932c913fda5888bf19f289fee14f62f350e09c1d6a5b1",
+        "replay.npz": "2440d5c1dab2d47de9e859ff751b3c4f24b4542f71623e50d0252f01698d22b9"
+      },
+      "policy_noise_seed": 0,
+      "condition": "exact_initialization_and_rng_repetition"
+    },
+    {
+      "category": "orange",
+      "scene_seed": 2200008,
+      "scene_fruit_count": 5,
+      "fixture": "evaluation_fixtures/validation/seed_2200008/orange/grasp_initialization",
+      "fixture_sha256": {
+        "episode.json": "a41ddfaae263c2f0ab5db4f0930c368b479ea1122a24b6f47b7e5e239729ba6f",
+        "model.mjb": "abd8a45d29cd625a6fe932c913fda5888bf19f289fee14f62f350e09c1d6a5b1",
+        "replay.npz": "95bb7a64a366fd1faa37a995ca6de42e4a25664e42940aabe3693a71ac852215"
+      },
+      "policy_noise_seed": 0,
+      "condition": "exact_initialization_and_rng_repetition"
+    },
+    {
+      "category": "apple",
+      "scene_seed": 2200011,
+      "scene_fruit_count": 3,
+      "fixture": "evaluation_fixtures/validation/seed_2200011/apple/grasp_initialization",
+      "fixture_sha256": {
+        "episode.json": "27bb3399940722f2fb850845c4fc70627cf565a98d5bbbff9010efa601bbcc37",
+        "model.mjb": "adc98f3fd8be85180d4573ab536ece84f46191eff3e6d84ca9f26d17242fc929",
+        "replay.npz": "66edaa11b73348286a07696798154fa67b52f46620b73d1ec78e8c41f4853627"
+      },
+      "policy_noise_seed": 0,
+      "condition": "exact_initialization_and_rng_repetition"
+    },
+    {
+      "category": "banana",
+      "scene_seed": 2200008,
+      "scene_fruit_count": 5,
+      "fixture": "evaluation_fixtures/validation/seed_2200008/banana/grasp_initialization",
+      "fixture_sha256": {
+        "episode.json": "359e9b6eecfd776838832906a21f86c99ffb2ef0c3a0cf744918357b4463c2ae",
+        "model.mjb": "abd8a45d29cd625a6fe932c913fda5888bf19f289fee14f62f350e09c1d6a5b1",
+        "replay.npz": "2440d5c1dab2d47de9e859ff751b3c4f24b4542f71623e50d0252f01698d22b9"
+      },
+      "policy_noise_seed": 0,
+      "condition": "exact_initialization_and_rng_repetition"
+    },
+    {
+      "category": "orange",
+      "scene_seed": 2200008,
+      "scene_fruit_count": 5,
+      "fixture": "evaluation_fixtures/validation/seed_2200008/orange/grasp_initialization",
+      "fixture_sha256": {
+        "episode.json": "a41ddfaae263c2f0ab5db4f0930c368b479ea1122a24b6f47b7e5e239729ba6f",
+        "model.mjb": "abd8a45d29cd625a6fe932c913fda5888bf19f289fee14f62f350e09c1d6a5b1",
+        "replay.npz": "95bb7a64a366fd1faa37a995ca6de42e4a25664e42940aabe3693a71ac852215"
+      },
+      "policy_noise_seed": 0,
+      "condition": "exact_initialization_and_rng_repetition"
+    },
+    {
+      "category": "apple",
+      "scene_seed": 2200011,
+      "scene_fruit_count": 3,
+      "fixture": "evaluation_fixtures/validation/seed_2200011/apple/grasp_initialization",
+      "fixture_sha256": {
+        "episode.json": "27bb3399940722f2fb850845c4fc70627cf565a98d5bbbff9010efa601bbcc37",
+        "model.mjb": "adc98f3fd8be85180d4573ab536ece84f46191eff3e6d84ca9f26d17242fc929",
+        "replay.npz": "66edaa11b73348286a07696798154fa67b52f46620b73d1ec78e8c41f4853627"
+      },
+      "policy_noise_seed": 0,
+      "condition": "exact_initialization_and_rng_repetition"
+    },
+    {
+      "category": "banana",
+      "scene_seed": 2200008,
+      "scene_fruit_count": 5,
+      "fixture": "evaluation_fixtures/validation/seed_2200008/banana/grasp_initialization",
+      "fixture_sha256": {
+        "episode.json": "359e9b6eecfd776838832906a21f86c99ffb2ef0c3a0cf744918357b4463c2ae",
+        "model.mjb": "abd8a45d29cd625a6fe932c913fda5888bf19f289fee14f62f350e09c1d6a5b1",
+        "replay.npz": "2440d5c1dab2d47de9e859ff751b3c4f24b4542f71623e50d0252f01698d22b9"
+      },
+      "policy_noise_seed": 0,
+      "condition": "exact_initialization_and_rng_repetition"
+    },
+    {
+      "category": "orange",
+      "scene_seed": 2200008,
+      "scene_fruit_count": 5,
+      "fixture": "evaluation_fixtures/validation/seed_2200008/orange/grasp_initialization",
+      "fixture_sha256": {
+        "episode.json": "a41ddfaae263c2f0ab5db4f0930c368b479ea1122a24b6f47b7e5e239729ba6f",
+        "model.mjb": "abd8a45d29cd625a6fe932c913fda5888bf19f289fee14f62f350e09c1d6a5b1",
+        "replay.npz": "95bb7a64a366fd1faa37a995ca6de42e4a25664e42940aabe3693a71ac852215"
+      },
+      "policy_noise_seed": 0,
+      "condition": "exact_initialization_and_rng_repetition"
+    },
+    {
+      "category": "apple",
+      "scene_seed": 2200011,
+      "scene_fruit_count": 3,
+      "fixture": "evaluation_fixtures/validation/seed_2200011/apple/grasp_initialization",
+      "fixture_sha256": {
+        "episode.json": "27bb3399940722f2fb850845c4fc70627cf565a98d5bbbff9010efa601bbcc37",
+        "model.mjb": "adc98f3fd8be85180d4573ab536ece84f46191eff3e6d84ca9f26d17242fc929",
+        "replay.npz": "66edaa11b73348286a07696798154fa67b52f46620b73d1ec78e8c41f4853627"
+      },
+      "policy_noise_seed": 5,
+      "condition": "additional_noise_variation"
+    },
+    {
+      "category": "banana",
+      "scene_seed": 2200008,
+      "scene_fruit_count": 5,
+      "fixture": "evaluation_fixtures/validation/seed_2200008/banana/grasp_initialization",
+      "fixture_sha256": {
+        "episode.json": "359e9b6eecfd776838832906a21f86c99ffb2ef0c3a0cf744918357b4463c2ae",
+        "model.mjb": "abd8a45d29cd625a6fe932c913fda5888bf19f289fee14f62f350e09c1d6a5b1",
+        "replay.npz": "2440d5c1dab2d47de9e859ff751b3c4f24b4542f71623e50d0252f01698d22b9"
+      },
+      "policy_noise_seed": 5,
+      "condition": "additional_noise_variation"
+    },
+    {
+      "category": "orange",
+      "scene_seed": 2200008,
+      "scene_fruit_count": 5,
+      "fixture": "evaluation_fixtures/validation/seed_2200008/orange/grasp_initialization",
+      "fixture_sha256": {
+        "episode.json": "a41ddfaae263c2f0ab5db4f0930c368b479ea1122a24b6f47b7e5e239729ba6f",
+        "model.mjb": "abd8a45d29cd625a6fe932c913fda5888bf19f289fee14f62f350e09c1d6a5b1",
+        "replay.npz": "95bb7a64a366fd1faa37a995ca6de42e4a25664e42940aabe3693a71ac852215"
+      },
+      "policy_noise_seed": 5,
+      "condition": "additional_noise_variation"
+    },
+    {
+      "category": "apple",
+      "scene_seed": 2200011,
+      "scene_fruit_count": 3,
+      "fixture": "evaluation_fixtures/validation/seed_2200011/apple/grasp_initialization",
+      "fixture_sha256": {
+        "episode.json": "27bb3399940722f2fb850845c4fc70627cf565a98d5bbbff9010efa601bbcc37",
+        "model.mjb": "adc98f3fd8be85180d4573ab536ece84f46191eff3e6d84ca9f26d17242fc929",
+        "replay.npz": "66edaa11b73348286a07696798154fa67b52f46620b73d1ec78e8c41f4853627"
+      },
+      "policy_noise_seed": 6,
+      "condition": "additional_noise_variation"
+    },
+    {
+      "category": "banana",
+      "scene_seed": 2200008,
+      "scene_fruit_count": 5,
+      "fixture": "evaluation_fixtures/validation/seed_2200008/banana/grasp_initialization",
+      "fixture_sha256": {
+        "episode.json": "359e9b6eecfd776838832906a21f86c99ffb2ef0c3a0cf744918357b4463c2ae",
+        "model.mjb": "abd8a45d29cd625a6fe932c913fda5888bf19f289fee14f62f350e09c1d6a5b1",
+        "replay.npz": "2440d5c1dab2d47de9e859ff751b3c4f24b4542f71623e50d0252f01698d22b9"
+      },
+      "policy_noise_seed": 6,
+      "condition": "additional_noise_variation"
+    },
+    {
+      "category": "orange",
+      "scene_seed": 2200008,
+      "scene_fruit_count": 5,
+      "fixture": "evaluation_fixtures/validation/seed_2200008/orange/grasp_initialization",
+      "fixture_sha256": {
+        "episode.json": "a41ddfaae263c2f0ab5db4f0930c368b479ea1122a24b6f47b7e5e239729ba6f",
+        "model.mjb": "abd8a45d29cd625a6fe932c913fda5888bf19f289fee14f62f350e09c1d6a5b1",
+        "replay.npz": "95bb7a64a366fd1faa37a995ca6de42e4a25664e42940aabe3693a71ac852215"
+      },
+      "policy_noise_seed": 6,
+      "condition": "additional_noise_variation"
+    },
+    {
+      "category": "apple",
+      "scene_seed": 2200011,
+      "scene_fruit_count": 3,
+      "fixture": "evaluation_fixtures/validation/seed_2200011/apple/grasp_initialization",
+      "fixture_sha256": {
+        "episode.json": "27bb3399940722f2fb850845c4fc70627cf565a98d5bbbff9010efa601bbcc37",
+        "model.mjb": "adc98f3fd8be85180d4573ab536ece84f46191eff3e6d84ca9f26d17242fc929",
+        "replay.npz": "66edaa11b73348286a07696798154fa67b52f46620b73d1ec78e8c41f4853627"
+      },
+      "policy_noise_seed": 7,
+      "condition": "additional_noise_variation"
+    },
+    {
+      "category": "banana",
+      "scene_seed": 2200008,
+      "scene_fruit_count": 5,
+      "fixture": "evaluation_fixtures/validation/seed_2200008/banana/grasp_initialization",
+      "fixture_sha256": {
+        "episode.json": "359e9b6eecfd776838832906a21f86c99ffb2ef0c3a0cf744918357b4463c2ae",
+        "model.mjb": "abd8a45d29cd625a6fe932c913fda5888bf19f289fee14f62f350e09c1d6a5b1",
+        "replay.npz": "2440d5c1dab2d47de9e859ff751b3c4f24b4542f71623e50d0252f01698d22b9"
+      },
+      "policy_noise_seed": 7,
+      "condition": "additional_noise_variation"
+    },
+    {
+      "category": "orange",
+      "scene_seed": 2200008,
+      "scene_fruit_count": 5,
+      "fixture": "evaluation_fixtures/validation/seed_2200008/orange/grasp_initialization",
+      "fixture_sha256": {
+        "episode.json": "a41ddfaae263c2f0ab5db4f0930c368b479ea1122a24b6f47b7e5e239729ba6f",
+        "model.mjb": "abd8a45d29cd625a6fe932c913fda5888bf19f289fee14f62f350e09c1d6a5b1",
+        "replay.npz": "95bb7a64a366fd1faa37a995ca6de42e4a25664e42940aabe3693a71ac852215"
+      },
+      "policy_noise_seed": 7,
+      "condition": "additional_noise_variation"
+    },
+    {
+      "category": "apple",
+      "scene_seed": 2200011,
+      "scene_fruit_count": 3,
+      "fixture": "evaluation_fixtures/validation/seed_2200011/apple/grasp_initialization",
+      "fixture_sha256": {
+        "episode.json": "27bb3399940722f2fb850845c4fc70627cf565a98d5bbbff9010efa601bbcc37",
+        "model.mjb": "adc98f3fd8be85180d4573ab536ece84f46191eff3e6d84ca9f26d17242fc929",
+        "replay.npz": "66edaa11b73348286a07696798154fa67b52f46620b73d1ec78e8c41f4853627"
+      },
+      "policy_noise_seed": 8,
+      "condition": "additional_noise_variation"
+    },
+    {
+      "category": "banana",
+      "scene_seed": 2200008,
+      "scene_fruit_count": 5,
+      "fixture": "evaluation_fixtures/validation/seed_2200008/banana/grasp_initialization",
+      "fixture_sha256": {
+        "episode.json": "359e9b6eecfd776838832906a21f86c99ffb2ef0c3a0cf744918357b4463c2ae",
+        "model.mjb": "abd8a45d29cd625a6fe932c913fda5888bf19f289fee14f62f350e09c1d6a5b1",
+        "replay.npz": "2440d5c1dab2d47de9e859ff751b3c4f24b4542f71623e50d0252f01698d22b9"
+      },
+      "policy_noise_seed": 8,
+      "condition": "additional_noise_variation"
+    },
+    {
+      "category": "orange",
+      "scene_seed": 2200008,
+      "scene_fruit_count": 5,
+      "fixture": "evaluation_fixtures/validation/seed_2200008/orange/grasp_initialization",
+      "fixture_sha256": {
+        "episode.json": "a41ddfaae263c2f0ab5db4f0930c368b479ea1122a24b6f47b7e5e239729ba6f",
+        "model.mjb": "abd8a45d29cd625a6fe932c913fda5888bf19f289fee14f62f350e09c1d6a5b1",
+        "replay.npz": "95bb7a64a366fd1faa37a995ca6de42e4a25664e42940aabe3693a71ac852215"
+      },
+      "policy_noise_seed": 8,
+      "condition": "additional_noise_variation"
+    },
+    {
+      "category": "apple",
+      "scene_seed": 2200011,
+      "scene_fruit_count": 3,
+      "fixture": "evaluation_fixtures/validation/seed_2200011/apple/grasp_initialization",
+      "fixture_sha256": {
+        "episode.json": "27bb3399940722f2fb850845c4fc70627cf565a98d5bbbff9010efa601bbcc37",
+        "model.mjb": "adc98f3fd8be85180d4573ab536ece84f46191eff3e6d84ca9f26d17242fc929",
+        "replay.npz": "66edaa11b73348286a07696798154fa67b52f46620b73d1ec78e8c41f4853627"
+      },
+      "policy_noise_seed": 9,
+      "condition": "additional_noise_variation"
+    },
+    {
+      "category": "banana",
+      "scene_seed": 2200008,
+      "scene_fruit_count": 5,
+      "fixture": "evaluation_fixtures/validation/seed_2200008/banana/grasp_initialization",
+      "fixture_sha256": {
+        "episode.json": "359e9b6eecfd776838832906a21f86c99ffb2ef0c3a0cf744918357b4463c2ae",
+        "model.mjb": "abd8a45d29cd625a6fe932c913fda5888bf19f289fee14f62f350e09c1d6a5b1",
+        "replay.npz": "2440d5c1dab2d47de9e859ff751b3c4f24b4542f71623e50d0252f01698d22b9"
+      },
+      "policy_noise_seed": 9,
+      "condition": "additional_noise_variation"
+    },
+    {
+      "category": "orange",
+      "scene_seed": 2200008,
+      "scene_fruit_count": 5,
+      "fixture": "evaluation_fixtures/validation/seed_2200008/orange/grasp_initialization",
+      "fixture_sha256": {
+        "episode.json": "a41ddfaae263c2f0ab5db4f0930c368b479ea1122a24b6f47b7e5e239729ba6f",
+        "model.mjb": "abd8a45d29cd625a6fe932c913fda5888bf19f289fee14f62f350e09c1d6a5b1",
+        "replay.npz": "95bb7a64a366fd1faa37a995ca6de42e4a25664e42940aabe3693a71ac852215"
+      },
+      "policy_noise_seed": 9,
+      "condition": "additional_noise_variation"
+    },
+    {
+      "category": "apple",
+      "scene_seed": 2200011,
+      "scene_fruit_count": 3,
+      "fixture": "evaluation_fixtures/validation/seed_2200011/apple/grasp_initialization",
+      "fixture_sha256": {
+        "episode.json": "27bb3399940722f2fb850845c4fc70627cf565a98d5bbbff9010efa601bbcc37",
+        "model.mjb": "adc98f3fd8be85180d4573ab536ece84f46191eff3e6d84ca9f26d17242fc929",
+        "replay.npz": "66edaa11b73348286a07696798154fa67b52f46620b73d1ec78e8c41f4853627"
+      },
+      "policy_noise_seed": 10,
+      "condition": "additional_noise_variation"
+    },
+    {
+      "category": "banana",
+      "scene_seed": 2200008,
+      "scene_fruit_count": 5,
+      "fixture": "evaluation_fixtures/validation/seed_2200008/banana/grasp_initialization",
+      "fixture_sha256": {
+        "episode.json": "359e9b6eecfd776838832906a21f86c99ffb2ef0c3a0cf744918357b4463c2ae",
+        "model.mjb": "abd8a45d29cd625a6fe932c913fda5888bf19f289fee14f62f350e09c1d6a5b1",
+        "replay.npz": "2440d5c1dab2d47de9e859ff751b3c4f24b4542f71623e50d0252f01698d22b9"
+      },
+      "policy_noise_seed": 10,
+      "condition": "additional_noise_variation"
+    },
+    {
+      "category": "orange",
+      "scene_seed": 2200008,
+      "scene_fruit_count": 5,
+      "fixture": "evaluation_fixtures/validation/seed_2200008/orange/grasp_initialization",
+      "fixture_sha256": {
+        "episode.json": "a41ddfaae263c2f0ab5db4f0930c368b479ea1122a24b6f47b7e5e239729ba6f",
+        "model.mjb": "abd8a45d29cd625a6fe932c913fda5888bf19f289fee14f62f350e09c1d6a5b1",
+        "replay.npz": "95bb7a64a366fd1faa37a995ca6de42e4a25664e42940aabe3693a71ac852215"
+      },
+      "policy_noise_seed": 10,
+      "condition": "additional_noise_variation"
+    },
+    {
+      "category": "apple",
+      "scene_seed": 2200011,
+      "scene_fruit_count": 3,
+      "fixture": "evaluation_fixtures/validation/seed_2200011/apple/grasp_initialization",
+      "fixture_sha256": {
+        "episode.json": "27bb3399940722f2fb850845c4fc70627cf565a98d5bbbff9010efa601bbcc37",
+        "model.mjb": "adc98f3fd8be85180d4573ab536ece84f46191eff3e6d84ca9f26d17242fc929",
+        "replay.npz": "66edaa11b73348286a07696798154fa67b52f46620b73d1ec78e8c41f4853627"
+      },
+      "policy_noise_seed": 11,
+      "condition": "additional_noise_variation"
+    },
+    {
+      "category": "banana",
+      "scene_seed": 2200008,
+      "scene_fruit_count": 5,
+      "fixture": "evaluation_fixtures/validation/seed_2200008/banana/grasp_initialization",
+      "fixture_sha256": {
+        "episode.json": "359e9b6eecfd776838832906a21f86c99ffb2ef0c3a0cf744918357b4463c2ae",
+        "model.mjb": "abd8a45d29cd625a6fe932c913fda5888bf19f289fee14f62f350e09c1d6a5b1",
+        "replay.npz": "2440d5c1dab2d47de9e859ff751b3c4f24b4542f71623e50d0252f01698d22b9"
+      },
+      "policy_noise_seed": 11,
+      "condition": "additional_noise_variation"
+    },
+    {
+      "category": "orange",
+      "scene_seed": 2200008,
+      "scene_fruit_count": 5,
+      "fixture": "evaluation_fixtures/validation/seed_2200008/orange/grasp_initialization",
+      "fixture_sha256": {
+        "episode.json": "a41ddfaae263c2f0ab5db4f0930c368b479ea1122a24b6f47b7e5e239729ba6f",
+        "model.mjb": "abd8a45d29cd625a6fe932c913fda5888bf19f289fee14f62f350e09c1d6a5b1",
+        "replay.npz": "95bb7a64a366fd1faa37a995ca6de42e4a25664e42940aabe3693a71ac852215"
+      },
+      "policy_noise_seed": 11,
+      "condition": "additional_noise_variation"
+    },
+    {
+      "category": "apple",
+      "scene_seed": 2200011,
+      "scene_fruit_count": 3,
+      "fixture": "evaluation_fixtures/validation/seed_2200011/apple/grasp_initialization",
+      "fixture_sha256": {
+        "episode.json": "27bb3399940722f2fb850845c4fc70627cf565a98d5bbbff9010efa601bbcc37",
+        "model.mjb": "adc98f3fd8be85180d4573ab536ece84f46191eff3e6d84ca9f26d17242fc929",
+        "replay.npz": "66edaa11b73348286a07696798154fa67b52f46620b73d1ec78e8c41f4853627"
+      },
+      "policy_noise_seed": 12,
+      "condition": "additional_noise_variation"
+    },
+    {
+      "category": "banana",
+      "scene_seed": 2200008,
+      "scene_fruit_count": 5,
+      "fixture": "evaluation_fixtures/validation/seed_2200008/banana/grasp_initialization",
+      "fixture_sha256": {
+        "episode.json": "359e9b6eecfd776838832906a21f86c99ffb2ef0c3a0cf744918357b4463c2ae",
+        "model.mjb": "abd8a45d29cd625a6fe932c913fda5888bf19f289fee14f62f350e09c1d6a5b1",
+        "replay.npz": "2440d5c1dab2d47de9e859ff751b3c4f24b4542f71623e50d0252f01698d22b9"
+      },
+      "policy_noise_seed": 12,
+      "condition": "additional_noise_variation"
+    },
+    {
+      "category": "orange",
+      "scene_seed": 2200008,
+      "scene_fruit_count": 5,
+      "fixture": "evaluation_fixtures/validation/seed_2200008/orange/grasp_initialization",
+      "fixture_sha256": {
+        "episode.json": "a41ddfaae263c2f0ab5db4f0930c368b479ea1122a24b6f47b7e5e239729ba6f",
+        "model.mjb": "abd8a45d29cd625a6fe932c913fda5888bf19f289fee14f62f350e09c1d6a5b1",
+        "replay.npz": "95bb7a64a366fd1faa37a995ca6de42e4a25664e42940aabe3693a71ac852215"
+      },
+      "policy_noise_seed": 12,
+      "condition": "additional_noise_variation"
+    },
+    {
+      "category": "apple",
+      "scene_seed": 2200011,
+      "scene_fruit_count": 3,
+      "fixture": "evaluation_fixtures/validation/seed_2200011/apple/grasp_initialization",
+      "fixture_sha256": {
+        "episode.json": "27bb3399940722f2fb850845c4fc70627cf565a98d5bbbff9010efa601bbcc37",
+        "model.mjb": "adc98f3fd8be85180d4573ab536ece84f46191eff3e6d84ca9f26d17242fc929",
+        "replay.npz": "66edaa11b73348286a07696798154fa67b52f46620b73d1ec78e8c41f4853627"
+      },
+      "policy_noise_seed": 13,
+      "condition": "additional_noise_variation"
+    },
+    {
+      "category": "banana",
+      "scene_seed": 2200008,
+      "scene_fruit_count": 5,
+      "fixture": "evaluation_fixtures/validation/seed_2200008/banana/grasp_initialization",
+      "fixture_sha256": {
+        "episode.json": "359e9b6eecfd776838832906a21f86c99ffb2ef0c3a0cf744918357b4463c2ae",
+        "model.mjb": "abd8a45d29cd625a6fe932c913fda5888bf19f289fee14f62f350e09c1d6a5b1",
+        "replay.npz": "2440d5c1dab2d47de9e859ff751b3c4f24b4542f71623e50d0252f01698d22b9"
+      },
+      "policy_noise_seed": 13,
+      "condition": "additional_noise_variation"
+    },
+    {
+      "category": "orange",
+      "scene_seed": 2200008,
+      "scene_fruit_count": 5,
+      "fixture": "evaluation_fixtures/validation/seed_2200008/orange/grasp_initialization",
+      "fixture_sha256": {
+        "episode.json": "a41ddfaae263c2f0ab5db4f0930c368b479ea1122a24b6f47b7e5e239729ba6f",
+        "model.mjb": "abd8a45d29cd625a6fe932c913fda5888bf19f289fee14f62f350e09c1d6a5b1",
+        "replay.npz": "95bb7a64a366fd1faa37a995ca6de42e4a25664e42940aabe3693a71ac852215"
+      },
+      "policy_noise_seed": 13,
+      "condition": "additional_noise_variation"
+    },
+    {
+      "category": "apple",
+      "scene_seed": 2200011,
+      "scene_fruit_count": 3,
+      "fixture": "evaluation_fixtures/validation/seed_2200011/apple/grasp_initialization",
+      "fixture_sha256": {
+        "episode.json": "27bb3399940722f2fb850845c4fc70627cf565a98d5bbbff9010efa601bbcc37",
+        "model.mjb": "adc98f3fd8be85180d4573ab536ece84f46191eff3e6d84ca9f26d17242fc929",
+        "replay.npz": "66edaa11b73348286a07696798154fa67b52f46620b73d1ec78e8c41f4853627"
+      },
+      "policy_noise_seed": 14,
+      "condition": "additional_noise_variation"
+    },
+    {
+      "category": "banana",
+      "scene_seed": 2200008,
+      "scene_fruit_count": 5,
+      "fixture": "evaluation_fixtures/validation/seed_2200008/banana/grasp_initialization",
+      "fixture_sha256": {
+        "episode.json": "359e9b6eecfd776838832906a21f86c99ffb2ef0c3a0cf744918357b4463c2ae",
+        "model.mjb": "abd8a45d29cd625a6fe932c913fda5888bf19f289fee14f62f350e09c1d6a5b1",
+        "replay.npz": "2440d5c1dab2d47de9e859ff751b3c4f24b4542f71623e50d0252f01698d22b9"
+      },
+      "policy_noise_seed": 14,
+      "condition": "additional_noise_variation"
+    },
+    {
+      "category": "orange",
+      "scene_seed": 2200008,
+      "scene_fruit_count": 5,
+      "fixture": "evaluation_fixtures/validation/seed_2200008/orange/grasp_initialization",
+      "fixture_sha256": {
+        "episode.json": "a41ddfaae263c2f0ab5db4f0930c368b479ea1122a24b6f47b7e5e239729ba6f",
+        "model.mjb": "abd8a45d29cd625a6fe932c913fda5888bf19f289fee14f62f350e09c1d6a5b1",
+        "replay.npz": "95bb7a64a366fd1faa37a995ca6de42e4a25664e42940aabe3693a71ac852215"
+      },
+      "policy_noise_seed": 14,
+      "condition": "additional_noise_variation"
+    },
+    {
+      "category": "apple",
+      "scene_seed": 2200011,
+      "scene_fruit_count": 3,
+      "fixture": "evaluation_fixtures/validation/seed_2200011/apple/grasp_initialization",
+      "fixture_sha256": {
+        "episode.json": "27bb3399940722f2fb850845c4fc70627cf565a98d5bbbff9010efa601bbcc37",
+        "model.mjb": "adc98f3fd8be85180d4573ab536ece84f46191eff3e6d84ca9f26d17242fc929",
+        "replay.npz": "66edaa11b73348286a07696798154fa67b52f46620b73d1ec78e8c41f4853627"
+      },
+      "policy_noise_seed": 15,
+      "condition": "additional_noise_variation"
+    },
+    {
+      "category": "banana",
+      "scene_seed": 2200008,
+      "scene_fruit_count": 5,
+      "fixture": "evaluation_fixtures/validation/seed_2200008/banana/grasp_initialization",
+      "fixture_sha256": {
+        "episode.json": "359e9b6eecfd776838832906a21f86c99ffb2ef0c3a0cf744918357b4463c2ae",
+        "model.mjb": "abd8a45d29cd625a6fe932c913fda5888bf19f289fee14f62f350e09c1d6a5b1",
+        "replay.npz": "2440d5c1dab2d47de9e859ff751b3c4f24b4542f71623e50d0252f01698d22b9"
+      },
+      "policy_noise_seed": 15,
+      "condition": "additional_noise_variation"
+    },
+    {
+      "category": "orange",
+      "scene_seed": 2200008,
+      "scene_fruit_count": 5,
+      "fixture": "evaluation_fixtures/validation/seed_2200008/orange/grasp_initialization",
+      "fixture_sha256": {
+        "episode.json": "a41ddfaae263c2f0ab5db4f0930c368b479ea1122a24b6f47b7e5e239729ba6f",
+        "model.mjb": "abd8a45d29cd625a6fe932c913fda5888bf19f289fee14f62f350e09c1d6a5b1",
+        "replay.npz": "95bb7a64a366fd1faa37a995ca6de42e4a25664e42940aabe3693a71ac852215"
+      },
+      "policy_noise_seed": 15,
+      "condition": "additional_noise_variation"
+    },
+    {
+      "category": "apple",
+      "scene_seed": 2200011,
+      "scene_fruit_count": 3,
+      "fixture": "evaluation_fixtures/validation/seed_2200011/apple/grasp_initialization",
+      "fixture_sha256": {
+        "episode.json": "27bb3399940722f2fb850845c4fc70627cf565a98d5bbbff9010efa601bbcc37",
+        "model.mjb": "adc98f3fd8be85180d4573ab536ece84f46191eff3e6d84ca9f26d17242fc929",
+        "replay.npz": "66edaa11b73348286a07696798154fa67b52f46620b73d1ec78e8c41f4853627"
+      },
+      "policy_noise_seed": 16,
+      "condition": "additional_noise_variation"
+    },
+    {
+      "category": "banana",
+      "scene_seed": 2200008,
+      "scene_fruit_count": 5,
+      "fixture": "evaluation_fixtures/validation/seed_2200008/banana/grasp_initialization",
+      "fixture_sha256": {
+        "episode.json": "359e9b6eecfd776838832906a21f86c99ffb2ef0c3a0cf744918357b4463c2ae",
+        "model.mjb": "abd8a45d29cd625a6fe932c913fda5888bf19f289fee14f62f350e09c1d6a5b1",
+        "replay.npz": "2440d5c1dab2d47de9e859ff751b3c4f24b4542f71623e50d0252f01698d22b9"
+      },
+      "policy_noise_seed": 16,
+      "condition": "additional_noise_variation"
+    },
+    {
+      "category": "orange",
+      "scene_seed": 2200008,
+      "scene_fruit_count": 5,
+      "fixture": "evaluation_fixtures/validation/seed_2200008/orange/grasp_initialization",
+      "fixture_sha256": {
+        "episode.json": "a41ddfaae263c2f0ab5db4f0930c368b479ea1122a24b6f47b7e5e239729ba6f",
+        "model.mjb": "abd8a45d29cd625a6fe932c913fda5888bf19f289fee14f62f350e09c1d6a5b1",
+        "replay.npz": "95bb7a64a366fd1faa37a995ca6de42e4a25664e42940aabe3693a71ac852215"
+      },
+      "policy_noise_seed": 16,
+      "condition": "additional_noise_variation"
+    },
+    {
+      "category": "apple",
+      "scene_seed": 2200011,
+      "scene_fruit_count": 3,
+      "fixture": "evaluation_fixtures/validation/seed_2200011/apple/grasp_initialization",
+      "fixture_sha256": {
+        "episode.json": "27bb3399940722f2fb850845c4fc70627cf565a98d5bbbff9010efa601bbcc37",
+        "model.mjb": "adc98f3fd8be85180d4573ab536ece84f46191eff3e6d84ca9f26d17242fc929",
+        "replay.npz": "66edaa11b73348286a07696798154fa67b52f46620b73d1ec78e8c41f4853627"
+      },
+      "policy_noise_seed": 17,
+      "condition": "additional_noise_variation"
+    },
+    {
+      "category": "banana",
+      "scene_seed": 2200008,
+      "scene_fruit_count": 5,
+      "fixture": "evaluation_fixtures/validation/seed_2200008/banana/grasp_initialization",
+      "fixture_sha256": {
+        "episode.json": "359e9b6eecfd776838832906a21f86c99ffb2ef0c3a0cf744918357b4463c2ae",
+        "model.mjb": "abd8a45d29cd625a6fe932c913fda5888bf19f289fee14f62f350e09c1d6a5b1",
+        "replay.npz": "2440d5c1dab2d47de9e859ff751b3c4f24b4542f71623e50d0252f01698d22b9"
+      },
+      "policy_noise_seed": 17,
+      "condition": "additional_noise_variation"
+    },
+    {
+      "category": "orange",
+      "scene_seed": 2200008,
+      "scene_fruit_count": 5,
+      "fixture": "evaluation_fixtures/validation/seed_2200008/orange/grasp_initialization",
+      "fixture_sha256": {
+        "episode.json": "a41ddfaae263c2f0ab5db4f0930c368b479ea1122a24b6f47b7e5e239729ba6f",
+        "model.mjb": "abd8a45d29cd625a6fe932c913fda5888bf19f289fee14f62f350e09c1d6a5b1",
+        "replay.npz": "95bb7a64a366fd1faa37a995ca6de42e4a25664e42940aabe3693a71ac852215"
+      },
+      "policy_noise_seed": 17,
+      "condition": "additional_noise_variation"
+    },
+    {
+      "category": "apple",
+      "scene_seed": 2200011,
+      "scene_fruit_count": 3,
+      "fixture": "evaluation_fixtures/validation/seed_2200011/apple/grasp_initialization",
+      "fixture_sha256": {
+        "episode.json": "27bb3399940722f2fb850845c4fc70627cf565a98d5bbbff9010efa601bbcc37",
+        "model.mjb": "adc98f3fd8be85180d4573ab536ece84f46191eff3e6d84ca9f26d17242fc929",
+        "replay.npz": "66edaa11b73348286a07696798154fa67b52f46620b73d1ec78e8c41f4853627"
+      },
+      "policy_noise_seed": 18,
+      "condition": "additional_noise_variation"
+    },
+    {
+      "category": "banana",
+      "scene_seed": 2200008,
+      "scene_fruit_count": 5,
+      "fixture": "evaluation_fixtures/validation/seed_2200008/banana/grasp_initialization",
+      "fixture_sha256": {
+        "episode.json": "359e9b6eecfd776838832906a21f86c99ffb2ef0c3a0cf744918357b4463c2ae",
+        "model.mjb": "abd8a45d29cd625a6fe932c913fda5888bf19f289fee14f62f350e09c1d6a5b1",
+        "replay.npz": "2440d5c1dab2d47de9e859ff751b3c4f24b4542f71623e50d0252f01698d22b9"
+      },
+      "policy_noise_seed": 18,
+      "condition": "additional_noise_variation"
+    },
+    {
+      "category": "orange",
+      "scene_seed": 2200008,
+      "scene_fruit_count": 5,
+      "fixture": "evaluation_fixtures/validation/seed_2200008/orange/grasp_initialization",
+      "fixture_sha256": {
+        "episode.json": "a41ddfaae263c2f0ab5db4f0930c368b479ea1122a24b6f47b7e5e239729ba6f",
+        "model.mjb": "abd8a45d29cd625a6fe932c913fda5888bf19f289fee14f62f350e09c1d6a5b1",
+        "replay.npz": "95bb7a64a366fd1faa37a995ca6de42e4a25664e42940aabe3693a71ac852215"
+      },
+      "policy_noise_seed": 18,
+      "condition": "additional_noise_variation"
+    }
+  ]
+}

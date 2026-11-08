@@ -1,0 +1,710 @@
+{
+  "status": "THIRD_BOOK_CHECKPOINT_TASK_PASS",
+  "base_git": "ab09225",
+  "branch": "stage10-development",
+  "scope": "Oracle checkpoint continuation: prior two books already inside and closed, third book starts on table; real push, grasp, transport, release, closure and return; not a new continuous five-metre three-book task or formal evaluation",
+  "root_cause": "World-frame offset comparison falsely treated tool rotation as slip; now measured in grip_pinch frame",
+  "original_thresholds_unchanged": {
+    "translation_m": 0.025,
+    "rotation_rad": 0.35,
+    "consecutive_samples": 3
+  },
+  "paired_dynamic_measurement_at_legacy_threshold": {
+    "time": 939.7199999916023,
+    "relative_error_m": 0.002834321923242623,
+    "legacy_world_offset_error_m": 0.025032418803875755,
+    "relative_rotation_error_rad": 0.05115302919674707,
+    "bilateral_contact": true
+  },
+  "additional_fixes": [
+    "Verified grasp joint pose held while wheels move; yaw target limited to 0.9 rad/s in third-book development config, same friction/force/linear speed/acceleration",
+    "Pre-dock at -0.55m x then lift held book above actual drawer and handle bounds plus 40mm; verify open drawer before release"
+  ],
+  "pytest": {
+    "passed": 81,
+    "failed": 0,
+    "seconds": 86.53,
+    "log": "outputs/stage10/pytest_third_book_fix.log"
+  },
+  "trials": [
+    {
+      "path": "outputs/stage10/book_third_toolframe_v8/result.json",
+      "result_sha256": "842c1a7c6436e298ec371db9fc2d5502f271c801df1dc163c8ff0cf36aa1d5c5",
+      "success": false,
+      "scope": "checkpoint continuation; not a continuous five-metre full task",
+      "source": "/home/li/projects/robot_exam/outputs/stage10/book_full_oracle_seed1011_v2",
+      "checkpoint": "0030.npz",
+      "initial_score": {
+        "success": false,
+        "books": [
+          {
+            "book": "book_0",
+            "rank": 0,
+            "inside_correct_layer": true,
+            "opening": 1.0868598273002674e-20
+          },
+          {
+            "book": "book_1",
+            "rank": 1,
+            "inside_correct_layer": true,
+            "opening": 7.179149126189051e-09
+          },
+          {
+            "book": "book_2",
+            "rank": 2,
+            "inside_correct_layer": false,
+            "opening": 0.27000000000000096
+          }
+        ],
+        "returned": false,
+        "final_base": [
+          -0.009711789018897885,
+          -0.6551954913414738,
+          0.014335429390117983
+        ]
+      },
+      "initial_sim_seconds": 808.4619999947062,
+      "slip_measurement_frame": "grip_pinch",
+      "checkpoint_sha256": "89adb501b22e32d4a38f2dcb8923df43554d6ab7a5bfd6b2257bd8598cfb1e4a",
+      "failure": {
+        "category": "path_planning",
+        "message": "Waypoint progress timeout segment=0 point=[-0.8500000000000001, 0.5] distance=0.191m budget=55.0s"
+      },
+      "sim_seconds": 1010.903999989919,
+      "wall_seconds": 59.5056614250002,
+      "score": {
+        "success": false,
+        "books": [
+          {
+            "book": "book_0",
+            "rank": 0,
+            "inside_correct_layer": true,
+            "opening": 9.831068276080826e-20
+          },
+          {
+            "book": "book_1",
+            "rank": 1,
+            "inside_correct_layer": true,
+            "opening": 0.000302381851572336
+          },
+          {
+            "book": "book_2",
+            "rank": 2,
+            "inside_correct_layer": false,
+            "opening": 0.27000000000000096
+          }
+        ],
+        "returned": false,
+        "final_base": [
+          -0.8604784323881411,
+          0.6907228031230117,
+          0.0602913562177042
+        ]
+      },
+      "operations": [],
+      "failure_stage": "navigation_replan",
+      "warnings": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "collision_events": [],
+      "payload_summary": {
+        "max_tool_drift_m": 0.0038165655309877035,
+        "max_legacy_world_drift_m": 0.03767942691276287,
+        "max_relative_rotation_rad": 0.05750715860365213,
+        "bilateral_fraction": 1.0
+      },
+      "elapsed_sim_seconds": 202.44199999521288,
+      "isolated_solver_log_exists": false
+    },
+    {
+      "path": "outputs/stage10/book_third_jointcarry_v9/result.json",
+      "result_sha256": "a4ab1c3c58303bd4cd2a8b17b8fb8a5c1158a878fcffedd1738a92d262e51794",
+      "success": false,
+      "scope": "checkpoint continuation; not a continuous five-metre full task",
+      "source": "/home/li/projects/robot_exam/outputs/stage10/book_full_oracle_seed1011_v2",
+      "checkpoint": "0030.npz",
+      "initial_score": {
+        "success": false,
+        "books": [
+          {
+            "book": "book_0",
+            "rank": 0,
+            "inside_correct_layer": true,
+            "opening": 3.8131948109600864e-19
+          },
+          {
+            "book": "book_1",
+            "rank": 1,
+            "inside_correct_layer": true,
+            "opening": 0.00030238185157233777
+          },
+          {
+            "book": "book_2",
+            "rank": 2,
+            "inside_correct_layer": false,
+            "opening": 0.27000000000000096
+          }
+        ],
+        "returned": false,
+        "final_base": [
+          -0.2887258347590249,
+          -0.46215339174389347,
+          0.02398446745793047
+        ]
+      },
+      "initial_sim_seconds": 888.5359999928127,
+      "slip_measurement_frame": "grip_pinch",
+      "checkpoint_sha256": "e93a894631645109b0839d04a74e8d29076263ce664db759eceeb48ae5381713",
+      "physical_checkpoint_path": "/home/li/projects/robot_exam/outputs/stage10/book_third_toolframe_v8/checkpoints/0003.npz",
+      "fresh_grasp": false,
+      "failure": {
+        "category": "path_planning",
+        "message": "Waypoint progress timeout segment=0 point=[-0.45, 0.5] distance=0.402m budget=55.0s"
+      },
+      "sim_seconds": 1011.5039999899049,
+      "wall_seconds": 40.98975091800003,
+      "score": {
+        "success": false,
+        "books": [
+          {
+            "book": "book_0",
+            "rank": 0,
+            "inside_correct_layer": true,
+            "opening": 4.306738302724827e-19
+          },
+          {
+            "book": "book_1",
+            "rank": 1,
+            "inside_correct_layer": true,
+            "opening": 0.000302381851572337
+          },
+          {
+            "book": "book_2",
+            "rank": 2,
+            "inside_correct_layer": false,
+            "opening": 0.27000000000000096
+          }
+        ],
+        "returned": false,
+        "final_base": [
+          -0.8515421341809721,
+          0.5227876662578632,
+          0.2752769873909607
+        ]
+      },
+      "operations": [],
+      "failure_stage": "navigation_replan",
+      "warnings": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "collision_events": [],
+      "payload_summary": {
+        "max_tool_drift_m": 0.0009321130416381073,
+        "max_legacy_world_drift_m": 0.12705502265141635,
+        "max_relative_rotation_rad": 0.017420185212359628,
+        "bilateral_fraction": 1.0
+      },
+      "elapsed_sim_seconds": 122.96799999709219,
+      "isolated_solver_log_exists": false
+    },
+    {
+      "path": "outputs/stage10/book_third_jointcarry_v10/result.json",
+      "result_sha256": "84410f947e62d79ba34839e77b2fefc0a706960087a3252ece9eee9cd897c912",
+      "success": false,
+      "scope": "checkpoint continuation; not a continuous five-metre full task",
+      "source": "/home/li/projects/robot_exam/outputs/stage10/book_full_oracle_seed1011_v2",
+      "checkpoint": "0030.npz",
+      "initial_score": {
+        "success": false,
+        "books": [
+          {
+            "book": "book_0",
+            "rank": 0,
+            "inside_correct_layer": true,
+            "opening": 3.8131948109600864e-19
+          },
+          {
+            "book": "book_1",
+            "rank": 1,
+            "inside_correct_layer": true,
+            "opening": 0.00030238185157233777
+          },
+          {
+            "book": "book_2",
+            "rank": 2,
+            "inside_correct_layer": false,
+            "opening": 0.27000000000000096
+          }
+        ],
+        "returned": false,
+        "final_base": [
+          -0.2887258347590249,
+          -0.46215339174389347,
+          0.02398446745793047
+        ]
+      },
+      "initial_sim_seconds": 888.5359999928127,
+      "slip_measurement_frame": "grip_pinch",
+      "checkpoint_sha256": "e93a894631645109b0839d04a74e8d29076263ce664db759eceeb48ae5381713",
+      "physical_checkpoint_path": "/home/li/projects/robot_exam/outputs/stage10/book_third_toolframe_v8/checkpoints/0003.npz",
+      "fresh_grasp": false,
+      "score": {
+        "success": false,
+        "books": [
+          {
+            "book": "book_0",
+            "rank": 0,
+            "inside_correct_layer": true,
+            "opening": 5.934232133959109e-20
+          },
+          {
+            "book": "book_1",
+            "rank": 1,
+            "inside_correct_layer": true,
+            "opening": 0.00030238185157233425
+          },
+          {
+            "book": "book_2",
+            "rank": 2,
+            "inside_correct_layer": false,
+            "opening": 0.008319955819464769
+          }
+        ],
+        "returned": true,
+        "final_base": [
+          -4.779755786719689,
+          -0.6786169560541315,
+          0.029256962686980963
+        ]
+      },
+      "operations": [
+        {
+          "rank_from_visual_area": 2,
+          "book": "book_2",
+          "area": 0.0384,
+          "opened": 0.26,
+          "closed": {
+            "layer": 2,
+            "initial": 2.5587569424287725e-16,
+            "target": 0.0,
+            "actual": 0.008321980196605993,
+            "error": 0.008321980196605993,
+            "expert": "oracle joint constraint geometry"
+          },
+          "lift_m": null,
+          "strategy": "restored real third-book grip"
+        }
+      ],
+      "sim_seconds": 1065.5699999886265,
+      "wall_seconds": 35.96804353299967,
+      "failure_stage": "checkpoint_return_home",
+      "warnings": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "collision_events": [],
+      "payload_summary": {
+        "max_tool_drift_m": 0.0011529388990466113,
+        "max_legacy_world_drift_m": 0.12320787228255,
+        "max_relative_rotation_rad": 0.017420185212359628,
+        "bilateral_fraction": 1.0
+      },
+      "elapsed_sim_seconds": 177.03399999581382,
+      "isolated_solver_log_exists": false
+    },
+    {
+      "path": "outputs/stage10/book_third_clearfront_v11/result.json",
+      "result_sha256": "53a7660e638f74f793b0e259846715b08d0b30e8a4d00b2b8ae307c9de52253f",
+      "success": false,
+      "scope": "checkpoint continuation; not a continuous five-metre full task",
+      "source": "/home/li/projects/robot_exam/outputs/stage10/book_full_oracle_seed1011_v2",
+      "checkpoint": "0030.npz",
+      "initial_score": {
+        "success": false,
+        "books": [
+          {
+            "book": "book_0",
+            "rank": 0,
+            "inside_correct_layer": true,
+            "opening": 3.8131948109600864e-19
+          },
+          {
+            "book": "book_1",
+            "rank": 1,
+            "inside_correct_layer": true,
+            "opening": 0.00030238185157233777
+          },
+          {
+            "book": "book_2",
+            "rank": 2,
+            "inside_correct_layer": false,
+            "opening": 0.27000000000000096
+          }
+        ],
+        "returned": false,
+        "final_base": [
+          -0.2887258347590249,
+          -0.46215339174389347,
+          0.02398446745793047
+        ]
+      },
+      "initial_sim_seconds": 888.5359999928127,
+      "slip_measurement_frame": "grip_pinch",
+      "checkpoint_sha256": "e93a894631645109b0839d04a74e8d29076263ce664db759eceeb48ae5381713",
+      "physical_checkpoint_path": "/home/li/projects/robot_exam/outputs/stage10/book_third_toolframe_v8/checkpoints/0003.npz",
+      "fresh_grasp": false,
+      "failure": {
+        "category": "drawer_not_open",
+        "message": "Open drawer was displaced before book release"
+      },
+      "sim_seconds": 957.8479999911737,
+      "wall_seconds": 20.55736413900013,
+      "score": {
+        "success": false,
+        "books": [
+          {
+            "book": "book_0",
+            "rank": 0,
+            "inside_correct_layer": true,
+            "opening": 8.021432216407105e-20
+          },
+          {
+            "book": "book_1",
+            "rank": 1,
+            "inside_correct_layer": true,
+            "opening": 0.0003023818515723381
+          },
+          {
+            "book": "book_2",
+            "rank": 2,
+            "inside_correct_layer": false,
+            "opening": 0.06850167225268959
+          }
+        ],
+        "returned": false,
+        "final_base": [
+          -0.22220979890282547,
+          0.503210555604498,
+          -0.003154424547179892
+        ]
+      },
+      "operations": [],
+      "failure_stage": "side_book_transport",
+      "warnings": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "collision_events": [],
+      "payload_summary": {
+        "max_tool_drift_m": 0.001211599158914607,
+        "max_legacy_world_drift_m": 0.1264577585149018,
+        "max_relative_rotation_rad": 0.017627129880467038,
+        "bilateral_fraction": 1.0
+      },
+      "elapsed_sim_seconds": 69.31199999836099,
+      "isolated_solver_log_exists": false
+    },
+    {
+      "path": "outputs/stage10/book_third_clearhandle_v12/result.json",
+      "result_sha256": "3b54d8d254d437f35379f86d3adfe1f6384793a19575ed479f7e446a3f2a5986",
+      "success": true,
+      "scope": "checkpoint continuation; not a continuous five-metre full task",
+      "source": "/home/li/projects/robot_exam/outputs/stage10/book_full_oracle_seed1011_v2",
+      "checkpoint": "0030.npz",
+      "initial_score": {
+        "success": false,
+        "books": [
+          {
+            "book": "book_0",
+            "rank": 0,
+            "inside_correct_layer": true,
+            "opening": 3.8131948109600864e-19
+          },
+          {
+            "book": "book_1",
+            "rank": 1,
+            "inside_correct_layer": true,
+            "opening": 0.00030238185157233777
+          },
+          {
+            "book": "book_2",
+            "rank": 2,
+            "inside_correct_layer": false,
+            "opening": 0.27000000000000096
+          }
+        ],
+        "returned": false,
+        "final_base": [
+          -0.2887258347590249,
+          -0.46215339174389347,
+          0.02398446745793047
+        ]
+      },
+      "initial_sim_seconds": 888.5359999928127,
+      "slip_measurement_frame": "grip_pinch",
+      "checkpoint_sha256": "e93a894631645109b0839d04a74e8d29076263ce664db759eceeb48ae5381713",
+      "physical_checkpoint_path": "/home/li/projects/robot_exam/outputs/stage10/book_third_toolframe_v8/checkpoints/0003.npz",
+      "fresh_grasp": false,
+      "score": {
+        "success": true,
+        "books": [
+          {
+            "book": "book_0",
+            "rank": 0,
+            "inside_correct_layer": true,
+            "opening": -1.6998003950119458e-21
+          },
+          {
+            "book": "book_1",
+            "rank": 1,
+            "inside_correct_layer": true,
+            "opening": 0.00030238185157233874
+          },
+          {
+            "book": "book_2",
+            "rank": 2,
+            "inside_correct_layer": true,
+            "opening": 0.006128625792250136
+          }
+        ],
+        "returned": true,
+        "final_base": [
+          -4.775586551227425,
+          -0.6832787318377744,
+          0.028621677516722344
+        ]
+      },
+      "operations": [
+        {
+          "rank_from_visual_area": 2,
+          "book": "book_2",
+          "area": 0.0384,
+          "opened": 0.26,
+          "closed": {
+            "layer": 2,
+            "initial": 0.24714172151719543,
+            "target": 0.0,
+            "actual": 0.0062288149903003635,
+            "error": 0.0062288149903003635,
+            "expert": "oracle joint constraint geometry"
+          },
+          "lift_m": null,
+          "strategy": "restored real third-book grip"
+        }
+      ],
+      "sim_seconds": 1069.7879999885267,
+      "wall_seconds": 36.019011094000234,
+      "failure_stage": null,
+      "warnings": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "collision_events": [],
+      "payload_summary": {
+        "max_tool_drift_m": 0.0011622541157588246,
+        "max_legacy_world_drift_m": 0.1264577585149018,
+        "max_relative_rotation_rad": 0.017420185212359628,
+        "bilateral_fraction": 1.0
+      },
+      "elapsed_sim_seconds": 181.25199999571407,
+      "isolated_solver_log_exists": false
+    },
+    {
+      "path": "outputs/stage10/book_third_completed_recorded_v13/result.json",
+      "result_sha256": "b24b7dd7a8a982c77c7e5bc8961d0b84eccdbde283738cd5f985e050e02cc316",
+      "success": true,
+      "scope": "checkpoint continuation; not a continuous five-metre full task",
+      "source": "/home/li/projects/robot_exam/outputs/stage10/book_full_oracle_seed1011_v2",
+      "checkpoint": "0030.npz",
+      "initial_score": {
+        "success": false,
+        "books": [
+          {
+            "book": "book_0",
+            "rank": 0,
+            "inside_correct_layer": true,
+            "opening": 1.0868598273002674e-20
+          },
+          {
+            "book": "book_1",
+            "rank": 1,
+            "inside_correct_layer": true,
+            "opening": 7.179149126189051e-09
+          },
+          {
+            "book": "book_2",
+            "rank": 2,
+            "inside_correct_layer": false,
+            "opening": 0.27000000000000096
+          }
+        ],
+        "returned": false,
+        "final_base": [
+          -0.009711789018897885,
+          -0.6551954913414738,
+          0.014335429390117983
+        ]
+      },
+      "initial_sim_seconds": 808.4619999947062,
+      "slip_measurement_frame": "grip_pinch",
+      "checkpoint_sha256": "89adb501b22e32d4a38f2dcb8923df43554d6ab7a5bfd6b2257bd8598cfb1e4a",
+      "physical_checkpoint_path": "/home/li/projects/robot_exam/outputs/stage10/book_full_oracle_seed1011_v2/checkpoints/0030.npz",
+      "fresh_grasp": true,
+      "score": {
+        "success": true,
+        "books": [
+          {
+            "book": "book_0",
+            "rank": 0,
+            "inside_correct_layer": true,
+            "opening": 3.3432234965077326e-19
+          },
+          {
+            "book": "book_1",
+            "rank": 1,
+            "inside_correct_layer": true,
+            "opening": 0.00030238185157233316
+          },
+          {
+            "book": "book_2",
+            "rank": 2,
+            "inside_correct_layer": true,
+            "opening": 0.009316761248906135
+          }
+        ],
+        "returned": true,
+        "final_base": [
+          -4.777740507280262,
+          -0.6776349831973167,
+          0.030402831141395806
+        ]
+      },
+      "operations": [
+        {
+          "rank_from_visual_area": 2,
+          "book": "book_2",
+          "area": 0.0384,
+          "opened": 0.26,
+          "closed": {
+            "layer": 2,
+            "initial": 0.22232596304678617,
+            "target": 0.0,
+            "actual": 0.009472803574229048,
+            "error": 0.009472803574229048,
+            "expert": "oracle joint constraint geometry"
+          },
+          "lift_m": 0.09204475672367418,
+          "strategy": "Oracle physical push-and-side-pinch"
+        }
+      ],
+      "sim_seconds": 1070.6379999885066,
+      "wall_seconds": 152.9110225700001,
+      "failure_stage": null,
+      "warnings": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "collision_events": [],
+      "video": {
+        "status": "PASS",
+        "fps": 5,
+        "frames": 1311,
+        "stream": {
+          "width": 640,
+          "height": 480,
+          "duration": "262.200000",
+          "nb_read_frames": "1311"
+        },
+        "opengl": {
+          "vendor": "Mesa",
+          "renderer": "llvmpipe (LLVM 15.0.7, 256 bits)"
+        },
+        "first_sim_seconds": 808.4639999947061,
+        "last_sim_seconds": 1070.4659999885107,
+        "continuous": true,
+        "cadence_validated": true,
+        "full_decode": "PASS"
+      },
+      "payload_summary": {
+        "max_tool_drift_m": 0.002838635482974344,
+        "max_legacy_world_drift_m": 0.12598274055457517,
+        "max_relative_rotation_rad": 0.04801584834145842,
+        "bilateral_fraction": 1.0
+      },
+      "elapsed_sim_seconds": 262.1759999938005,
+      "isolated_solver_log_exists": false
+    }
+  ],
+  "success_video": {
+    "path": "outputs/stage10/book_third_completed_recorded_v13/video/demo.mp4",
+    "sha256": "72c057308fca763845cb8fb2559bfcc9e475113146d8a989607454ce0ce75b9c",
+    "status": "PASS",
+    "fps": 5,
+    "frames": 1311,
+    "stream": {
+      "width": 640,
+      "height": 480,
+      "duration": "262.200000",
+      "nb_read_frames": "1311"
+    },
+    "opengl": {
+      "vendor": "Mesa",
+      "renderer": "llvmpipe (LLVM 15.0.7, 256 bits)"
+    },
+    "first_sim_seconds": 808.4639999947061,
+    "last_sim_seconds": 1070.4659999885107,
+    "continuous": true,
+    "cadence_validated": true,
+    "full_decode": "PASS"
+  },
+  "independent_release_checkpoint_image": "outputs/stage10/book_third_completed_recorded_v13/book_inside_open_drawer_checkpoint.png",
+  "source_sha256": {
+    "src/robot_exam/tasks/runtime.py": "b25e10f1bdfcfa2a9249ba8d3b6290f7d0116e58083d51d0326cee7ec2e521f8",
+    "src/robot_exam/tasks/drawer.py": "a0d093701bbbb9becd2a4a465b8105ca2825235584bdb16ce3d923778f4a3123",
+    "src/robot_exam/control/grasp_monitor.py": "c77b84f522c76e785cefce43d1f2cc99e724c1d0db687baf33151afb4a4ed1de",
+    "scripts/resume_stage10_book_last.py": "d29c282a093e4c54fc187234e5dbfe4b6835e3ab12630a06c874db9cc9120e9e",
+    "configs/stage10_book_joint_carry_dev_v5.json": "29763926198c7a2faf784e23ae8e9acc9b2331c839d1b447c0231fe0b00b25fa",
+    "tests/test_grasp_monitor.py": "f36de0e06b1ddb91b91271ac72dd39504abf079f20ebc76c917df010df5d1fd1"
+  },
+  "training_performed": false,
+  "formal_evaluation_performed": false,
+  "scoring_modified": false
+}

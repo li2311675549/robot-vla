@@ -1,0 +1,3 @@
+# Optional tiny native OpenPI client dependencies, isolated in project .venv.
+websockets==16.0
+msgpack==1.1.2

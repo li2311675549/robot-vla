@@ -1,0 +1,200 @@
+{
+  "status": "DEVELOPMENT_MILESTONE_PARTIAL_NOT_FORMAL_ACCEPTANCE",
+  "books_v13_development": [
+    {
+      "seed": 200006,
+      "profile": "v13",
+      "status": "PASS",
+      "sim_seconds": 1201.1019999854216,
+      "wall_seconds": 723.7813214210037,
+      "error": null,
+      "path": "outputs/stage20/books_centerline_scatter_dev200006_v13_recorded/result.json"
+    },
+    {
+      "seed": 200007,
+      "profile": "v13",
+      "status": "FAIL",
+      "sim_seconds": 326.3380000008301,
+      "wall_seconds": 58.5599639600041,
+      "error": "RRT goal is in physical collision: forearm_link/wrist_2_link penetration=0.000976m | RRT goal is in physical collision: forearm_link/wrist_2_link penetration=0.000967m | IK failed: position=0.102941m rotation=0.857241rad target=[0.30975779 0.44520205 0.61060673]",
+      "path": "outputs/stage20/books_centerline_scatter_dev200007_v13/result.json"
+    },
+    {
+      "seed": 200008,
+      "profile": "v13",
+      "status": "FAIL",
+      "sim_seconds": 189.92200000017874,
+      "wall_seconds": 33.00448761800362,
+      "error": "No collision-safe physical push bay reaches both above-book and contact entry targets",
+      "path": "outputs/stage20/books_centerline_scatter_dev200008_v13/result.json"
+    }
+  ],
+  "books_v13_complete_successes": 1,
+  "books_v13_attempts": 3,
+  "book_video": {
+    "path": "outputs/stage20/books_centerline_scatter_dev200006_v13_recorded/video/demo.mp4",
+    "frames": 6006,
+    "full_decode": "PASS",
+    "scope": "continuous actual Oracle5m three-book storage/close/home development success, CPU llvmpipe rendering"
+  },
+  "fruit_data": {
+    "qualified_parent_operations": 6,
+    "independent_scene_contexts": 2,
+    "phase_clips": 12,
+    "frames": 562,
+    "classes": [
+      "apple",
+      "banana",
+      "orange"
+    ],
+    "full_rate_and5hz_replay": "12/12 phases PASS",
+    "lerobot": "PASS",
+    "native_openpi": "PASS",
+    "rightmost_banana2100007": "physical and both-rate replay pass, format admission pending",
+    "hard_rightmost_apple_orange2100007": "original and bounded pose/feedback/clutter variants failed; all evidence retained"
+  },
+  "dock_banana_pair": {
+    "scope": "paired checkpoint dock forks; not autonomous full parent success",
+    "source": "outputs/stage20/multifruit_pilot_train2100002_banana_v1",
+    "checkpoint": "0006.npz",
+    "goal": [
+      -0.04999999999999999,
+      1.29,
+      0.3
+    ],
+    "restore_original_grasp_anchor": true,
+    "initialization": "same integration checkpoint; all variants measured arm reference/carry orientation and saved actuator wheel command; original upstream controller history not claimed reconstructed",
+    "results": [
+      {
+        "variant": "preapproach",
+        "success": false,
+        "error": "Local dock trajectory timed out",
+        "error_type": "TaskFailure",
+        "elapsed_sim_seconds": 45.00000000021487,
+        "final_base": [
+          -0.29495528981096397,
+          1.1761211912727811,
+          0.26671507778314996
+        ],
+        "final_bilateral": true,
+        "collision_events": [],
+        "warning_counts": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "variant": "braked_preapproach",
+        "success": true,
+        "elapsed_sim_seconds": 44.750000000213674,
+        "final_base": [
+          -0.06206945364538728,
+          1.2631649108566532,
+          0.3147750808014306
+        ],
+        "final_bilateral": true,
+        "collision_events": [],
+        "warning_counts": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "variant": "direct_braked",
+        "success": true,
+        "elapsed_sim_seconds": 19.908000000095058,
+        "final_base": [
+          -0.04881035351785782,
+          1.287954972476188,
+          0.28461907853100105
+        ],
+        "final_bilateral": true,
+        "collision_events": [],
+        "warning_counts": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      }
+    ]
+  },
+  "dock_orange_recovery": {
+    "source": "outputs/stage20/multifruit_orange2100002_settled_guard_v4/summary.json",
+    "success": true,
+    "elapsed_sim_seconds": 19.675999999954144,
+    "slip_guard_unchanged": true,
+    "bounded_physical_revalidation": true,
+    "direct_to_preapproach_fallback_not_implemented": true
+  },
+  "book_large_grasp_geometry": {
+    "aabb_half_x_m": 0.11172180428367395,
+    "centreline_half_x_m": 0.08369265995795441,
+    "old_grasp_outside_actual_footprint_m": 0.013029144325719541,
+    "local_actual_lift_m": 0.09169964743704873
+  },
+  "model_sharing": {
+    "status": "PASS_BYTE_IDENTICAL_MODEL_SHARING",
+    "models": 28,
+    "unique_models": 3,
+    "free_bytes_before": 57243914240,
+    "free_bytes_after": 57575481344,
+    "all_episode_paths_retained": true,
+    "model_bytes_changed": false,
+    "read_only_archive_aliases": true
+  },
+  "renderer_audit": {
+    "scope": "same saved initial state, renderer comparison only; no task operation",
+    "source_episode": "outputs/stage20/multifruit_pilot_train2100002_apple_v1/place",
+    "views": {
+      "front": {
+        "mean_absolute_byte_error": 0.13412109375,
+        "fraction_channels_gt10": 0.00013997395833333334,
+        "max_byte_error": 54.0
+      },
+      "wrist": {
+        "mean_absolute_byte_error": 0.3363205295138889,
+        "fraction_channels_gt10": 0.00012912326388888888,
+        "max_byte_error": 54.0
+      }
+    },
+    "opengl": {
+      "vendor": "NVIDIA Corporation",
+      "renderer": "NVIDIA GeForce RTX 4070 Laptop GPU/PCIe/SSE2"
+    }
+  },
+  "pytest": {
+    "passed": 202,
+    "total": 202,
+    "seconds": 96.76,
+    "log": "outputs/stage20/pytest_full_oracle_and_shared_v3.log",
+    "note": "Later renderer provenance bookkeeping needs related data checks; full task/formal reliability is separate"
+  },
+  "remaining": [
+    "v14 small-book recovery localPASS but whole run later failed from self-collision at RRT start",
+    "seed200007 release path self-collision; do not relax collision threshold",
+    "hard clutter fruit grasp/transport failures",
+    "3/5curriculum capture support and broader coverage",
+    "native GPU capture/reconstruction qualification",
+    "independent heldout/full-task evaluations"
+  ],
+  "free_gib": 53.40635299682617,
+  "new_model_training": false,
+  "server_connected": false
+}

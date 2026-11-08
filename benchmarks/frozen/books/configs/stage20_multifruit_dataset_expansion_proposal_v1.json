@@ -1,0 +1,226 @@
+{
+  "status": "APPROVED_FOR_LOCAL_PREPARATION_WITH_NEW_COMPLEX_DATA_DOMINANT",
+  "scope": "Local expert/data engineering; no new training, paid resource or upload authorization",
+  "old_release": {
+    "accepted_episodes": 173,
+    "frames": 17646,
+    "class_counts": {
+      "apple": 60,
+      "banana": 60,
+      "orange": 53
+    },
+    "splits": {
+      "train": 121,
+      "validation": 26,
+      "test": 26
+    },
+    "task": "stationary single-fruit pick/place on green local marker",
+    "reuse_view": "green_target_v2 explicit-prompt view; original files preserved",
+    "compatibility_gate": "same action timing, units, joint order, cameras and deployment executor; do not mix unverified views"
+  },
+  "current_trained_checkpoint": {
+    "step_label": 9999,
+    "optimizer_updates": 10000,
+    "training_episodes": 6,
+    "training_frames": 612,
+    "not_full_173_or_185_training": true
+  },
+  "new_data_target": {
+    "accepted_parent_operations_goal": 240,
+    "independent_scene_contexts_proposed": 80,
+    "target_operations_per_context": 3,
+    "categories": [
+      "apple",
+      "banana",
+      "orange"
+    ],
+    "target_class_counts_each": 80,
+    "split_context_counts": {
+      "train": 56,
+      "validation": 12,
+      "test": 12
+    },
+    "split_parent_counts_if_all_qualify": {
+      "train": 168,
+      "validation": 36,
+      "test": 36
+    },
+    "scene_object_counts": [
+      3,
+      5,
+      10
+    ],
+    "counting_unit": "One successful target-fruit operation is one parent; splitting grasp/place or encoding data again never counts as another independent parent/scene",
+    "heldout_successes_not_guaranteed": true,
+    "all_attempts_and_coverage_gaps_retained": true,
+    "scene_context_counts_by_objects": {
+      "3": 12,
+      "5": 20,
+      "10": 48
+    },
+    "scene_context_counts_per_split": {
+      "train": {
+        "3": 8,
+        "5": 14,
+        "10": 34
+      },
+      "validation": {
+        "3": 2,
+        "5": 3,
+        "10": 7
+      },
+      "test": {
+        "3": 2,
+        "5": 3,
+        "10": 7
+      }
+    },
+    "scene_priority": "Actual approved10-fruit/3-labelled-bin manipulation contexts dominate; use existing robot, camera, collision geometry. No training-only deletion of surrounding fruits."
+  },
+  "seed_ranges_proposed_not_started": {
+    "train": [
+      2100001,
+      2100056
+    ],
+    "validation": [
+      2200001,
+      2200012
+    ],
+    "id_test": [
+      2300001,
+      2300012
+    ],
+    "ood_rollouts": [
+      2400001,
+      2400012
+    ]
+  },
+  "pilot": {
+    "training_contexts": 6,
+    "attempted_target_operations": 18,
+    "scene_counts": [
+      3,
+      5,
+      10
+    ],
+    "maximum_new_output_bytes": 1288490188,
+    "minimum_free_gib": 25.5,
+    "status": "SMALL_PIPELINE_PASS_BULK_BLOCKED_BY_DOCK_GRASP_AND_STORAGE_COVERAGE",
+    "gate": "Physical success, target instruction unambiguous, real parking, synchronized RGB/state/action, normal-actuator replay; actual bytes measured before any batch expansion",
+    "qualified_pilot_parent_operations": 3,
+    "qualified_pilot_clips": 6,
+    "qualified_pilot_frames": 275,
+    "independent_scene_contexts_so_far": 1,
+    "full_rate_and_5hz_executor_replay": "6/6 qualified phases PASS; not learned-policy inference",
+    "attempts_completed": 7,
+    "unique_scene_category_targets_attempted": 6,
+    "scene_contexts_attempted": 2,
+    "acceptance_summary": "docs/results/stage20_multifruit_pilot_20261105_v1.json"
+  },
+  "ood": {
+    "rollout_contexts_proposed": 12,
+    "target_rollouts_proposed": 36,
+    "excluded_from_training": true,
+    "include_failures_in_online_metrics": true,
+    "definition_requires_distribution_rule_not_just_new_seed": true,
+    "types": [
+      "heldout spatial regions for target selection",
+      "heldout pose or position-pose combinations",
+      "close same-class neighbours and partial occlusion within physical graspability",
+      "near-edge placement and changed bin occupancy"
+    ],
+    "success_demonstration_quota": null,
+    "promoting_a_former_ood_domain_requires_a_new_heldout_protocol": true
+  },
+  "policy_contract": {
+    "learned_actions": "6 absolute high-level UR5 joint goals in rad plus normalized gripper closure",
+    "observation": "real front+wrist RGB, measured7D robot state and explicit language; no hidden target IDs/poses",
+    "learned_skills": [
+      "stationary specified-fruit grasp/lift/hold",
+      "stationary held-fruit placement into named class bin and withdrawal"
+    ],
+    "traditional_modules": [
+      "navigation",
+      "payload base transport",
+      "docking",
+      "FSM",
+      "geometric door/drawer control"
+    ],
+    "navigation_frames_excluded_from_stationary_supervision": true,
+    "all_segments_grouped_by_parent_and_scene": true,
+    "old_green_marker_task_kept_distinct_from_new_bin_tasks": true
+  },
+  "mixing_proposal": {
+    "sampling_old_new_initial": [
+      0.2,
+      0.8
+    ],
+    "unit": "sample by compatible task/phase/class, not blind concatenation or equal raw frame counts",
+    "alternatives_to_compare_when_resources_authorized": [
+      "old-only",
+      "new-only",
+      "mixed"
+    ],
+    "statistics": "Recompute for combined training partitions only; no validation/test/OOD frames",
+    "training_from_existing_base_in_new_run": "PROPOSED, not launched; no automatic continuation of the six-episode fit",
+    "user_preference": "New actual multiobject scenes dominate. Old data is retained for rehearsal/compatibility, not the main objective. Weight remains subject to validation."
+  },
+  "resource_gate": {
+    "current_free_gib_approx": 27.86,
+    "old_format_240_estimated_gib": 13.5,
+    "large_collection_ready": false,
+    "next": "Proceed with bounded pilot/control repair and per-batch storage guards; do not retain a third full upload tar. Expert/coverage gates still pending; large_collection_ready remains false.",
+    "free_gib_after_user_approved_cleanup": 43.324058532714844,
+    "storage_note": "Two explicitly approved unrelated LIBERO data targets removed; original27.86GiB audit is historical. Pilot must estimate total raw/export/replay peak before a full batch.",
+    "local_redundancy_cleanup_authorized": true,
+    "protected_unique_artifacts": [
+      "source/models",
+      "unique raw successful and failed experiment evidence",
+      "unique source datasets",
+      "base Python dependencies and existing working environments"
+    ],
+    "measured_new_parent_raw_mib": [
+      87.887,
+      86.418
+    ],
+    "current_free_gib_after_pilot": 42.42,
+    "free_gib_after_lossless_storage_reclamation": 54.513916015625,
+    "storage_acceptance": "docs/results/storage_reclamation_20261105_v1.json",
+    "projected_raw_and_export_240_gib": 25.795610919594765,
+    "projected_margin_after_25gib_reserve": 3.7183050960302353
+  },
+  "milestones": [
+    {
+      "id": "M0",
+      "task": "Audit current data and full regression",
+      "status": "PASS:188tests; data audit saved"
+    },
+    {
+      "id": "M1",
+      "task": "Integrated three-book scattered-scene development and video",
+      "status": "DEVELOPMENT_BLOCKED:seed200006 v11 ended FAIL540.142sim; small book stored, medium push-base IK/path collision, not formal evaluation"
+    },
+    {
+      "id": "M2",
+      "task": "Fruit cross-seed and scatter development; door regression; frozen ten-trial task evaluation",
+      "status": "PENDING"
+    },
+    {
+      "id": "M3",
+      "task": "Multiobject stationary capture interface, target prompts and small physical pilot",
+      "status": "PENDING"
+    },
+    {
+      "id": "M4",
+      "task": "Storage gate then staged240-parent target and independent OOD registry; mixture qualification",
+      "status": "PENDING"
+    },
+    {
+      "id": "M5",
+      "task": "Authorized server upload, training and unified learned-policy evaluation",
+      "status": "REQUIRES_FUTURE_RESOURCE_AND_TRAINING_AUTHORIZATION"
+    }
+  ],
+  "batch_collection_authorized_by_this_review_request": true,
+  "new_training_authorized": false
+}

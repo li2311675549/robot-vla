@@ -1,0 +1,56 @@
+{
+  "protocol": "pi05_orange_prefix2_remaining5_future_v2",
+  "split": "development_not_formal",
+  "scene_seeds": [
+    15001
+  ],
+  "skills": [
+    "orange"
+  ],
+  "policies": [
+    "openpi"
+  ],
+  "checkpoint_optimizer_step": 10000,
+  "server_checkpoint_label": "9999",
+  "model_queries_hz_simulation": 2.5,
+  "action_horizon": 10,
+  "execute_actions": 2,
+  "policy_noise_seed_per_connection": null,
+  "maximum_response_wall_seconds": 2.0,
+  "network_image_size": 224,
+  "websocket_compression": "deflate",
+  "gripper_adapter": "bounded_projection_v1",
+  "maximum_gripper_extrapolation": 0.1,
+  "sim_seconds_limit": 60,
+  "wall_seconds_limit": 600,
+  "record_all_trials": true,
+  "unexpected_nonfinger_penetration_limit_m": 0.003,
+  "success": {
+    "minimum_lift_m": 0.055,
+    "bilateral_hold_seconds": 1.5,
+    "placement_xy_m": 0.04,
+    "placement_z_m": 0.01,
+    "final_speed_m_s": 0.01
+  },
+  "note": "Future continuation only for never attempted orange draws15..19, same fixed15001 and prefix2. Keep prior15 outcomes including interrupted12..14 unchanged. Do not auto-start, rent, restart or extend GPU. New physical results after sensor/admission fixes require their own source freeze and must not be silently treated as the old source cohort.",
+  "reference_matrix": "outputs/stage15/remote_fruit_eval_v1/matrix_v2",
+  "interpolate_lookahead": true,
+  "evaluation_population": "EXPOSED_FIXED_TRAINING_CONDITION_EXECUTION_PREFIX_ABLATION_NOT_PRIMARY20",
+  "evaluation_noise_seeds": [
+    15,
+    16,
+    17,
+    18,
+    19
+  ],
+  "minimum_free_gib": 25.5,
+  "maximum_output_bytes": 41943040,
+  "maximum_consecutive_infrastructure_failures": 3,
+  "expected_cases": 5,
+  "shared_runner_lock": true,
+  "serial_server_admission": true,
+  "transport_version": "ram_supervised_ssh_v6",
+  "video_backend": "ffmpeg",
+  "model_action_grid_hz": 5,
+  "status": "PLANNED_NOT_RUN_REQUIRES_USER_CONFIRMED_NEW_GPU_WINDOW"
+}

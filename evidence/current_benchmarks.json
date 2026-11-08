@@ -1,0 +1,39 @@
+{
+  "door": {
+    "task": "门开关",
+    "attempts": 10,
+    "successes": 10,
+    "success_rate": 1.0,
+    "mean_success_sim_seconds": 451.23720000142646,
+    "mean_success_wall_seconds": 106.1680950126989,
+    "failure_categories": {},
+    "source": "outputs/stage14/continuous_door/formal_contact_v4"
+  },
+  "fruit": {
+    "task": "十果分类",
+    "attempts": 10,
+    "successes": 2,
+    "success_rate": 0.2,
+    "mean_success_sim_seconds": 1771.2899999719384,
+    "mean_success_wall_seconds": 652.4006743319997,
+    "failure_categories": {
+      "grasp_contact": 1,
+      "dock": 2,
+      "gripper_slip": 5
+    },
+    "source": "outputs/stage11/fruit_formal_baseline_v1"
+  },
+  "books": {
+    "task": "新散落三书收纳返航",
+    "attempts": 10,
+    "successes": 4,
+    "success_rate": 0.4,
+    "mean_success_sim_seconds": 1207.8229999852626,
+    "mean_success_wall_seconds": 227.28891610400024,
+    "failure_categories": {
+      "arm_tracking": 5,
+      "simulation_or_scoring": 1
+    },
+    "source": "outputs/stage20/books_scatter_formal_v28"
+  }
+}

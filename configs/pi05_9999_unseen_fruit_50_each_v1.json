@@ -1,0 +1,123 @@
+{
+  "protocol": "pi05_9999_unseen_fruit_50_each_v1",
+  "split": "development_not_formal",
+  "scene_seeds": [
+    380001,
+    380002,
+    380003,
+    380004,
+    380005,
+    380006,
+    380007,
+    380008,
+    380009,
+    380010,
+    380011,
+    380012,
+    380013,
+    380014,
+    380015,
+    380016,
+    380017,
+    380018,
+    380019,
+    380020,
+    380021,
+    380022,
+    380023,
+    380024,
+    380025,
+    380026,
+    380027,
+    380028,
+    380029,
+    380030,
+    380031,
+    380032,
+    380033,
+    380034,
+    380035,
+    380036,
+    380037,
+    380038,
+    380039,
+    380040,
+    380041,
+    380042,
+    380043,
+    380044,
+    380045,
+    380046,
+    380047,
+    380048,
+    380049,
+    380050
+  ],
+  "skills": [
+    "apple",
+    "banana",
+    "orange"
+  ],
+  "policies": [
+    "openpi"
+  ],
+  "checkpoint_optimizer_step": 10000,
+  "server_checkpoint_label": "9999",
+  "model_queries_hz_simulation": 5,
+  "action_horizon": 10,
+  "execute_actions": 1,
+  "policy_noise_seed_per_connection": 0,
+  "maximum_response_wall_seconds": 2.0,
+  "network_image_size": 224,
+  "websocket_compression": "deflate",
+  "gripper_adapter": "bounded_projection_v1",
+  "maximum_gripper_extrapolation": 0.1,
+  "sim_seconds_limit": 60,
+  "wall_seconds_limit": 600,
+  "record_all_trials": true,
+  "unexpected_nonfinger_penetration_limit_m": 0.003,
+  "success": {
+    "minimum_lift_m": 0.055,
+    "bilateral_hold_seconds": 1.5,
+    "placement_xy_m": 0.04,
+    "placement_z_m": 0.01,
+    "final_speed_m_s": 0.01
+  },
+  "note": "User authorized50 trials per fruit. Fifty new scene seeds, same randomization and physical score, one fixed policy RNG0 per fresh connection. No training or parameter tuning on these results. A scene seed is paired across three fruits; each fruit has50 different initial scenes. Not the original three full examination tasks.",
+  "reference_matrix": "outputs/stage15/remote_fruit_eval_v1/matrix_v2",
+  "interpolate_lookahead": true,
+  "evaluation_population": "UNSEEN_FROZEN_SINGLE_FRUIT_SKILL_EVALUATION_NOT_FULL_EXAM",
+  "minimum_free_gib": 25.5,
+  "maximum_output_bytes": 629145600,
+  "maximum_consecutive_infrastructure_failures": 3,
+  "randomization": {
+    "scale": [
+      0.88,
+      1.12
+    ],
+    "x": [
+      0.505,
+      0.555
+    ],
+    "y": [
+      -0.07,
+      0.07
+    ],
+    "yaw_rad": [
+      -0.35,
+      0.35
+    ],
+    "target_x": [
+      0.53,
+      0.57
+    ],
+    "target_y": [
+      0.2,
+      0.24
+    ]
+  },
+  "seed_admission": {
+    "checked_config_and_fixture_metadata_files": 591,
+    "overlap_files": []
+  }
+}

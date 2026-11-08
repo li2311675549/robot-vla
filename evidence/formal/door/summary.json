@@ -1,0 +1,39 @@
+{
+  "protocol": {
+    "protocol_id": "door_tangent_contact_oracle_v4_20261031",
+    "split": "held_out_formal",
+    "task": "door",
+    "mode": "oracle",
+    "door_profile": "aligned_handles_v3",
+    "config": "configs/door_continuous_contact_frozen_v4.json",
+    "seeds": [
+      96001,
+      96002,
+      96003,
+      96004,
+      96005,
+      96006,
+      96007,
+      96008,
+      96009,
+      96010
+    ],
+    "record_seeds": [],
+    "note": "First generation of new reserved seeds after development2101-2104; same normal wide-door multistart geometry/distribution as prior v3, new controller. All episodes counted. Three isolated physics processes; no formal-seed tuning. Full development video recorded separately."
+  },
+  "summary": {
+    "episodes": 10,
+    "complete_successes": 10,
+    "complete_success_rate": 1.0,
+    "successful_sim_seconds_mean": 451.23720000142646,
+    "successful_wall_seconds_mean": 106.1680950126989,
+    "successful_sim_seconds_worst": 464.38200000148925,
+    "failures": {},
+    "recoveries": 30,
+    "phase_successes": {
+      "opened": 10,
+      "entered": 10,
+      "closed_after_entry": 10
+    }
+  }
+}

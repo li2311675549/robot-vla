@@ -1,0 +1,8 @@
+# Ubuntu x86_64 / Python 3.10; full transitive lock: requirements.lock.txt
+mujoco==3.6.0
+numpy==1.26.4
+imageio==2.37.0
+pillow==11.3.0
+pytest==8.4.2
+xacro==2.1.1
+PyYAML==6.0.3

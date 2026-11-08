@@ -1,0 +1,337 @@
+{
+  "success": true,
+  "score": {
+    "success": true,
+    "correct": 10,
+    "total": 10,
+    "objects": [
+      {
+        "body": "fruit_0",
+        "category": "apple",
+        "correct_bin": true,
+        "bounds": [
+          [
+            0.49202661405401477,
+            0.7689786729868103,
+            0.5616844201443656
+          ],
+          [
+            0.549723316815323,
+            0.8260170677971924,
+            0.6132919698615462
+          ]
+        ],
+        "speed": 5.497507591071976e-12
+      },
+      {
+        "body": "fruit_1",
+        "category": "banana",
+        "correct_bin": true,
+        "bounds": [
+          [
+            0.5570554614416978,
+            1.2600000003060468,
+            0.5619275978299063
+          ],
+          [
+            0.6449999987511935,
+            1.3121153977396272,
+            0.5936795955234064
+          ]
+        ],
+        "speed": 2.4435749389558135e-14
+      },
+      {
+        "body": "fruit_2",
+        "category": "apple",
+        "correct_bin": true,
+        "bounds": [
+          [
+            0.5608732398887573,
+            0.816872317267752,
+            0.5616850491925827
+          ],
+          [
+            0.61837310489127,
+            0.8720225599039595,
+            0.6129996862709017
+          ]
+        ],
+        "speed": 2.0521809875125185e-07
+      },
+      {
+        "body": "fruit_3",
+        "category": "orange",
+        "correct_bin": true,
+        "bounds": [
+          [
+            0.496862280257187,
+            1.7980172164289712,
+            0.5616327064848126
+          ],
+          [
+            0.5526290088529995,
+            1.853783939142516,
+            0.6153340167286769
+          ]
+        ],
+        "speed": 5.617256607576969e-06
+      },
+      {
+        "body": "fruit_4",
+        "category": "banana",
+        "correct_bin": true,
+        "bounds": [
+          [
+            0.4760109013135481,
+            1.3019010503523123,
+            0.5619275978299042
+          ],
+          [
+            0.5690709553662329,
+            1.3657573294006728,
+            0.5966028637037776
+          ]
+        ],
+        "speed": 2.609875856660767e-14
+      },
+      {
+        "body": "fruit_5",
+        "category": "banana",
+        "correct_bin": true,
+        "bounds": [
+          [
+            0.48247293802022634,
+            1.3726009500836345,
+            0.5619275978299064
+          ],
+          [
+            0.5774121720078071,
+            1.4150492167256121,
+            0.5949085400074513
+          ]
+        ],
+        "speed": 2.6395392297975524e-14
+      },
+      {
+        "body": "fruit_6",
+        "category": "orange",
+        "correct_bin": true,
+        "bounds": [
+          [
+            0.4988445100714764,
+            1.8622740730538467,
+            0.5616328088287429
+          ],
+          [
+            0.554160158009839,
+            1.9175897222657432,
+            0.6148997320076436
+          ]
+        ],
+        "speed": 1.9301321743600603e-10
+      },
+      {
+        "body": "fruit_7",
+        "category": "orange",
+        "correct_bin": true,
+        "bounds": [
+          [
+            0.5665694499224205,
+            1.8015152091628115,
+            0.5616328177807725
+          ],
+          [
+            0.6150341034677052,
+            1.8499798597624804,
+            0.6083024872283135
+          ]
+        ],
+        "speed": 7.2065390245670905e-12
+      },
+      {
+        "body": "fruit_8",
+        "category": "apple",
+        "correct_bin": true,
+        "bounds": [
+          [
+            0.5054564973637508,
+            0.8381020809975865,
+            0.5616839737095379
+          ],
+          [
+            0.5616411889305435,
+            0.8875879677321497,
+            0.6087051367664168
+          ]
+        ],
+        "speed": 9.532540388505754e-07
+      },
+      {
+        "body": "fruit_9",
+        "category": "apple",
+        "correct_bin": true,
+        "bounds": [
+          [
+            0.5608019980455459,
+            0.8711477886506606,
+            0.5616846504256052
+          ],
+          [
+            0.6207540167904874,
+            0.9226820980662584,
+            0.6104010279931387
+          ]
+        ],
+        "speed": 1.0500282713226283e-07
+      }
+    ]
+  },
+  "grasp_attempts": [
+    {
+      "body": "fruit_3",
+      "success": true,
+      "category": "orange",
+      "lift_m": 0.09185601137121102,
+      "candidate_count": 12,
+      "retry": 0,
+      "placement_verified": true
+    },
+    {
+      "body": "fruit_4",
+      "success": true,
+      "category": "banana",
+      "lift_m": 0.09654554990093778,
+      "candidate_count": 10,
+      "retry": 0,
+      "placement_verified": true
+    },
+    {
+      "body": "fruit_1",
+      "success": true,
+      "category": "banana",
+      "lift_m": 0.09668145213490087,
+      "candidate_count": 20,
+      "retry": 0,
+      "placement_verified": true
+    },
+    {
+      "body": "fruit_0",
+      "success": true,
+      "category": "apple",
+      "lift_m": 0.09913106853070353,
+      "candidate_count": 12,
+      "retry": 0,
+      "placement_verified": true
+    },
+    {
+      "body": "fruit_2",
+      "success": true,
+      "category": "apple",
+      "lift_m": 0.09989612800235803,
+      "candidate_count": 12,
+      "retry": 0,
+      "placement_verified": true
+    },
+    {
+      "body": "fruit_5",
+      "success": true,
+      "category": "banana",
+      "lift_m": 0.09631906391588962,
+      "candidate_count": 20,
+      "retry": 0,
+      "placement_verified": true
+    },
+    {
+      "body": "fruit_8",
+      "success": true,
+      "category": "apple",
+      "lift_m": 0.10159384905081303,
+      "candidate_count": 12,
+      "retry": 0,
+      "placement_verified": true
+    },
+    {
+      "body": "fruit_9",
+      "success": true,
+      "category": "apple",
+      "lift_m": 0.10160453987989804,
+      "candidate_count": 12,
+      "retry": 0,
+      "placement_verified": true
+    },
+    {
+      "body": "fruit_7",
+      "success": true,
+      "category": "orange",
+      "lift_m": 0.09355314441860951,
+      "candidate_count": 12,
+      "retry": 0,
+      "placement_verified": true
+    },
+    {
+      "body": "fruit_6",
+      "success": true,
+      "category": "orange",
+      "lift_m": 0.09171376145185006,
+      "candidate_count": 12,
+      "retry": 0,
+      "placement_verified": true
+    }
+  ],
+  "mode": "vision",
+  "completed": 10,
+  "status": "PASS",
+  "failure_stage": null,
+  "failure_category": null,
+  "video": {
+    "status": "PASS",
+    "fps": 5,
+    "frames": 8407,
+    "stream": {
+      "width": 640,
+      "height": 480,
+      "duration": "1681.400000",
+      "nb_read_frames": "8407"
+    },
+    "opengl": {
+      "vendor": "Mesa",
+      "renderer": "llvmpipe (LLVM 15.0.7, 256 bits)"
+    },
+    "first_sim_seconds": 0.002,
+    "last_sim_seconds": 1681.2019999740687,
+    "continuous": true,
+    "full_decode": "PASS"
+  },
+  "task": "fruit",
+  "seed": 412,
+  "policy_mode": "vision",
+  "sim_seconds": 1681.2219999740682,
+  "wall_seconds": 1300.8998163330034,
+  "num_retries": 3,
+  "collision_events": [],
+  "timestamp": "2026-10-26T16:33:02.411952+08:00",
+  "model": {
+    "nq": 95,
+    "nv": 84,
+    "nu": 11,
+    "path": "outputs/stage7/fruit_seed412_complete_recorded/scene.xml"
+  },
+  "initial_base": [
+    -4.64,
+    0,
+    0
+  ],
+  "warnings": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ],
+  "observation_scope": "RGB-D targets with simulator contact/containment verification; drawer geometry is Oracle",
+  "sensor_only_policy": false
+}

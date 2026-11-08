@@ -1,0 +1,42 @@
+{
+  "protocol": "pi05_executor_matched6_fit_physical_check_v4",
+  "split": "development_not_formal",
+  "scene_seeds": [
+    15001,
+    15002
+  ],
+  "skills": [
+    "apple",
+    "banana",
+    "orange"
+  ],
+  "policies": [
+    "openpi"
+  ],
+  "checkpoint_optimizer_step": 3000,
+  "server_checkpoint_label": "2999",
+  "model_queries_hz_simulation": 5,
+  "action_horizon": 10,
+  "execute_actions": 1,
+  "policy_noise_seed_per_connection": 0,
+  "maximum_response_wall_seconds": 2.0,
+  "network_image_size": 224,
+  "websocket_compression": "deflate",
+  "gripper_adapter": "bounded_projection_v1",
+  "maximum_gripper_extrapolation": 0.1,
+  "sim_seconds_limit": 60,
+  "wall_seconds_limit": 600,
+  "record_all_trials": true,
+  "unexpected_nonfinger_penetration_limit_m": 0.003,
+  "success": {
+    "minimum_lift_m": 0.055,
+    "bilateral_hold_seconds": 1.5,
+    "placement_xy_m": 0.04,
+    "placement_z_m": 0.01,
+    "final_speed_m_s": 0.01
+  },
+  "note": "Future only, after successful3000-step small-fit; explicitgreen fixtures and interpolation, original physical score; exact six fitted scenes, NEVER generalization or formal score. No run yet.",
+  "reference_matrix": "outputs/stage15/remote_fruit_eval_v1/matrix_v2",
+  "interpolate_lookahead": true,
+  "evaluation_population": "EXPOSED_TRAINING_SCENES_FIT_CHECK_NOT_GENERALIZATION"
+}
