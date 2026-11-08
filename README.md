@@ -25,7 +25,11 @@
 <tr><td align="center"><a href="media/demos/vla_apple.mp4"><img src="docs/media/vla_apple.png" width="100%" alt="VLA苹果"/></a><br/><b>π₀.₅ 苹果抓取</b></td><td align="center"><a href="media/demos/vla_banana.mp4"><img src="docs/media/vla_banana.png" width="100%" alt="VLA香蕉"/></a><br/><b>π₀.₅ 香蕉抓取</b></td><td align="center"><a href="media/demos/vla_orange.mp4"><img src="docs/media/vla_orange.png" width="100%" alt="VLA橘子"/></a><br/><b>π₀.₅ 橘子抓取</b></td></tr>
 </table>
 
-[逐段评分与来源](media/index.json)。浏览器不支持直接播放时，可下载MP4后播放。更多案例集拟作为`v1.0.0`发布附件，发布状态见[Releases](https://github.com/li2311675549/robot-vla/releases)。
+[逐段评分与来源](media/index.json)。浏览器不支持直接播放时，可下载MP4后播放。完整材料下载：
+
+- [traditional-cases70.zip](https://github.com/li2311675549/robot-vla/releases/download/v1.0.0/traditional-cases70.zip)
+- [vla-cases30.zip](https://github.com/li2311675549/robot-vla/releases/download/v1.0.0/vla-cases30.zip)
+- [technical-report-and-evidence.zip](https://github.com/li2311675549/robot-vla/releases/download/v1.0.0/technical-report-and-evidence.zip)
 
 ## 架构
 

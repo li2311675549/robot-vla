@@ -1,0 +1,35 @@
+{
+  "repository": "li2311675549/robot-vla",
+  "tag": "v1.0.0",
+  "uploaded": [
+    {
+      "asset": "traditional-cases70.zip",
+      "files": 152,
+      "bytes": 258684555,
+      "local_sha256": "64fd4ee7c7a74afcbd0e3c83878c78355c225ac9fbf12fa67ca6fe930d1de30c",
+      "github_digest": "sha256:64fd4ee7c7a74afcbd0e3c83878c78355c225ac9fbf12fa67ca6fe930d1de30c",
+      "url": "https://github.com/li2311675549/robot-vla/releases/download/v1.0.0/traditional-cases70.zip",
+      "asset_id": 724165870
+    },
+    {
+      "asset": "vla-cases30.zip",
+      "files": 66,
+      "bytes": 2903878,
+      "local_sha256": "60c1bd3be12c9fb01298fc2af4bea0f5a99710d305e3e0f5188ec16a9946a5f8",
+      "github_digest": "sha256:60c1bd3be12c9fb01298fc2af4bea0f5a99710d305e3e0f5188ec16a9946a5f8",
+      "url": "https://github.com/li2311675549/robot-vla/releases/download/v1.0.0/vla-cases30.zip",
+      "asset_id": 724200543
+    },
+    {
+      "asset": "technical-report-and-evidence.zip",
+      "files": 49,
+      "bytes": 2495172,
+      "local_sha256": "da992af824944f32604f9b07d5b6f87751d74f73dea37cffc10143a6a2a6a703",
+      "github_digest": "sha256:da992af824944f32604f9b07d5b6f87751d74f73dea37cffc10143a6a2a6a703",
+      "url": "https://github.com/li2311675549/robot-vla/releases/download/v1.0.0/technical-report-and-evidence.zip",
+      "asset_id": 724200857
+    }
+  ],
+  "status": "PASS_ALL_RELEASE_ASSETS_UPLOADED",
+  "credentials_in_receipt": false
+}
