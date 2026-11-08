@@ -1,0 +1,896 @@
+{
+  "scope": "Observed saved configuration values for final traditional display source episodes; not measured velocity statistics",
+  "unique_source_episodes": 34,
+  "source_episodes": [
+    {
+      "source_episode": "book_third_slip_checkpoint_recorded_clockfix",
+      "groups": [
+        "large_book"
+      ],
+      "has_saved_config": false,
+      "note": "Historical local diagnostic; no config.json available. Do not infer its parameters from another episode."
+    },
+    {
+      "source_episode": "63001",
+      "groups": [
+        "large_book"
+      ],
+      "has_saved_config": true,
+      "config_sha256": "bf3ac335d6e6d66e214ac691279791bea79354492d384b174a90852f25fe8b0c",
+      "parameters": {
+        "physics_timestep_seconds": 0.002,
+        "occupancy_resolution_m": 0.08,
+        "robot_inflation_radius_m": 0.64,
+        "payload_linear_speed_m_s": 0.1,
+        "payload_angular_speed_rad_s": 1.0,
+        "payload_banana_linear_speed_m_s": 0.05,
+        "payload_banana_angular_speed_rad_s": 0.035,
+        "payload_wheel_acceleration_rad_s2": 0.8,
+        "payload_banana_wheel_acceleration_rad_s2": 0.2,
+        "payload_dock_angular_speed_rad_s": 0.9,
+        "payload_arm_speed_rad_s": 1.2,
+        "banana_hold_closure": 0.7,
+        "apple_hold_closure": 0.7,
+        "task_sim_seconds_limit": 3000,
+        "task_wall_seconds_limit": 3600,
+        "stationary_manipulation": true
+      }
+    },
+    {
+      "source_episode": "full_seed1901_recorded_v2",
+      "groups": [
+        "door"
+      ],
+      "has_saved_config": true,
+      "config_sha256": "420623679ca2aa05cfff5d6472b51ad1492e39dda93900f6bc6294d1d6c31b09",
+      "parameters": {
+        "physics_timestep_seconds": 0.002,
+        "occupancy_resolution_m": 0.08,
+        "robot_inflation_radius_m": 0.64,
+        "payload_linear_speed_m_s": 0.1,
+        "payload_angular_speed_rad_s": 1.0,
+        "payload_banana_linear_speed_m_s": 0.05,
+        "payload_banana_angular_speed_rad_s": 0.035,
+        "payload_wheel_acceleration_rad_s2": 0.8,
+        "payload_banana_wheel_acceleration_rad_s2": 0.2,
+        "payload_arm_speed_rad_s": 1.2,
+        "banana_hold_closure": 0.7,
+        "apple_hold_closure": 0.7,
+        "task_sim_seconds_limit": 3000,
+        "task_wall_seconds_limit": 3600
+      }
+    },
+    {
+      "source_episode": "full_seed2101_recorded_v2",
+      "groups": [
+        "door"
+      ],
+      "has_saved_config": true,
+      "config_sha256": "de5474f9854eda84d99aed19be41daf6962686d9c83b6389a934fcf4c8a4959b",
+      "parameters": {
+        "physics_timestep_seconds": 0.002,
+        "occupancy_resolution_m": 0.08,
+        "robot_inflation_radius_m": 0.64,
+        "payload_linear_speed_m_s": 0.1,
+        "payload_angular_speed_rad_s": 1.0,
+        "payload_banana_linear_speed_m_s": 0.05,
+        "payload_banana_angular_speed_rad_s": 0.035,
+        "payload_wheel_acceleration_rad_s2": 0.8,
+        "payload_banana_wheel_acceleration_rad_s2": 0.2,
+        "payload_arm_speed_rad_s": 1.2,
+        "banana_hold_closure": 0.7,
+        "apple_hold_closure": 0.7,
+        "task_sim_seconds_limit": 3000,
+        "task_wall_seconds_limit": 3600,
+        "door_contact_angle_speed_rad_s": 0.02,
+        "door_contact_arc_timeout_seconds": 180,
+        "door_contact_max_grasps_per_phase": 4
+      }
+    },
+    {
+      "source_episode": "books_all_rank_tilt_dev200009_v25_recorded",
+      "groups": [
+        "large_book"
+      ],
+      "has_saved_config": true,
+      "config_sha256": "ae46e06ca63a36fa4e9b00688433f5231f572dbee09c49c9e1c361f3d9a808a5",
+      "parameters": {
+        "physics_timestep_seconds": 0.002,
+        "occupancy_resolution_m": 0.08,
+        "robot_inflation_radius_m": 0.64,
+        "payload_linear_speed_m_s": 0.06,
+        "payload_angular_speed_rad_s": 1.0,
+        "payload_banana_linear_speed_m_s": 0.05,
+        "payload_banana_angular_speed_rad_s": 0.035,
+        "payload_wheel_acceleration_rad_s2": 0.8,
+        "payload_banana_wheel_acceleration_rad_s2": 0.2,
+        "payload_dock_angular_speed_rad_s": 0.9,
+        "payload_arm_speed_rad_s": 1.2,
+        "banana_hold_closure": 0.7,
+        "apple_hold_closure": 0.7,
+        "task_sim_seconds_limit": 3000,
+        "task_wall_seconds_limit": 3600,
+        "stationary_manipulation": true
+      }
+    },
+    {
+      "source_episode": "books_centerline_recovery_dev200009_v26_recorded",
+      "groups": [
+        "large_book",
+        "medium_book",
+        "small_book"
+      ],
+      "has_saved_config": true,
+      "config_sha256": "8b1856d70c1c96f3f85189101aab6f5588a6d357fbf0d479814621b46e826b20",
+      "parameters": {
+        "physics_timestep_seconds": 0.002,
+        "occupancy_resolution_m": 0.08,
+        "robot_inflation_radius_m": 0.64,
+        "payload_linear_speed_m_s": 0.06,
+        "payload_angular_speed_rad_s": 1.0,
+        "payload_banana_linear_speed_m_s": 0.05,
+        "payload_banana_angular_speed_rad_s": 0.035,
+        "payload_wheel_acceleration_rad_s2": 0.8,
+        "payload_banana_wheel_acceleration_rad_s2": 0.2,
+        "payload_dock_angular_speed_rad_s": 0.9,
+        "payload_arm_speed_rad_s": 1.2,
+        "banana_hold_closure": 0.7,
+        "apple_hold_closure": 0.7,
+        "task_sim_seconds_limit": 3000,
+        "task_wall_seconds_limit": 3600,
+        "stationary_manipulation": true
+      }
+    },
+    {
+      "source_episode": "books_centerline_scatter_dev200006_v13_recorded",
+      "groups": [
+        "large_book",
+        "medium_book",
+        "small_book"
+      ],
+      "has_saved_config": true,
+      "config_sha256": "9d1caf9b464d46d7b64e0281321cf283427bbc32bfc1427aa67a72fa7678e9db",
+      "parameters": {
+        "physics_timestep_seconds": 0.002,
+        "occupancy_resolution_m": 0.08,
+        "robot_inflation_radius_m": 0.64,
+        "payload_linear_speed_m_s": 0.06,
+        "payload_angular_speed_rad_s": 1.0,
+        "payload_banana_linear_speed_m_s": 0.05,
+        "payload_banana_angular_speed_rad_s": 0.035,
+        "payload_wheel_acceleration_rad_s2": 0.8,
+        "payload_banana_wheel_acceleration_rad_s2": 0.2,
+        "payload_dock_angular_speed_rad_s": 0.9,
+        "payload_arm_speed_rad_s": 1.2,
+        "banana_hold_closure": 0.7,
+        "apple_hold_closure": 0.7,
+        "task_sim_seconds_limit": 3000,
+        "task_wall_seconds_limit": 3600,
+        "stationary_manipulation": true
+      }
+    },
+    {
+      "source_episode": "books_dynamic_edge_dev200009_v27_recorded",
+      "groups": [
+        "large_book",
+        "medium_book",
+        "small_book"
+      ],
+      "has_saved_config": true,
+      "config_sha256": "227ad3b7fdbab506c591bbca823ef641b46f612f2af899154183b99d6b2c6825",
+      "parameters": {
+        "physics_timestep_seconds": 0.002,
+        "occupancy_resolution_m": 0.08,
+        "robot_inflation_radius_m": 0.64,
+        "payload_linear_speed_m_s": 0.06,
+        "payload_angular_speed_rad_s": 1.0,
+        "payload_banana_linear_speed_m_s": 0.05,
+        "payload_banana_angular_speed_rad_s": 0.035,
+        "payload_wheel_acceleration_rad_s2": 0.8,
+        "payload_banana_wheel_acceleration_rad_s2": 0.2,
+        "payload_dock_angular_speed_rad_s": 0.9,
+        "payload_arm_speed_rad_s": 1.2,
+        "banana_hold_closure": 0.7,
+        "apple_hold_closure": 0.7,
+        "task_sim_seconds_limit": 3000,
+        "task_wall_seconds_limit": 3600,
+        "stationary_manipulation": true
+      }
+    },
+    {
+      "source_episode": "books_integrated_scatter_dev200007_v22_recorded",
+      "groups": [
+        "large_book",
+        "medium_book",
+        "small_book"
+      ],
+      "has_saved_config": true,
+      "config_sha256": "68cf8e336639b39a93b97b7ca4f1d02b0d8337145b7be18dedc6189f25ede613",
+      "parameters": {
+        "physics_timestep_seconds": 0.002,
+        "occupancy_resolution_m": 0.08,
+        "robot_inflation_radius_m": 0.64,
+        "payload_linear_speed_m_s": 0.06,
+        "payload_angular_speed_rad_s": 1.0,
+        "payload_banana_linear_speed_m_s": 0.05,
+        "payload_banana_angular_speed_rad_s": 0.035,
+        "payload_wheel_acceleration_rad_s2": 0.8,
+        "payload_banana_wheel_acceleration_rad_s2": 0.2,
+        "payload_dock_angular_speed_rad_s": 0.9,
+        "payload_arm_speed_rad_s": 1.2,
+        "banana_hold_closure": 0.7,
+        "apple_hold_closure": 0.7,
+        "task_sim_seconds_limit": 3000,
+        "task_wall_seconds_limit": 3600,
+        "stationary_manipulation": true
+      }
+    },
+    {
+      "source_episode": "books_swept_assembly_dev200008_v23_recorded",
+      "groups": [
+        "large_book",
+        "medium_book",
+        "small_book"
+      ],
+      "has_saved_config": true,
+      "config_sha256": "faeece478893fa21b3af75ff34dc58b82951c4212cf2032105b58badac90f84f",
+      "parameters": {
+        "physics_timestep_seconds": 0.002,
+        "occupancy_resolution_m": 0.08,
+        "robot_inflation_radius_m": 0.64,
+        "payload_linear_speed_m_s": 0.06,
+        "payload_angular_speed_rad_s": 1.0,
+        "payload_banana_linear_speed_m_s": 0.05,
+        "payload_banana_angular_speed_rad_s": 0.035,
+        "payload_wheel_acceleration_rad_s2": 0.8,
+        "payload_banana_wheel_acceleration_rad_s2": 0.2,
+        "payload_dock_angular_speed_rad_s": 0.9,
+        "payload_arm_speed_rad_s": 1.2,
+        "banana_hold_closure": 0.7,
+        "apple_hold_closure": 0.7,
+        "task_sim_seconds_limit": 3000,
+        "task_wall_seconds_limit": 3600,
+        "stationary_manipulation": true
+      }
+    },
+    {
+      "source_episode": "books_swept_exact_dev200008_v24_recorded",
+      "groups": [
+        "large_book",
+        "medium_book",
+        "small_book"
+      ],
+      "has_saved_config": true,
+      "config_sha256": "4a90ebb2dde7bab558ac946d40be36cc1840816193b90eeda63d616f9dd48ccc",
+      "parameters": {
+        "physics_timestep_seconds": 0.002,
+        "occupancy_resolution_m": 0.08,
+        "robot_inflation_radius_m": 0.64,
+        "payload_linear_speed_m_s": 0.06,
+        "payload_angular_speed_rad_s": 1.0,
+        "payload_banana_linear_speed_m_s": 0.05,
+        "payload_banana_angular_speed_rad_s": 0.035,
+        "payload_wheel_acceleration_rad_s2": 0.8,
+        "payload_banana_wheel_acceleration_rad_s2": 0.2,
+        "payload_dock_angular_speed_rad_s": 0.9,
+        "payload_arm_speed_rad_s": 1.2,
+        "banana_hold_closure": 0.7,
+        "apple_hold_closure": 0.7,
+        "task_sim_seconds_limit": 3000,
+        "task_wall_seconds_limit": 3600,
+        "stationary_manipulation": true
+      }
+    },
+    {
+      "source_episode": "fruit_labelled_record200003_v1",
+      "groups": [
+        "apple",
+        "banana",
+        "orange"
+      ],
+      "has_saved_config": true,
+      "config_sha256": "330cd267fa2be1130fb6038cc1e8a7a8519152a241b13cbf0c9c615ba724cd52",
+      "parameters": {
+        "physics_timestep_seconds": 0.002,
+        "occupancy_resolution_m": 0.08,
+        "robot_inflation_radius_m": 0.64,
+        "payload_linear_speed_m_s": 0.1,
+        "payload_angular_speed_rad_s": 1.0,
+        "payload_banana_linear_speed_m_s": 0.05,
+        "payload_banana_angular_speed_rad_s": 0.035,
+        "payload_wheel_acceleration_rad_s2": 0.8,
+        "payload_banana_wheel_acceleration_rad_s2": 0.2,
+        "payload_arm_speed_rad_s": 1.2,
+        "banana_hold_closure": 0.65,
+        "apple_hold_closure": 0.55,
+        "task_sim_seconds_limit": 3000,
+        "task_wall_seconds_limit": 3600,
+        "stationary_manipulation": false
+      }
+    },
+    {
+      "source_episode": "attempt_000_seed2102",
+      "groups": [
+        "door"
+      ],
+      "has_saved_config": true,
+      "config_sha256": "9fa7a267bb1e41f2f133042405078e494f77b296f885637a36293f3db52d2fd0",
+      "parameters": {
+        "physics_timestep_seconds": 0.002,
+        "occupancy_resolution_m": 0.08,
+        "robot_inflation_radius_m": 0.64,
+        "payload_linear_speed_m_s": 0.1,
+        "payload_angular_speed_rad_s": 1.0,
+        "payload_banana_linear_speed_m_s": 0.05,
+        "payload_banana_angular_speed_rad_s": 0.035,
+        "payload_wheel_acceleration_rad_s2": 0.8,
+        "payload_banana_wheel_acceleration_rad_s2": 0.2,
+        "payload_arm_speed_rad_s": 1.2,
+        "banana_hold_closure": 0.7,
+        "apple_hold_closure": 0.7,
+        "task_sim_seconds_limit": 3000,
+        "task_wall_seconds_limit": 3600,
+        "door_contact_angle_speed_rad_s": 0.02,
+        "door_contact_arc_timeout_seconds": 180,
+        "door_contact_max_grasps_per_phase": 4
+      }
+    },
+    {
+      "source_episode": "attempt_001_seed2111",
+      "groups": [
+        "door"
+      ],
+      "has_saved_config": true,
+      "config_sha256": "1fbd0baad228442d2d6fb2adcae792284ed3e28ce6cf36fb06eeabd4c9c19e6f",
+      "parameters": {
+        "physics_timestep_seconds": 0.002,
+        "occupancy_resolution_m": 0.08,
+        "robot_inflation_radius_m": 0.64,
+        "payload_linear_speed_m_s": 0.1,
+        "payload_angular_speed_rad_s": 1.0,
+        "payload_banana_linear_speed_m_s": 0.05,
+        "payload_banana_angular_speed_rad_s": 0.035,
+        "payload_wheel_acceleration_rad_s2": 0.8,
+        "payload_banana_wheel_acceleration_rad_s2": 0.2,
+        "payload_arm_speed_rad_s": 1.2,
+        "banana_hold_closure": 0.7,
+        "apple_hold_closure": 0.7,
+        "task_sim_seconds_limit": 3000,
+        "task_wall_seconds_limit": 3600,
+        "door_contact_angle_speed_rad_s": 0.02,
+        "door_contact_arc_timeout_seconds": 180,
+        "door_contact_max_grasps_per_phase": 4
+      }
+    },
+    {
+      "source_episode": "attempt_000_seed200006",
+      "groups": [
+        "medium_book",
+        "small_book"
+      ],
+      "has_saved_config": true,
+      "config_sha256": "ad60343c5cfe75b4f34cf392396b7fceb0a703f1e5c4c5be28d56b7b792aa255",
+      "parameters": {
+        "physics_timestep_seconds": 0.002,
+        "occupancy_resolution_m": 0.08,
+        "robot_inflation_radius_m": 0.64,
+        "payload_linear_speed_m_s": 0.06,
+        "payload_angular_speed_rad_s": 1.0,
+        "payload_banana_linear_speed_m_s": 0.05,
+        "payload_banana_angular_speed_rad_s": 0.035,
+        "payload_wheel_acceleration_rad_s2": 0.8,
+        "payload_banana_wheel_acceleration_rad_s2": 0.2,
+        "payload_dock_angular_speed_rad_s": 0.9,
+        "payload_arm_speed_rad_s": 1.2,
+        "banana_hold_closure": 0.7,
+        "apple_hold_closure": 0.7,
+        "task_sim_seconds_limit": 3000,
+        "task_wall_seconds_limit": 3600,
+        "stationary_manipulation": true
+      }
+    },
+    {
+      "source_episode": "attempt_001_seed2112",
+      "groups": [
+        "door"
+      ],
+      "has_saved_config": true,
+      "config_sha256": "1fbd0baad228442d2d6fb2adcae792284ed3e28ce6cf36fb06eeabd4c9c19e6f",
+      "parameters": {
+        "physics_timestep_seconds": 0.002,
+        "occupancy_resolution_m": 0.08,
+        "robot_inflation_radius_m": 0.64,
+        "payload_linear_speed_m_s": 0.1,
+        "payload_angular_speed_rad_s": 1.0,
+        "payload_banana_linear_speed_m_s": 0.05,
+        "payload_banana_angular_speed_rad_s": 0.035,
+        "payload_wheel_acceleration_rad_s2": 0.8,
+        "payload_banana_wheel_acceleration_rad_s2": 0.2,
+        "payload_arm_speed_rad_s": 1.2,
+        "banana_hold_closure": 0.7,
+        "apple_hold_closure": 0.7,
+        "task_sim_seconds_limit": 3000,
+        "task_wall_seconds_limit": 3600,
+        "door_contact_angle_speed_rad_s": 0.02,
+        "door_contact_arc_timeout_seconds": 180,
+        "door_contact_max_grasps_per_phase": 4
+      }
+    },
+    {
+      "source_episode": "attempt_002_seed2113",
+      "groups": [
+        "door"
+      ],
+      "has_saved_config": true,
+      "config_sha256": "1fbd0baad228442d2d6fb2adcae792284ed3e28ce6cf36fb06eeabd4c9c19e6f",
+      "parameters": {
+        "physics_timestep_seconds": 0.002,
+        "occupancy_resolution_m": 0.08,
+        "robot_inflation_radius_m": 0.64,
+        "payload_linear_speed_m_s": 0.1,
+        "payload_angular_speed_rad_s": 1.0,
+        "payload_banana_linear_speed_m_s": 0.05,
+        "payload_banana_angular_speed_rad_s": 0.035,
+        "payload_wheel_acceleration_rad_s2": 0.8,
+        "payload_banana_wheel_acceleration_rad_s2": 0.2,
+        "payload_arm_speed_rad_s": 1.2,
+        "banana_hold_closure": 0.7,
+        "apple_hold_closure": 0.7,
+        "task_sim_seconds_limit": 3000,
+        "task_wall_seconds_limit": 3600,
+        "door_contact_angle_speed_rad_s": 0.02,
+        "door_contact_arc_timeout_seconds": 180,
+        "door_contact_max_grasps_per_phase": 4
+      }
+    },
+    {
+      "source_episode": "attempt_004_seed2115",
+      "groups": [
+        "door"
+      ],
+      "has_saved_config": true,
+      "config_sha256": "1fbd0baad228442d2d6fb2adcae792284ed3e28ce6cf36fb06eeabd4c9c19e6f",
+      "parameters": {
+        "physics_timestep_seconds": 0.002,
+        "occupancy_resolution_m": 0.08,
+        "robot_inflation_radius_m": 0.64,
+        "payload_linear_speed_m_s": 0.1,
+        "payload_angular_speed_rad_s": 1.0,
+        "payload_banana_linear_speed_m_s": 0.05,
+        "payload_banana_angular_speed_rad_s": 0.035,
+        "payload_wheel_acceleration_rad_s2": 0.8,
+        "payload_banana_wheel_acceleration_rad_s2": 0.2,
+        "payload_arm_speed_rad_s": 1.2,
+        "banana_hold_closure": 0.7,
+        "apple_hold_closure": 0.7,
+        "task_sim_seconds_limit": 3000,
+        "task_wall_seconds_limit": 3600,
+        "door_contact_angle_speed_rad_s": 0.02,
+        "door_contact_arc_timeout_seconds": 180,
+        "door_contact_max_grasps_per_phase": 4
+      }
+    },
+    {
+      "source_episode": "attempt_005_seed2116",
+      "groups": [
+        "door"
+      ],
+      "has_saved_config": true,
+      "config_sha256": "1fbd0baad228442d2d6fb2adcae792284ed3e28ce6cf36fb06eeabd4c9c19e6f",
+      "parameters": {
+        "physics_timestep_seconds": 0.002,
+        "occupancy_resolution_m": 0.08,
+        "robot_inflation_radius_m": 0.64,
+        "payload_linear_speed_m_s": 0.1,
+        "payload_angular_speed_rad_s": 1.0,
+        "payload_banana_linear_speed_m_s": 0.05,
+        "payload_banana_angular_speed_rad_s": 0.035,
+        "payload_wheel_acceleration_rad_s2": 0.8,
+        "payload_banana_wheel_acceleration_rad_s2": 0.2,
+        "payload_arm_speed_rad_s": 1.2,
+        "banana_hold_closure": 0.7,
+        "apple_hold_closure": 0.7,
+        "task_sim_seconds_limit": 3000,
+        "task_wall_seconds_limit": 3600,
+        "door_contact_angle_speed_rad_s": 0.02,
+        "door_contact_arc_timeout_seconds": 180,
+        "door_contact_max_grasps_per_phase": 4
+      }
+    },
+    {
+      "source_episode": "attempt_006_seed2117",
+      "groups": [
+        "door"
+      ],
+      "has_saved_config": true,
+      "config_sha256": "1fbd0baad228442d2d6fb2adcae792284ed3e28ce6cf36fb06eeabd4c9c19e6f",
+      "parameters": {
+        "physics_timestep_seconds": 0.002,
+        "occupancy_resolution_m": 0.08,
+        "robot_inflation_radius_m": 0.64,
+        "payload_linear_speed_m_s": 0.1,
+        "payload_angular_speed_rad_s": 1.0,
+        "payload_banana_linear_speed_m_s": 0.05,
+        "payload_banana_angular_speed_rad_s": 0.035,
+        "payload_wheel_acceleration_rad_s2": 0.8,
+        "payload_banana_wheel_acceleration_rad_s2": 0.2,
+        "payload_arm_speed_rad_s": 1.2,
+        "banana_hold_closure": 0.7,
+        "apple_hold_closure": 0.7,
+        "task_sim_seconds_limit": 3000,
+        "task_wall_seconds_limit": 3600,
+        "door_contact_angle_speed_rad_s": 0.02,
+        "door_contact_arc_timeout_seconds": 180,
+        "door_contact_max_grasps_per_phase": 4
+      }
+    },
+    {
+      "source_episode": "attempt_007_seed2118",
+      "groups": [
+        "door"
+      ],
+      "has_saved_config": true,
+      "config_sha256": "1fbd0baad228442d2d6fb2adcae792284ed3e28ce6cf36fb06eeabd4c9c19e6f",
+      "parameters": {
+        "physics_timestep_seconds": 0.002,
+        "occupancy_resolution_m": 0.08,
+        "robot_inflation_radius_m": 0.64,
+        "payload_linear_speed_m_s": 0.1,
+        "payload_angular_speed_rad_s": 1.0,
+        "payload_banana_linear_speed_m_s": 0.05,
+        "payload_banana_angular_speed_rad_s": 0.035,
+        "payload_wheel_acceleration_rad_s2": 0.8,
+        "payload_banana_wheel_acceleration_rad_s2": 0.2,
+        "payload_arm_speed_rad_s": 1.2,
+        "banana_hold_closure": 0.7,
+        "apple_hold_closure": 0.7,
+        "task_sim_seconds_limit": 3000,
+        "task_wall_seconds_limit": 3600,
+        "door_contact_angle_speed_rad_s": 0.02,
+        "door_contact_arc_timeout_seconds": 180,
+        "door_contact_max_grasps_per_phase": 4
+      }
+    },
+    {
+      "source_episode": "attempt_000_seed200007",
+      "groups": [
+        "medium_book",
+        "small_book"
+      ],
+      "has_saved_config": true,
+      "config_sha256": "ad60343c5cfe75b4f34cf392396b7fceb0a703f1e5c4c5be28d56b7b792aa255",
+      "parameters": {
+        "physics_timestep_seconds": 0.002,
+        "occupancy_resolution_m": 0.08,
+        "robot_inflation_radius_m": 0.64,
+        "payload_linear_speed_m_s": 0.06,
+        "payload_angular_speed_rad_s": 1.0,
+        "payload_banana_linear_speed_m_s": 0.05,
+        "payload_banana_angular_speed_rad_s": 0.035,
+        "payload_wheel_acceleration_rad_s2": 0.8,
+        "payload_banana_wheel_acceleration_rad_s2": 0.2,
+        "payload_dock_angular_speed_rad_s": 0.9,
+        "payload_arm_speed_rad_s": 1.2,
+        "banana_hold_closure": 0.7,
+        "apple_hold_closure": 0.7,
+        "task_sim_seconds_limit": 3000,
+        "task_wall_seconds_limit": 3600,
+        "stationary_manipulation": true
+      }
+    },
+    {
+      "source_episode": "attempt_001_seed200008",
+      "groups": [
+        "medium_book",
+        "small_book"
+      ],
+      "has_saved_config": true,
+      "config_sha256": "ad60343c5cfe75b4f34cf392396b7fceb0a703f1e5c4c5be28d56b7b792aa255",
+      "parameters": {
+        "physics_timestep_seconds": 0.002,
+        "occupancy_resolution_m": 0.08,
+        "robot_inflation_radius_m": 0.64,
+        "payload_linear_speed_m_s": 0.06,
+        "payload_angular_speed_rad_s": 1.0,
+        "payload_banana_linear_speed_m_s": 0.05,
+        "payload_banana_angular_speed_rad_s": 0.035,
+        "payload_wheel_acceleration_rad_s2": 0.8,
+        "payload_banana_wheel_acceleration_rad_s2": 0.2,
+        "payload_dock_angular_speed_rad_s": 0.9,
+        "payload_arm_speed_rad_s": 1.2,
+        "banana_hold_closure": 0.7,
+        "apple_hold_closure": 0.7,
+        "task_sim_seconds_limit": 3000,
+        "task_wall_seconds_limit": 3600,
+        "stationary_manipulation": true
+      }
+    },
+    {
+      "source_episode": "attempt_002_seed2050004",
+      "groups": [
+        "large_book",
+        "medium_book",
+        "small_book"
+      ],
+      "has_saved_config": true,
+      "config_sha256": "ad60343c5cfe75b4f34cf392396b7fceb0a703f1e5c4c5be28d56b7b792aa255",
+      "parameters": {
+        "physics_timestep_seconds": 0.002,
+        "occupancy_resolution_m": 0.08,
+        "robot_inflation_radius_m": 0.64,
+        "payload_linear_speed_m_s": 0.06,
+        "payload_angular_speed_rad_s": 1.0,
+        "payload_banana_linear_speed_m_s": 0.05,
+        "payload_banana_angular_speed_rad_s": 0.035,
+        "payload_wheel_acceleration_rad_s2": 0.8,
+        "payload_banana_wheel_acceleration_rad_s2": 0.2,
+        "payload_dock_angular_speed_rad_s": 0.9,
+        "payload_arm_speed_rad_s": 1.2,
+        "banana_hold_closure": 0.7,
+        "apple_hold_closure": 0.7,
+        "task_sim_seconds_limit": 3000,
+        "task_wall_seconds_limit": 3600,
+        "stationary_manipulation": true
+      }
+    },
+    {
+      "source_episode": "attempt_000_seed200003",
+      "groups": [
+        "apple",
+        "banana",
+        "orange"
+      ],
+      "has_saved_config": true,
+      "config_sha256": "330cd267fa2be1130fb6038cc1e8a7a8519152a241b13cbf0c9c615ba724cd52",
+      "parameters": {
+        "physics_timestep_seconds": 0.002,
+        "occupancy_resolution_m": 0.08,
+        "robot_inflation_radius_m": 0.64,
+        "payload_linear_speed_m_s": 0.1,
+        "payload_angular_speed_rad_s": 1.0,
+        "payload_banana_linear_speed_m_s": 0.05,
+        "payload_banana_angular_speed_rad_s": 0.035,
+        "payload_wheel_acceleration_rad_s2": 0.8,
+        "payload_banana_wheel_acceleration_rad_s2": 0.2,
+        "payload_arm_speed_rad_s": 1.2,
+        "banana_hold_closure": 0.65,
+        "apple_hold_closure": 0.55,
+        "task_sim_seconds_limit": 3000,
+        "task_wall_seconds_limit": 3600,
+        "stationary_manipulation": false
+      }
+    },
+    {
+      "source_episode": "attempt_001_seed200003",
+      "groups": [
+        "apple",
+        "banana",
+        "orange"
+      ],
+      "has_saved_config": true,
+      "config_sha256": "330cd267fa2be1130fb6038cc1e8a7a8519152a241b13cbf0c9c615ba724cd52",
+      "parameters": {
+        "physics_timestep_seconds": 0.002,
+        "occupancy_resolution_m": 0.08,
+        "robot_inflation_radius_m": 0.64,
+        "payload_linear_speed_m_s": 0.1,
+        "payload_angular_speed_rad_s": 1.0,
+        "payload_banana_linear_speed_m_s": 0.05,
+        "payload_banana_angular_speed_rad_s": 0.035,
+        "payload_wheel_acceleration_rad_s2": 0.8,
+        "payload_banana_wheel_acceleration_rad_s2": 0.2,
+        "payload_arm_speed_rad_s": 1.2,
+        "banana_hold_closure": 0.65,
+        "apple_hold_closure": 0.55,
+        "task_sim_seconds_limit": 3000,
+        "task_wall_seconds_limit": 3600,
+        "stationary_manipulation": false
+      }
+    },
+    {
+      "source_episode": "attempt_002_seed200003",
+      "groups": [
+        "apple",
+        "banana",
+        "orange"
+      ],
+      "has_saved_config": true,
+      "config_sha256": "330cd267fa2be1130fb6038cc1e8a7a8519152a241b13cbf0c9c615ba724cd52",
+      "parameters": {
+        "physics_timestep_seconds": 0.002,
+        "occupancy_resolution_m": 0.08,
+        "robot_inflation_radius_m": 0.64,
+        "payload_linear_speed_m_s": 0.1,
+        "payload_angular_speed_rad_s": 1.0,
+        "payload_banana_linear_speed_m_s": 0.05,
+        "payload_banana_angular_speed_rad_s": 0.035,
+        "payload_wheel_acceleration_rad_s2": 0.8,
+        "payload_banana_wheel_acceleration_rad_s2": 0.2,
+        "payload_arm_speed_rad_s": 1.2,
+        "banana_hold_closure": 0.65,
+        "apple_hold_closure": 0.55,
+        "task_sim_seconds_limit": 3000,
+        "task_wall_seconds_limit": 3600,
+        "stationary_manipulation": false
+      }
+    },
+    {
+      "source_episode": "attempt_003_seed200003",
+      "groups": [
+        "apple",
+        "banana",
+        "orange"
+      ],
+      "has_saved_config": true,
+      "config_sha256": "330cd267fa2be1130fb6038cc1e8a7a8519152a241b13cbf0c9c615ba724cd52",
+      "parameters": {
+        "physics_timestep_seconds": 0.002,
+        "occupancy_resolution_m": 0.08,
+        "robot_inflation_radius_m": 0.64,
+        "payload_linear_speed_m_s": 0.1,
+        "payload_angular_speed_rad_s": 1.0,
+        "payload_banana_linear_speed_m_s": 0.05,
+        "payload_banana_angular_speed_rad_s": 0.035,
+        "payload_wheel_acceleration_rad_s2": 0.8,
+        "payload_banana_wheel_acceleration_rad_s2": 0.2,
+        "payload_arm_speed_rad_s": 1.2,
+        "banana_hold_closure": 0.65,
+        "apple_hold_closure": 0.55,
+        "task_sim_seconds_limit": 3000,
+        "task_wall_seconds_limit": 3600,
+        "stationary_manipulation": false
+      }
+    },
+    {
+      "source_episode": "attempt_004_seed200003",
+      "groups": [
+        "apple",
+        "banana",
+        "orange"
+      ],
+      "has_saved_config": true,
+      "config_sha256": "330cd267fa2be1130fb6038cc1e8a7a8519152a241b13cbf0c9c615ba724cd52",
+      "parameters": {
+        "physics_timestep_seconds": 0.002,
+        "occupancy_resolution_m": 0.08,
+        "robot_inflation_radius_m": 0.64,
+        "payload_linear_speed_m_s": 0.1,
+        "payload_angular_speed_rad_s": 1.0,
+        "payload_banana_linear_speed_m_s": 0.05,
+        "payload_banana_angular_speed_rad_s": 0.035,
+        "payload_wheel_acceleration_rad_s2": 0.8,
+        "payload_banana_wheel_acceleration_rad_s2": 0.2,
+        "payload_arm_speed_rad_s": 1.2,
+        "banana_hold_closure": 0.65,
+        "apple_hold_closure": 0.55,
+        "task_sim_seconds_limit": 3000,
+        "task_wall_seconds_limit": 3600,
+        "stationary_manipulation": false
+      }
+    },
+    {
+      "source_episode": "attempt_005_seed200003",
+      "groups": [
+        "apple",
+        "banana",
+        "orange"
+      ],
+      "has_saved_config": true,
+      "config_sha256": "330cd267fa2be1130fb6038cc1e8a7a8519152a241b13cbf0c9c615ba724cd52",
+      "parameters": {
+        "physics_timestep_seconds": 0.002,
+        "occupancy_resolution_m": 0.08,
+        "robot_inflation_radius_m": 0.64,
+        "payload_linear_speed_m_s": 0.1,
+        "payload_angular_speed_rad_s": 1.0,
+        "payload_banana_linear_speed_m_s": 0.05,
+        "payload_banana_angular_speed_rad_s": 0.035,
+        "payload_wheel_acceleration_rad_s2": 0.8,
+        "payload_banana_wheel_acceleration_rad_s2": 0.2,
+        "payload_arm_speed_rad_s": 1.2,
+        "banana_hold_closure": 0.65,
+        "apple_hold_closure": 0.55,
+        "task_sim_seconds_limit": 3000,
+        "task_wall_seconds_limit": 3600,
+        "stationary_manipulation": false
+      }
+    },
+    {
+      "source_episode": "attempt_006_seed200003",
+      "groups": [
+        "apple",
+        "orange"
+      ],
+      "has_saved_config": true,
+      "config_sha256": "330cd267fa2be1130fb6038cc1e8a7a8519152a241b13cbf0c9c615ba724cd52",
+      "parameters": {
+        "physics_timestep_seconds": 0.002,
+        "occupancy_resolution_m": 0.08,
+        "robot_inflation_radius_m": 0.64,
+        "payload_linear_speed_m_s": 0.1,
+        "payload_angular_speed_rad_s": 1.0,
+        "payload_banana_linear_speed_m_s": 0.05,
+        "payload_banana_angular_speed_rad_s": 0.035,
+        "payload_wheel_acceleration_rad_s2": 0.8,
+        "payload_banana_wheel_acceleration_rad_s2": 0.2,
+        "payload_arm_speed_rad_s": 1.2,
+        "banana_hold_closure": 0.65,
+        "apple_hold_closure": 0.55,
+        "task_sim_seconds_limit": 3000,
+        "task_wall_seconds_limit": 3600,
+        "stationary_manipulation": false
+      }
+    },
+    {
+      "source_episode": "attempt_007_seed200003",
+      "groups": [
+        "apple",
+        "banana",
+        "orange"
+      ],
+      "has_saved_config": true,
+      "config_sha256": "330cd267fa2be1130fb6038cc1e8a7a8519152a241b13cbf0c9c615ba724cd52",
+      "parameters": {
+        "physics_timestep_seconds": 0.002,
+        "occupancy_resolution_m": 0.08,
+        "robot_inflation_radius_m": 0.64,
+        "payload_linear_speed_m_s": 0.1,
+        "payload_angular_speed_rad_s": 1.0,
+        "payload_banana_linear_speed_m_s": 0.05,
+        "payload_banana_angular_speed_rad_s": 0.035,
+        "payload_wheel_acceleration_rad_s2": 0.8,
+        "payload_banana_wheel_acceleration_rad_s2": 0.2,
+        "payload_arm_speed_rad_s": 1.2,
+        "banana_hold_closure": 0.65,
+        "apple_hold_closure": 0.55,
+        "task_sim_seconds_limit": 3000,
+        "task_wall_seconds_limit": 3600,
+        "stationary_manipulation": false
+      }
+    },
+    {
+      "source_episode": "full_failure",
+      "groups": [
+        "banana"
+      ],
+      "has_saved_config": false,
+      "note": "Historical local diagnostic; no config.json available. Do not infer its parameters from another episode."
+    },
+    {
+      "source_episode": "fruit_seed412_complete_recorded",
+      "groups": [
+        "apple",
+        "banana",
+        "orange"
+      ],
+      "has_saved_config": true,
+      "config_sha256": "1bb045bd91d43f5bde35ed1f48b81d629f7967f5d0721671367194be506a0d71",
+      "parameters": {
+        "physics_timestep_seconds": 0.002,
+        "occupancy_resolution_m": 0.08,
+        "robot_inflation_radius_m": 0.64,
+        "payload_linear_speed_m_s": 0.1,
+        "payload_angular_speed_rad_s": 1.0,
+        "payload_banana_linear_speed_m_s": 0.05,
+        "payload_banana_angular_speed_rad_s": 0.035,
+        "payload_wheel_acceleration_rad_s2": 0.8,
+        "payload_banana_wheel_acceleration_rad_s2": 0.2,
+        "payload_arm_speed_rad_s": 1.2,
+        "banana_hold_closure": 0.7,
+        "apple_hold_closure": 0.7,
+        "task_sim_seconds_limit": 3000,
+        "task_wall_seconds_limit": 3600
+      }
+    }
+  ],
+  "source_manifest_sha256": "d7153247f07b1b424e33293ab6a260a38fb506105858562e5158219c89620084",
+  "controller_sources": [
+    "src/robot_exam/control/base.py",
+    "src/robot_exam/tasks/runtime.py",
+    "src/robot_exam/tasks/door_contact.py",
+    "src/robot_exam/control/parking.py",
+    "src/robot_exam/vla/interface.py"
+  ],
+  "vla_protocol": "configs/stage24_ten_fruit_grasp_validation30_v1.json",
+  "scoring_changed": false
+}
