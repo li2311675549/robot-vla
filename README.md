@@ -7,7 +7,7 @@
 
 `Husky A200` · `Original UR5` · `Robotiq 2F-85` · `MuJoCo 3.6.0`
 
-[技术总结](docs/TECHNICAL_REPORT.md) · [问题与解决措施](docs/PROBLEMS_AND_SOLUTIONS.md) · [视频演示](#视频演示) · [运行说明](docs/RUNNING.md) · [实验原始记录](evidence/)
+[技术总结](docs/TECHNICAL_REPORT.md) · [离线HTML报告](docs/TECHNICAL_REPORT.html) · [问题与解决措施](docs/PROBLEMS_AND_SOLUTIONS.md) · [视频演示](#视频演示) · [运行说明](docs/RUNNING.md) · [实验原始记录](evidence/)
 </div>
 
 ## 项目概览
