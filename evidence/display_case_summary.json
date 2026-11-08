@@ -1,0 +1,91 @@
+{
+  "scope": "final_delivery_display_case_composition",
+  "independent_consecutive_evaluation": false,
+  "selection_and_repeated_initial_conditions_disclosed": true,
+  "traditional": [
+    {
+      "group": "door",
+      "success": 10,
+      "failure": 0,
+      "records": 10,
+      "success_share_percent": 100
+    },
+    {
+      "group": "apple",
+      "success": 10,
+      "failure": 0,
+      "records": 10,
+      "success_share_percent": 100
+    },
+    {
+      "group": "banana",
+      "success": 9,
+      "failure": 1,
+      "records": 10,
+      "success_share_percent": 90
+    },
+    {
+      "group": "orange",
+      "success": 10,
+      "failure": 0,
+      "records": 10,
+      "success_share_percent": 100
+    },
+    {
+      "group": "small_book",
+      "success": 10,
+      "failure": 0,
+      "records": 10,
+      "success_share_percent": 100
+    },
+    {
+      "group": "medium_book",
+      "success": 10,
+      "failure": 0,
+      "records": 10,
+      "success_share_percent": 100
+    },
+    {
+      "group": "large_book",
+      "success": 7,
+      "failure": 3,
+      "records": 10,
+      "success_share_percent": 70
+    }
+  ],
+  "vla": [
+    {
+      "group": "apple",
+      "success": 9,
+      "failure": 1,
+      "records": 10,
+      "success_share_percent": 90
+    },
+    {
+      "group": "banana",
+      "success": 7,
+      "failure": 3,
+      "records": 10,
+      "success_share_percent": 70
+    },
+    {
+      "group": "orange",
+      "success": 9,
+      "failure": 1,
+      "records": 10,
+      "success_share_percent": 90
+    }
+  ],
+  "original_fixed_evaluation_unchanged": {
+    "door": "10/10",
+    "ten_fruit": "2/10",
+    "scattered_books": "4/10",
+    "vla_grasp_hold": "14/30"
+  },
+  "source_manifest_sha256": {
+    "traditional": "d7153247f07b1b424e33293ab6a260a38fb506105858562e5158219c89620084",
+    "vla": "22b4597d7d8fcfdf75bf016fd48e202e6cf1ae53d7919f20d901b0e118352556"
+  },
+  "release_tag": "v1.0.0",
+  "scope_note": "Per-object clips and local diagnostics do not represent complete mobile tasks; VLA does not include placement."
+}

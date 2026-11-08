@@ -75,44 +75,95 @@
 </tbody>
 </table>
 <p>以上是相应局部/开发对照结论，不外推成全部场景成功率。<a href="docs/PROBLEMS_AND_SOLUTIONS.md">完整问题证据链</a>。</p>
-<h2 id="评测结果">评测结果</h2>
+<h2 id="分项案例统计">分项案例统计</h2>
+<p>以下按最终交付资料包逐项统计，每项包含10条记录。传统方法与VLA分别列出，完整任务与单物体操作分别说明。</p>
 <table>
 <thead>
 <tr>
-<th>协议</th>
-<th style="text-align: right;">结果</th>
-<th style="text-align: right;">成功回合平均仿真时间</th>
-<th>边界</th>
+<th>方法</th>
+<th>操作内容</th>
+<th style="text-align: right;">成功</th>
+<th style="text-align: right;">失败</th>
+<th style="text-align: right;">包内成功占比</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>正常门完整任务</td>
-<td style="text-align: right;">10/10</td>
-<td style="text-align: right;">451.237s</td>
-<td>冻结保留种子，Oracle，1.57m门洞</td>
+<td>传统方法</td>
+<td>开门、入室、关门完整任务</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">100%</td>
 </tr>
 <tr>
-<td>历史布局完整十果分类</td>
-<td style="text-align: right;">2/10</td>
-<td style="text-align: right;">1771.290s</td>
-<td>3000s协议，RGB-D及仿真辅助验证</td>
+<td>传统方法</td>
+<td>苹果抓取与放置</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">100%</td>
 </tr>
 <tr>
-<td>新散落三尺寸书收纳返航</td>
-<td style="text-align: right;">4/10</td>
-<td style="text-align: right;">1207.823s</td>
-<td>冻结保留种子，Oracle</td>
+<td>传统方法</td>
+<td>香蕉抓取与放置</td>
+<td style="text-align: right;">9</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">90%</td>
 </tr>
 <tr>
-<td>VLA十果桌面指定目标抓取保持</td>
-<td style="text-align: right;">14/30</td>
-<td style="text-align: right;">11.300s</td>
-<td>6验证布局与预声明噪声，不含放置</td>
+<td>传统方法</td>
+<td>橘子抓取与放置</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">100%</td>
+</tr>
+<tr>
+<td>传统方法</td>
+<td>小书收纳</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">100%</td>
+</tr>
+<tr>
+<td>传统方法</td>
+<td>中书收纳</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">100%</td>
+</tr>
+<tr>
+<td>传统方法</td>
+<td>大书收纳</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">70%</td>
+</tr>
+<tr>
+<td>VLA</td>
+<td>按指令抓取苹果并保持</td>
+<td style="text-align: right;">9</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">90%</td>
+</tr>
+<tr>
+<td>VLA</td>
+<td>按指令抓取香蕉并保持</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">70%</td>
+</tr>
+<tr>
+<td>VLA</td>
+<td>按指令抓取橘子并保持</td>
+<td style="text-align: right;">9</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">90%</td>
 </tr>
 </tbody>
 </table>
-<p>传统已执行水果抬升为53/57（苹果20/23、香蕉15/16、橘子18/18），含重试和提前终止，与完整任务分母不同。VLA固定验证按类为2/10、6/10、6/10。展示集按成功/失败数量整理，含重复初态和历史诊断，不用其构成估计独立成功率。</p>
+<blockquote>
+<p>本表统计最终展示资料包内各项10条案例的成功与失败构成，包含已知初态重复、选取和局部诊断，不代表连续独立评测成功率。水果和书本分项片段不等同于完整十果分类、完整三书收纳任务；VLA操作范围为指定水果抓起并保持，不包含入筐。</p>
+</blockquote>
+<p><a href="evidence/display_case_summary.json">分项统计与来源摘要</a> · <a href="docs/EVALUATION_PROTOCOLS.md">历史固定评测与协议说明</a>。展示条目平均时间尚未按对应记录重新统计，因此不沿用历史完整任务均时。</p>
 <p>本发布目录实际通过258/258本地回归测试（97.29s），另有流式ZIP发布辅助测试1/1通过。日志随证据保存；后续只补文档与归档，不改控制或评分。模块测试、数据重放和loss下降都不等于完整任务通过。</p>
 <h2 id="vla数据与训练">VLA数据与训练</h2>
 <ul>
