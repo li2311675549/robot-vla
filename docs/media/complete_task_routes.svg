@@ -1,0 +1,153 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1300" viewBox="0 0 1200 1300" role="img" aria-labelledby="title desc">
+<title id="title">图2｜三个完整任务：真实动作的先后顺序</title><desc id="desc">三个并列的传统任务流程。从约5米起点开始；水果循环到十件正确入筐；书本先开抽屉再回桌抓书，逐层完成后返航。门和抽屉、大书使用Oracle基线，水果使用RGB-D与仿真辅助验证。</desc>
+<rect width="1200" height="1300" fill="#ffffff"/>
+<text x="32" y="38" font-family="Noto Sans CJK SC,Microsoft YaHei,sans-serif" font-size="26" font-weight="700" fill="#21364d" text-anchor="start">图2｜三个完整任务：真实动作的先后顺序</text>
+<text x="32" y="72" font-family="Noto Sans CJK SC,Microsoft YaHei,sans-serif" font-size="18" font-weight="400" fill="#21364d" text-anchor="start">按列自上而下阅读；三列是三个独立任务，不是机器人依次串行做三项。</text>
+<text x="38" y="116" font-family="Noto Sans CJK SC,Microsoft YaHei,sans-serif" font-size="23" font-weight="700" fill="#a56b20" text-anchor="start">开门 → 入室 → 关门</text>
+<text x="38" y="146" font-family="Noto Sans CJK SC,Microsoft YaHei,sans-serif" font-size="16" font-weight="400" fill="#21364d" text-anchor="start">Oracle几何专家；真实门把手接触</text>
+<rect x="26" y="170" width="368" height="84" rx="12" fill="#fff6ea" stroke="#a56b20" stroke-width="1.5"/>
+<text x="44" y="199" font-family="Noto Sans CJK SC,Microsoft YaHei,sans-serif" font-size="20" font-weight="700" fill="#a56b20" text-anchor="start">① 门外约5m，门初始关闭</text>
+<text x="44" y="226" font-family="Noto Sans CJK SC,Microsoft YaHei,sans-serif" font-size="17" font-weight="400" fill="#21364d" text-anchor="start">收拢机械臂，保存任务初态</text>
+<rect x="26" y="278" width="368" height="84" rx="12" fill="#fff6ea" stroke="#a56b20" stroke-width="1.5"/>
+<text x="44" y="307" font-family="Noto Sans CJK SC,Microsoft YaHei,sans-serif" font-size="20" font-weight="700" fill="#a56b20" text-anchor="start">② 导航至门外操作区</text>
+<text x="44" y="334" font-family="Noto Sans CJK SC,Microsoft YaHei,sans-serif" font-size="17" font-weight="400" fill="#21364d" text-anchor="start">规划避障路径，实际停靠复核</text>
+<polyline points="210.0,254 210.0,278" fill="none" stroke="#63758a" stroke-width="1.8"/>
+<polygon points="210.0,278 205.5,268.0 214.5,268.0" fill="#63758a"/>
+<rect x="26" y="386" width="368" height="84" rx="12" fill="#fff6ea" stroke="#a56b20" stroke-width="1.5"/>
+<text x="44" y="415" font-family="Noto Sans CJK SC,Microsoft YaHei,sans-serif" font-size="20" font-weight="700" fill="#a56b20" text-anchor="start">③ 定位外把手并接近</text>
+<text x="44" y="442" font-family="Noto Sans CJK SC,Microsoft YaHei,sans-serif" font-size="17" font-weight="400" fill="#21364d" text-anchor="start">检查可达性，闭合并确认接触</text>
+<polyline points="210.0,362 210.0,386" fill="none" stroke="#63758a" stroke-width="1.8"/>
+<polygon points="210.0,386 205.5,376.0 214.5,376.0" fill="#63758a"/>
+<rect x="26" y="494" width="368" height="84" rx="12" fill="#fff6ea" stroke="#a56b20" stroke-width="1.5"/>
+<text x="44" y="523" font-family="Noto Sans CJK SC,Microsoft YaHei,sans-serif" font-size="20" font-weight="700" fill="#a56b20" text-anchor="start">④ 夹紧把手，轮臂配合拉门</text>
+<text x="44" y="550" font-family="Noto Sans CJK SC,Microsoft YaHei,sans-serif" font-size="17" font-weight="400" fill="#21364d" text-anchor="start">沿门轴圆弧，按实际门角反馈</text>
+<polyline points="210.0,470 210.0,494" fill="none" stroke="#63758a" stroke-width="1.8"/>
+<polygon points="210.0,494 205.5,484.0 214.5,484.0" fill="#63758a"/>
+<rect x="26" y="602" width="368" height="84" rx="12" fill="#fff6ea" stroke="#a56b20" stroke-width="1.5"/>
+<text x="44" y="631" font-family="Noto Sans CJK SC,Microsoft YaHei,sans-serif" font-size="20" font-weight="700" fill="#a56b20" text-anchor="start">⑤ 达到可通行开度后退手</text>
+<text x="44" y="658" font-family="Noto Sans CJK SC,Microsoft YaHei,sans-serif" font-size="17" font-weight="400" fill="#21364d" text-anchor="start">松开把手，收臂，规划过门路径</text>
+<polyline points="210.0,578 210.0,602" fill="none" stroke="#63758a" stroke-width="1.8"/>
+<polygon points="210.0,602 205.5,592.0 214.5,592.0" fill="#63758a"/>
+<rect x="26" y="710" width="368" height="84" rx="12" fill="#fff6ea" stroke="#a56b20" stroke-width="1.5"/>
+<text x="44" y="739" font-family="Noto Sans CJK SC,Microsoft YaHei,sans-serif" font-size="20" font-weight="700" fill="#a56b20" text-anchor="start">⑥ 整机通过门洞</text>
+<text x="44" y="766" font-family="Noto Sans CJK SC,Microsoft YaHei,sans-serif" font-size="17" font-weight="400" fill="#21364d" text-anchor="start">检查底盘、机械臂和夹爪净空</text>
+<polyline points="210.0,686 210.0,710" fill="none" stroke="#63758a" stroke-width="1.8"/>
+<polygon points="210.0,710 205.5,700.0 214.5,700.0" fill="#63758a"/>
+<rect x="26" y="818" width="368" height="84" rx="12" fill="#fff6ea" stroke="#a56b20" stroke-width="1.5"/>
+<text x="44" y="847" font-family="Noto Sans CJK SC,Microsoft YaHei,sans-serif" font-size="20" font-weight="700" fill="#a56b20" text-anchor="start">⑦ 房间内重新接近内把手</text>
+<text x="44" y="874" font-family="Noto Sans CJK SC,Microsoft YaHei,sans-serif" font-size="17" font-weight="400" fill="#21364d" text-anchor="start">重新停靠、抓握，确认接触</text>
+<polyline points="210.0,794 210.0,818" fill="none" stroke="#63758a" stroke-width="1.8"/>
+<polygon points="210.0,818 205.5,808.0 214.5,808.0" fill="#63758a"/>
+<rect x="26" y="926" width="368" height="84" rx="12" fill="#fff6ea" stroke="#a56b20" stroke-width="1.5"/>
+<text x="44" y="955" font-family="Noto Sans CJK SC,Microsoft YaHei,sans-serif" font-size="20" font-weight="700" fill="#a56b20" text-anchor="start">⑧ 轮臂配合关门并安全退手</text>
+<text x="44" y="982" font-family="Noto Sans CJK SC,Microsoft YaHei,sans-serif" font-size="17" font-weight="400" fill="#21364d" text-anchor="start">沿约束轨迹闭合，释放后再复核</text>
+<polyline points="210.0,902 210.0,926" fill="none" stroke="#63758a" stroke-width="1.8"/>
+<polygon points="210.0,926 205.5,916.0 214.5,916.0" fill="#63758a"/>
+<rect x="26" y="1034" width="368" height="84" rx="12" fill="#fff6ea" stroke="#a56b20" stroke-width="1.5"/>
+<text x="44" y="1063" font-family="Noto Sans CJK SC,Microsoft YaHei,sans-serif" font-size="20" font-weight="700" fill="#a56b20" text-anchor="start">⑨ 终检：整机在内、门已关好</text>
+<text x="44" y="1090" font-family="Noto Sans CJK SC,Microsoft YaHei,sans-serif" font-size="17" font-weight="400" fill="#21364d" text-anchor="start">位姿与速度合格，记录完整结果</text>
+<polyline points="210.0,1010 210.0,1034" fill="none" stroke="#63758a" stroke-width="1.8"/>
+<polygon points="210.0,1034 205.5,1024.0 214.5,1024.0" fill="#63758a"/>
+<rect x="26" y="1160" width="368" height="102" rx="12" fill="#f4f6f9" stroke="#536579" stroke-width="1.5"/>
+<text x="44" y="1189" font-family="Noto Sans CJK SC,Microsoft YaHei,sans-serif" font-size="20" font-weight="700" fill="#536579" text-anchor="start">循环与异常处理</text>
+<text x="44" y="1216" font-family="Noto Sans CJK SC,Microsoft YaHei,sans-serif" font-size="16" font-weight="400" fill="#21364d" text-anchor="start">接触丢失 / 跟踪异常：暂停并有限重抓</text>
+<text x="44" y="1240" font-family="Noto Sans CJK SC,Microsoft YaHei,sans-serif" font-size="16" font-weight="400" fill="#21364d" text-anchor="start">过门或终检不通过：记录失败</text>
+<text x="428" y="116" font-family="Noto Sans CJK SC,Microsoft YaHei,sans-serif" font-size="23" font-weight="700" fill="#26735c" text-anchor="start">十果分类 → 正确入筐</text>
+<text x="428" y="146" font-family="Noto Sans CJK SC,Microsoft YaHei,sans-serif" font-size="16" font-weight="400" fill="#21364d" text-anchor="start">RGB-D生成目标；仿真辅助验证</text>
+<rect x="416" y="170" width="368" height="84" rx="12" fill="#edf8f4" stroke="#26735c" stroke-width="1.5"/>
+<text x="434" y="199" font-family="Noto Sans CJK SC,Microsoft YaHei,sans-serif" font-size="20" font-weight="700" fill="#26735c" text-anchor="start">① 距桌约5m，桌面随机10果</text>
+<text x="434" y="226" font-family="Noto Sans CJK SC,Microsoft YaHei,sans-serif" font-size="17" font-weight="400" fill="#21364d" text-anchor="start">苹果、香蕉、橘子均有且有差异</text>
+<rect x="416" y="278" width="368" height="84" rx="12" fill="#edf8f4" stroke="#26735c" stroke-width="1.5"/>
+<text x="434" y="307" font-family="Noto Sans CJK SC,Microsoft YaHei,sans-serif" font-size="20" font-weight="700" fill="#26735c" text-anchor="start">② 导航至桌前，观察剩余水果</text>
+<text x="434" y="334" font-family="Noto Sans CJK SC,Microsoft YaHei,sans-serif" font-size="17" font-weight="400" fill="#21364d" text-anchor="start">颜色分割、深度反投影、主轴估计</text>
+<polyline points="600.0,254 600.0,278" fill="none" stroke="#63758a" stroke-width="1.8"/>
+<polygon points="600.0,278 595.5,268.0 604.5,268.0" fill="#63758a"/>
+<rect x="416" y="386" width="368" height="84" rx="12" fill="#edf8f4" stroke="#26735c" stroke-width="1.5"/>
+<text x="434" y="415" font-family="Noto Sans CJK SC,Microsoft YaHei,sans-serif" font-size="20" font-weight="700" fill="#26735c" text-anchor="start">③ 选择目标与抓取候选</text>
+<text x="434" y="442" font-family="Noto Sans CJK SC,Microsoft YaHei,sans-serif" font-size="17" font-weight="400" fill="#21364d" text-anchor="start">检查开口、可达性、抓放路径</text>
+<polyline points="600.0,362 600.0,386" fill="none" stroke="#63758a" stroke-width="1.8"/>
+<polygon points="600.0,386 595.5,376.0 604.5,376.0" fill="#63758a"/>
+<rect x="416" y="494" width="368" height="84" rx="12" fill="#edf8f4" stroke="#26735c" stroke-width="1.5"/>
+<text x="434" y="523" font-family="Noto Sans CJK SC,Microsoft YaHei,sans-serif" font-size="20" font-weight="700" fill="#26735c" text-anchor="start">④ 到抓点上方，再下降闭合</text>
+<text x="434" y="550" font-family="Noto Sans CJK SC,Microsoft YaHei,sans-serif" font-size="17" font-weight="400" fill="#21364d" text-anchor="start">检查左右指接触，抬升后复核</text>
+<polyline points="600.0,470 600.0,494" fill="none" stroke="#63758a" stroke-width="1.8"/>
+<polygon points="600.0,494 595.5,484.0 604.5,484.0" fill="#63758a"/>
+<rect x="416" y="602" width="368" height="84" rx="12" fill="#edf8f4" stroke="#26735c" stroke-width="1.5"/>
+<text x="434" y="631" font-family="Noto Sans CJK SC,Microsoft YaHei,sans-serif" font-size="20" font-weight="700" fill="#26735c" text-anchor="start">⑤ 稳定夹持，实际带载转运</text>
+<text x="434" y="658" font-family="Noto Sans CJK SC,Microsoft YaHei,sans-serif" font-size="17" font-weight="400" fill="#21364d" text-anchor="start">底盘驶向对应筐，监控物体滑移</text>
+<polyline points="600.0,578 600.0,602" fill="none" stroke="#63758a" stroke-width="1.8"/>
+<polygon points="600.0,602 595.5,592.0 604.5,592.0" fill="#63758a"/>
+<rect x="416" y="710" width="368" height="84" rx="12" fill="#edf8f4" stroke="#26735c" stroke-width="1.5"/>
+<text x="434" y="739" font-family="Noto Sans CJK SC,Microsoft YaHei,sans-serif" font-size="20" font-weight="700" fill="#26735c" text-anchor="start">⑥ 筐前停靠，复算放置目标</text>
+<text x="434" y="766" font-family="Noto Sans CJK SC,Microsoft YaHei,sans-serif" font-size="17" font-weight="400" fill="#21364d" text-anchor="start">使用实际停车位姿，检查净空</text>
+<polyline points="600.0,686 600.0,710" fill="none" stroke="#63758a" stroke-width="1.8"/>
+<polygon points="600.0,710 595.5,700.0 604.5,700.0" fill="#63758a"/>
+<rect x="416" y="818" width="368" height="84" rx="12" fill="#edf8f4" stroke="#26735c" stroke-width="1.5"/>
+<text x="434" y="847" font-family="Noto Sans CJK SC,Microsoft YaHei,sans-serif" font-size="20" font-weight="700" fill="#26735c" text-anchor="start">⑦ 降低、松爪、退手</text>
+<text x="434" y="874" font-family="Noto Sans CJK SC,Microsoft YaHei,sans-serif" font-size="17" font-weight="400" fill="#21364d" text-anchor="start">独立检查水果是否稳定落入正确筐</text>
+<polyline points="600.0,794 600.0,818" fill="none" stroke="#63758a" stroke-width="1.8"/>
+<polygon points="600.0,818 595.5,808.0 604.5,808.0" fill="#63758a"/>
+<rect x="416" y="926" width="368" height="84" rx="12" fill="#edf8f4" stroke="#26735c" stroke-width="1.5"/>
+<text x="434" y="955" font-family="Noto Sans CJK SC,Microsoft YaHei,sans-serif" font-size="20" font-weight="700" fill="#26735c" text-anchor="start">⑧ 更新已分类对象与剩余目标</text>
+<text x="434" y="982" font-family="Noto Sans CJK SC,Microsoft YaHei,sans-serif" font-size="17" font-weight="400" fill="#21364d" text-anchor="start">返回桌面并重新观察，再处理下一件</text>
+<polyline points="600.0,902 600.0,926" fill="none" stroke="#63758a" stroke-width="1.8"/>
+<polygon points="600.0,926 595.5,916.0 604.5,916.0" fill="#63758a"/>
+<rect x="416" y="1034" width="368" height="84" rx="12" fill="#edf8f4" stroke="#26735c" stroke-width="1.5"/>
+<text x="434" y="1063" font-family="Noto Sans CJK SC,Microsoft YaHei,sans-serif" font-size="20" font-weight="700" fill="#26735c" text-anchor="start">⑨ 终检：10个全部正确入筐</text>
+<text x="434" y="1090" font-family="Noto Sans CJK SC,Microsoft YaHei,sans-serif" font-size="17" font-weight="400" fill="#21364d" text-anchor="start">有剩余、放错或超时均不能算完成</text>
+<polyline points="600.0,1010 600.0,1034" fill="none" stroke="#63758a" stroke-width="1.8"/>
+<polygon points="600.0,1034 595.5,1024.0 604.5,1024.0" fill="#63758a"/>
+<rect x="416" y="1160" width="368" height="102" rx="12" fill="#f4f6f9" stroke="#536579" stroke-width="1.5"/>
+<text x="434" y="1189" font-family="Noto Sans CJK SC,Microsoft YaHei,sans-serif" font-size="20" font-weight="700" fill="#536579" text-anchor="start">循环与异常处理</text>
+<text x="434" y="1216" font-family="Noto Sans CJK SC,Microsoft YaHei,sans-serif" font-size="16" font-weight="400" fill="#21364d" text-anchor="start">②–⑧循环至全部10个分类完成</text>
+<text x="434" y="1240" font-family="Noto Sans CJK SC,Microsoft YaHei,sans-serif" font-size="16" font-weight="400" fill="#21364d" text-anchor="start">单件成功不等于完整十果成功</text>
+<text x="818" y="116" font-family="Noto Sans CJK SC,Microsoft YaHei,sans-serif" font-size="23" font-weight="700" fill="#3065a0" text-anchor="start">三书分层 → 关闭 → 返航</text>
+<text x="818" y="146" font-family="Noto Sans CJK SC,Microsoft YaHei,sans-serif" font-size="16" font-weight="400" fill="#21364d" text-anchor="start">当前推边侧抓完整基线：Oracle</text>
+<rect x="806" y="170" width="368" height="84" rx="12" fill="#eef5ff" stroke="#3065a0" stroke-width="1.5"/>
+<text x="824" y="199" font-family="Noto Sans CJK SC,Microsoft YaHei,sans-serif" font-size="20" font-weight="700" fill="#3065a0" text-anchor="start">① 距桌约5m，保存返航起点</text>
+<text x="824" y="226" font-family="Noto Sans CJK SC,Microsoft YaHei,sans-serif" font-size="17" font-weight="400" fill="#21364d" text-anchor="start">三本大小明显不同的书随机散落</text>
+<rect x="806" y="278" width="368" height="84" rx="12" fill="#eef5ff" stroke="#3065a0" stroke-width="1.5"/>
+<text x="824" y="307" font-family="Noto Sans CJK SC,Microsoft YaHei,sans-serif" font-size="20" font-weight="700" fill="#3065a0" text-anchor="start">② 接近书桌，按长×宽排序</text>
+<text x="824" y="334" font-family="Noto Sans CJK SC,Microsoft YaHei,sans-serif" font-size="17" font-weight="400" fill="#21364d" text-anchor="start">小 / 中 / 大 → 第一 / 二 / 三层</text>
+<polyline points="990.0,254 990.0,278" fill="none" stroke="#63758a" stroke-width="1.8"/>
+<polygon points="990.0,278 985.5,268.0 994.5,268.0" fill="#63758a"/>
+<rect x="806" y="386" width="368" height="84" rx="12" fill="#eef5ff" stroke="#3065a0" stroke-width="1.5"/>
+<text x="824" y="415" font-family="Noto Sans CJK SC,Microsoft YaHei,sans-serif" font-size="20" font-weight="700" fill="#3065a0" text-anchor="start">③ 空爪先去打开对应抽屉</text>
+<text x="824" y="442" font-family="Noto Sans CJK SC,Microsoft YaHei,sans-serif" font-size="17" font-weight="400" fill="#21364d" text-anchor="start">抓把手沿滑轨拉开，确认实际开度</text>
+<polyline points="990.0,362 990.0,386" fill="none" stroke="#63758a" stroke-width="1.8"/>
+<polygon points="990.0,386 985.5,376.0 994.5,376.0" fill="#63758a"/>
+<rect x="806" y="494" width="368" height="84" rx="12" fill="#eef5ff" stroke="#3065a0" stroke-width="1.5"/>
+<text x="824" y="523" font-family="Noto Sans CJK SC,Microsoft YaHei,sans-serif" font-size="20" font-weight="700" fill="#3065a0" text-anchor="start">④ 回书桌，复核当前书姿态</text>
+<text x="824" y="550" font-family="Noto Sans CJK SC,Microsoft YaHei,sans-serif" font-size="17" font-weight="400" fill="#21364d" text-anchor="start">真实推至桌边，保留支撑及下指空间</text>
+<polyline points="990.0,470 990.0,494" fill="none" stroke="#63758a" stroke-width="1.8"/>
+<polygon points="990.0,494 985.5,484.0 994.5,484.0" fill="#63758a"/>
+<rect x="806" y="602" width="368" height="84" rx="12" fill="#eef5ff" stroke="#3065a0" stroke-width="1.5"/>
+<text x="824" y="631" font-family="Noto Sans CJK SC,Microsoft YaHei,sans-serif" font-size="20" font-weight="700" fill="#3065a0" text-anchor="start">⑤ 从侧面夹住书边的厚度</text>
+<text x="824" y="658" font-family="Noto Sans CJK SC,Microsoft YaHei,sans-serif" font-size="17" font-weight="400" fill="#21364d" text-anchor="start">近边向内15mm，夹紧、抬升、复核</text>
+<polyline points="990.0,578 990.0,602" fill="none" stroke="#63758a" stroke-width="1.8"/>
+<polygon points="990.0,602 985.5,592.0 994.5,592.0" fill="#63758a"/>
+<rect x="806" y="710" width="368" height="84" rx="12" fill="#eef5ff" stroke="#3065a0" stroke-width="1.5"/>
+<text x="824" y="739" font-family="Noto Sans CJK SC,Microsoft YaHei,sans-serif" font-size="20" font-weight="700" fill="#3065a0" text-anchor="start">⑥ 持书前往柜前预停靠位</text>
+<text x="824" y="766" font-family="Noto Sans CJK SC,Microsoft YaHei,sans-serif" font-size="17" font-weight="400" fill="#21364d" text-anchor="start">检查整套持物净空与抽屉实际开度</text>
+<polyline points="990.0,686 990.0,710" fill="none" stroke="#63758a" stroke-width="1.8"/>
+<polygon points="990.0,710 985.5,700.0 994.5,700.0" fill="#63758a"/>
+<rect x="806" y="818" width="368" height="84" rx="12" fill="#eef5ff" stroke="#3065a0" stroke-width="1.5"/>
+<text x="824" y="847" font-family="Noto Sans CJK SC,Microsoft YaHei,sans-serif" font-size="20" font-weight="700" fill="#3065a0" text-anchor="start">⑦ 沿检查过的路径入屉放书</text>
+<text x="824" y="874" font-family="Noto Sans CJK SC,Microsoft YaHei,sans-serif" font-size="17" font-weight="400" fill="#21364d" text-anchor="start">松开、退手，确认书在对应层内</text>
+<polyline points="990.0,794 990.0,818" fill="none" stroke="#63758a" stroke-width="1.8"/>
+<polygon points="990.0,818 985.5,808.0 994.5,808.0" fill="#63758a"/>
+<rect x="806" y="926" width="368" height="84" rx="12" fill="#eef5ff" stroke="#3065a0" stroke-width="1.5"/>
+<text x="824" y="955" font-family="Noto Sans CJK SC,Microsoft YaHei,sans-serif" font-size="20" font-weight="700" fill="#3065a0" text-anchor="start">⑧ 空爪关闭该层抽屉</text>
+<text x="824" y="982" font-family="Noto Sans CJK SC,Microsoft YaHei,sans-serif" font-size="17" font-weight="400" fill="#21364d" text-anchor="start">确认关好，再处理下一本</text>
+<polyline points="990.0,902 990.0,926" fill="none" stroke="#63758a" stroke-width="1.8"/>
+<polygon points="990.0,926 985.5,916.0 994.5,916.0" fill="#63758a"/>
+<rect x="806" y="1034" width="368" height="84" rx="12" fill="#eef5ff" stroke="#3065a0" stroke-width="1.5"/>
+<text x="824" y="1063" font-family="Noto Sans CJK SC,Microsoft YaHei,sans-serif" font-size="20" font-weight="700" fill="#3065a0" text-anchor="start">⑨ 三本完成后返回保存的起点</text>
+<text x="824" y="1090" font-family="Noto Sans CJK SC,Microsoft YaHei,sans-serif" font-size="17" font-weight="400" fill="#21364d" text-anchor="start">独立检查三书、三屉和返航状态</text>
+<polyline points="990.0,1010 990.0,1034" fill="none" stroke="#63758a" stroke-width="1.8"/>
+<polygon points="990.0,1034 985.5,1024.0 994.5,1024.0" fill="#63758a"/>
+<rect x="806" y="1160" width="368" height="102" rx="12" fill="#f4f6f9" stroke="#536579" stroke-width="1.5"/>
+<text x="824" y="1189" font-family="Noto Sans CJK SC,Microsoft YaHei,sans-serif" font-size="20" font-weight="700" fill="#536579" text-anchor="start">循环与异常处理</text>
+<text x="824" y="1216" font-family="Noto Sans CJK SC,Microsoft YaHei,sans-serif" font-size="16" font-weight="400" fill="#21364d" text-anchor="start">③–⑧按小、中、大循环三次</text>
+<text x="824" y="1240" font-family="Noto Sans CJK SC,Microsoft YaHei,sans-serif" font-size="16" font-weight="400" fill="#21364d" text-anchor="start">先开屉再取书，避免夹书时操作把手</text>
+</svg>

@@ -10,3 +10,11 @@
 |交付核对|任务要求、链接、命令、原始指标、源码回归|明确各任务入口与10回合原记录；259/259通过，首次临时目录失败单独保留|
 
 具体记录见[验证说明](VALIDATION.md)和[机器可读摘要](../evidence/documentation_checks/review.json)。数学算例没有伪装成新物理实验，几何专家重放没有伪装成模型成功，展示条目没有重写原始固定评测。
+
+## README流程图范围与可读性复核
+
+原交叉图已拆为三张可离线查看的SVG：传统完整控制闭环、三个任务的详细步骤、独立VLA驻车抓取闭环。先解释中文“任务步骤调度器”，再定义FSM；每张图下解释术语与判定条件。图与文字均不把当前VLA描述为导航或入筐策略。
+
+本次四轮核对依次检查：7个源码的执行范围；水果重新观察循环与书本先开屉再取书；三图实际渲染/文字边界/箭头；157项链接与原段落SHA。已返工反馈走线、列间距和箭头兼容性。未更改算法、评分或任何实验结果；本次未重复运行完整pytest，最近完整259/259为前次已保存的真实记录。
+
+[机器可读检查](../evidence/documentation_checks/flowchart_checks.json) · [渲染检查](../evidence/documentation_checks/render_review_v3.json)。图形可用`python3 scripts/generate_architecture_diagrams.py --output /tmp/robot_vla_flowcharts`再生成，不需下载渲染服务或浏览器。

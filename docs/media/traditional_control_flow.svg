@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1140" height="1040" viewBox="0 0 1140 1040" role="img" aria-labelledby="title desc">
+<title id="title">图1｜传统系统：完整任务如何形成闭环</title><desc id="desc">仅描述传统控制。任务步骤调度器按观测选择导航、驻车操作或门轮臂协同，经真实执行器动作和物理反馈验证后推进；异常有界恢复。VLA独立见图3。</desc>
+<rect width="1140" height="1040" fill="#ffffff"/>
+<text x="32" y="38" font-family="Noto Sans CJK SC,Microsoft YaHei,sans-serif" font-size="26" font-weight="700" fill="#21364d" text-anchor="start">图1｜传统系统：完整任务如何形成闭环</text>
+<text x="32" y="71" font-family="Noto Sans CJK SC,Microsoft YaHei,sans-serif" font-size="18" font-weight="400" fill="#21364d" text-anchor="start">范围：5m接近、操作、搬运、放置与任务终检；三项完整流程见图2。</text>
+<rect x="160" y="100" width="820" height="103" rx="12" fill="#eef5ff" stroke="#3065a0" stroke-width="1.5"/>
+<text x="178" y="129" font-family="Noto Sans CJK SC,Microsoft YaHei,sans-serif" font-size="20" font-weight="700" fill="#3065a0" text-anchor="start">① 读取任务、场景与当前反馈</text>
+<text x="178" y="156" font-family="Noto Sans CJK SC,Microsoft YaHei,sans-serif" font-size="18" font-weight="400" fill="#21364d" text-anchor="start">目标：开关门 / 十果分类 / 三书收纳返航</text>
+<text x="178" y="180" font-family="Noto Sans CJK SC,Microsoft YaHei,sans-serif" font-size="18" font-weight="400" fill="#21364d" text-anchor="start">输入：相机、实际机器人状态；门/抽屉/大书专家另用仿真几何（Oracle）</text>
+<rect x="160" y="233" width="820" height="103" rx="12" fill="#eef5ff" stroke="#3065a0" stroke-width="1.5"/>
+<text x="178" y="262" font-family="Noto Sans CJK SC,Microsoft YaHei,sans-serif" font-size="20" font-weight="700" fill="#3065a0" text-anchor="start">② 任务步骤调度器：判断当前做到哪一步</text>
+<text x="178" y="289" font-family="Noto Sans CJK SC,Microsoft YaHei,sans-serif" font-size="18" font-weight="400" fill="#21364d" text-anchor="start">保存目标与进度；选择下一技能；设置完成条件、超时与重试上限</text>
+<text x="178" y="313" font-family="Noto Sans CJK SC,Microsoft YaHei,sans-serif" font-size="18" font-weight="400" fill="#21364d" text-anchor="start">只有真实反馈满足该步条件，才推进下一步；不是一次发完所有动作</text>
+<polyline points="570.0,203 570.0,233" fill="none" stroke="#63758a" stroke-width="1.8"/>
+<polygon points="570.0,233 565.5,223.0 574.5,223.0" fill="#63758a"/>
+<polyline points="570,336 570,359 207,359 207,380" fill="none" stroke="#63758a" stroke-width="1.8"/>
+<polygon points="207,380 202.5,370.0 211.5,370.0" fill="#63758a"/>
+<polyline points="570,336 570,380" fill="none" stroke="#63758a" stroke-width="1.8"/>
+<polygon points="570,380 565.5,370.0 574.5,370.0" fill="#63758a"/>
+<polyline points="570,359 933,359 933,380" fill="none" stroke="#63758a" stroke-width="1.8"/>
+<polygon points="933,380 928.5,370.0 937.5,370.0" fill="#63758a"/>
+<rect x="44" y="380" width="326" height="226" rx="12" fill="#eef5ff" stroke="#3065a0" stroke-width="1.5"/>
+<text x="62" y="409" font-family="Noto Sans CJK SC,Microsoft YaHei,sans-serif" font-size="20" font-weight="700" fill="#3065a0" text-anchor="start">③A 需要换位置：底盘导航</text>
+<text x="62" y="436" font-family="Noto Sans CJK SC,Microsoft YaHei,sans-serif" font-size="17" font-weight="400" fill="#21364d" text-anchor="start">已知障碍地图 → 膨胀安全边界</text>
+<text x="62" y="460" font-family="Noto Sans CJK SC,Microsoft YaHei,sans-serif" font-size="17" font-weight="400" fill="#21364d" text-anchor="start">A*搜索 → 路点跟踪</text>
+<text x="62" y="484" font-family="Noto Sans CJK SC,Microsoft YaHei,sans-serif" font-size="17" font-weight="400" fill="#21364d" text-anchor="start">左右轮速 → 四轮真实驱动</text>
+<text x="62" y="508" font-family="Noto Sans CJK SC,Microsoft YaHei,sans-serif" font-size="17" font-weight="400" fill="#21364d" text-anchor="start">终端停靠（Dock）→ 复核稳态</text>
+<text x="62" y="532" font-family="Noto Sans CJK SC,Microsoft YaHei,sans-serif" font-size="17" font-weight="400" fill="#21364d" text-anchor="start">收臂行驶 / 带载时监控夹持</text>
+<rect x="407" y="380" width="326" height="226" rx="12" fill="#edf8f4" stroke="#26735c" stroke-width="1.5"/>
+<text x="425" y="409" font-family="Noto Sans CJK SC,Microsoft YaHei,sans-serif" font-size="20" font-weight="700" fill="#26735c" text-anchor="start">③B 到操作区：精细操作</text>
+<text x="425" y="436" font-family="Noto Sans CJK SC,Microsoft YaHei,sans-serif" font-size="17" font-weight="400" fill="#21364d" text-anchor="start">感知目标 → 候选抓点/放置点</text>
+<text x="425" y="460" font-family="Noto Sans CJK SC,Microsoft YaHei,sans-serif" font-size="17" font-weight="400" fill="#21364d" text-anchor="start">筛选底盘操作位姿 → IK求解</text>
+<text x="425" y="484" font-family="Noto Sans CJK SC,Microsoft YaHei,sans-serif" font-size="17" font-weight="400" fill="#21364d" text-anchor="start">整套持物碰撞检查 / 关节路径</text>
+<text x="425" y="508" font-family="Noto Sans CJK SC,Microsoft YaHei,sans-serif" font-size="17" font-weight="400" fill="#21364d" text-anchor="start">停稳后推、抓、抬升、放置</text>
+<text x="425" y="532" font-family="Noto Sans CJK SC,Microsoft YaHei,sans-serif" font-size="17" font-weight="400" fill="#21364d" text-anchor="start">限速控制；按配置启用驻车</text>
+<rect x="770" y="380" width="326" height="226" rx="12" fill="#fff6ea" stroke="#a56b20" stroke-width="1.5"/>
+<text x="788" y="409" font-family="Noto Sans CJK SC,Microsoft YaHei,sans-serif" font-size="20" font-weight="700" fill="#a56b20" text-anchor="start">③C 门操作：底盘与臂协同</text>
+<text x="788" y="436" font-family="Noto Sans CJK SC,Microsoft YaHei,sans-serif" font-size="17" font-weight="400" fill="#21364d" text-anchor="start">门角决定把手的圆弧目标</text>
+<text x="788" y="460" font-family="Noto Sans CJK SC,Microsoft YaHei,sans-serif" font-size="17" font-weight="400" fill="#21364d" text-anchor="start">底盘沿圆弧切向跟随</text>
+<text x="788" y="484" font-family="Noto Sans CJK SC,Microsoft YaHei,sans-serif" font-size="17" font-weight="400" fill="#21364d" text-anchor="start">机械臂按实测状态重算目标</text>
+<text x="788" y="508" font-family="Noto Sans CJK SC,Microsoft YaHei,sans-serif" font-size="17" font-weight="400" fill="#21364d" text-anchor="start">接触、跟踪均合格才前进</text>
+<text x="788" y="532" font-family="Noto Sans CJK SC,Microsoft YaHei,sans-serif" font-size="17" font-weight="400" fill="#21364d" text-anchor="start">失稳则暂停 / 安全释放重抓</text>
+<polyline points="207,606 207,630 570,630 570,650" fill="none" stroke="#63758a" stroke-width="1.8"/>
+<polygon points="570,650 565.5,640.0 574.5,640.0" fill="#63758a"/>
+<polyline points="570,606 570,650" fill="none" stroke="#63758a" stroke-width="1.8"/>
+<polygon points="570,650 565.5,640.0 574.5,640.0" fill="#63758a"/>
+<polyline points="933,606 933,630 570,630" fill="none" stroke="#63758a" stroke-width="1.8"/>
+<polygon points="570,630 580.0,625.5 580.0,634.5" fill="#63758a"/>
+<rect x="160" y="650" width="820" height="103" rx="12" fill="#f4f6f9" stroke="#536579" stroke-width="1.5"/>
+<text x="178" y="679" font-family="Noto Sans CJK SC,Microsoft YaHei,sans-serif" font-size="20" font-weight="700" fill="#536579" text-anchor="start">④ 正常执行器 + MuJoCo物理接触</text>
+<text x="178" y="706" font-family="Noto Sans CJK SC,Microsoft YaHei,sans-serif" font-size="18" font-weight="400" fill="#21364d" text-anchor="start">轮速、六关节与夹爪命令经控制器执行；物体、门和抽屉由真实接触运动</text>
+<text x="178" y="730" font-family="Noto Sans CJK SC,Microsoft YaHei,sans-serif" font-size="18" font-weight="400" fill="#21364d" text-anchor="start">每2ms推进物理；读取图像、关节、底盘、接触和物体状态</text>
+<rect x="160" y="783" width="820" height="103" rx="12" fill="#f3effc" stroke="#7353a2" stroke-width="1.5"/>
+<text x="178" y="812" font-family="Noto Sans CJK SC,Microsoft YaHei,sans-serif" font-size="20" font-weight="700" fill="#7353a2" text-anchor="start">⑤ 验证当前步骤，再决定继续、恢复或结束</text>
+<text x="178" y="839" font-family="Noto Sans CJK SC,Microsoft YaHei,sans-serif" font-size="18" font-weight="400" fill="#21364d" text-anchor="start">正常：进入下一步骤；任务末尾：独立检查门 / 十果 / 三书与返航结果</text>
+<text x="178" y="863" font-family="Noto Sans CJK SC,Microsoft YaHei,sans-serif" font-size="18" font-weight="400" fill="#21364d" text-anchor="start">异常：停车或停止机械臂 → 按技能有限重试；超限明确失败并保存日志</text>
+<polyline points="570.0,753 570.0,783" fill="none" stroke="#63758a" stroke-width="1.8"/>
+<polygon points="570.0,783 565.5,773.0 574.5,773.0" fill="#63758a"/>
+<polyline points="160,835 18,835 18,285 160,285" fill="none" stroke="#63758a" stroke-width="1.8" stroke-dasharray="7 5"/>
+<polygon points="160,285 150.0,289.5 150.0,280.5" fill="#63758a"/>
+<text x="32" y="949" font-family="Noto Sans CJK SC,Microsoft YaHei,sans-serif" font-size="18" font-weight="400" fill="#21364d" text-anchor="start">虚线＝把实际执行结果交回步骤调度器；不是无条件重复动作。</text>
+<text x="32" y="981" font-family="Noto Sans CJK SC,Microsoft YaHei,sans-serif" font-size="18" font-weight="400" fill="#21364d" text-anchor="start">相机反馈、接触监控、任务评分的用途不同；评分用真值，不代表视觉策略可读取真值。</text>
+<text x="32" y="1013" font-family="Noto Sans CJK SC,Microsoft YaHei,sans-serif" font-size="18" font-weight="700" fill="#7353a2" text-anchor="start">当前VLA短技能不在此完整任务执行链内；它的独立输入、输出和终点见图3。</text>
+</svg>

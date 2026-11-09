@@ -1,0 +1,73 @@
+{
+  "status": "PASS_DOCUMENTATION_FLOWCHART_CHECKS",
+  "review_passes": 4,
+  "local_links_checked": 157,
+  "local_link_failures": [],
+  "three_svg_xml_and_text_bounds": "PASS",
+  "diagram_regeneration_sha": "PASS",
+  "svg_files": [
+    {
+      "file": "docs/media/traditional_control_flow.svg",
+      "bytes": 10107,
+      "sha256": "a56d2c46785f5678f6bc5540427b4258e82ad94b5435a040e88874d641d63cf4"
+    },
+    {
+      "file": "docs/media/complete_task_routes.svg",
+      "bytes": 21343,
+      "sha256": "92201d824e23cb9c92e4f9bf1e1e0e6ff28dbb4b367e944ab10cbf6114646ca6"
+    },
+    {
+      "file": "docs/media/vla_stationary_skill_flow.svg",
+      "bytes": 6611,
+      "sha256": "718bd8159dfe22dc97dca46b26abba59b4f5bfe0db8df7c760be4a307cbf4429"
+    }
+  ],
+  "preserved_user_content_sha": {
+    "prefix": "f4cdc83111baeac7435d4b8c180f47166c9c22e57ff6fb826e482ec931ecfdda",
+    "suffix": "9079accee136dc830e2de50e4385881c84ad87188d5fc52d437ac96b73040788"
+  },
+  "source_modules": [
+    {
+      "file": "src/robot_exam/tasks/runtime.py",
+      "sha256": "178150bf768caa5a500bf7da796a5da6e2bc7c9d1fcba4e8eb0c68a756ead915"
+    },
+    {
+      "file": "src/robot_exam/tasks/drawer.py",
+      "sha256": "d19ca76a1cac64744dfbda1677d7055a8ddc56afe330bc93378bf36087ce72f8"
+    },
+    {
+      "file": "src/robot_exam/tasks/fruit.py",
+      "sha256": "3098cfa0fce168787afd1a4c6d1ed8139eabe18b5fbd2916bda6d966de3c0924"
+    },
+    {
+      "file": "src/robot_exam/tasks/door_contact.py",
+      "sha256": "86b4b4ffdd34189e54288e1ee75999fb8c3e412bc07b277152d8159f43dfea9b"
+    },
+    {
+      "file": "src/robot_exam/vla/interface.py",
+      "sha256": "c4595b23e724e2490c1e723d0e4750c2e995f2270b68782c1120698b705f2ed0"
+    },
+    {
+      "file": "src/robot_exam/vla/multifruit_evaluation.py",
+      "sha256": "71b1cec95de157e06347f362b681df9fe641053621af72dc7eaba7edffaaf6f1"
+    },
+    {
+      "file": "src/robot_exam/vla/client.py",
+      "sha256": "3b97d06ddaab3a0f256640bc6bb6d619f76791a2ead7c42d1577f6dcf9c67996"
+    }
+  ],
+  "render_review": "render_review_v3.json",
+  "visual_review_changes": [
+    "Split whole-task control, detailed task routes and standalone VLA evaluation.",
+    "Chinese scheduler defined before FSM; no VLA entry into whole-task graph.",
+    "Fruit observation/selection loop corrected to 2-8; book drawer-open-before-grasp confirmed.",
+    "Feedback route moved outside action boxes; route panel margins corrected.",
+    "Explicit SVG arrow triangles replace marker orientation for consistent offline viewing."
+  ],
+  "last_full_pytest": {
+    "passed": 259,
+    "seconds": 96.85,
+    "source": "prior verified documentation delivery; not rerun for diagram-only changes"
+  },
+  "new_task_or_training_runs": false
+}

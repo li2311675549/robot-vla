@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1130" viewBox="0 0 1080 1130" role="img" aria-labelledby="title desc">
+<title id="title">图3｜当前VLA实验：驻车、按指令抓起并保持</title><desc id="desc">与完整任务独立的短技能评测。初始化为已停车十果桌面，VLA只输入前方及腕部RGB、实际机械臂状态和语言，预测六轴绝对关节目标与夹爪，不输出底盘动作，不搬到筐，不放置。执行一小步重新观测。</desc>
+<rect width="1080" height="1130" fill="#ffffff"/>
+<text x="32" y="38" font-family="Noto Sans CJK SC,Microsoft YaHei,sans-serif" font-size="26" font-weight="700" fill="#21364d" text-anchor="start">图3｜当前VLA实验：驻车、按指令抓起并保持</text>
+<text x="32" y="73" font-family="Noto Sans CJK SC,Microsoft YaHei,sans-serif" font-size="18" font-weight="700" fill="#7353a2" text-anchor="start">这是独立的短技能入口；没有5m导航、带载驶向收纳筐或入筐放置。</text>
+<rect x="180" y="108" width="860" height="112" rx="12" fill="#f4f6f9" stroke="#536579" stroke-width="1.5"/>
+<text x="198" y="137" font-family="Noto Sans CJK SC,Microsoft YaHei,sans-serif" font-size="20" font-weight="700" fill="#536579" text-anchor="start">① 初始化已驻车的十果桌面场景</text>
+<text x="198" y="164" font-family="Noto Sans CJK SC,Microsoft YaHei,sans-serif" font-size="17" font-weight="400" fill="#21364d" text-anchor="start">读取评测初态；水果起初未被抓住；驻车稳定检查通过后开始</text>
+<rect x="180" y="250" width="860" height="112" rx="12" fill="#f3effc" stroke="#7353a2" stroke-width="1.5"/>
+<text x="198" y="279" font-family="Noto Sans CJK SC,Microsoft YaHei,sans-serif" font-size="20" font-weight="700" fill="#7353a2" text-anchor="start">② 采集本次观测</text>
+<text x="198" y="306" font-family="Noto Sans CJK SC,Microsoft YaHei,sans-serif" font-size="17" font-weight="400" fill="#21364d" text-anchor="start">前方RGB + 腕部RGB + 六关节/夹爪实际状态 + 语言指令 + 时间戳</text>
+<polyline points="610.0,220 610.0,250" fill="none" stroke="#63758a" stroke-width="1.8"/>
+<polygon points="610.0,250 605.5,240.0 614.5,240.0" fill="#63758a"/>
+<rect x="180" y="392" width="860" height="112" rx="12" fill="#f3effc" stroke="#7353a2" stroke-width="1.5"/>
+<text x="198" y="421" font-family="Noto Sans CJK SC,Microsoft YaHei,sans-serif" font-size="20" font-weight="700" fill="#7353a2" text-anchor="start">③ π₀.₅模型预测动作块</text>
+<text x="198" y="448" font-family="Noto Sans CJK SC,Microsoft YaHei,sans-serif" font-size="17" font-weight="400" fill="#21364d" text-anchor="start">读懂“抓起指定类别的最左水果并保持”；预测连续10步关节/夹爪目标</text>
+<polyline points="610.0,362 610.0,392" fill="none" stroke="#63758a" stroke-width="1.8"/>
+<polygon points="610.0,392 605.5,382.0 614.5,382.0" fill="#63758a"/>
+<rect x="180" y="534" width="860" height="112" rx="12" fill="#eef5ff" stroke="#3065a0" stroke-width="1.5"/>
+<text x="198" y="563" font-family="Noto Sans CJK SC,Microsoft YaHei,sans-serif" font-size="20" font-weight="700" fill="#3065a0" text-anchor="start">④ 解码第1步目标，施加安全约束</text>
+<text x="198" y="590" font-family="Noto Sans CJK SC,Microsoft YaHei,sans-serif" font-size="17" font-weight="400" fill="#21364d" text-anchor="start">六关节绝对目标 + 夹爪；检查限位，插值并约束速度、加速度</text>
+<polyline points="610.0,504 610.0,534" fill="none" stroke="#63758a" stroke-width="1.8"/>
+<polygon points="610.0,534 605.5,524.0 614.5,524.0" fill="#63758a"/>
+<rect x="180" y="676" width="860" height="112" rx="12" fill="#eef5ff" stroke="#3065a0" stroke-width="1.5"/>
+<text x="198" y="705" font-family="Noto Sans CJK SC,Microsoft YaHei,sans-serif" font-size="20" font-weight="700" fill="#3065a0" text-anchor="start">⑤ 正常执行动作，推进0.2秒物理仿真</text>
+<text x="198" y="732" font-family="Noto Sans CJK SC,Microsoft YaHei,sans-serif" font-size="17" font-weight="400" fill="#21364d" text-anchor="start">机械臂、夹爪真实动作；独立轮速伺服保持驻车，模型不输出轮速</text>
+<polyline points="610.0,646 610.0,676" fill="none" stroke="#63758a" stroke-width="1.8"/>
+<polygon points="610.0,676 605.5,666.0 614.5,666.0" fill="#63758a"/>
+<rect x="180" y="818" width="860" height="112" rx="12" fill="#edf8f4" stroke="#26735c" stroke-width="1.5"/>
+<text x="198" y="847" font-family="Noto Sans CJK SC,Microsoft YaHei,sans-serif" font-size="20" font-weight="700" fill="#26735c" text-anchor="start">⑥ 持续监控，并独立判定本次短技能是否完成</text>
+<text x="198" y="874" font-family="Noto Sans CJK SC,Microsoft YaHei,sans-serif" font-size="17" font-weight="400" fill="#21364d" text-anchor="start">目标抬升≥55mm；最近完整1秒≥90%双侧接触，末帧仍有双侧接触</text>
+<text x="198" y="898" font-family="Noto Sans CJK SC,Microsoft YaHei,sans-serif" font-size="17" font-weight="400" fill="#21364d" text-anchor="start">同时检查未抓错目标、其他水果状态与驻车；异常或超时记录失败</text>
+<polyline points="610.0,788 610.0,818" fill="none" stroke="#63758a" stroke-width="1.8"/>
+<polygon points="610.0,818 605.5,808.0 614.5,808.0" fill="#63758a"/>
+<polyline points="180,873 104,873 104,306 180,306" fill="none" stroke="#63758a" stroke-width="1.8" stroke-dasharray="7 5"/>
+<polygon points="180,306 170.0,310.5 170.0,301.5" fill="#63758a"/>
+<text x="32" y="956" font-family="Noto Sans CJK SC,Microsoft YaHei,sans-serif" font-size="18" font-weight="400" fill="#21364d" text-anchor="start">虚线＝尚未成功且未触发失败时，再观测、再预测；不是把10步预测一次性全部执行。</text>
+<text x="32" y="990" font-family="Noto Sans CJK SC,Microsoft YaHei,sans-serif" font-size="18" font-weight="400" fill="#21364d" text-anchor="start">观察 → 预测 → 执行0.2秒 → 再观察，按5Hz仿真节拍闭环；网络等待时仿真暂停。</text>
+<rect x="32" y="1020" width="1008" height="84" rx="12" fill="#fff6ea" stroke="#a56b20" stroke-width="1.5"/>
+<text x="50" y="1049" font-family="Noto Sans CJK SC,Microsoft YaHei,sans-serif" font-size="20" font-weight="700" fill="#a56b20" text-anchor="start">实验终点：指定水果抓起并保持</text>
+<text x="50" y="1076" font-family="Noto Sans CJK SC,Microsoft YaHei,sans-serif" font-size="18" font-weight="400" fill="#21364d" text-anchor="start">不接入当前完整十果调度循环；入筐与底盘导航没有在本实验中交给模型。</text>
+</svg>

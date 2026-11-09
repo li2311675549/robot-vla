@@ -1,0 +1,787 @@
+[
+  {
+    "from": "README.md",
+    "link": "docs/media/hero.svg",
+    "exists_and_anchor": true
+  },
+  {
+    "from": "README.md",
+    "link": "media/demos/door_full.mp4",
+    "exists_and_anchor": true
+  },
+  {
+    "from": "README.md",
+    "link": "src/robot_exam/tasks/door_contact.py",
+    "exists_and_anchor": true
+  },
+  {
+    "from": "README.md",
+    "link": "evidence/formal/door/",
+    "exists_and_anchor": true
+  },
+  {
+    "from": "README.md",
+    "link": "media/demos/fruit_full.mp4",
+    "exists_and_anchor": true
+  },
+  {
+    "from": "README.md",
+    "link": "src/robot_exam/tasks/fruit.py",
+    "exists_and_anchor": true
+  },
+  {
+    "from": "README.md",
+    "link": "evidence/formal/fruit/",
+    "exists_and_anchor": true
+  },
+  {
+    "from": "README.md",
+    "link": "media/demos/books_full.mp4",
+    "exists_and_anchor": true
+  },
+  {
+    "from": "README.md",
+    "link": "src/robot_exam/tasks/drawer.py",
+    "exists_and_anchor": true
+  },
+  {
+    "from": "README.md",
+    "link": "evidence/formal/books/",
+    "exists_and_anchor": true
+  },
+  {
+    "from": "README.md",
+    "link": "docs/RUNNING.md",
+    "exists_and_anchor": true
+  },
+  {
+    "from": "README.md",
+    "link": "docs/TECHNICAL_REPORT.md",
+    "exists_and_anchor": true
+  },
+  {
+    "from": "README.md",
+    "link": "docs/EVALUATION_PROTOCOLS.md",
+    "exists_and_anchor": true
+  },
+  {
+    "from": "README.md",
+    "link": "docs/IMPLEMENTATION_GUIDE.md",
+    "exists_and_anchor": true
+  },
+  {
+    "from": "README.md",
+    "link": "media/demos/door_full.mp4",
+    "exists_and_anchor": true
+  },
+  {
+    "from": "README.md",
+    "link": "docs/media/door.png",
+    "exists_and_anchor": true
+  },
+  {
+    "from": "README.md",
+    "link": "media/demos/fruit_full.mp4",
+    "exists_and_anchor": true
+  },
+  {
+    "from": "README.md",
+    "link": "docs/media/fruit.png",
+    "exists_and_anchor": true
+  },
+  {
+    "from": "README.md",
+    "link": "media/demos/books_full.mp4",
+    "exists_and_anchor": true
+  },
+  {
+    "from": "README.md",
+    "link": "docs/media/books.png",
+    "exists_and_anchor": true
+  },
+  {
+    "from": "README.md",
+    "link": "media/demos/vla_apple.mp4",
+    "exists_and_anchor": true
+  },
+  {
+    "from": "README.md",
+    "link": "docs/media/vla_apple.png",
+    "exists_and_anchor": true
+  },
+  {
+    "from": "README.md",
+    "link": "media/demos/vla_banana.mp4",
+    "exists_and_anchor": true
+  },
+  {
+    "from": "README.md",
+    "link": "docs/media/vla_banana.png",
+    "exists_and_anchor": true
+  },
+  {
+    "from": "README.md",
+    "link": "media/demos/vla_orange.mp4",
+    "exists_and_anchor": true
+  },
+  {
+    "from": "README.md",
+    "link": "docs/media/vla_orange.png",
+    "exists_and_anchor": true
+  },
+  {
+    "from": "README.md",
+    "link": "media/index.json",
+    "exists_and_anchor": true
+  },
+  {
+    "from": "README.md",
+    "link": "docs/media/traditional_control_flow.svg",
+    "exists_and_anchor": true
+  },
+  {
+    "from": "README.md",
+    "link": "docs/media/complete_task_routes.svg",
+    "exists_and_anchor": true
+  },
+  {
+    "from": "README.md",
+    "link": "docs/media/vla_stationary_skill_flow.svg",
+    "exists_and_anchor": true
+  },
+  {
+    "from": "README.md",
+    "link": "docs/media/book_edge_grasp.svg",
+    "exists_and_anchor": true
+  },
+  {
+    "from": "README.md",
+    "link": "docs/IMPLEMENTATION_GUIDE.md",
+    "exists_and_anchor": true
+  },
+  {
+    "from": "README.md",
+    "link": "docs/SUCCESS_CRITERIA_AND_PARAMETERS.md",
+    "exists_and_anchor": true
+  },
+  {
+    "from": "README.md",
+    "link": "docs/TECHNICAL_REPORT.md",
+    "exists_and_anchor": true
+  },
+  {
+    "from": "README.md",
+    "link": "evidence/issues/third_book_fix.json",
+    "exists_and_anchor": true
+  },
+  {
+    "from": "README.md",
+    "link": "evidence/issues/book_geometry.json",
+    "exists_and_anchor": true
+  },
+  {
+    "from": "README.md",
+    "link": "evidence/issues/book_swept_path.json",
+    "exists_and_anchor": true
+  },
+  {
+    "from": "README.md",
+    "link": "evidence/issues/books_formal_summary.json",
+    "exists_and_anchor": true
+  },
+  {
+    "from": "README.md",
+    "link": "evidence/issues/banana_full_closure.json",
+    "exists_and_anchor": true
+  },
+  {
+    "from": "README.md",
+    "link": "evidence/issues/banana_regulated_hold.json",
+    "exists_and_anchor": true
+  },
+  {
+    "from": "README.md",
+    "link": "evidence/issues/door_efficiency_comparison.json",
+    "exists_and_anchor": true
+  },
+  {
+    "from": "README.md",
+    "link": "evidence/issues/door_contact_acceptance.json",
+    "exists_and_anchor": true
+  },
+  {
+    "from": "README.md",
+    "link": "docs/TECHNICAL_REPORT.md#71-dock终端振荡",
+    "exists_and_anchor": true
+  },
+  {
+    "from": "README.md",
+    "link": "src/robot_exam/tasks/runtime.py",
+    "exists_and_anchor": true
+  },
+  {
+    "from": "README.md",
+    "link": "evidence/issues/vla_fixed30.json",
+    "exists_and_anchor": true
+  },
+  {
+    "from": "README.md",
+    "link": "docs/VLA_DATA_TRAINING.md",
+    "exists_and_anchor": true
+  },
+  {
+    "from": "README.md",
+    "link": "docs/PROBLEMS_AND_SOLUTIONS.md",
+    "exists_and_anchor": true
+  },
+  {
+    "from": "README.md",
+    "link": "docs/DESIGN_REASONING.md",
+    "exists_and_anchor": true
+  },
+  {
+    "from": "README.md",
+    "link": "evidence/display_case_summary.json",
+    "exists_and_anchor": true
+  },
+  {
+    "from": "README.md",
+    "link": "docs/EVALUATION_PROTOCOLS.md",
+    "exists_and_anchor": true
+  },
+  {
+    "from": "README.md",
+    "link": "docs/VALIDATION.md",
+    "exists_and_anchor": true
+  },
+  {
+    "from": "README.md",
+    "link": "docs/SUCCESS_CRITERIA_AND_PARAMETERS.md",
+    "exists_and_anchor": true
+  },
+  {
+    "from": "README.md",
+    "link": "docs/SUCCESS_CRITERIA_AND_PARAMETERS.md#5-底盘与导航参数",
+    "exists_and_anchor": true
+  },
+  {
+    "from": "README.md",
+    "link": "evidence/task_parameter_sources.json",
+    "exists_and_anchor": true
+  },
+  {
+    "from": "README.md",
+    "link": "docs/VLA_TECHNICAL.md",
+    "exists_and_anchor": true
+  },
+  {
+    "from": "README.md",
+    "link": "docs/VLA_DATA_TRAINING.md",
+    "exists_and_anchor": true
+  },
+  {
+    "from": "README.md",
+    "link": "server/snapshots/actual_training_20261108/",
+    "exists_and_anchor": true
+  },
+  {
+    "from": "README_PREVIEW.html",
+    "link": "docs/media/hero.svg",
+    "exists_and_anchor": true
+  },
+  {
+    "from": "README_PREVIEW.html",
+    "link": "docs/IMPLEMENTATION_GUIDE.md",
+    "exists_and_anchor": true
+  },
+  {
+    "from": "README_PREVIEW.html",
+    "link": "docs/DESIGN_REASONING.md",
+    "exists_and_anchor": true
+  },
+  {
+    "from": "README_PREVIEW.html",
+    "link": "docs/SUCCESS_CRITERIA_AND_PARAMETERS.md",
+    "exists_and_anchor": true
+  },
+  {
+    "from": "README_PREVIEW.html",
+    "link": "docs/TECHNICAL_REPORT.md",
+    "exists_and_anchor": true
+  },
+  {
+    "from": "README_PREVIEW.html",
+    "link": "docs/TECHNICAL_REPORT.html",
+    "exists_and_anchor": true
+  },
+  {
+    "from": "README_PREVIEW.html",
+    "link": "docs/PROBLEMS_AND_SOLUTIONS.md",
+    "exists_and_anchor": true
+  },
+  {
+    "from": "README_PREVIEW.html",
+    "link": "#视频演示",
+    "exists_and_anchor": true
+  },
+  {
+    "from": "README_PREVIEW.html",
+    "link": "docs/RUNNING.md",
+    "exists_and_anchor": true
+  },
+  {
+    "from": "README_PREVIEW.html",
+    "link": "evidence/",
+    "exists_and_anchor": true
+  },
+  {
+    "from": "README_PREVIEW.html",
+    "link": "media/demos/door_full.mp4",
+    "exists_and_anchor": true
+  },
+  {
+    "from": "README_PREVIEW.html",
+    "link": "src/robot_exam/tasks/door_contact.py",
+    "exists_and_anchor": true
+  },
+  {
+    "from": "README_PREVIEW.html",
+    "link": "evidence/formal/door/",
+    "exists_and_anchor": true
+  },
+  {
+    "from": "README_PREVIEW.html",
+    "link": "media/demos/fruit_full.mp4",
+    "exists_and_anchor": true
+  },
+  {
+    "from": "README_PREVIEW.html",
+    "link": "src/robot_exam/tasks/fruit.py",
+    "exists_and_anchor": true
+  },
+  {
+    "from": "README_PREVIEW.html",
+    "link": "evidence/formal/fruit/",
+    "exists_and_anchor": true
+  },
+  {
+    "from": "README_PREVIEW.html",
+    "link": "media/demos/books_full.mp4",
+    "exists_and_anchor": true
+  },
+  {
+    "from": "README_PREVIEW.html",
+    "link": "src/robot_exam/tasks/drawer.py",
+    "exists_and_anchor": true
+  },
+  {
+    "from": "README_PREVIEW.html",
+    "link": "evidence/formal/books/",
+    "exists_and_anchor": true
+  },
+  {
+    "from": "README_PREVIEW.html",
+    "link": "docs/RUNNING.md",
+    "exists_and_anchor": true
+  },
+  {
+    "from": "README_PREVIEW.html",
+    "link": "docs/TECHNICAL_REPORT.md",
+    "exists_and_anchor": true
+  },
+  {
+    "from": "README_PREVIEW.html",
+    "link": "docs/EVALUATION_PROTOCOLS.md",
+    "exists_and_anchor": true
+  },
+  {
+    "from": "README_PREVIEW.html",
+    "link": "docs/IMPLEMENTATION_GUIDE.md",
+    "exists_and_anchor": true
+  },
+  {
+    "from": "README_PREVIEW.html",
+    "link": "media/demos/door_full.mp4",
+    "exists_and_anchor": true
+  },
+  {
+    "from": "README_PREVIEW.html",
+    "link": "docs/media/door.png",
+    "exists_and_anchor": true
+  },
+  {
+    "from": "README_PREVIEW.html",
+    "link": "media/demos/fruit_full.mp4",
+    "exists_and_anchor": true
+  },
+  {
+    "from": "README_PREVIEW.html",
+    "link": "docs/media/fruit.png",
+    "exists_and_anchor": true
+  },
+  {
+    "from": "README_PREVIEW.html",
+    "link": "media/demos/books_full.mp4",
+    "exists_and_anchor": true
+  },
+  {
+    "from": "README_PREVIEW.html",
+    "link": "docs/media/books.png",
+    "exists_and_anchor": true
+  },
+  {
+    "from": "README_PREVIEW.html",
+    "link": "media/demos/vla_apple.mp4",
+    "exists_and_anchor": true
+  },
+  {
+    "from": "README_PREVIEW.html",
+    "link": "docs/media/vla_apple.png",
+    "exists_and_anchor": true
+  },
+  {
+    "from": "README_PREVIEW.html",
+    "link": "media/demos/vla_banana.mp4",
+    "exists_and_anchor": true
+  },
+  {
+    "from": "README_PREVIEW.html",
+    "link": "docs/media/vla_banana.png",
+    "exists_and_anchor": true
+  },
+  {
+    "from": "README_PREVIEW.html",
+    "link": "media/demos/vla_orange.mp4",
+    "exists_and_anchor": true
+  },
+  {
+    "from": "README_PREVIEW.html",
+    "link": "docs/media/vla_orange.png",
+    "exists_and_anchor": true
+  },
+  {
+    "from": "README_PREVIEW.html",
+    "link": "media/index.json",
+    "exists_and_anchor": true
+  },
+  {
+    "from": "README_PREVIEW.html",
+    "link": "docs/media/traditional_control_flow.svg",
+    "exists_and_anchor": true
+  },
+  {
+    "from": "README_PREVIEW.html",
+    "link": "docs/media/complete_task_routes.svg",
+    "exists_and_anchor": true
+  },
+  {
+    "from": "README_PREVIEW.html",
+    "link": "docs/media/vla_stationary_skill_flow.svg",
+    "exists_and_anchor": true
+  },
+  {
+    "from": "README_PREVIEW.html",
+    "link": "docs/media/book_edge_grasp.svg",
+    "exists_and_anchor": true
+  },
+  {
+    "from": "README_PREVIEW.html",
+    "link": "docs/IMPLEMENTATION_GUIDE.md",
+    "exists_and_anchor": true
+  },
+  {
+    "from": "README_PREVIEW.html",
+    "link": "docs/SUCCESS_CRITERIA_AND_PARAMETERS.md",
+    "exists_and_anchor": true
+  },
+  {
+    "from": "README_PREVIEW.html",
+    "link": "docs/TECHNICAL_REPORT.md",
+    "exists_and_anchor": true
+  },
+  {
+    "from": "README_PREVIEW.html",
+    "link": "evidence/issues/third_book_fix.json",
+    "exists_and_anchor": true
+  },
+  {
+    "from": "README_PREVIEW.html",
+    "link": "evidence/issues/book_geometry.json",
+    "exists_and_anchor": true
+  },
+  {
+    "from": "README_PREVIEW.html",
+    "link": "evidence/issues/book_swept_path.json",
+    "exists_and_anchor": true
+  },
+  {
+    "from": "README_PREVIEW.html",
+    "link": "evidence/issues/books_formal_summary.json",
+    "exists_and_anchor": true
+  },
+  {
+    "from": "README_PREVIEW.html",
+    "link": "evidence/issues/banana_full_closure.json",
+    "exists_and_anchor": true
+  },
+  {
+    "from": "README_PREVIEW.html",
+    "link": "evidence/issues/banana_regulated_hold.json",
+    "exists_and_anchor": true
+  },
+  {
+    "from": "README_PREVIEW.html",
+    "link": "evidence/issues/door_efficiency_comparison.json",
+    "exists_and_anchor": true
+  },
+  {
+    "from": "README_PREVIEW.html",
+    "link": "evidence/issues/door_contact_acceptance.json",
+    "exists_and_anchor": true
+  },
+  {
+    "from": "README_PREVIEW.html",
+    "link": "docs/TECHNICAL_REPORT.md#71-dock终端振荡",
+    "exists_and_anchor": true
+  },
+  {
+    "from": "README_PREVIEW.html",
+    "link": "src/robot_exam/tasks/runtime.py",
+    "exists_and_anchor": true
+  },
+  {
+    "from": "README_PREVIEW.html",
+    "link": "evidence/issues/vla_fixed30.json",
+    "exists_and_anchor": true
+  },
+  {
+    "from": "README_PREVIEW.html",
+    "link": "docs/VLA_DATA_TRAINING.md",
+    "exists_and_anchor": true
+  },
+  {
+    "from": "README_PREVIEW.html",
+    "link": "docs/PROBLEMS_AND_SOLUTIONS.md",
+    "exists_and_anchor": true
+  },
+  {
+    "from": "README_PREVIEW.html",
+    "link": "docs/DESIGN_REASONING.md",
+    "exists_and_anchor": true
+  },
+  {
+    "from": "README_PREVIEW.html",
+    "link": "evidence/display_case_summary.json",
+    "exists_and_anchor": true
+  },
+  {
+    "from": "README_PREVIEW.html",
+    "link": "docs/EVALUATION_PROTOCOLS.md",
+    "exists_and_anchor": true
+  },
+  {
+    "from": "README_PREVIEW.html",
+    "link": "docs/VALIDATION.md",
+    "exists_and_anchor": true
+  },
+  {
+    "from": "README_PREVIEW.html",
+    "link": "docs/SUCCESS_CRITERIA_AND_PARAMETERS.md",
+    "exists_and_anchor": true
+  },
+  {
+    "from": "README_PREVIEW.html",
+    "link": "docs/SUCCESS_CRITERIA_AND_PARAMETERS.md#5-底盘与导航参数",
+    "exists_and_anchor": true
+  },
+  {
+    "from": "README_PREVIEW.html",
+    "link": "evidence/task_parameter_sources.json",
+    "exists_and_anchor": true
+  },
+  {
+    "from": "README_PREVIEW.html",
+    "link": "docs/VLA_TECHNICAL.md",
+    "exists_and_anchor": true
+  },
+  {
+    "from": "README_PREVIEW.html",
+    "link": "docs/VLA_DATA_TRAINING.md",
+    "exists_and_anchor": true
+  },
+  {
+    "from": "README_PREVIEW.html",
+    "link": "server/snapshots/actual_training_20261108/",
+    "exists_and_anchor": true
+  },
+  {
+    "from": "docs/IMPLEMENTATION_GUIDE.md",
+    "link": "../README.md#架构",
+    "exists_and_anchor": true
+  },
+  {
+    "from": "docs/IMPLEMENTATION_GUIDE.md",
+    "link": "media/book_edge_grasp.svg",
+    "exists_and_anchor": true
+  },
+  {
+    "from": "docs/IMPLEMENTATION_GUIDE.md",
+    "link": "../src/robot_exam/perception/rgbd.py",
+    "exists_and_anchor": true
+  },
+  {
+    "from": "docs/IMPLEMENTATION_GUIDE.md",
+    "link": "../src/robot_exam/perception/objects.py",
+    "exists_and_anchor": true
+  },
+  {
+    "from": "docs/IMPLEMENTATION_GUIDE.md",
+    "link": "../src/robot_exam/control/base_pose.py",
+    "exists_and_anchor": true
+  },
+  {
+    "from": "docs/IMPLEMENTATION_GUIDE.md",
+    "link": "../src/robot_exam/control/arm.py",
+    "exists_and_anchor": true
+  },
+  {
+    "from": "docs/IMPLEMENTATION_GUIDE.md",
+    "link": "../src/robot_exam/skills/book_edge.py",
+    "exists_and_anchor": true
+  },
+  {
+    "from": "docs/IMPLEMENTATION_GUIDE.md",
+    "link": "../src/robot_exam/control/joint_rrt.py",
+    "exists_and_anchor": true
+  },
+  {
+    "from": "docs/IMPLEMENTATION_GUIDE.md",
+    "link": "../src/robot_exam/tasks/runtime.py",
+    "exists_and_anchor": true
+  },
+  {
+    "from": "docs/IMPLEMENTATION_GUIDE.md",
+    "link": "../src/robot_exam/tasks/drawer.py",
+    "exists_and_anchor": true
+  },
+  {
+    "from": "docs/IMPLEMENTATION_GUIDE.md",
+    "link": "../src/robot_exam/tasks/fruit.py",
+    "exists_and_anchor": true
+  },
+  {
+    "from": "docs/IMPLEMENTATION_GUIDE.md",
+    "link": "../src/robot_exam/tasks/door_contact.py",
+    "exists_and_anchor": true
+  },
+  {
+    "from": "docs/IMPLEMENTATION_GUIDE.md",
+    "link": "../src/robot_exam/vla/interface.py",
+    "exists_and_anchor": true
+  },
+  {
+    "from": "docs/IMPLEMENTATION_GUIDE.md",
+    "link": "../src/robot_exam/vla/multifruit_evaluation.py",
+    "exists_and_anchor": true
+  },
+  {
+    "from": "docs/IMPLEMENTATION_GUIDE.md",
+    "link": "SUCCESS_CRITERIA_AND_PARAMETERS.md",
+    "exists_and_anchor": true
+  },
+  {
+    "from": "docs/IMPLEMENTATION_GUIDE.md",
+    "link": "EVALUATION_PROTOCOLS.md",
+    "exists_and_anchor": true
+  },
+  {
+    "from": "docs/IMPLEMENTATION_GUIDE.md",
+    "link": "RUNNING.md",
+    "exists_and_anchor": true
+  },
+  {
+    "from": "docs/IMPLEMENTATION_GUIDE.html",
+    "link": "../README.md#架构",
+    "exists_and_anchor": true
+  },
+  {
+    "from": "docs/IMPLEMENTATION_GUIDE.html",
+    "link": "media/book_edge_grasp.svg",
+    "exists_and_anchor": true
+  },
+  {
+    "from": "docs/IMPLEMENTATION_GUIDE.html",
+    "link": "../src/robot_exam/perception/rgbd.py",
+    "exists_and_anchor": true
+  },
+  {
+    "from": "docs/IMPLEMENTATION_GUIDE.html",
+    "link": "../src/robot_exam/perception/objects.py",
+    "exists_and_anchor": true
+  },
+  {
+    "from": "docs/IMPLEMENTATION_GUIDE.html",
+    "link": "../src/robot_exam/control/base_pose.py",
+    "exists_and_anchor": true
+  },
+  {
+    "from": "docs/IMPLEMENTATION_GUIDE.html",
+    "link": "../src/robot_exam/control/arm.py",
+    "exists_and_anchor": true
+  },
+  {
+    "from": "docs/IMPLEMENTATION_GUIDE.html",
+    "link": "../src/robot_exam/skills/book_edge.py",
+    "exists_and_anchor": true
+  },
+  {
+    "from": "docs/IMPLEMENTATION_GUIDE.html",
+    "link": "../src/robot_exam/control/joint_rrt.py",
+    "exists_and_anchor": true
+  },
+  {
+    "from": "docs/IMPLEMENTATION_GUIDE.html",
+    "link": "../src/robot_exam/tasks/runtime.py",
+    "exists_and_anchor": true
+  },
+  {
+    "from": "docs/IMPLEMENTATION_GUIDE.html",
+    "link": "../src/robot_exam/tasks/drawer.py",
+    "exists_and_anchor": true
+  },
+  {
+    "from": "docs/IMPLEMENTATION_GUIDE.html",
+    "link": "../src/robot_exam/tasks/fruit.py",
+    "exists_and_anchor": true
+  },
+  {
+    "from": "docs/IMPLEMENTATION_GUIDE.html",
+    "link": "../src/robot_exam/tasks/door_contact.py",
+    "exists_and_anchor": true
+  },
+  {
+    "from": "docs/IMPLEMENTATION_GUIDE.html",
+    "link": "../src/robot_exam/vla/interface.py",
+    "exists_and_anchor": true
+  },
+  {
+    "from": "docs/IMPLEMENTATION_GUIDE.html",
+    "link": "../src/robot_exam/vla/multifruit_evaluation.py",
+    "exists_and_anchor": true
+  },
+  {
+    "from": "docs/IMPLEMENTATION_GUIDE.html",
+    "link": "SUCCESS_CRITERIA_AND_PARAMETERS.md",
+    "exists_and_anchor": true
+  },
+  {
+    "from": "docs/IMPLEMENTATION_GUIDE.html",
+    "link": "EVALUATION_PROTOCOLS.md",
+    "exists_and_anchor": true
+  },
+  {
+    "from": "docs/IMPLEMENTATION_GUIDE.html",
+    "link": "RUNNING.md",
+    "exists_and_anchor": true
+  }
+]
