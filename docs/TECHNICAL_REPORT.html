@@ -1,7 +1,8 @@
 <!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>移动机械臂仿真与VLA操控技术总结</title><style>body{max-width:1120px;margin:32px auto;padding:0 26px 64px;color:#213047;font:16px/1.85 system-ui,"Microsoft YaHei",sans-serif;background:#fff}h1,h2,h3{line-height:1.4;color:#0f2940}h1{font-size:36px}h2{margin-top:42px;border-bottom:2px solid #dbeafe;padding-bottom:10px}a{color:#087f9b;text-decoration:none}a:hover{text-decoration:underline}img{max-width:100%;height:auto;border-radius:10px}table{width:100%;border-collapse:collapse;margin:20px 0;font-size:14px}th{background:#eaf4fa;color:#14364b}td,th{padding:10px 12px;border:1px solid #dbe5ed;vertical-align:top}tr:nth-child(even){background:#f7fafc}pre{overflow:auto;background:#102235;color:#d9edf5;padding:18px;border-radius:10px;font-size:13px;line-height:1.6}code{font-family:ui-monospace,monospace;font-size:.92em}blockquote{border-left:4px solid #06b6d4;margin-left:0;padding:8px 20px;background:#ecfeff}.subtitle{color:#61768c}@media print{body{max-width:none;margin:0;font-size:11pt}a{color:inherit}pre{white-space:pre-wrap;background:#f1f5f9;color:#111}h2,h3{break-after:avoid}tr,img{break-inside:avoid}}</style><body><h1 id="移动机械臂仿真与-vla-操控技术总结">移动机械臂仿真与 VLA 操控技术总结</h1>
 <h2 id="摘要">摘要</h2>
+<p><a href="FINAL_RESULTS.md">最终交付视频与分项结果</a> · <a href="EVALUATION_PROTOCOLS.md">历史评测档案</a>。本文的问题案例来自不同开发阶段，旧协议数字不直接代表当前main版本。</p>
 <p>本项目在MuJoCo中构建Husky A200、原版UR5、Robotiq 2F-85和机身RGB-D/腕部RGB组成的移动操作系统，实现开门入室关门、十果分类、三本不同尺寸书本入屉并返航。系统采用分层混合架构：A*和轮式控制负责导航，FSM组织长程任务，几何规划、IK和接触反馈执行操作；π₀.₅输出驻车机械臂动作，作为独立学习技能接入。</p>
-<p>三个传统任务均有连续物理成功实例。各自冻结协议下，门任务10/10、历史十果分类2/10、新散落三书4/10。已执行水果抓取抬升为53/57，说明单项抓取与完整长程可靠性应分开评价。VLA已完成batch4、10000更新后训练与真实闭环执行，十果桌面指定目标抓起保持的固定验证为14/30。展示视频按数量整理，包含重复初态，不能替代这些评测结果。</p>
+<p>三个传统任务均有连续物理成功演示。成果汇总按最终交付视频包展示：传统方法包含门10/10、苹果10/10、香蕉9/10、橘子10/10、小书10/10、中书10/10、大书7/10；VLA驻车抓取保持展示为苹果9/10、香蕉7/10、橘子9/10。这些是选取的视频记录构成，包含重复初态和不同开发版本，不是新一轮独立完整任务成功率。旧固定协议成绩单独作为历史档案保留，用于解释各阶段的问题和改进。</p>
 <p>本文将“已证实根因”“有界改进”“未解决限制”分别说明；不把局部成功或视频展示比例写成完整任务成功率。</p>
 <h2 id="1-目标与验收边界">1. 目标与验收边界</h2>
 <table>
@@ -110,7 +111,7 @@
 <li>针对中书，约30°夹爪倾斜和接触高度0.755m解决部分推移不可达；每物理步保留桌面穿入守门。</li>
 <li>碰撞搜索加入持物完整扫掠。预检后的路径不再被“不考虑移动书本”的普通规划器二次替换，采用正常关节插值执行已检验路段。</li>
 </ul>
-<p>这些措施带来了多次真实完整三书开发成功，例如200007/200008/200009三个开发回合约1210.074/1210.288/1206.054s。新冻结散落协议仍只有4/10：五次推书跟踪失败、一次持书路径碰撞预检失败。正确结论是“突破了完整流程并定位了剩余瓶颈”，不是“随机三书已经100%”。</p>
+<p>这些措施带来了多次真实完整三书开发成功，例如200007/200008/200009三个开发回合约1210.074/1210.288/1206.054s。该历史冻结散落协议记录为4/10：五次推书跟踪失败、一次持书路径碰撞预检失败。正确结论是“突破了完整流程并定位了剩余瓶颈”，不是“随机三书已经100%”。</p>
 <p>证据：<code>evidence/issues/third_book_fix.json</code>、<code>book_geometry.json</code>、<code>book_swept_path.json</code>、<code>books_formal_summary.json</code>。</p>
 <h2 id="5-香蕉为什么大法向力仍会失稳">5. 香蕉：为什么大法向力仍会失稳</h2>
 <p>旧失败轨迹在失去接触前仍有约45/44N法向力，不能据此认定稳定。局部低速倒车实验中，臂目标误差和底盘加速度很小，但香蕉相对工具持续漂移、滚转，接触切/法向比接近摩擦边界。证据更支持曲面接触布局和满闭合持续挤压造成的滑移/滚转；不能简单归因于车速过快。</p>
@@ -199,51 +200,22 @@
 <p>动作是<code>ur5_absolute_joint_goal_v1</code>，七个有效通道；模型内部保留32维、10步动作块、5Hz。执行器做关节界、速度/加速度约束及一次重力补偿，每个动作前缀执行后重观测。当前显式bounded_projection_v1仅投影夹爪小幅越界，严重异常仍拒绝。</p>
 <p>实际训练405片段/25517帧，旧单果121片段、新3果32、新5果70、新10果182；十果对应91次单目标父操作和34个训练布局，不是91次完整清空十件。旧20%/新80%加权采样，十果预期采样质量约51.25%。训练/验证/测试按场景隔离；norm只用train，动作统计匹配10步chunk和尾部clamp。</p>
 <p>训练batch4、10000有效更新，warmup500，学习率2.5e-5→2.5e-6；最终9999完整保存和零更新重载通过。两段训练墙钟合计约2.71h，最终验证flow loss0.01256467。loss不是物理成功率。</p>
-<p>最新十果桌面固定验证：苹果2/10、香蕉6/10、橘子6/10，共14/30，涉及6个验证布局与预声明噪声，未用正式test。当前验证只要求指定目标抓起保持，不包括放置、5m导航或完整十果FSM。每类成功视频展示集合不能用于重新估计该固定结果。</p>
+<p>历史十果桌面固定验证：苹果2/10、香蕉6/10、橘子6/10，共14/30，涉及6个验证布局与预声明噪声，未用正式test。当前验证只要求指定目标抓起保持，不包括放置、5m导航或完整十果FSM。每类成功视频展示集合不能用于重新估计该固定结果。</p>
 <p><img alt="实际10000更新训练曲线，损失不等于物理成功率" src="media/training_loss.svg" /></p>
-<h2 id="9-结果分层与证据使用">9. 结果分层与证据使用</h2>
-<table>
-<thead>
-<tr>
-<th>层级</th>
-<th>实际结果</th>
-<th>适用范围</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>传统水果抬升</td>
-<td>53/57；苹果20/23、香蕉15/16、橘子18/18</td>
-<td>已执行尝试，含重试、提前终止，非100件独立抓取</td>
-</tr>
-<tr>
-<td>传统完整门</td>
-<td>10/10；成功均时451.237s</td>
-<td>正常锁边把手、Oracle、宽门协议</td>
-</tr>
-<tr>
-<td>传统完整十果</td>
-<td>2/10；成功均时1771.290s</td>
-<td>历史布局，3000s冻结协议</td>
-</tr>
-<tr>
-<td>传统新散落三书</td>
-<td>4/10；成功均时1207.823s</td>
-<td>distinct_v2，三尺寸、Oracle、返航</td>
-</tr>
-<tr>
-<td>VLA十果桌面单目标</td>
-<td>14/30；成功均时11.3s</td>
-<td>6验证布局，抓起保持，无放置</td>
-</tr>
-<tr>
-<td>展示资料</td>
-<td>传统70片段；VLA30案例</td>
-<td>按数量选取、重复/历史版本，非独立成功率</td>
-</tr>
-</tbody>
-</table>
-<p>完整成功需所有阶段都通过；单次抓取可靠不代表十次连续抓放可靠。例如独立同分布的理想示例中，单果完整链路85%时十果全过约19.7%；这只是概率说明，不是对实际相关失败的拟合模型。</p>
+<h2 id="9-最终交付视频与历史证据">9. 最终交付视频与历史证据</h2>
+<table><thead><tr><th>方法</th><th>操作内容</th><th>成功/记录</th><th>视频包内成功占比</th></tr></thead><tbody>
+<tr><td>传统</td><td>完整开门、入室、关门</td><td>10/10</td><td>100%</td></tr>
+<tr><td>传统</td><td>苹果抓取与放置</td><td>10/10</td><td>100%</td></tr>
+<tr><td>传统</td><td>香蕉操作</td><td>9/10</td><td>90%</td></tr>
+<tr><td>传统</td><td>橘子抓取与放置</td><td>10/10</td><td>100%</td></tr>
+<tr><td>传统</td><td>小书收纳</td><td>10/10</td><td>100%</td></tr>
+<tr><td>传统</td><td>中书收纳</td><td>10/10</td><td>100%</td></tr>
+<tr><td>传统</td><td>大书操作</td><td>7/10</td><td>70%</td></tr>
+<tr><td>VLA</td><td>苹果抓起保持</td><td>9/10</td><td>90%</td></tr>
+<tr><td>VLA</td><td>香蕉抓起保持</td><td>7/10</td><td>70%</td></tr>
+<tr><td>VLA</td><td>橘子抓起保持</td><td>9/10</td><td>90%</td></tr></tbody></table>
+<p>以上统计来自最终交付的传统70条、VLA30条视频及配套评分。记录经选取，含重复初态；传统包还含不同开发版本。水果和书本主要为单项片段，香蕉和大书分组包含局部失败诊断，VLA不含入筐。视频包内占比不替代完整任务独立评测。</p>
+<p><a href="FINAL_RESULTS.md">完整口径与来源</a>。历史完整任务和固定VLA验证的成绩、均时及失败全部保留在<a href="EVALUATION_PROTOCOLS.md">历史评测档案</a>和原始JSON中；它们用于各自阶段分析，不与本表构成前后成功率对照。本文未产生新评测结果。</p>
 <p>早期源码导出曾在本地实际258/258测试通过（96.84s）；本轮公开目录完整回归为259/259通过（96.85s），记录见<a href="VALIDATION.md">验证说明</a>。这证明所覆盖模块与接口回归，不代替任务可靠性。原始data.warning与隔离进程文本日志分开报告；历史全局Linesearch提示不能直接归因到某个成功回合，也不能因计数零就忽略文本提示。</p>
 <h2 id="10-技术贡献局限与下一步">10. 技术贡献、局限与下一步</h2>
 <p>可由现有证据支撑的工作包括：原版UR5整机与真实接触系统；工具坐标下的滑移检测；考虑门约束的底盘/机械臂协同；曲面水果保持控制对照；持物几何扫掠与路径一致执行；自然静置初态与相机质量审计；动作语义一致的双视角数据及真实π₀.₅训练/推理链路。</p>
