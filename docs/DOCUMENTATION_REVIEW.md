@@ -1,20 +1,20 @@
-# 实现说明的校核与返工
+# 文档维护记录
 
-本轮只更新解释、示意与轻量核验入口，未修改控制算法、物体物理参数或任务评分。
+## 内容与图示
 
-|轮次|核对内容|实际返工/证据|
-|---|---|---|
-|源码核对|目标来源、更新时点、抓点公式、任务分支|明确大书Oracle；分开40ms笛卡尔与20ms运输补偿；确认上下闭合与15/75mm抓点|
-|数学/模型核对|反投影、坐标、真实截面、抓点、IK|5项函数算例、3模型各50步、独立副本IK；未当作任务成功|
-|初学者阅读|术语、动作先后、底盘何时配合、示意|定义TCP/Oracle/RRT；解释先开屉再拿书；图示两次渲染后修正遮挡和比例|
-|交付核对|任务要求、链接、命令、原始指标、源码回归|明确各任务入口与10回合原记录；259/259通过，首次临时目录失败单独保留|
+实现说明依据感知、规划、任务调度和执行接口整理。流程图分别描述传统控制、三个完整任务及 VLA 驻车抓取；书本操作按“先开抽屉、再取书、放置后关屉”的实际顺序绘制。
 
-具体记录见[验证说明](VALIDATION.md)和[机器可读摘要](../evidence/documentation_checks/review.json)。数学算例没有伪装成新物理实验，几何专家重放没有伪装成模型成功，展示条目没有重写原始固定评测。
+历史检查记录保存在以下文件，供维护时追溯：
 
-## README流程图范围与可读性复核
+- [源码与说明对应检查](../evidence/documentation_checks/review.json)
+- [流程图检查](../evidence/documentation_checks/flowchart_checks.json)
+- [图形渲染检查](../evidence/documentation_checks/render_review_v3.json)
+- [代码、数学和模型测试](VALIDATION.md)
 
-原交叉图已拆为三张可离线查看的SVG：传统完整控制闭环、三个任务的详细步骤、独立VLA驻车抓取闭环。先解释中文“任务步骤调度器”，再定义FSM；每张图下解释术语与判定条件。图与文字均不把当前VLA描述为导航或入筐策略。
+流程图生成命令：
 
-本次四轮核对依次检查：7个源码的执行范围；水果重新观察循环与书本先开屉再取书；三图实际渲染/文字边界/箭头；157项链接与原段落SHA。已返工反馈走线、列间距和箭头兼容性。未更改算法、评分或任何实验结果；本次未重复运行完整pytest，最近完整259/259为前次已保存的真实记录。
+```bash
+python scripts/generate_architecture_diagrams.py --output /tmp/robot_vla_flowcharts
+```
 
-[机器可读检查](../evidence/documentation_checks/flowchart_checks.json) · [渲染检查](../evidence/documentation_checks/render_review_v3.json)。图形可用`python3 scripts/generate_architecture_diagrams.py --output /tmp/robot_vla_flowcharts`再生成，不需下载渲染服务或浏览器。
+首页预览与两份离线 HTML 均由对应 Markdown 生成，更新文字时应一并更新。

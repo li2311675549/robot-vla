@@ -1,11 +1,14 @@
-<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>移动机械臂仿真与VLA操控技术总结</title><style>body{max-width:1120px;margin:32px auto;padding:0 26px 64px;color:#213047;font:16px/1.85 system-ui,"Microsoft YaHei",sans-serif;background:#fff}h1,h2,h3{line-height:1.4;color:#0f2940}h1{font-size:36px}h2{margin-top:42px;border-bottom:2px solid #dbeafe;padding-bottom:10px}a{color:#087f9b;text-decoration:none}a:hover{text-decoration:underline}img{max-width:100%;height:auto;border-radius:10px}table{width:100%;border-collapse:collapse;margin:20px 0;font-size:14px}th{background:#eaf4fa;color:#14364b}td,th{padding:10px 12px;border:1px solid #dbe5ed;vertical-align:top}tr:nth-child(even){background:#f7fafc}pre{overflow:auto;background:#102235;color:#d9edf5;padding:18px;border-radius:10px;font-size:13px;line-height:1.6}code{font-family:ui-monospace,monospace;font-size:.92em}blockquote{border-left:4px solid #06b6d4;margin-left:0;padding:8px 20px;background:#ecfeff}.subtitle{color:#61768c}@media print{body{max-width:none;margin:0;font-size:11pt}a{color:inherit}pre{white-space:pre-wrap;background:#f1f5f9;color:#111}h2,h3{break-after:avoid}tr,img{break-inside:avoid}}</style><body><h1 id="移动机械臂仿真与-vla-操控技术总结">移动机械臂仿真与 VLA 操控技术总结</h1>
+<!doctype html>
+<html lang="zh-CN">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>移动机械臂仿真与 VLA 操控技术总结</title><style>*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;color:#243449;background:#fff;font:16px/1.85 system-ui,"Microsoft YaHei",sans-serif}main{max-width:1080px;margin:32px auto;padding:0 28px 64px}nav{display:flex;flex-wrap:wrap;gap:8px 22px;border-bottom:1px solid #dce4ea;padding:14px 0;margin-bottom:26px;font-size:14px}h1,h2,h3{line-height:1.45;color:#14364b;scroll-margin-top:20px}h1{font-size:34px}h2{font-size:25px;margin:44px 0 18px;border-bottom:1px solid #dce4ea;padding-bottom:10px}h3{font-size:20px;margin-top:30px}a{color:#086b89;text-decoration:none}a:hover{text-decoration:underline}p{margin:16px 0}img{display:block;max-width:100%;height:auto;margin:20px auto;border-radius:8px}.table-scroll{overflow-x:auto;margin:22px 0}table{width:100%;border-collapse:collapse;font-size:14px;line-height:1.7}td,th{padding:11px 13px;border:1px solid #dce4ea;vertical-align:top}th{background:#eef5f8;text-align:left}tr:nth-child(even){background:#f8fafb}pre{overflow-x:auto;padding:20px;background:#f3f6f8;border-radius:8px;font-size:13px;line-height:1.6}code{font-family:ui-monospace,Consolas,monospace;font-size:.91em;overflow-wrap:anywhere}blockquote{margin:20px 0;padding:1px 20px;border-left:3px solid #4e8d9d;background:#f2f8fa}li{margin:7px 0}@media(max-width:600px){main{padding:0 16px 40px;margin-top:14px}h1{font-size:28px}h2{font-size:23px}td,th{padding:8px;min-width:80px}table{font-size:13px}nav{gap:6px 16px}}@media print{main{max-width:none;margin:0;padding:0;font-size:11pt}nav{display:none}h2,h3{break-after:avoid}tr,img{break-inside:avoid}pre{white-space:pre-wrap}.table-scroll{overflow:visible}a{color:inherit}}</style></head>
+<body><main><nav aria-label="文档导航"><a href="../README_PREVIEW.html">项目首页</a><a href="TECHNICAL_REPORT.html">技术报告</a><a href="IMPLEMENTATION_GUIDE.html">实现解析</a></nav>
+<h1 id="移动机械臂仿真与-vla-操控技术总结">移动机械臂仿真与 VLA 操控技术总结</h1>
 <h2 id="摘要">摘要</h2>
-<p><a href="FINAL_RESULTS.md">最终交付视频与分项结果</a> · <a href="EVALUATION_PROTOCOLS.md">历史评测档案</a>。本文的问题案例来自不同开发阶段，旧协议数字不直接代表当前main版本。</p>
-<p>本项目在MuJoCo中构建Husky A200、原版UR5、Robotiq 2F-85和机身RGB-D/腕部RGB组成的移动操作系统，实现开门入室关门、十果分类、三本不同尺寸书本入屉并返航。系统采用分层混合架构：A*和轮式控制负责导航，FSM组织长程任务，几何规划、IK和接触反馈执行操作；π₀.₅输出驻车机械臂动作，作为独立学习技能接入。</p>
-<p>三个传统任务均有连续物理成功演示。成果汇总按最终交付视频包展示：传统方法包含门10/10、苹果10/10、香蕉9/10、橘子10/10、小书10/10、中书10/10、大书7/10；VLA驻车抓取保持展示为苹果9/10、香蕉7/10、橘子9/10。这些是选取的视频记录构成，包含重复初态和不同开发版本，不是新一轮独立完整任务成功率。旧固定协议成绩单独作为历史档案保留，用于解释各阶段的问题和改进。</p>
-<p>本文将“已证实根因”“有界改进”“未解决限制”分别说明；不把局部成功或视频展示比例写成完整任务成功率。</p>
-<h2 id="1-目标与验收边界">1. 目标与验收边界</h2>
-<table>
+<p>本项目在 MuJoCo 中搭建 Husky A200、原版 UR5、Robotiq 2F-85 与双视角相机组成的移动操作平台，围绕开门入室、十果分类和三书收纳开展实验。导航与任务状态机组织完整流程，几何规划、逆运动学和接触反馈完成抓取与搬运。</p>
+<p>开发重点是处理多步操作中的具体失败：将滑移检测改到工具坐标系，消除持书转向时的误报；通过推边侧抓和持物路径检查解决大书操作空间不足；调整香蕉保持闭合量；通过底盘与机械臂协同减少门操作中的重复抓握。三个传统任务均已有完整成功演示。</p>
+<p>在传统系统与示教数据基础上，进一步训练双视角 π₀.₅，验证驻车状态下按语言指令抓起指定水果并保持。<a href="FINAL_RESULTS.md">视频结果</a>汇总最终交付案例，<a href="EVALUATION_PROTOCOLS.md">历史评测</a>保留各阶段完整测试。本文重点讨论故障定位、方案选择和仍需解决的问题。</p>
+<h2 id="1-任务目标">1. 任务目标</h2>
+<div class="table-scroll"><table>
 <thead>
 <tr>
 <th>任务</th>
@@ -13,8 +16,7 @@
 <th>整轮成功条件</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>门</td>
 <td>门外约5m接近→抓把手拉开→整机通过→内侧关门</td>
 <td>进入房间且门关闭、停稳</td>
@@ -29,20 +31,18 @@
 <td>距桌约5m接近→面积排序→三层收纳→关闭→返航</td>
 <td>三书分别正确入屉，抽屉关闭，机器人回到初态容差内</td>
 </tr>
-</tbody>
-</table>
-<p>运行中仅通过正常执行器和接触改变机器人、物体、门与抽屉状态。初始化和独立scratch运动学搜索可以设置状态，但不能把它们作为完成操作的动作。完整任务、单件技能、checkpoint续作和展示集合分别记录。</p>
+</tbody></table></div>
+<p>任务运行通过轮速、机械臂和夹爪执行器驱动，门、抽屉与物体受接触力作用。整轮任务、单件操作和检查点续作分别保存结果，便于定位多步流程中的失败。</p>
 <h2 id="2-平台建模与设计依据">2. 平台建模与设计依据</h2>
-<p>本地Python3.10、MuJoCo3.6.0；服务器OpenPI为独立Python3.11环境。物理步长0.002s，implicitfast积分、椭圆摩擦锥。没有更改系统驱动或用UR5e替代原版UR5。</p>
-<table>
+<p>本地Python3.10、MuJoCo3.6.0；服务器OpenPI为独立Python3.11环境。物理步长0.002s，implicitfast积分、椭圆摩擦锥。机械臂采用原版 UR5 连杆参数。</p>
+<div class="table-scroll"><table>
 <thead>
 <tr>
 <th>对象</th>
 <th>关键参数与实现</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>Husky</td>
 <td>四个真实轮关节/速度执行器、自由基座；轮半径0.1651m、轮距0.555m；惯性与尺寸由原描述适配</td>
 </tr>
@@ -56,7 +56,7 @@
 </tr>
 <tr>
 <td>相机</td>
-<td>机身理想RGB-D、腕部虚拟RGB；有内外参与反投影，不声称完整D435i双目、IR、IMU或真实噪声</td>
+<td>机身理想 RGB-D、腕部虚拟 RGB；具备内外参和反投影，D435i 双目、IR、IMU 及噪声待扩展</td>
 </tr>
 <tr>
 <td>门</td>
@@ -74,124 +74,107 @@
 <td>抽屉</td>
 <td>三独立被动滑轨、0–0.27m行程，真实把手、底板、侧壁、关屉接触</td>
 </tr>
-</tbody>
-</table>
-<p>三书面积比为1:2.25:4，并非三个近似相同小物体。A4/A5/A6仅是曾测试的扩展尺寸，不是任务硬要求。新三尺寸在评测前冻结，旧失败保留；不能将不同尺寸协议直接解释为单因素成功率提升。原模型来源、固定提交、文件校验与第三方许可见<code>configs/model_sources.lock.json</code>和<code>third_party/</code>。</p>
+</tbody></table></div>
+<p>三书平面面积比为 1:2.25:4。早期还探索过 A4/A5/A6 尺寸，相关失败保留在对应记录中；后续三尺寸在评测前固定，跨尺寸结果分别比较。模型来源见 <code>configs/model_sources.lock.json</code>，第三方许可见 <code>third_party/</code>。</p>
 <h2 id="3-分层感知规划与控制">3. 分层感知、规划与控制</h2>
-<pre><code class="language-mermaid">flowchart TD
-    FSM[任务FSM与有界恢复] --&gt; NAV[占据栅格A*及轮速跟踪]
-    FSM --&gt; PER[RGB-D目标估计 / 声明的Oracle专家]
-    PER --&gt; GEO[抓取候选、底盘操作位姿、约束轨迹]
-    GEO --&gt; IK[多初值DLS IK与持物碰撞路径]
-    FSM --&gt; VLA[双RGB、实测状态、语言 → π₀.₅]
-    VLA --&gt; CHUNK[绝对关节动作块与安全执行]
-    IK --&gt; CTRL[限速参考、一次重力补偿、执行器]
-    CHUNK --&gt; CTRL
-    NAV --&gt; PHYSICS[MuJoCo真实轮地及物体接触]
-    CTRL --&gt; PHYSICS
-    PHYSICS --&gt; CHECK[接触、滑移、容纳和任务评分]
-    CHECK --&gt; FSM
-</code></pre>
+<p><img src="media/traditional_control_flow.svg" alt="传统系统控制流程"></p>
+<p>传统系统承担完整任务；VLA 目前作为独立驻车抓取实验，复用底层执行器。</p>
 <p>导航使用外形膨胀后的二维占据栅格、A*搜索与路点跟踪。差速映射为<code>ωL=(v−ωb/2)/r</code>、<code>ωR=(v+ωb/2)/r</code>；Husky可滑移转向，不能直接横向平移。</p>
-<p>RGB-D使用颜色连通域、深度反投影、PCA方向与几何候选。门、抽屉和部分书本策略明确使用Oracle几何，接触/容纳亦有仿真评分辅助；不能称完全由图像自主推理。</p>
-<p>机械臂采用MuJoCo雅可比DLS IK、多初值及历史解搜索，检查关节余量、碰撞和连续性；实际关节运动经过限速参考与一次重力补偿。持物路径不仅检查末端和机械臂，还传播真实书本偏移检查整个扫掠体。规划中的物体位姿传播只存在于独立scratch数据，不写回实时仿真，不是隐藏焊接。</p>
+<p>RGB-D 使用颜色连通域、深度反投影和 PCA 方向估计生成几何候选。门、抽屉和部分书本策略使用仿真几何信息（Oracle），执行判断结合仿真接触与容纳信息。</p>
+<p>机械臂采用MuJoCo雅可比DLS IK、多初值及历史解搜索，检查关节余量、碰撞和连续性；实际关节运动经过限速参考与一次重力补偿。持物路径不仅检查末端和机械臂，还传播真实书本偏移检查整个扫掠体。规划在独立运动学副本中更新持物位姿，实际执行时书本仍由夹爪接触支撑。</p>
 <p>FSM定义导航、观察、选择、规划、接近、抓取、搬运、放置、验证、恢复、返航、成功与失败状态。每状态有超时、物理判定及有限重试；失败原始类别需穿透上层异常包装，避免恢复分支失效。</p>
 <h2 id="4-大书从频繁失败到可完成的操作链">4. 大书：从频繁失败到可完成的操作链</h2>
 <h3 id="41-先区分不可达执行偏差和碰撞">4.1 先区分不可达、执行偏差和碰撞</h3>
 <p>早期约67.4mm跟踪误差发生于下降阶段；数值IK收敛并不代表物理轨迹可执行。A4侧抓候选曾有腕/掌与桌面约41.7mm穿入，因此正确拒绝。增加长短轴候选只能补齐姿态搜索，不能消除几何冲突。</p>
-<p>采用的措施是：从桌面上方直接下抓改为真实推移到边缘，再沿书厚侧夹；调整操作底盘位姿；预抓取到位确认；检查腕部、相机支架、桌面和夹爪退出空间。物体尺寸、摩擦及驱动力没有为通关而极端修改。</p>
+<p>采用的措施是：从桌面上方直接下抓改为真实推移到边缘，再沿书厚侧夹；调整操作底盘位姿；预抓取到位确认；检查腕部、相机支架、桌面和夹爪退出空间。侧抓方案利用书的厚度和桌边空间获得可行抓点。</p>
 <h3 id="42-修复仍夹着书却异常停止的坐标系错误">4.2 修复“仍夹着书却异常停止”的坐标系错误</h3>
 <p>旧滑移量直接比较世界坐标向量：<code>||(p书−p工具)(t)−(p书−p工具)(t0)||</code>。工具旋转时，刚性夹持也会改变该向量，产生假滑移。</p>
 <p>修复使用工具局部坐标：<code>p局部=R工具ᵀ(p书−p工具)</code>。原25mm/0.35rad及连续三次异常规则保留，双侧接触检查保留。在原触发点，同一回合旧量25.032mm、新量2.834mm，双侧接触为真，直接证实坐标系误报。</p>
-<p>修复后越过了原中断点，但没有立即宣称成功；后续真实出现导航超时、书撞前板和把手、抽屉提前关闭等问题，分别继续处理。第三书重新实抓的连续续作最终成功：抬升92.045mm，最大工具坐标漂移2.839mm，双侧比例1.0，第三屉最终开度9.317mm，返回误差约64mm/30.4mrad。该回合由checkpoint开始，不能计成从5m出发的新完整三书成功。</p>
+<p>修复后越过原中断点，后续又暴露出导航超时、书撞前板和把手、抽屉提前关闭等问题，需要继续处理。第三书重新实抓的连续续作最终成功：抬升92.045mm，最大工具坐标漂移2.839mm，双侧比例1.0，第三屉最终开度9.317mm，返回误差约64mm/30.4mrad。该回合从检查点开始，验证了第三本书操作及返航。</p>
 <h3 id="43-解决柜体净空抓点与持物路径">4.3 解决柜体净空、抓点与持物路径</h3>
 <ul>
 <li>运输高度按抽屉前板、凸出把手及支撑的真实碰撞上界加40mm，而不只按前板高度。放置前重新确认实际开度，防止对已被书推闭的抽屉释放。</li>
 <li>斜书的AABB前沿不等于实际中线截面；曾导致抓点在书外约13mm。改用书本有向几何计算截面，并保留支撑和桌边净空判据。</li>
-<li>针对中书，约30°夹爪倾斜和接触高度0.755m解决部分推移不可达；每物理步保留桌面穿入守门。</li>
+<li>针对中书，约30°夹爪倾斜和接触高度0.755m解决部分推移不可达；每个物理步检查桌面穿入。</li>
 <li>碰撞搜索加入持物完整扫掠。预检后的路径不再被“不考虑移动书本”的普通规划器二次替换，采用正常关节插值执行已检验路段。</li>
 </ul>
-<p>这些措施带来了多次真实完整三书开发成功，例如200007/200008/200009三个开发回合约1210.074/1210.288/1206.054s。该历史冻结散落协议记录为4/10：五次推书跟踪失败、一次持书路径碰撞预检失败。正确结论是“突破了完整流程并定位了剩余瓶颈”，不是“随机三书已经100%”。</p>
+<p>这些措施带来了多次真实完整三书开发成功，例如200007/200008/200009三个开发回合约1210.074/1210.288/1206.054s。该历史冻结散落协议记录为4/10：五次推书跟踪失败、一次持书路径碰撞预检失败。完整流程已打通，后续重点仍是随机推移和狭窄空间路径。</p>
 <p>证据：<code>evidence/issues/third_book_fix.json</code>、<code>book_geometry.json</code>、<code>book_swept_path.json</code>、<code>books_formal_summary.json</code>。</p>
 <h2 id="5-香蕉为什么大法向力仍会失稳">5. 香蕉：为什么大法向力仍会失稳</h2>
-<p>旧失败轨迹在失去接触前仍有约45/44N法向力，不能据此认定稳定。局部低速倒车实验中，臂目标误差和底盘加速度很小，但香蕉相对工具持续漂移、滚转，接触切/法向比接近摩擦边界。证据更支持曲面接触布局和满闭合持续挤压造成的滑移/滚转；不能简单归因于车速过快。</p>
-<p>排查尝试保留了多候选、降低抓取高度、低速、摩擦试探等失败结果。仅提高摩擦或更慢动作未解决原满闭合问题，故未以“黏住物体”的方式修改正式材质。</p>
-<p>采用“建立抓握后调节保持闭合量”、接触与相对位姿反馈、平滑限速、有界停止复核。seed420局部对照如下，模型物理参数相同，不能视为多种子成功率：</p>
-<table>
+<p>旧失败轨迹在失去接触前仍有约45/44N法向力，夹持仍未保持稳定。局部低速倒车实验中，臂目标误差和底盘加速度很小，但香蕉相对工具持续漂移、滚转，接触切/法向比接近摩擦边界。这些现象提示应优先检查曲面接触布局和持续挤压的影响。</p>
+<p>排查尝试保留了多候选、降低抓取高度、低速、摩擦试探等失败结果。提高摩擦或继续降速未解决原满闭合问题，后续转向保持闭合量与接触状态的检查。</p>
+<p>采用“建立抓握后调节保持闭合量”、接触与相对位姿反馈、平滑限速、有界停止复核。seed420 的局部对照如下，两次使用相同模型物理参数：</p>
+<div class="table-scroll"><table>
 <thead>
 <tr>
 <th>局部保持/倒车实验</th>
-<th style="text-align: right;">满闭合1.0</th>
-<th style="text-align: right;">保持0.70</th>
+<th align="right">满闭合1.0</th>
+<th align="right">保持0.70</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>局部结果</td>
-<td style="text-align: right;">保持阶段失败</td>
-<td style="text-align: right;">通过约0.381m倒车</td>
+<td align="right">保持阶段失败</td>
+<td align="right">通过约0.381m倒车</td>
 </tr>
 <tr>
 <td>最大相对位移</td>
-<td style="text-align: right;">18.120mm</td>
-<td style="text-align: right;">3.038mm</td>
+<td align="right">18.120mm</td>
+<td align="right">3.038mm</td>
 </tr>
 <tr>
 <td>最大相对旋转</td>
-<td style="text-align: right;">0.15879rad</td>
-<td style="text-align: right;">0.03992rad</td>
+<td align="right">0.15879rad</td>
+<td align="right">0.03992rad</td>
 </tr>
 <tr>
 <td>录像范围</td>
-<td style="text-align: right;">已持物初态，3.6s</td>
-<td style="text-align: right;">已持物初态，12.4s</td>
+<td align="right">已持物初态，3.6s</td>
+<td align="right">已持物初态，12.4s</td>
 </tr>
-</tbody>
-</table>
-<p>此对照支持保持控制的局部有效性，不证明所有香蕉或十果任务已可靠完成。部分更复杂转弯仍失败，需要同时考虑接触点、抓取深度和路径动态。独立VLA中的香蕉失败也不能仅据外形就认定缺训练数据。</p>
-<p><img alt="香蕉保持控制的原始局部对照曲线" src="media/banana_contact.png" /></p>
-<p>证据：<code>evidence/issues/banana_full_closure.json</code>、<code>banana_regulated_hold.json</code>及原始接触轨迹。成功视频中终端仍夹持，失败保护也可能在接触尚未完全丢失时触发，应区分“验证失败”与“已肉眼掉落”。</p>
+</tbody></table></div>
+<p>两次实验从已持物初态开始，持续时间和运动过程不同。局部结果支持保持控制的作用；复杂转弯中仍有失败，需进一步比较接触点、抓取深度和路径动态。</p>
+<p><img src="media/banana_contact.png" alt="香蕉保持控制的原始局部对照曲线"></p>
+<p>证据：<code>evidence/issues/banana_full_closure.json</code>、<code>banana_regulated_hold.json</code>及原始接触轨迹。失败保护有时在接触完全丢失前触发，具体停止原因见各回合评分。</p>
 <h2 id="6-门用底盘和机械臂协同减少无效重抓">6. 门：用底盘和机械臂协同减少无效重抓</h2>
 <p>早期门把手几何不符合常见锁边结构，后续改为两侧同轴锁边把手，并单独冻结新协议，不沿用旧几何的统计。</p>
 <p>原控制把圆弧切成许多固定小段，每段释放、收臂、Dock、重抓。改为同时参数化底盘与把手圆弧：<code>p底盘(θ)=p门轴+Rz(θ)[法向偏置,切向偏置]</code>，底盘沿可执行方向运动，机械臂用实测底盘和门角修正末端轨迹。</p>
 <p>正常阶段持续闭合；仅在指垫边缘余量、接触丢失、跟踪误差、载荷或碰撞条件触发时，停车、卸载伺服储能、释放、复核并有界重抓。释放后以实际位姿重新选择剩余可行圆弧，不强制返回过时理论Dock。最终张爪同时沿门法向退手45mm，减少擦碰回弹。</p>
-<table>
+<div class="table-scroll"><table>
 <thead>
 <tr>
 <th>同seed2101完整物理任务</th>
-<th style="text-align: right;">原分段方案</th>
-<th style="text-align: right;">协同持续抓握</th>
+<th align="right">原分段方案</th>
+<th align="right">协同持续抓握</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>执行器真实闭合边沿数</td>
-<td style="text-align: right;">36</td>
-<td style="text-align: right;">5</td>
+<td align="right">36</td>
+<td align="right">5</td>
 </tr>
 <tr>
 <td>仿真时间</td>
-<td style="text-align: right;">2144.860s</td>
-<td style="text-align: right;">462.336s</td>
+<td align="right">2144.860s</td>
+<td align="right">462.336s</td>
 </tr>
 <tr>
 <td>完整评分</td>
-<td style="text-align: right;">通过</td>
-<td style="text-align: right;">通过</td>
+<td align="right">通过</td>
+<td align="right">通过</td>
 </tr>
-</tbody>
-</table>
-<p>同初态局部效率对照中，抓取次数减少86.11%，仿真时间减少78.44%；不能将该单回合对照当多种子统计。最终正常门协议新保留种子96001–96010全部成功，均时451.237s。仍使用1.57m门洞、Oracle门轴/把手几何；不是狭窄住宅门或纯视觉结果，也未做到开/关各仅一次抓握。</p>
-<p><img alt="同初态门操作效率对照" src="media/door_efficiency.png" /></p>
+</tbody></table></div>
+<p>同初态完整任务对照中，夹爪闭合次数减少约 86%，仿真耗时减少约 78%。正常门协议的种子 96001–96010 均完成，平均耗时 451.237 s。当前条件为 1.57 m 门洞和 Oracle 门轴、把手几何；窄门与视觉定位需要进一步验证。</p>
+<p><img src="media/door_efficiency.png" alt="同初态门操作效率对照"></p>
 <p>证据：<code>evidence/issues/door_contact_acceptance.json</code>、<code>door_efficiency_comparison.json</code>。</p>
 <h2 id="7-其他重要问题与工程处理">7. 其他重要问题与工程处理</h2>
 <h3 id="71-dock终端振荡">7.1 Dock终端振荡</h3>
-<p>位置误差跨越约23mm阈值时，追位置和调航向反复切换；载荷模式还可能把纯转向改成缓行。当前控制器没有积分项，不能写成积分饱和。</p>
-<p>措施包括状态滞回、精密Dock与载荷运输分离、轮速变化限制、实测速度加连续2s稳态判定、局部预停靠及运动原语尝试。严格配对结果由旧空载1/10、带载1/10，改善到新空载10/10、带载6/10。困难横向工况仍失败；后续某些连接器在同预算下没有提升，未合入生产默认。没有以扩大位置容差或延长预算代替修复。</p>
+<p>位置误差跨越约23mm阈值时，追位置和调航向反复切换；载荷模式还可能把纯转向改成缓行。该控制器采用位置与航向反馈，问题集中在模式切换。</p>
+<p>措施包括状态滞回、精密Dock与载荷运输分离、轮速变化限制、实测速度加连续2s稳态判定、局部预停靠及运动原语尝试。已有报告记录空载对照由 1/10 改善到 10/10、带载由 1/10 改善到 6/10，逐回合原始对照仍待补齐。困难横向工况仍有失败；部分局部路径方案在相同预算下未带来提升，因此没有设为默认方案。到位容差保持不变。</p>
 <h3 id="72-水果在机器人未接触时自行滚落">7.2 水果在机器人未接触时自行滚落</h3>
-<p>隔离实验中机器人停在5m外，旧场景苹果180s仍落桌，说明该例不是机械臂碰落。复合水果直立初态没有自然静力稳定姿态。新协议在独立标定台真实静置600s，提取稳定姿态用于新MJCF初始化；没有运行中搬动物体或修改质量/摩擦。新同参数场景静置1800s，十果均留桌、最大中心位移约0.4545mm。它是新初始化分布，不能与旧协议混算控制器提升。</p>
+<p>隔离实验中机器人停在5m外，旧场景苹果180s仍落桌，说明该例不是机械臂碰落。复合水果直立初态没有自然静力稳定姿态。新协议在独立标定台真实静置600s，提取稳定姿态用于新MJCF初始化；运行中的物体保持原质量与摩擦参数。新同参数场景静置1800s，十果均留桌、最大中心位移约0.4545mm。这一修改改变了初始分布，因此采用新协议单独评测。</p>
 <h3 id="73-腕部图像近裁剪与渲染来源">7.3 腕部图像近裁剪与渲染来源</h3>
-<p>默认近面约66.71mm，苹果距腕相机约76.12mm而前表面越过近面，图像出现被裁空心轮廓。新虚拟观察版本将near设5mm，并记录真实NVIDIA/Mesa渲染器；物体几何、惯性、碰撞和相机位姿不变。已有动作经正常控制器重放生成新双视角，旧视图不覆盖，不把新视图计成新场景。5mm只是理想渲染近面，不代表真实D435i最短测距。</p>
+<p>默认近面约66.71mm，苹果距腕相机约76.12mm而前表面越过近面，图像出现被裁空心轮廓。新虚拟观察版本将near设5mm，并记录真实NVIDIA/Mesa渲染器；物体几何、惯性、碰撞和相机位姿不变。已有动作经正常控制器重放生成新双视角，新旧视图分别保存，并关联同一场景来源。5mm只是理想渲染近面，不代表真实D435i最短测距。</p>
 <h3 id="74-异常归类与动作语义">7.4 异常归类与动作语义</h3>
 <p>上层导航曾把<code>gripper_slip</code>包装成<code>path_planning</code>，使重抓恢复无法触发。修改为仅对导航自身错误重规划，夹持、IK、超时保留原类别。</p>
 <p>数据早期混有高层目标、限速reference和实际ctrl。Schema3统一监督六轴高层绝对目标+夹爪，其他量独立记录；观测/动作时刻、插值和执行器重放显式校验，避免归一化正确但控制语义不一致。</p>
@@ -199,34 +182,95 @@
 <p>输入为机身RGB、腕RGB、六轴实际关节+夹爪状态和语言；缺失右腕视角用mask=false。隐藏物体位置不进入模型输入。深度用于专家/分析，不直接当原生四通道输入。</p>
 <p>动作是<code>ur5_absolute_joint_goal_v1</code>，七个有效通道；模型内部保留32维、10步动作块、5Hz。执行器做关节界、速度/加速度约束及一次重力补偿，每个动作前缀执行后重观测。当前显式bounded_projection_v1仅投影夹爪小幅越界，严重异常仍拒绝。</p>
 <p>实际训练405片段/25517帧，旧单果121片段、新3果32、新5果70、新10果182；十果对应91次单目标父操作和34个训练布局，不是91次完整清空十件。旧20%/新80%加权采样，十果预期采样质量约51.25%。训练/验证/测试按场景隔离；norm只用train，动作统计匹配10步chunk和尾部clamp。</p>
-<p>训练batch4、10000有效更新，warmup500，学习率2.5e-5→2.5e-6；最终9999完整保存和零更新重载通过。两段训练墙钟合计约2.71h，最终验证flow loss0.01256467。loss不是物理成功率。</p>
-<p>历史十果桌面固定验证：苹果2/10、香蕉6/10、橘子6/10，共14/30，涉及6个验证布局与预声明噪声，未用正式test。当前验证只要求指定目标抓起保持，不包括放置、5m导航或完整十果FSM。每类成功视频展示集合不能用于重新估计该固定结果。</p>
-<p><img alt="实际10000更新训练曲线，损失不等于物理成功率" src="media/training_loss.svg" /></p>
+<p>训练batch4、10000有效更新，warmup500，学习率2.5e-5→2.5e-6；最终检查点 9999 已保存，并通过重新加载检查。两段训练墙钟合计约2.71h，最终验证flow loss0.01256467。模型表现另通过闭环抓取评测。</p>
+<p>历史十果桌面固定验证：苹果2/10、香蕉6/10、橘子6/10，共14/30，涉及6个验证布局与预声明噪声，未用正式test。当前验证只要求指定目标抓起保持，不包括放置、5m导航或完整十果FSM。最终选取视频见下一节。</p>
+<p><img src="media/training_loss.svg" alt="10000 次更新的训练损失曲线"></p>
 <h2 id="9-最终交付视频与历史证据">9. 最终交付视频与历史证据</h2>
-<table><thead><tr><th>方法</th><th>操作内容</th><th>成功/记录</th><th>视频包内成功占比</th></tr></thead><tbody>
-<tr><td>传统</td><td>完整开门、入室、关门</td><td>10/10</td><td>100%</td></tr>
-<tr><td>传统</td><td>苹果抓取与放置</td><td>10/10</td><td>100%</td></tr>
-<tr><td>传统</td><td>香蕉操作</td><td>9/10</td><td>90%</td></tr>
-<tr><td>传统</td><td>橘子抓取与放置</td><td>10/10</td><td>100%</td></tr>
-<tr><td>传统</td><td>小书收纳</td><td>10/10</td><td>100%</td></tr>
-<tr><td>传统</td><td>中书收纳</td><td>10/10</td><td>100%</td></tr>
-<tr><td>传统</td><td>大书操作</td><td>7/10</td><td>70%</td></tr>
-<tr><td>VLA</td><td>苹果抓起保持</td><td>9/10</td><td>90%</td></tr>
-<tr><td>VLA</td><td>香蕉抓起保持</td><td>7/10</td><td>70%</td></tr>
-<tr><td>VLA</td><td>橘子抓起保持</td><td>9/10</td><td>90%</td></tr></tbody></table>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>方法</th>
+<th>操作内容</th>
+<th align="right">成功/记录</th>
+<th align="right">视频包内成功占比</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>传统</td>
+<td>完整开门、入室、关门</td>
+<td align="right">10/10</td>
+<td align="right">100%</td>
+</tr>
+<tr>
+<td>传统</td>
+<td>苹果抓取与放置</td>
+<td align="right">10/10</td>
+<td align="right">100%</td>
+</tr>
+<tr>
+<td>传统</td>
+<td>香蕉操作</td>
+<td align="right">9/10</td>
+<td align="right">90%</td>
+</tr>
+<tr>
+<td>传统</td>
+<td>橘子抓取与放置</td>
+<td align="right">10/10</td>
+<td align="right">100%</td>
+</tr>
+<tr>
+<td>传统</td>
+<td>小书收纳</td>
+<td align="right">10/10</td>
+<td align="right">100%</td>
+</tr>
+<tr>
+<td>传统</td>
+<td>中书收纳</td>
+<td align="right">10/10</td>
+<td align="right">100%</td>
+</tr>
+<tr>
+<td>传统</td>
+<td>大书操作</td>
+<td align="right">7/10</td>
+<td align="right">70%</td>
+</tr>
+<tr>
+<td>VLA</td>
+<td>苹果抓起保持</td>
+<td align="right">9/10</td>
+<td align="right">90%</td>
+</tr>
+<tr>
+<td>VLA</td>
+<td>香蕉抓起保持</td>
+<td align="right">7/10</td>
+<td align="right">70%</td>
+</tr>
+<tr>
+<td>VLA</td>
+<td>橘子抓起保持</td>
+<td align="right">9/10</td>
+<td align="right">90%</td>
+</tr>
+</tbody></table></div>
 <p>以上统计来自最终交付的传统70条、VLA30条视频及配套评分。记录经选取，含重复初态；传统包还含不同开发版本。水果和书本主要为单项片段，香蕉和大书分组包含局部失败诊断，VLA不含入筐。视频包内占比不替代完整任务独立评测。</p>
-<p><a href="FINAL_RESULTS.md">完整口径与来源</a>。历史完整任务和固定VLA验证的成绩、均时及失败全部保留在<a href="EVALUATION_PROTOCOLS.md">历史评测档案</a>和原始JSON中；它们用于各自阶段分析，不与本表构成前后成功率对照。本文未产生新评测结果。</p>
-<p>早期源码导出曾在本地实际258/258测试通过（96.84s）；本轮公开目录完整回归为259/259通过（96.85s），记录见<a href="VALIDATION.md">验证说明</a>。这证明所覆盖模块与接口回归，不代替任务可靠性。原始data.warning与隔离进程文本日志分开报告；历史全局Linesearch提示不能直接归因到某个成功回合，也不能因计数零就忽略文本提示。</p>
-<h2 id="10-技术贡献局限与下一步">10. 技术贡献、局限与下一步</h2>
-<p>可由现有证据支撑的工作包括：原版UR5整机与真实接触系统；工具坐标下的滑移检测；考虑门约束的底盘/机械臂协同；曲面水果保持控制对照；持物几何扫掠与路径一致执行；自然静置初态与相机质量审计；动作语义一致的双视角数据及真实π₀.₅训练/推理链路。</p>
-<p>尚未证明：通用带载Dock全通过、随机十果高可靠性、随机三书高可靠性、纯视觉门操作、VLA优于同条件专家、VLA完整十果分类和真实机器人部署。</p>
-<p>下一步应优先使用同初态/同评分专家对照，定位VLA接近与闭合失败，补目标接触和纠错数据；保持训练/推理语义与真实物理重放一致。新策略需冻结后使用未曝光种子评测，不能通过增加已成功初态重复视频替代泛化验证。</p>
-<h2 id="11-代码复现与展示材料">11. 代码、复现与展示材料</h2>
-<p>核心代码为<code>src/robot_exam/{control,navigation,perception,tasks,vla,data}</code>；场景构建为<code>scripts/build_stage2.py</code>、<code>build_tasks.py</code>；任务入口<code>run_stage7_isolated.py</code>；VLA入口<code>openpi_ur5_train.py</code>、<code>serve_openpi_original_ur5.py</code>、<code>evaluate_multifruit_policy_phase.py</code>。</p>
-<p>GitHub发布目录只包含清理后的代码、小型模型、许可证、技术总结、统计证据和代表录像，不包含账号认证、环境缓存、权重或完整原始数据。完整资料及视频集使用另行下载入口，保留原始评分与来源。公开首页不使用个人考核背景作为项目名称。</p>
-<h2 id="11-技术决策的进一步分析">11. 技术决策的进一步分析</h2>
-<p>进一步的设计推理集中在五个接口：监控量与坐标系、末端IK与持物路径、位置闭合与接触力矩、门轴约束与轮臂运动、学习目标与低层执行。每个接口先提出可区分的失败解释，再用现有记录界定支持程度；对剩余机制给出可证伪的后续实验，而不将未完成研究写成结果。</p>
-<p><a href="DESIGN_REASONING.md">深入分析与公式</a> · <a href="PROBLEMS_AND_SOLUTIONS.md">问题证据索引</a> · <a href="SUCCESS_CRITERIA_AND_PARAMETERS.md">成功判据与控制参数</a>。上述补充仅深化已有工程事实的解释，不新增仿真实验或改变统计。</p>
-<h2 id="12-面向读者的实现链路解析">12. 面向读者的实现链路解析</h2>
-<p><a href="IMPLEMENTATION_GUIDE.md">从图像到动作的完整实现解析</a>逐步说明反投影、PCA、抓取候选、底盘操作位姿、DLS IK、路径插值和实际执行。包含桌边推书/侧抓示意、15mm抓取位置、75mm预抓取、长边法向回退，以及驻车/运输/门操作不同的轮臂协调方式。数学算例与实际任务结果分开，Oracle与视觉分支分别标明。</p>
-<p><a href="PROBLEMS_AND_SOLUTIONS.md">具体问题与对应修复</a>进一步区分坐标误报、真实几何碰撞、持续保持失稳及VLA有效抓取不足。当前说明通过源码复核、离线数学核对和三场景短步进校验；校验范围见<a href="VALIDATION.md">文档核验</a>，没有把它计为新增完整任务成功。</p></body></html>
+<p><a href="FINAL_RESULTS.md">结果说明与来源</a>。各阶段完整测试的成绩、耗时和失败见<a href="EVALUATION_PROTOCOLS.md">历史评测</a>。由于测试与视频选取方式不同，二者分别报告。</p>
+<p>最近保存的代码测试记录为 259 项通过，耗时 96.85 s，详见<a href="VALIDATION.md">测试记录</a>。</p>
+<h2 id="10-局限与后续工作">10. 局限与后续工作</h2>
+<p>目前已建立三个完整任务的仿真流程，并针对坐标误报、夹持保持、门臂协同和持物路径开展了改进。完整任务的可靠性仍受带载停靠、随机推书跟踪和狭窄空间通行限制。门与书本依赖 Oracle 几何，相机为理想模型，实机部署尚待验证。</p>
+<p>VLA 目前覆盖指定目标抓起保持。下一步先在相同初态下比较专家与模型，检查目标选择、接近、闭合和有效抬升，再补充接触及纠错示教，逐步扩展到放置。新策略固定后使用未参与调参的布局评测，并保留全部回合结果。</p>
+<h2 id="11-代码与延伸阅读">11. 代码与延伸阅读</h2>
+<p>核心模块位于 <code>src/robot_exam/</code>，任务入口为 <code>scripts/run_stage7_isolated.py</code>；VLA 训练、服务和评估入口分别为 <code>openpi_ur5_train.py</code>、<code>serve_openpi_original_ur5.py</code>、<code>evaluate_multifruit_policy_phase.py</code>。</p>
+<ul>
+<li><a href="RUNNING.md">运行说明</a>：环境安装、任务命令和历史协议。</li>
+<li><a href="IMPLEMENTATION_GUIDE.html">实现解析</a>：感知、抓点、逆运动学与轮臂配合。</li>
+<li><a href="DESIGN_REASONING.md">设计依据</a>：坐标系、持物路径、接触力矩和动作语义。</li>
+<li><a href="PROBLEMS_AND_SOLUTIONS.md">问题与改进</a>：诊断过程与实验记录。</li>
+<li><a href="SUCCESS_CRITERIA_AND_PARAMETERS.md">成功判据与控制参数</a>：各任务的判定条件。</li>
+</ul>
+<p>仓库包含源码、小型模型、依赖、文档和代表视频；VLA 完整权重、Tokenizer 与原始训练数据需另行准备。</p>
+
+</main></body></html>

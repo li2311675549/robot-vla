@@ -1,6 +1,8 @@
-# 最终交付视频与分项结果
+# 实验结果与视频
 
-本页是项目成果展示的统一入口，按 Release v1.0.0 的传统70条、VLA30条视频及配套评分统计。文档更新于2026年11月11日；这不是新一轮实验日期。
+本页汇总 [Release v1.0.0](https://github.com/li2311675549/robot-vla/releases/tag/v1.0.0) 中的传统 70 条、VLA 30 条视频及配套评分。
+
+这些视频经过选取，包含重复初态；传统包还包含不同开发版本。下表的“视频包内成功占比”描述所收录记录的构成，不能作为连续独立测试的成功率。完整任务的历史测试单独列在[评测记录](EVALUATION_PROTOCOLS.md)中。
 
 ## 传统方法
 
@@ -14,13 +16,13 @@
 |中书收纳|10|0|10|100%|
 |大书操作|7|3|10|70%|
 
-门分组为完整任务；水果成功片段包含对应物体抓取与正确入筐，书本成功片段包含对应层开合与单书收纳。香蕉分组含已持物静态保持失败诊断，大书分组含几何拒绝、路径预检及检查点续作保护停止，不能统一解释为物体掉落。
+门按完整任务记录。水果成功片段包含抓取与正确入筐，书本成功片段包含单书收纳及对应抽屉开合。香蕉失败为已持物状态下的保持诊断；大书失败包括几何条件不满足、路径预检碰撞和检查点续作时的保护停止。
 
-完整任务成功演示：[开门入室关门](../media/demos/door_full.mp4)、[十果分类](../media/demos/fruit_full.mp4)、[三书收纳并返航](../media/demos/books_full.mp4)。回合来源见[视频索引](../media/index.json)。
+三个完整任务的成功演示：[开门入室关门](../media/demos/door_full.mp4) · [十果分类](../media/demos/fruit_full.mp4) · [三书收纳返航](../media/demos/books_full.mp4)
 
-## VLA进一步探索
+## VLA 指令抓取
 
-在传统控制与操作示教基础上，项目进一步开展双视角π₀.₅后训练，探索从图像、机器人状态和语言生成机械臂动作。目前展示已驻车十果桌面上的指定水果抓起保持。
+在传统系统与示教基础上，项目进一步训练双视角 π₀.₅，探索由图像、机器人状态和语言生成动作。目前视频展示已驻车十果桌面上的指定水果抓起保持，后续再扩展到放置和移动操作。
 
 |指定目标类别|成功|失败|记录数|视频包内成功占比|
 |---|---:|---:|---:|---:|
@@ -28,19 +30,18 @@
 |香蕉|7|3|10|70%|
 |橘子|9|1|10|90%|
 
-VLA展示不包含入筐、5米导航或完整十果分类。[训练说明](VLA_DATA_TRAINING.md) · [执行接口](VLA_TECHNICAL.md)。
+[训练说明](VLA_DATA_TRAINING.md) · [动作执行](VLA_TECHNICAL.md)
 
-## 统计范围与历史资料
+## 改进过程与历史测试
 
-- 数字是选取的交付视频记录构成，含重复初态；传统包还含不同开发版本。最终交付包不等于所有记录来自同一个最终控制器。
-- 视频包内成功占比不是预先固定、连续独立测试的总体成功率；单个水果或单本书的比例不替代完整十果或三书任务成功率。
-- [历史评测档案](EVALUATION_PROTOCOLS.md)保留各冻结协议的原始结果，供追溯问题与方案迭代。旧协议结果不自动代表当前main版本，展示选取也不构成新版本整轮成功率测量。
-- 本次更新整理文档呈现，未重跑实验、改写原始评分或改变测试分母。具体改进应使用同范围的证据，如[门效率对照](../evidence/issues/door_efficiency_comparison.json)、[滑移监控修正](../evidence/issues/third_book_fix.json)、[香蕉局部保持](../evidence/issues/banana_regulated_hold.json)。
+开发中的完整任务测试和局部对照回答不同问题：前者考察整轮可靠性，后者帮助定位故障和检验修改。门操作耗时、滑移监控和香蕉保持的具体对照见[问题与改进](PROBLEMS_AND_SOLUTIONS.md)。
 
-## 来源
+旧测试采用各自固定的代码、场景与协议，结果保存在[历史评测](EVALUATION_PROTOCOLS.md)。视频包经过选取，不能与旧测试直接组成“改进前后成功率”对照。分项视频的平均耗时尚未重新统计。
 
-- [传统70条视频包](https://github.com/li2311675549/robot-vla/releases/download/v1.0.0/traditional-cases70.zip)：包内README、展示清单及各组评分与来源。
-- [VLA30条视频包](https://github.com/li2311675549/robot-vla/releases/download/v1.0.0/vla-cases30.zip)：包内README、展示记录清单及逐条评分。
-- [分项统计JSON](../evidence/display_case_summary.json)。
+## 下载与来源
 
-Release v1.0.0附件保留发布时的原始内容，其中旧报告、40段VLA展示描述等历史材料应结合本页阅读；当前文档入口以main分支为准。
+- [传统 70 条视频包](https://github.com/li2311675549/robot-vla/releases/download/v1.0.0/traditional-cases70.zip)
+- [VLA 30 条视频包](https://github.com/li2311675549/robot-vla/releases/download/v1.0.0/vla-cases30.zip)
+- [分项评分汇总](../evidence/display_case_summary.json) · [首页视频索引](../media/index.json)
+
+Release 附件保留发布时版本，部分旧报告还介绍了较早的 40 段 VLA 视频集合。最终交付包为本页所列的 30 条，最新说明以仓库文档为准。

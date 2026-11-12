@@ -1,19 +1,33 @@
-# 发布目录验证
+# 代码与模型测试记录
 
-当前公开目录已在既有Python3.10/MuJoCo环境实际运行完整回归：**259项全部通过，96.85秒**，含此前单独验证的ZIP辅助项。控制、模型与评分核心未改。此前258PASS/97.29秒及独立ZIP1PASS/0.02秒为旧验证记录，不再用于代替本轮完整结果。
+## 自动化测试
 
-首次完整回归为258通过、1失败（97.20秒）：验收将basetemp放入另一父Git工程，使一项“无Git源码导出目录”测试识别到父仓库，改变其前提。未修改源码或测试；改用独立/tmp目录后单项1PASS，再完整259PASS。原始[首次日志](../evidence/documentation_checks/pytest_final_v1.log)、[单项复核](../evidence/documentation_checks/pytest_revision_environment_v2.log)、[完整复核](../evidence/documentation_checks/pytest_final_v2.log)保留。
+最近保存的完整测试记录为 **259 项通过，耗时 96.85 秒**，运行环境为 Python 3.10 与 MuJoCo。记录见[完整测试日志](../evidence/documentation_checks/pytest_final_v2.log)。
 
-三项冻结历史源码52/47/65项SHA完整匹配，位于benchmarks/frozen；实际服务器源码快照1457文件均已SHA验证。发布版没有权重/原始数据/环境/认证信息。代表录像是实际连续物理回合，结果与范围见media/index.json。示例视频不代替冻结评测。
+首次运行有一项失败：临时目录位于另一个 Git 工程内，影响了“无 Git 源码导出目录”测试的前提。改用独立临时目录后，单项复测与完整测试均通过。
 
-## 本轮README实现说明核验
+[首次运行](../evidence/documentation_checks/pytest_final_v1.log) · [单项复测](../evidence/documentation_checks/pytest_revision_environment_v2.log)
 
-- 源码一致性：11个相关公开模块与本地工程逐文件SHA一致。
-- 数学核对：实际调用反投影、抓边几何、侧夹方向和工具坐标函数，共5项检查通过。
-- 模型入口：门/水果/三书模型实际加载，各通过50个2ms物理步；各场景11执行器，无mocap/焊接，门和抽屉关节无直接执行器；各自data.warning计数为0。
-- 这些是数学/初始化检查，不是新增抓取、导航或完整任务成功率。原258项源码导出回归与本轮文档检查分开记录。
-- 复现本轮轻量检查：`python scripts/verify_documented_principles.py --output outputs/new_documentation_check --model-smoke`。
+## 数学与模型检查
 
-- 补充IK检查：在独立运动学数据中求一个距当前TCP 5mm的可达目标，达到原精确IK容差，实时qpos保持完全不变；不据此声称真实执行精度。
+|检查|内容|
+|---|---|
+|几何计算|反投影、书边截面、侧夹方向和工具坐标等 5 项算例|
+|场景加载|门、水果、三书模型各运行 50 个物理步，模型警告计数为 0|
+|执行器|每个场景 11 个执行器；门和抽屉由接触驱动|
+|逆运动学|在独立运动学副本中求解距当前 TCP 5 mm 的目标，达到既定容差|
 
-[四轮文档校核摘要](../evidence/documentation_checks/review.json) · [数学与模型记录](../evidence/documentation_checks/principles_and_model_checks.json) · [IK记录](../evidence/documentation_checks/ik_scratch_check.json)。
+这些检查覆盖函数计算、模型初始化和接口；任务完成情况见[实验结果](FINAL_RESULTS.md)与[历史评测](EVALUATION_PROTOCOLS.md)。
+
+在已安装的仿真环境中运行：
+
+```bash
+MUJOCO_GL=egl python scripts/verify_documented_principles.py \
+  --output outputs/new_documentation_check --model-smoke
+```
+
+输出目录需尚未存在。[数学与模型记录](../evidence/documentation_checks/principles_and_model_checks.json) · [IK 记录](../evidence/documentation_checks/ik_scratch_check.json)
+
+## 版本与原始记录
+
+历史任务源码保存在 [benchmarks/frozen](../benchmarks/frozen/)，训练源码及归一化文件保存在[服务器快照](../server/snapshots/actual_training_20261108/)。文件校验、文档检查和渲染记录集中在[维护记录](DOCUMENTATION_REVIEW.md)。

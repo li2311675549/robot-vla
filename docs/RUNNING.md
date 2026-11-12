@@ -21,7 +21,7 @@ python -m pip install -e . --no-deps
 MUJOCO_GL=egl python -m pytest -q
 ```
 
-EGL需本机实际支持。模型资源已包含，不自动下载大数据。Windows仅阅读资料无需环境；本仓库没有宣称Windows图形/物理链路已独立验证。
+无界面渲染需要 EGL 支持。模型资源已包含在仓库中。Windows 可直接阅读文档和视频，仿真运行尚未在 Windows 上单独验证。
 
 新开发回合使用不存在的输出目录：
 
@@ -33,15 +33,15 @@ MUJOCO_GL=egl python scripts/run_stage7_isolated.py  --task fruit --mode vision 
 MUJOCO_GL=egl python scripts/run_stage7_isolated.py  --task drawer --mode oracle --seed 200009 --book-profile distinct_v2  --config configs/stage20_books_scatter_frozen_v28.json  --output outputs/new_books_demo --record
 ```
 
-开发示例不保证每次成功，也不等于重新开展正式评测。旧正式版本原始源码见benchmarks/frozen，不能假设旧工作区提交SHA会存在于新发布仓库历史中。已曝光正式种子不用于调参。
+上述命令用于单次开发运行。历史评测对应的源码保存在 `benchmarks/frozen/`；评估改进效果时，另选未参与调参的种子，并固定配置。
 
 ## VLA训练与推理
 
 服务器使用独立Python3.11 OpenPI环境，源码和锁文件见server/snapshots/actual_training_20261108。实际batch4/10000更新配置在configs/pi05_multifruit_stage22_batch4_v2.json，norm见服务器快照checkpoint9999_assets。权重、Tokenizer和完整训练数据需作者另行提供，未随GitHub发布；视频不能代替动作标签。
 
-训练/推理分别使用scripts/stage22_launch_training.sh、stage22_serve_policy.sh。脚本具有资源及显式授权守门，不因clone仓库自动运行。按实际数据盘路径设置ROBOT_EXAM_STAGE22_ROOT与ROBOT_EXAM_BASE_ROOT，不照搬旧实例地址或PID。
+训练和推理入口分别为 `scripts/stage22_launch_training.sh`、`scripts/stage22_serve_policy.sh`。启动前按脚本要求配置资源限制与运行开关，并将 `ROBOT_EXAM_STAGE22_ROOT`、`ROBOT_EXAM_BASE_ROOT` 设置为本机数据路径。
 
-当前评估仅驻车指定目标抓起保持；底盘、完整分类FSM和传统专家独立保留。真实模型服务可通过evaluate_multifruit_policy_phase.py连接正常执行器，不改运行中qpos。
+当前模型评估为驻车状态下指定目标抓起保持。`evaluate_multifruit_policy_phase.py` 连接模型服务，并将预测动作送入机械臂执行器。底盘导航和完整任务调度仍由传统模块负责。
 
 ## 核对本说明中的计算与模型入口
 
@@ -51,12 +51,12 @@ MUJOCO_GL=egl python scripts/run_stage7_isolated.py  --task drawer --mode oracle
 MUJOCO_GL=egl python scripts/verify_documented_principles.py --output outputs/new_documentation_check --model-smoke
 ```
 
-脚本调用实际反投影/书本几何/相对坐标函数验证5项数学条件，并加载三个模型各推进50步。输出目录必须不存在。它不调用VLA、不下载参数，不把短步进视为任务成功。
+脚本检查反投影、书本几何和相对坐标等 5 项计算，并加载三个模型各推进 50 步，用于确认计算与场景初始化。输出目录需尚未存在。
 
 ## 运行版本化的10回合评测
 
-评测入口为`scripts/evaluate_frozen.py --protocol <协议JSON> --output <新目录>`。门/水果/书本协议分别为`configs/door_continuous_contact_formal_v4.json`、`configs/stage11_fruit_formal_protocol_v1.json`、`configs/stage20_books_scatter_formal_v28_protocol.json`。每次保存当前源码SHA、协议及所有失败。已曝光种子不得作为新开发调参后的独立泛化证据。
+评测入口为`scripts/evaluate_frozen.py --protocol <协议JSON> --output <新目录>`。门/水果/书本协议分别为`configs/door_continuous_contact_formal_v4.json`、`configs/stage11_fruit_formal_protocol_v1.json`、`configs/stage20_books_scatter_formal_v28_protocol.json`。每次保存代码版本、协议与全部回合结果。检验新策略时应使用未参与调参的种子。
 
-当前代码重跑产生的是新的执行记录；历史原结果与其精确源码快照在`evidence/formal/`和`benchmarks/frozen/`，不能用当前根目录提交冒充旧冻结版本。不要直接使用早期`scripts/evaluate.py`默认设置来代替上述新协议。
+历史结果与对应源码分别在 `evidence/formal/` 和 `benchmarks/frozen/`。重跑历史协议时需使用配套源码与配置；当前版本的运行结果另存新目录。评测采用上述版本化入口，早期 `scripts/evaluate.py` 的默认设置与这些协议不同。
 
 实现解析另有可本地浏览的`docs/IMPLEMENTATION_GUIDE.html`；下载仓库后可直接打开。Release v1.0.0保留原附件，最新文字说明以main分支为准。
