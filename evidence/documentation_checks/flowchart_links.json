@@ -61,11 +61,6 @@
   },
   {
     "from": "README.md",
-    "link": "docs/EVALUATION_PROTOCOLS.md",
-    "exists_and_anchor": true
-  },
-  {
-    "from": "README.md",
     "link": "docs/IMPLEMENTATION_GUIDE.md",
     "exists_and_anchor": true
   },
@@ -242,11 +237,6 @@
   {
     "from": "README.md",
     "link": "evidence/display_case_summary.json",
-    "exists_and_anchor": true
-  },
-  {
-    "from": "README.md",
-    "link": "docs/EVALUATION_PROTOCOLS.md",
     "exists_and_anchor": true
   },
   {
@@ -391,11 +381,6 @@
   },
   {
     "from": "README_PREVIEW.html",
-    "link": "docs/EVALUATION_PROTOCOLS.md",
-    "exists_and_anchor": true
-  },
-  {
-    "from": "README_PREVIEW.html",
     "link": "docs/IMPLEMENTATION_GUIDE.md",
     "exists_and_anchor": true
   },
@@ -576,11 +561,6 @@
   },
   {
     "from": "README_PREVIEW.html",
-    "link": "docs/EVALUATION_PROTOCOLS.md",
-    "exists_and_anchor": true
-  },
-  {
-    "from": "README_PREVIEW.html",
     "link": "docs/VALIDATION.md",
     "exists_and_anchor": true
   },
@@ -691,11 +671,6 @@
   },
   {
     "from": "docs/IMPLEMENTATION_GUIDE.md",
-    "link": "EVALUATION_PROTOCOLS.md",
-    "exists_and_anchor": true
-  },
-  {
-    "from": "docs/IMPLEMENTATION_GUIDE.md",
     "link": "RUNNING.md",
     "exists_and_anchor": true
   },
@@ -772,11 +747,6 @@
   {
     "from": "docs/IMPLEMENTATION_GUIDE.html",
     "link": "SUCCESS_CRITERIA_AND_PARAMETERS.md",
-    "exists_and_anchor": true
-  },
-  {
-    "from": "docs/IMPLEMENTATION_GUIDE.html",
-    "link": "EVALUATION_PROTOCOLS.md",
     "exists_and_anchor": true
   },
   {

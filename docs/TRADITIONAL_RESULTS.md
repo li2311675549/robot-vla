@@ -1,6 +1,6 @@
 # 传统方法最终交付视频结果
 
-本页按最终交付的传统70条视频及配套评分展示分项结果。完整口径见[最终交付结果](FINAL_RESULTS.md)，旧协议成绩见[历史评测档案](EVALUATION_PROTOCOLS.md)。
+本页按最终交付的传统70条视频及配套评分展示分项结果。完整口径见[最终交付结果](FINAL_RESULTS.md)。
 
 |操作内容|成功|失败|记录数|视频包内成功占比|
 |---|---:|---:|---:|---:|
@@ -20,4 +20,4 @@
 
 开发中曾出现持续夹持与停靠失败、推书跟踪误差、持物路径冲突等问题。原始固定结果、全部失败及冻结源码继续保留，用于分析各自阶段的方案边界。各阶段结果按对应版本与协议阅读。
 
-[历史完整任务评测](EVALUATION_PROTOCOLS.md) · [问题与改进](PROBLEMS_AND_SOLUTIONS.md) · [分项来源摘要](../evidence/display_case_summary.json)
+[问题与改进](PROBLEMS_AND_SOLUTIONS.md) · [分项来源摘要](../evidence/display_case_summary.json)

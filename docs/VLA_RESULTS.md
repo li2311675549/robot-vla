@@ -18,6 +18,6 @@
 
 历史固定30回合为14/30，苹果2/10、香蕉6/10、橘子6/10，覆盖6个验证布局和预声明噪声，非30个独立布局。另有历史40视频集合及全部68次执行账本；这些不是最终30条交付包的数量或构成。
 
-历史结果保存在[评测档案](EVALUATION_PROTOCOLS.md)，用于分析目标选择和有效抬升问题。由于测试与视频选取方式不同，两者分别报告。
+目标选择和有效抬升问题的分析见[问题与改进](PROBLEMS_AND_SOLUTIONS.md)。
 
 [训练与数据](VLA_DATA_TRAINING.md) · [动作与执行接口](VLA_TECHNICAL.md) · [分项统计JSON](../evidence/display_case_summary.json)

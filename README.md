@@ -52,7 +52,7 @@ Husky A200 · 原版 UR5 · Robotiq 2F-85 · MuJoCo 3.6.0
 |VLA|香蕉抓起并保持|7 / 10|70%|
 |VLA|橘子抓起并保持|9 / 10|90%|
 
-[结果详情与视频来源](docs/FINAL_RESULTS.md) · [历史完整任务评测](docs/EVALUATION_PROTOCOLS.md)
+[结果详情与视频来源](docs/FINAL_RESULTS.md)
 
 ## 关键问题与改进
 
