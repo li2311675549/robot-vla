@@ -1,8 +1,0 @@
-{
-  "protocol": "schema3_short_skills_v1",
-  "train": [31, 43, 57, 71],
-  "validation": [83],
-  "test": [97],
-  "action_semantics": "ur5_absolute_joint_goal_v1",
-  "note": "Episode and scene-seed isolation. Uncollected seeds remain planned, not successful data."
-}

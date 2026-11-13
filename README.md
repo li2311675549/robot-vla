@@ -116,10 +116,10 @@ MUJOCO_GL=egl python scripts/run_stage7_isolated.py \
 
 |资料|内容|
 |---|---|
-|[技术报告](docs/TECHNICAL_REPORT.md) / [离线 HTML](docs/TECHNICAL_REPORT.html)|系统设计、关键改进与实验分析|
+|[技术报告](docs/TECHNICAL_REPORT.md)|系统设计、关键改进与实验分析|
 |[实现解析](docs/IMPLEMENTATION_GUIDE.md)|感知、规划、抓取与轮臂配合|
 |[运行说明](docs/RUNNING.md)|环境安装、任务运行与评测入口|
 |[测试记录](docs/VALIDATION.md)|代码测试、模型加载和数学检查|
 |[完整附件](https://github.com/li2311675549/robot-vla/releases/tag/v1.0.0)|视频包、报告与原始记录|
 
-源码在 `src/robot_exam/`，场景与配置在 `scenes/`、`configs/`，实验记录在 `evidence/`，历史源码在 `benchmarks/frozen/`。VLA 复现还需要模型权重、Tokenizer 和原始训练数据，这些文件未随仓库发布。第三方模型和代码的许可随各资产保存。
+源码在 `src/robot_exam/`，场景与配置在 `scenes/`、`configs/`，实验记录在 `evidence/`。VLA 复现还需要模型权重、Tokenizer 和原始训练数据，这些文件未随仓库发布。第三方模型和代码的许可随各资产保存。

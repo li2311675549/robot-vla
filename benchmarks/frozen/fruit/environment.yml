@@ -1,8 +1,0 @@
-name: robot_exam_stage1
-channels:
-  - conda-forge
-dependencies:
-  - python=3.10.20
-  - pip
-  - pip:
-      - -r requirements.lock.txt

@@ -1,9 +1,0 @@
-{
-  "protocol": "stage10_fruit_schema3_pilot_v1",
-  "train": [31,43,57,201,202,203,204,205,206,207,208,209,210,211,212,213,214],
-  "validation": [83,231,232,233],
-  "test": [97,251,252,253],
-  "action_semantics": "ur5_absolute_joint_goal_v1",
-  "skills": ["apple","banana","orange"],
-  "note": "Merge old same-schema fruit data with predeclared stage10 splits; no legacy schema1/2 or book fixtures. Preserve all failed attempts and require full/low/deployment-executor replay. Statistics use train only."
-}

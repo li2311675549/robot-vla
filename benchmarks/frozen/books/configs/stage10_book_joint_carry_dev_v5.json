@@ -1,7 +1,0 @@
-{
-  "side_book_world_carry": false,
-  "side_book_joint_carry": true,
-  "side_book_joint_carry_rank": 2,
-  "payload_dock_angular_speed_rad_s": 0.9,
-  "note": "Development: retain the verified grasp joint pose and monitor in the tool frame. The old 0.45 rad/s differential wheel target produced only about 0.035 rad/s chassis rotation on skid-steer tires, exhausting each 55-second waypoint budget. Test a bounded 0.9 rad/s wheel-derived yaw target; linear speed, wheel acceleration, friction, actuator forces and acceptance tolerances unchanged."
-}

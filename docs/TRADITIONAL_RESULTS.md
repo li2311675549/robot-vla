@@ -16,8 +16,8 @@
 
 完整成功演示：[门](../media/demos/door_full.mp4)、[十果](../media/demos/fruit_full.mp4)、[三书](../media/demos/books_full.mp4)。
 
-## 历史记录与问题改进
+## 问题与改进
 
-开发中曾出现持续夹持与停靠失败、推书跟踪误差、持物路径冲突等问题。原始固定结果、全部失败及冻结源码继续保留，用于分析各自阶段的方案边界。各阶段结果按对应版本与协议阅读。
+开发中曾出现持续夹持与停靠失败、推书跟踪误差、持物路径冲突等问题。关键诊断与局部对照实验用于说明问题原因及改进效果。
 
 [问题与改进](PROBLEMS_AND_SOLUTIONS.md) · [分项来源摘要](../evidence/display_case_summary.json)

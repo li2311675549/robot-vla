@@ -33,7 +33,7 @@ MUJOCO_GL=egl python scripts/run_stage7_isolated.py  --task fruit --mode vision 
 MUJOCO_GL=egl python scripts/run_stage7_isolated.py  --task drawer --mode oracle --seed 200009 --book-profile distinct_v2  --config configs/stage20_books_scatter_frozen_v28.json  --output outputs/new_books_demo --record
 ```
 
-上述命令用于单次开发运行。历史评测对应的源码保存在 `benchmarks/frozen/`；评估改进效果时，另选未参与调参的种子，并固定配置。
+上述命令用于单次开发运行。评估改进效果时，另选未参与调参的种子，并固定配置。
 
 ## VLA训练与推理
 
@@ -57,6 +57,6 @@ MUJOCO_GL=egl python scripts/verify_documented_principles.py --output outputs/ne
 
 评测入口为`scripts/evaluate_frozen.py --protocol <协议JSON> --output <新目录>`。门/水果/书本协议分别为`configs/door_continuous_contact_formal_v4.json`、`configs/stage11_fruit_formal_protocol_v1.json`、`configs/stage20_books_scatter_formal_v28_protocol.json`。每次保存代码版本、协议与全部回合结果。检验新策略时应使用未参与调参的种子。
 
-历史结果与对应源码分别在 `evidence/formal/` 和 `benchmarks/frozen/`。重跑历史协议时需使用配套源码与配置；当前版本的运行结果另存新目录。评测采用上述版本化入口，早期 `scripts/evaluate.py` 的默认设置与这些协议不同。
+当前版本的运行结果另存新目录，并记录源码版本、配置与全部回合结果。
 
-实现解析另有可本地浏览的`docs/IMPLEMENTATION_GUIDE.html`；下载仓库后可直接打开。Release v1.0.0保留原附件，最新文字说明以main分支为准。
+Release v1.0.0 保留发布时附件，最新文字说明以 main 分支为准。

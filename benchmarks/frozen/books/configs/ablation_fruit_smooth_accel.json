@@ -1,9 +1,0 @@
-{
-  "payload_linear_speed_m_s": 0.10,
-  "payload_angular_speed_rad_s": 1.0,
-  "payload_turn_creep_m_s": 0.035,
-  "payload_wheel_acceleration_rad_s2": 0.8,
-  "payload_arm_speed_rad_s": 1.2,
-  "maximum_payload_transport_recoveries": 2,
-  "maximum_fruit_grasp_attempts": 3
-}

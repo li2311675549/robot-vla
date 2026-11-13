@@ -1,9 +1,0 @@
-{
-  "status": "PASS_SOURCE_DOWNLOAD_ALL_SHA256",
-  "files": 1457,
-  "source_bytes": 17258015,
-  "archive_sha256": "476456fbd2384a7bb57bc0fd4de6ff320376b1583318dfc064679da4f8a75c63",
-  "remote_files_modified": false,
-  "training_started": false,
-  "weights_downloaded": false
-}

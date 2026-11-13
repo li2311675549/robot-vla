@@ -1,6 +1,0 @@
-{
-  "door_initial_dock_timeout_seconds": 45,
-  "task_sim_seconds_limit": 3000,
-  "task_wall_seconds_limit": 3600,
-  "protocol": "door_multistart_oracle_v2"
-}

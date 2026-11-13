@@ -1,8 +1,0 @@
-{
-  "task_sim_seconds_limit": 3000,
-  "task_wall_seconds_limit": 3600,
-  "local_dock_strategy": "preapproach",
-  "local_dock_payload_only": true,
-  "local_dock_timeout_seconds": 60,
-  "note": "Stage10 development: kinematic preapproach only while physically carrying; unchanged empty controller and all pose/contact scoring. Sixty-second local budget is declared, not an accuracy relaxation."
-}

@@ -1,5 +1,0 @@
-{
-  "side_book_world_carry": false,
-  "side_book_joint_carry": true,
-  "note": "Development: retain the verified arm grasp joint pose during wheel navigation; tool-frame slip monitor remains active, original speed and force limits unchanged."
-}
