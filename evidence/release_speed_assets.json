@@ -1,0 +1,16 @@
+{
+  "repository": "li2311675549/robot-vla",
+  "tag": "v1.1.0-speed",
+  "source_commit": "1f2dc03f6898d1061ca1195ea0aaedc964b6a68e",
+  "asset_name": "traditional-cases70.zip",
+  "asset_id": 747048336,
+  "bytes": 96819466,
+  "sha256": "492d99100e82cc05f97743b22635ba5231912badd2c8ee1391837b4160804440",
+  "server_digest": "sha256:492d99100e82cc05f97743b22635ba5231912badd2c8ee1391837b4160804440",
+  "url": "https://github.com/li2311675549/robot-vla/releases/download/untagged-546356ed148a2d78675b/traditional-cases70.zip",
+  "files": 144,
+  "videos": 70,
+  "full_decode_verified": 70,
+  "case_composition_not_independent_evaluation": true,
+  "vla_asset_unchanged": true
+}
