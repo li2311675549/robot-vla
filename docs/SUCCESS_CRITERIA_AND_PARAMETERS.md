@@ -169,4 +169,4 @@ Dock通用默认位置容差23mm；门前接触Dock为30mm、内侧25mm等**调�
 |带载关节参考上限|1.6rad/s（非门弧速度）|1.4rad/s|1.8rad/s|
 |门角参考上限|开0.20/关0.15rad/s|不适用|不适用|
 
-配置为configs/door_speed_v2.json、fruit_speed_v2.json、books_speed_v2.json；逐阶段参数见motion_phase_profiles。控制请求不等于真实机体速度。实际轨迹按计划与低层限速最小值执行；不增加物体摩擦或执行器力限、不修改评分。原60/720/360秒目标未全部达成，当前录像包已获准按实际完成时间采集。
+配置为configs/door_speed_v2.json、fruit_speed_v2.json、books_speed_v2.json；逐阶段参数见motion_phase_profiles。控制请求不等于真实机体速度。实际轨迹按计划与低层限速最小值执行；不增加物体摩擦或执行器力限、不修改评分。完成时间使用实际记录，内部提速探索目标与物理成功评分分开。

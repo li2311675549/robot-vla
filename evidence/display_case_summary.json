@@ -8,49 +8,70 @@
       "success": 10,
       "failure": 0,
       "records": 10,
-      "success_share_percent": 100
+      "success_share_percent": 100.0,
+      "successful_mean_sim_seconds": 116.26399999991044,
+      "all_record_mean_sim_seconds": 116.26399999991044,
+      "distinct_parent_count": 10
     },
     {
       "group": "apple",
       "success": 10,
       "failure": 0,
       "records": 10,
-      "success_share_percent": 100
+      "success_share_percent": 100.0,
+      "successful_mean_sim_seconds": 48.729000000230286,
+      "all_record_mean_sim_seconds": 48.729000000230286,
+      "distinct_parent_count": 4
     },
     {
       "group": "banana",
       "success": 9,
       "failure": 1,
       "records": 10,
-      "success_share_percent": 90
+      "success_share_percent": 90.0,
+      "successful_mean_sim_seconds": 49.016888889016755,
+      "all_record_mean_sim_seconds": 63.12080000020583,
+      "distinct_parent_count": 5
     },
     {
       "group": "orange",
       "success": 10,
       "failure": 0,
       "records": 10,
-      "success_share_percent": 100
+      "success_share_percent": 100.0,
+      "successful_mean_sim_seconds": 51.27019999927815,
+      "all_record_mean_sim_seconds": 51.27019999927815,
+      "distinct_parent_count": 4
     },
     {
       "group": "small_book",
       "success": 10,
       "failure": 0,
       "records": 10,
-      "success_share_percent": 100
+      "success_share_percent": 100.0,
+      "successful_mean_sim_seconds": 118.9239999999312,
+      "all_record_mean_sim_seconds": 118.9239999999312,
+      "distinct_parent_count": 10
     },
     {
       "group": "medium_book",
       "success": 10,
       "failure": 0,
       "records": 10,
-      "success_share_percent": 100
+      "success_share_percent": 100.0,
+      "successful_mean_sim_seconds": 127.09800000060687,
+      "all_record_mean_sim_seconds": 127.09800000060687,
+      "distinct_parent_count": 10
     },
     {
       "group": "large_book",
       "success": 7,
       "failure": 3,
       "records": 10,
-      "success_share_percent": 70
+      "success_share_percent": 70.0,
+      "successful_mean_sim_seconds": 158.1400000007551,
+      "all_record_mean_sim_seconds": 186.46719999913213,
+      "distinct_parent_count": 10
     }
   ],
   "vla": [
@@ -59,21 +80,30 @@
       "success": 9,
       "failure": 1,
       "records": 10,
-      "success_share_percent": 90
+      "success_share_percent": 90,
+      "successful_mean_sim_seconds": 17.177777777777585,
+      "all_record_mean_sim_seconds": 18.459999999999237,
+      "scope": "Existing package unchanged; instructed grasp/hold only, no bin placement"
     },
     {
       "group": "banana",
       "success": 7,
       "failure": 3,
       "records": 10,
-      "success_share_percent": 70
+      "success_share_percent": 70,
+      "successful_mean_sim_seconds": 8.685714285714832,
+      "all_record_mean_sim_seconds": 15.079999999998606,
+      "scope": "Existing package unchanged; instructed grasp/hold only, no bin placement"
     },
     {
       "group": "orange",
       "success": 9,
       "failure": 1,
       "records": 10,
-      "success_share_percent": 90
+      "success_share_percent": 90,
+      "successful_mean_sim_seconds": 10.777777777778175,
+      "all_record_mean_sim_seconds": 12.699999999999765,
+      "scope": "Existing package unchanged; instructed grasp/hold only, no bin placement"
     }
   ],
   "original_fixed_evaluation_unchanged": {
@@ -83,9 +113,232 @@
     "vla_grasp_hold": "14/30"
   },
   "source_manifest_sha256": {
-    "traditional": "d7153247f07b1b424e33293ab6a260a38fb506105858562e5158219c89620084",
+    "traditional": "7942e8784e8ca04367a5155944be3c7e4f6ac617403cdf77a34dc11e29e73a31",
     "vla": "22b4597d7d8fcfdf75bf016fd48e202e6cf1ae53d7919f20d901b0e118352556"
   },
   "release_tag": "v1.0.0",
-  "scope_note": "Per-object clips and local diagnostics do not represent complete mobile tasks; VLA does not include placement."
+  "scope_note": "Per-object clips and local diagnostics do not represent complete mobile tasks; VLA does not include placement.",
+  "traditional_release_tag": "v1.1.0-speed",
+  "vla_release_tag": "v1.0.0",
+  "source_parent_count": 28,
+  "full_parent_timing": [
+    {
+      "task": "drawer",
+      "episode": "/home/li/projects/robot_exam/outputs/speed_sprint_20261114/books_v31_seed200009",
+      "success": true,
+      "sim_seconds": 438.4240000013653,
+      "wall_seconds": 282.18327328500163,
+      "code_scope": "current successful frozen speed policy",
+      "result_sha256": "032374563c0fffcf515ecefa838be2a840af728c589ab7c4f550e0db8a852105"
+    },
+    {
+      "task": "drawer",
+      "episode": "/home/li/projects/robot_exam/outputs/speed_collection_20261114/parents_gpu_v3/drawer/attempt_00/episode",
+      "success": true,
+      "sim_seconds": 438.4240000013653,
+      "wall_seconds": 203.21438899900386,
+      "code_scope": "current successful frozen speed policy",
+      "result_sha256": "ac56d546ca5ad4d0b106707c0e0d9e153f6cea4e136aa409010b9dd8ab958d87"
+    },
+    {
+      "task": "drawer",
+      "episode": "/home/li/projects/robot_exam/outputs/speed_collection_20261114/parents_gpu_v3/drawer/attempt_01/episode",
+      "success": true,
+      "sim_seconds": 438.4240000013653,
+      "wall_seconds": 214.7967924830009,
+      "code_scope": "current successful frozen speed policy",
+      "result_sha256": "631d5660d46e1fa3060b57bb12ddba67a1f49cb284e8208ded4ee51e9db74a7c"
+    },
+    {
+      "task": "drawer",
+      "episode": "/home/li/projects/robot_exam/outputs/speed_collection_20261114/parents_gpu_v3/drawer/attempt_02/episode",
+      "success": true,
+      "sim_seconds": 438.4240000013653,
+      "wall_seconds": 202.94007031300134,
+      "code_scope": "current successful frozen speed policy",
+      "result_sha256": "4687d54731a0d5a3f10be677e7031166e2dba3da6955821c5ddbd32f66596842"
+    },
+    {
+      "task": "drawer",
+      "episode": "/home/li/projects/robot_exam/outputs/speed_collection_20261114/parents_gpu_v3/drawer/attempt_03/episode",
+      "success": true,
+      "sim_seconds": 438.4240000013653,
+      "wall_seconds": 209.95687381899916,
+      "code_scope": "current successful frozen speed policy",
+      "result_sha256": "8bdc1bd93ab2c6f594be04089ce594b41b5653c721ce14dc10c7f1c10a2b983c"
+    },
+    {
+      "task": "drawer",
+      "episode": "/home/li/projects/robot_exam/outputs/speed_collection_20261114/parents_gpu_v3/drawer/attempt_04/episode",
+      "success": true,
+      "sim_seconds": 438.4240000013653,
+      "wall_seconds": 210.6218128190012,
+      "code_scope": "current successful frozen speed policy",
+      "result_sha256": "2a78d9ff38da46a2790ee1a566f578015363b961082b084e21cbfd39ecdbe098"
+    },
+    {
+      "task": "drawer",
+      "episode": "/home/li/projects/robot_exam/outputs/speed_collection_20261114/parents_gpu_v3/drawer/attempt_05/episode",
+      "success": true,
+      "sim_seconds": 438.4240000013653,
+      "wall_seconds": 212.07013930099492,
+      "code_scope": "current successful frozen speed policy",
+      "result_sha256": "64218486600a508da97eb08d0f413c0f30651b516886c45e2511b0f52de67719"
+    },
+    {
+      "task": "drawer",
+      "episode": "/home/li/projects/robot_exam/outputs/speed_collection_20261114/parents_gpu_v3/drawer/attempt_06/episode",
+      "success": true,
+      "sim_seconds": 438.4240000013653,
+      "wall_seconds": 203.55003612399742,
+      "code_scope": "current successful frozen speed policy",
+      "result_sha256": "fd6fddf78653cbe41f17df6b286eb5e11ff2b1689dea19006b48127344d2b47c"
+    },
+    {
+      "task": "drawer",
+      "episode": "/home/li/projects/robot_exam/outputs/speed_collection_20261114/parents_gpu_v3/drawer/attempt_07/episode",
+      "success": true,
+      "sim_seconds": 438.4240000013653,
+      "wall_seconds": 219.57163001599838,
+      "code_scope": "current successful frozen speed policy",
+      "result_sha256": "d79f43a187c4019e87f9d09559ab27ef98e5691f40696b1a476bd46bc2ccc033"
+    },
+    {
+      "task": "drawer",
+      "episode": "/home/li/projects/robot_exam/outputs/speed_collection_20261114/parents_gpu_v3/drawer/attempt_08/episode",
+      "success": true,
+      "sim_seconds": 438.4240000013653,
+      "wall_seconds": 210.67523261099996,
+      "code_scope": "current successful frozen speed policy",
+      "result_sha256": "87b5996a6791a8c34510fa30c7ceb76e81b002afaefff0c7b89b323a2130b7d7"
+    },
+    {
+      "task": "fruit",
+      "episode": "/home/li/projects/robot_exam/outputs/speed_sprint_20261114/fruit_v33_seed412",
+      "success": true,
+      "sim_seconds": 705.1019999971503,
+      "wall_seconds": 623.7832486570042,
+      "code_scope": "current successful frozen speed policy",
+      "result_sha256": "88568869db1abe952d35d3080ecfb4f79e8772f49bf462bf35e1c03a9e4e084f"
+    },
+    {
+      "task": "fruit",
+      "episode": "/home/li/projects/robot_exam/outputs/speed_collection_20261114/parents_gpu_v3/fruit/attempt_00/episode",
+      "success": true,
+      "sim_seconds": 705.3319999971449,
+      "wall_seconds": 587.2018517909964,
+      "code_scope": "current successful frozen speed policy",
+      "result_sha256": "07224fb24c5798dac3295e55a132f0b58877678ee4384bc9d8ec8b154709afa4"
+    },
+    {
+      "task": "fruit",
+      "episode": "/home/li/projects/robot_exam/outputs/speed_collection_20261114/parents_gpu_v3/fruit/attempt_01/episode",
+      "success": true,
+      "sim_seconds": 705.3319999971449,
+      "wall_seconds": 573.9486866720035,
+      "code_scope": "current successful frozen speed policy",
+      "result_sha256": "2c2e267627ec1fd5baed34a3bb803cf352872228dae34bff84dac8834dff8750"
+    },
+    {
+      "task": "fruit",
+      "episode": "/home/li/projects/robot_exam/outputs/speed_collection_20261114/parents_gpu_v3/fruit/attempt_02/episode",
+      "success": true,
+      "sim_seconds": 705.3319999971449,
+      "wall_seconds": 555.4564572740055,
+      "code_scope": "current successful frozen speed policy",
+      "result_sha256": "3496565390b034dec118df2ba3afc648f0a5321b64b3c0335617a7746bb6e7df"
+    },
+    {
+      "task": "door",
+      "episode": "/home/li/projects/robot_exam/outputs/speed_sprint_20261114/door_v16_seed2101",
+      "success": true,
+      "sim_seconds": 116.26399999991044,
+      "wall_seconds": 87.80579227399903,
+      "code_scope": "current successful frozen speed policy",
+      "result_sha256": "e51a080acb0f7316df618494476735a1adaf79bd0219c10d839172b653c24855"
+    },
+    {
+      "task": "door",
+      "episode": "/home/li/projects/robot_exam/outputs/speed_collection_20261114/parents_v1/door/attempt_00/episode",
+      "success": true,
+      "sim_seconds": 116.26399999991044,
+      "wall_seconds": 148.54630643699784,
+      "code_scope": "current successful frozen speed policy",
+      "result_sha256": "3e767dc4f67c5e4c9d6101ca476721c97889ec195d9cd105f0d313e2ed1d1983"
+    },
+    {
+      "task": "door",
+      "episode": "/home/li/projects/robot_exam/outputs/speed_collection_20261114/parents_gpu_v3/door/attempt_00/episode",
+      "success": true,
+      "sim_seconds": 116.26399999991044,
+      "wall_seconds": 51.46203066299495,
+      "code_scope": "current successful frozen speed policy",
+      "result_sha256": "63e4167ae194b8200d9824c10f9969add082ee1f55aa3c62e5d7eb40173c4f6c"
+    },
+    {
+      "task": "door",
+      "episode": "/home/li/projects/robot_exam/outputs/speed_collection_20261114/parents_gpu_v3/door/attempt_01/episode",
+      "success": true,
+      "sim_seconds": 116.26399999991044,
+      "wall_seconds": 53.775818572998105,
+      "code_scope": "current successful frozen speed policy",
+      "result_sha256": "cc0654069a600a1d04738d4ce85fd019231b5d6e0fddabdbd141622e846f24da"
+    },
+    {
+      "task": "door",
+      "episode": "/home/li/projects/robot_exam/outputs/speed_collection_20261114/parents_gpu_v3/door/attempt_02/episode",
+      "success": true,
+      "sim_seconds": 116.26399999991044,
+      "wall_seconds": 48.707525113000884,
+      "code_scope": "current successful frozen speed policy",
+      "result_sha256": "bf86fc4218b268e5b8be18705cd9e513f7de6174acd8072e61868b3faf105965"
+    },
+    {
+      "task": "door",
+      "episode": "/home/li/projects/robot_exam/outputs/speed_collection_20261114/parents_gpu_v3/door/attempt_03/episode",
+      "success": true,
+      "sim_seconds": 116.26399999991044,
+      "wall_seconds": 51.304042994001065,
+      "code_scope": "current successful frozen speed policy",
+      "result_sha256": "c29e0de00ab7d4e77a6c8fafd8565f901ea395fe1c259e9aea72c0fceaddb356"
+    },
+    {
+      "task": "door",
+      "episode": "/home/li/projects/robot_exam/outputs/speed_collection_20261114/parents_gpu_v3/door/attempt_04/episode",
+      "success": true,
+      "sim_seconds": 116.26399999991044,
+      "wall_seconds": 54.68333532100223,
+      "code_scope": "current successful frozen speed policy",
+      "result_sha256": "38af1e6ec9227a23c00c532dcb64076286456a3ace1b76a5352d59ca9dff6a5d"
+    },
+    {
+      "task": "door",
+      "episode": "/home/li/projects/robot_exam/outputs/speed_collection_20261114/parents_gpu_v3/door/attempt_05/episode",
+      "success": true,
+      "sim_seconds": 116.26399999991044,
+      "wall_seconds": 51.658673136997095,
+      "code_scope": "current successful frozen speed policy",
+      "result_sha256": "0a13db2d240c3775de7680e4630a190a0b886d80b892c5e806458c4c880e1206"
+    },
+    {
+      "task": "door",
+      "episode": "/home/li/projects/robot_exam/outputs/speed_collection_20261114/parents_gpu_v3/door/attempt_06/episode",
+      "success": true,
+      "sim_seconds": 116.26399999991044,
+      "wall_seconds": 54.06407876199955,
+      "code_scope": "current successful frozen speed policy",
+      "result_sha256": "e5e05810c2aa6d6b8ffc284d0c97c2b1326ad84f1a14652f01b07b3cf4e3ed74"
+    },
+    {
+      "task": "door",
+      "episode": "/home/li/projects/robot_exam/outputs/speed_collection_20261114/parents_gpu_v3/door/attempt_07/episode",
+      "success": true,
+      "sim_seconds": 116.26399999991044,
+      "wall_seconds": 50.78677509300178,
+      "code_scope": "current successful frozen speed policy",
+      "result_sha256": "9b73271fbeba99e4898bf5dcbeac4b8c2e86c194d15cc710543975f40d44792a"
+    }
+  ],
+  "successful_full_parent_count": 24,
+  "timing_definition": "Successful simulation execution intervals only; all-record stop means separately in package"
 }
