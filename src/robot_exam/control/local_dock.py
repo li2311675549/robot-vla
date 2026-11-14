@@ -22,6 +22,7 @@ class PoseClearance:
             if self.model.jnt_type[joint]==mujoco.mjtJoint.mjJNT_FREE:
                 self.payload_qadr=int(self.model.jnt_qposadr[joint])
                 self.payload_origin=r.sim.data.qpos[self.payload_qadr:self.payload_qadr+3].copy()
+                self.payload_quaternion=r.sim.data.qpos[self.payload_qadr+3:self.payload_qadr+7].copy()
     def __call__(self,pose):
         if getattr(self,'grid',None) is not None and not self.grid.free(self.grid.cell(pose[:2])):
             return False
@@ -36,6 +37,9 @@ class PoseClearance:
             # with the base-relative carry point; orientation remains world
             # fixed, matching tick()'s payload stabilizer. Live qpos untouched.
             self.scratch.qpos[self.payload_qadr:self.payload_qadr+2]=np.asarray(pose[:2])+[c*delta[0]-s*delta[1],s*delta[0]+c*delta[1]]
+            if self.r.payload_rotation is None:
+                delta_quat=np.array([math.cos(angle/2),0,0,math.sin(angle/2)])
+                mujoco.mju_mulQuat(self.scratch.qpos[self.payload_qadr+3:self.payload_qadr+7],delta_quat,self.payload_quaternion)
         mujoco.mj_forward(self.model,self.scratch)
         result=True
         for contact in self.scratch.contact:
@@ -57,6 +61,7 @@ def execute_local_dock(r,goal,timeout,tolerance,strategy):
     from robot_exam.tasks.runtime import TaskFailure
     goal=np.asarray(goal);start=float(r.sim.data.time);trace=[];plans=[];stable=0.
     previous_mode=getattr(r,'payload_docking',False);r.payload_docking=bool(r.payload)
+    previous_precision=getattr(r,'precision_docking',False);r.precision_docking=True
     tracking=r.config.get('local_dock_tracking_version','axis_v1')
     primitive_pivot=tracking=='axis_pivot_v6'
     bounded_axis=tracking in ('axis_bounded_v5','axis_pivot_v6')
@@ -64,7 +69,7 @@ def execute_local_dock(r,goal,timeout,tolerance,strategy):
     wheel_dofs=[int(r.sim.model.jnt_dofadr[int(r.sim.model.actuator_trnid[a,0])]) for a in r.base.ids]
     last_applied=r.wheel_applied.copy();dt=float(r.sim.model.opt.timestep)
     capture_goal=bool(r.config.get('local_dock_capture_goal_during_primitives',False))
-    capture_stable=0.
+    capture_stable=0.;turn_context=None
     class StrictGoalSettled(Exception):pass
     def command(v,w,mode):
         nonlocal last_applied,stable,capture_stable
@@ -76,7 +81,12 @@ def execute_local_dock(r,goal,timeout,tolerance,strategy):
                 # not a reason to drive away after physically arriving there.
                 # Brake normally and independently check actual velocities.
                 v=w=0.;mode='goal_capture'
-        r.base.command(v,w)
+        if r.config.get('local_dock_pi_turn',False) and mode.startswith('turn_') and turn_context is not None:
+            anchor,target_yaw=turn_context
+            r.base.rotate_velocity(anchor,target_yaw,body_yaw_limit=.25 if r.payload else .4)
+            wheels=r.base.wheel_target
+            v=float(r.base.wheel_radius*.5*(wheels[0]+wheels[1]));w=float(r.base.wheel_radius/r.base.wheel_track*(wheels[1]-wheels[0]))
+        else:r.base.command(v,w)
         desired=r.sim.data.ctrl[r.base.ids].copy()
         if not r.payload:
             last_applied+=np.clip(desired-last_applied,-.8*dt,.8*dt)
@@ -114,8 +124,9 @@ def execute_local_dock(r,goal,timeout,tolerance,strategy):
         pose=r.base.pose();err=wrap_angle(target_yaw-pose[2]);velocity=r.sim.data.qvel[r.base_velocity_dof:r.base_velocity_dof+6]
         # Same tire-scrub compensation mechanism as the production controller.
         w=float(np.clip(1.8*err-.55*velocity[5],-.55,.55))
-        if abs(err)>.018:w+=math.copysign(.35 if r.payload else .45,err)
-        return float(np.clip(w,-.85,.85))
+        if abs(err)>.018:w+=math.copysign(float(r.config.get('local_dock_angular_feedforward',.35 if r.payload else .45)),err)
+        limit=float(r.config.get('local_dock_angular_limit_rad_s',.85))
+        return float(np.clip(w,-limit,limit))
     def brake():
         # A slow payload wheel limiter retains a common-mode wheel command
         # while switching from driving to yaw. Drain it first; otherwise a
@@ -160,6 +171,7 @@ def execute_local_dock(r,goal,timeout,tolerance,strategy):
                 if anchored:brake()
                 if turn:
                     anchor=r.base.pose()[:2].copy()
+                    turn_context=(anchor,float(b[2]))
                     while True:
                         velocity=r.sim.data.qvel[r.base_velocity_dof:r.base_velocity_dof+6]
                         if abs(wrap_angle(b[2]-r.base.pose()[2]))<.018 and abs(velocity[5])<.03:break
@@ -187,7 +199,7 @@ def execute_local_dock(r,goal,timeout,tolerance,strategy):
                         bearing=math.atan2(delta[1],delta[0])+(math.pi if direction<0 else 0.)
                         look_heading=(bearing if anchored and not bounded_axis else b[2]+float(np.clip(direction*2.0*lateral,-.18,.18)))
                         yaw=wrap_angle(look_heading-pose[2]);w=steer(look_heading) if abs(yaw)>.018 else -.55*velocity[5]
-                        limit=.075 if r.payload else .11
+                        limit=float(r.config.get('local_dock_linear_speed_m_s',.075 if r.payload else .11))
                         measured_heading=np.array([math.cos(pose[2]),math.sin(pose[2])])
                         v=(float(direction*np.clip(.8*np.linalg.norm(delta)-.55*direction*(velocity[:2]@measured_heading),0,limit))
                            if anchored and not bounded_axis else float(np.clip(.9*along-.55*(velocity[:2]@heading),-limit,limit)))
@@ -208,7 +220,7 @@ def execute_local_dock(r,goal,timeout,tolerance,strategy):
     except StrictGoalSettled:
         return
     finally:
-        r.base.command(0,0);r.payload_docking=previous_mode
+        r.base.command(0,0);r.payload_docking=previous_mode;r.precision_docking=previous_precision
         r.dock_traces.append({'controller':strategy+'_stage10','tracking_version':tracking,'goal':goal.tolist(),
             'position_tolerance_m':tolerance,'heading_tolerance_rad':.035,'stable_seconds':stable,
             'elapsed_seconds':float(r.sim.data.time-start),'plans':plans,'samples':trace,

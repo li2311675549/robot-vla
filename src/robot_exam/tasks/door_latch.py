@@ -57,7 +57,7 @@ def safe_joint_move(runtime,target,seconds=3.):
     except RuntimeError:
         path,report=plan_joint_rrt(runtime.arm,target,wall_seconds=12.,max_nodes=3500)
         runtime.ik_diagnostics.append({'context':runtime.stage,'joint_path':report})
-    for waypoint in path:runtime.joint_move(waypoint,seconds,_collision_checked=True)
+    runtime.joint_path(path,seconds,_collision_checked=True)
 
 
 def grasp_inner(runtime,metadata,at_handle=False):

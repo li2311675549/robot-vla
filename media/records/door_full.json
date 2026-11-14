@@ -1,104 +1,62 @@
 {
   "success": true,
-  "final_door_angle": 6.342871377134842e-16,
+  "final_door_angle": 1.8275266596922485e-16,
   "final_base": [
-    1.0996610742685895,
-    -0.36696202386044985,
-    2.5219586181519578
+    1.1200068015594349,
+    -0.27025242121594534,
+    2.565339701393068
   ],
-  "whole_robot_min_x_m": 0.5112685324724282,
+  "whole_robot_min_x_m": 0.5504867297880542,
   "entered_before_close": true,
-  "initial_entry_min_x_m": 0.4505242587426187,
+  "initial_entry_min_x_m": 0.44408215875452295,
   "opening_contact": {
     "completed": true,
-    "actual_angle": 1.5586955778447786,
-    "seconds": 147.36200000017405,
-    "grasp_count": 2,
-    "safety_releases": 1,
+    "actual_angle": 1.5635709659739354,
+    "seconds": 15.459999999992208,
+    "grasp_count": 1,
+    "safety_releases": 0,
     "attempts": [
       {
-        "completed": false,
-        "initial_angle": 0.00023557525365816226,
-        "target_angle": 1.56,
-        "actual_angle": 0.8675181479369695,
-        "seconds": 72.35999999986947,
-        "safety_release_reason": "pad_edge_margin",
-        "unsafe_contact": null,
-        "max_tip_error_m": 0.011951852274491883,
-        "max_base_error_m": 0.06533205885815017,
-        "grasp_count": 1,
-        "safety_releases": 1,
-        "evidence": "/home/li/projects/robot_exam/outputs/stage14/continuous_door/full_seed2101_recorded_v3/continuous_open_01.json"
-      },
-      {
         "completed": true,
-        "initial_angle": 0.8323862440141976,
+        "initial_angle": 1.9610503001691755e-05,
         "target_angle": 1.56,
-        "actual_angle": 1.5586955778447786,
-        "seconds": 56.02000000026749,
+        "actual_angle": 1.5635709659739354,
+        "seconds": 11.879999999993416,
         "safety_release_reason": null,
         "unsafe_contact": null,
-        "max_tip_error_m": 0.010928326189825194,
-        "max_base_error_m": 0.059498625816967174,
+        "max_tip_error_m": 0.010605599124496818,
+        "max_base_error_m": 0.037717795692725736,
         "grasp_count": 1,
         "safety_releases": 0,
-        "evidence": "/home/li/projects/robot_exam/outputs/stage14/continuous_door/full_seed2101_recorded_v3/continuous_open_02.json"
+        "evidence": "/home/li/projects/robot_exam/outputs/speed_sprint_20261114/door_v16_seed2101/continuous_open_01.json"
       }
     ]
   },
   "closing_contact": {
     "completed": true,
-    "actual_angle": -5.048554072820775e-06,
-    "seconds": 148.8020000007105,
-    "grasp_count": 3,
-    "safety_releases": 2,
+    "actual_angle": -1.92195385173371e-05,
+    "seconds": 24.987999999941763,
+    "grasp_count": 1,
+    "safety_releases": 0,
     "attempts": [
       {
-        "completed": false,
-        "initial_angle": 1.5822070734265565,
-        "target_angle": 0.0,
-        "actual_angle": 0.866606887689247,
-        "seconds": 48.300000000230625,
-        "safety_release_reason": "pad_edge_margin",
-        "unsafe_contact": null,
-        "max_tip_error_m": 0.007031993633987729,
-        "max_base_error_m": 0.06529211991157019,
-        "grasp_count": 1,
-        "safety_releases": 1,
-        "evidence": "/home/li/projects/robot_exam/outputs/stage14/continuous_door/full_seed2101_recorded_v3/continuous_close_01.json"
-      },
-      {
-        "completed": false,
-        "initial_angle": 0.9104855534385997,
-        "target_angle": 0.0,
-        "actual_angle": 0.34182272631408067,
-        "seconds": 46.6400000002227,
-        "safety_release_reason": "pad_edge_margin",
-        "unsafe_contact": null,
-        "max_tip_error_m": 0.010860934257536857,
-        "max_base_error_m": 0.05934411600694001,
-        "grasp_count": 1,
-        "safety_releases": 1,
-        "evidence": "/home/li/projects/robot_exam/outputs/stage14/continuous_door/full_seed2101_recorded_v3/continuous_close_02.json"
-      },
-      {
         "completed": true,
-        "initial_angle": 0.3881412277886284,
+        "initial_angle": 1.5926261233492924,
         "target_angle": 0.0,
-        "actual_angle": -5.048554072820775e-06,
-        "seconds": 26.92000000012854,
+        "actual_angle": -1.92195385173371e-05,
+        "seconds": 21.859999999949054,
         "safety_release_reason": null,
         "unsafe_contact": null,
-        "max_tip_error_m": 0.008946605097919811,
-        "max_base_error_m": 0.062468497222932955,
+        "max_tip_error_m": 0.004942971710482066,
+        "max_base_error_m": 0.06067176702162984,
         "grasp_count": 1,
         "safety_releases": 0,
-        "evidence": "/home/li/projects/robot_exam/outputs/stage14/continuous_door/full_seed2101_recorded_v3/continuous_close_03.json"
+        "evidence": "/home/li/projects/robot_exam/outputs/speed_sprint_20261114/door_v16_seed2101/continuous_close_01.json"
       }
     ]
   },
-  "total_grasp_count": 5,
-  "safety_releases": 3,
+  "total_grasp_count": 2,
+  "safety_releases": 0,
   "necessary_phase_releases": 2,
   "final_stopped": true,
   "mode": "Oracle tangent-circle wheel/arm expert; oblique physical pinch; safety-triggered regrasp",
@@ -109,19 +67,19 @@
   "video": {
     "status": "PASS",
     "fps": 5,
-    "frames": 2312,
+    "frames": 582,
     "stream": {
       "width": 640,
       "height": 480,
-      "duration": "462.400000",
-      "nb_read_frames": "2312"
+      "duration": "116.400000",
+      "nb_read_frames": "582"
     },
     "opengl": {
       "vendor": "Mesa",
       "renderer": "llvmpipe (LLVM 15.0.7, 256 bits)"
     },
     "first_sim_seconds": 0.002,
-    "last_sim_seconds": 462.20200000147884,
+    "last_sim_seconds": 116.20199999991058,
     "continuous": true,
     "cadence_validated": true,
     "full_decode": "PASS"
@@ -129,16 +87,16 @@
   "task": "door",
   "seed": 2101,
   "policy_mode": "oracle",
-  "sim_seconds": 462.3360000014795,
-  "wall_seconds": 291.1881765349972,
-  "num_retries": 3,
+  "sim_seconds": 116.26399999991044,
+  "wall_seconds": 87.80579227399903,
+  "num_retries": 0,
   "collision_events": [],
-  "timestamp": "2026-10-31T16:23:01.845466+08:00",
+  "timestamp": "2026-11-14T04:04:55.460515+08:00",
   "model": {
     "nq": 26,
     "nv": 25,
     "nu": 11,
-    "path": "outputs/stage14/continuous_door/full_seed2101_recorded_v3/scene.xml"
+    "path": "../scene.xml"
   },
   "initial_base": [
     -5.086403364810501,
@@ -164,8 +122,8 @@
     "opened": true,
     "entered": true,
     "closed_at_end": true,
-    "maximum_door_angle_rad": 1.5875739503586956,
-    "final_door_angle_rad": 6.342871377134842e-16,
+    "maximum_door_angle_rad": 1.594768990624325,
+    "final_door_angle_rad": 1.8275266596922485e-16,
     "note": "Opening/entry are sampled physical witnesses; complete success additionally requires original task scoring.",
     "closed_after_entry": true
   }

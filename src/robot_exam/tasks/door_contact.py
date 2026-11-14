@@ -100,7 +100,9 @@ def grasp_contact(runtime,metadata,inner,retry=False,target=None):
             stable=stable+.05 if abs(r.sim.data.qvel[dof])<.004 else 0.
             if stable>=.25:break
         else:raise TaskFailure('door_motion','Released leaf did not settle before bounded regrasp')
-    select_start_arc(r,metadata,inner,(0. if inner else 1.56) if target is None else target)
+    if r.config.get('door_use_nominal_arcs',False):
+        if retry:r.dock(arc_station(metadata,door_angle(r),inner),timeout=30,tolerance=.025)
+    else:select_start_arc(r,metadata,inner,(0. if inner else 1.56) if target is None else target)
     angle=door_angle(r);point=handle_position(metadata,angle,inner);rotation=arc_rotation(metadata,angle,inner)
     q,_=r.solve_ik(point-.09*rotation[:,2],rotation,max_iterations=450,context='continuous_oblique_pregrasp')
     safe_joint_move(r,q)
@@ -142,7 +144,7 @@ def follow_contact_arc(runtime,metadata,target,inner):
     theta=initial;normal,tangent,_=arc_parameters(inner,metadata);radius=math.hypot(normal,tangent)
     hinge_dof=int(m.jnt_dofadr[m.joint('door_hinge').id])
     tangent_sign=1. if inner else -1.
-    speed=float(r.config.get('door_contact_angle_speed_rad_s',.020))
+    speed=float(r.config.get('door_close_angle_speed_rad_s' if inner else 'door_open_angle_speed_rad_s',r.config.get('door_contact_angle_speed_rad_s',.020)))
     maximum_seconds=float(r.config.get('door_contact_arc_timeout_seconds',180.))
     r.transition(State.MANIPULATE,'continuous_inner_close' if inner else 'continuous_outer_open',
                  target=target,timeout=maximum_seconds+5.)
@@ -180,7 +182,10 @@ def follow_contact_arc(runtime,metadata,target,inner):
                 max_error=max(max_error,error);max_base_error=max(max_base_error,base_error)
                 if base_error>.12:reason='base_tracking';break
                 # Slow/freeze the common reference before arm reach is consumed.
-                reference_error=float(np.linalg.norm(position-handle_position(metadata,theta,inner)))
+                reference_point=handle_position(metadata,theta,inner)
+                if r.config.get('door_preserve_grasp_offset',False):
+                    reference_point=reference_point-arc_rotation(metadata,theta,inner)@initial_local
+                reference_error=float(np.linalg.norm(position-reference_point))
                 local=rotation.T@(handle_position(metadata,actual,inner)-position)
                 axial_slip=float(abs(local[2]-initial_local[2]))
                 advance=(reference_error<.012 and axial_slip<.012 and base_error<.080 and bilateral)
@@ -197,10 +202,13 @@ def follow_contact_arc(runtime,metadata,target,inner):
                 # torque while velocity feedback prevents the leaf running
                 # ahead and sliding axially out of the pad.
                 lead=float(np.clip(.20*(wanted_rate-measured_rate),-.006,.006)) if advance else 0.
-                theta=(theta+wanted_rate*.02) if reference_arc else float(np.clip(actual+lead,0.,1.56))
+                theta=(theta+wanted_rate*.02) if reference_arc else float(np.clip(actual+lead,0.,max(initial,target,1.56)))
                 theta=min(theta,target) if direction>0 else max(theta,target)
-                rate=wanted_rate if reference_arc else float(np.clip(measured_rate,-.05,.05))
+                measured_limit=float(r.config.get('door_measured_rate_limit_rad_s',.05))
+                rate=(wanted_rate if reference_arc or r.config.get('door_measured_base_feedforward',False)
+                      else float(np.clip(measured_rate,-measured_limit,measured_limit)))
                 point=handle_position(metadata,theta,inner);wanted_rotation=arc_rotation(metadata,theta,inner)
+                if r.config.get('door_preserve_grasp_offset',False):point=point-wanted_rotation@initial_local
                 if not fixed_arm:
                     try:q,metrics=r.arm.solve(point,wanted_rotation,seed=q,max_iterations=100)
                     except RuntimeError:reason='ik_unreachable';break
@@ -211,27 +219,41 @@ def follow_contact_arc(runtime,metadata,target,inner):
                 goal=arc_station(metadata,theta if reference_arc else actual,inner);delta=goal[:2]-pose[:2]
                 heading=np.array([math.cos(pose[2]),math.sin(pose[2])]);lateral=float(delta@[-heading[1],heading[0]])
                 velocity=d.qvel[r.base_velocity_dof:r.base_velocity_dof+6]
-                linear=float(np.clip(tangent_sign*radius*rate+1.2*(delta@heading),-.075,.075))
+                linear_limit=float(r.config.get('door_contact_linear_limit_m_s',.075))
+                linear_gain=float(r.config.get('door_contact_linear_feedforward_gain',1.))
+                linear_reference=linear_gain*tangent_sign*radius*rate+1.2*(delta@heading)
+                measured_forward=float(velocity[:2]@heading)
+                velocity_gain=float(r.config.get('door_contact_linear_velocity_gain',0.))
+                if not 0.<=velocity_gain<=2.:raise ValueError('Door linear velocity feedback gain must be in0–2')
+                linear=float(np.clip(linear_reference+velocity_gain*(linear_reference-measured_forward),-linear_limit,linear_limit))
                 heading_error=wrap_angle(goal[2]-pose[2]);reverse=-1. if tangent_sign*direction<0 else 1.
                 steering_error=heading_error+reverse*2.*lateral
                 angular=rate+4.*steering_error-.65*velocity[5]
-                if abs(steering_error)>.008 or abs(rate)>.001:
-                    angular+=math.copysign(.45,steering_error if abs(steering_error)>.008 else rate)
-                angular=float(np.clip(angular,-.85,.85))
+                if r.config.get('door_velocity_feedforward_gain') is not None:
+                    # Rate-proportional compensation ramps from zero with the
+                    # real arc. A constant sign offset kicks yaw before the
+                    # linear tangent motion has accelerated into the turn.
+                    angular=float(r.config['door_velocity_feedforward_gain'])*rate+4.*steering_error-.65*velocity[5]
+                elif abs(steering_error)>.008 or abs(rate)>.001:
+                    angular+=math.copysign(float(r.config.get('door_contact_angular_feedforward',.45)),steering_error if abs(steering_error)>.008 else rate)
+                angular_limit=float(r.config.get('door_contact_angular_limit_rad_s',.85))
+                angular=float(np.clip(angular,-angular_limit,angular_limit))
                 r.base.command(linear,angular)
                 trace.append({'time':float(d.time),'door_angle':actual,'reference_angle':theta,
                     'base':pose.tolist(),'base_goal':goal.tolist(),'base_error_m':base_error,
                     'tip_error_m':error,'command_tracking_error_m':reference_error,'axial_slip_m':axial_slip,
                     'handle_position_tool_m':local.tolist(),'left_force_n':forces['left'],'right_force_n':forces['right'],
                     'bilateral':bilateral,'reference_advancing':advance,'linear_command':linear,
-                    'angular_command':angular,'linear_speed':float(np.linalg.norm(velocity[:2])),
+                    'angular_command':angular,'linear_reference_m_s':float(linear_reference),
+                    'measured_forward_m_s':measured_forward,'linear_speed':float(np.linalg.norm(velocity[:2])),
                     'yaw_rate':float(velocity[5]),'q':d.qpos[r.arm.qadr].tolist(),
                     'arm_reference':r.arm.reference.tolist(),'joint_target':q.tolist()})
                 done=(abs(target-actual)<(.010 if inner else .012) and abs(measured_rate)<.015 and error<.012)
                 stable=stable+.02 if done else 0.
                 if stable>=.6:completed=True;break
             desired=r.base.wheel_target.copy()
-            wheels+=np.clip(desired-wheels,-1.2*dt,1.2*dt)
+            wheel_accel=float(r.config.get('door_contact_wheel_acceleration_rad_s2',1.2))
+            wheels+=np.clip(desired-wheels,-wheel_accel*dt,wheel_accel*dt)
             d.ctrl[r.base.ids]=wheels
             r.tick()
         if not completed and reason is None:reason='arc_timeout'
@@ -305,12 +327,12 @@ def release_and_stow(runtime,metadata,inner):
     if runtime.config.get('door_contact_release','legacy')!='normal_withdraw':
         return release_and_stow_legacy(runtime)
     from robot_exam.tasks.door_latch import safe_joint_move
-    r=runtime;r.base.command(0,0);r.hold(1.)
+    r=runtime;r.base.command(0,0);r.hold(float(r.config.get('door_release_prehold_seconds',1.)))
     position,rotation=r.arm.pose();angle=door_angle(r)
     away=rotation_z(angle)[:,0]*(1. if inner else -1.)
     # Open while withdrawing away from the leaf plane. Opening the oblique
     # jaws at a stationary pinch pose could drag the passive leaf back open.
-    seconds=1.;steps=round(seconds/r.sim.model.opt.timestep)
+    seconds=float(r.config.get('door_release_seconds',1.));steps=round(seconds/r.sim.model.opt.timestep)
     release_trace=[]
     for i in range(steps):
         f=(i+1)/steps
@@ -334,7 +356,8 @@ def release_and_stow(runtime,metadata,inner):
     target=position+.045*away
     if np.linalg.norm(r.arm.pose()[0]-target)>.018:
         raise TaskFailure('arm_tracking','Normal release withdrawal did not reach its checked endpoint')
-    safe_joint_move(r,r.STOW,seconds=3.5)
+    if not(inner and r.config.get('door_skip_final_stow',False)):
+        safe_joint_move(r,r.STOW,seconds=3.5)
     if r.output:
         (r.output/('contact_release_close.json' if inner else 'contact_release_open.json')).write_text(
             json.dumps({'strategy':'normal_withdraw','final_angle':door_angle(r),'samples':release_trace},indent=2)+'\n')
@@ -356,25 +379,43 @@ def execute_contact_task(runtime,metadata):
     from robot_exam.navigation.grid import OccupancyGrid
     from robot_exam.tasks.door_latch import dock_station
     r=runtime;grid=OccupancyGrid(bounds=(-6,4,-3,3))
+    if r.config.get('door_initial_arc_parameters'):
+        for phase,values in r.config['door_initial_arc_parameters'].items():
+            if phase not in ('open','close') or len(values)!=2 or not np.isfinite(values).all():
+                raise ValueError('Finite open/close normal,tangent arc parameters required')
+        metadata['contact_arc_parameters']={k:list(v) for k,v in r.config['door_initial_arc_parameters'].items()}
     for box in metadata['obstacles']:grid.rectangle(*box)
     r.hold(.6);r.transition(State.NAVIGATE,'contact_five_metre_approach')
-    r.navigate([-1.2,.42,.59],grid)
-    r.dock(arc_station(metadata,door_angle(r),False),timeout=45,tolerance=.030)
+    outer=arc_station(metadata,door_angle(r),False)
+    r.navigate(outer if r.config.get('door_direct_operating_approach',False) else [-1.2,.42,.59],grid)
+    r.dock(outer,timeout=45,tolerance=.030)
     opening=run_contact_phase(r,metadata,1.56,False)
     r.transition(State.APPROACH,'contact_open_release_stow',timeout=100)
     release_and_stow(r,metadata,False)
-    r.base.command(-.08,0);r.hold(2.);r.base.command(0,0);r.hold(.4)
-    r.transition(State.NAVIGATE,'contact_enter_room')
     passage=OccupancyGrid(bounds=(-6,4,-3,3))
     for box in metadata['obstacles']:passage.rectangle(*box)
     passage.rectangle(-1.6,0,-.85,-.73)
+    if r.config.get('door_feedback_passage_retreat',False):
+        # Reach a genuinely free inflated-map entry with wheel motion. The
+        # former fixed-duration retreat could stop a few cm inside the map
+        # after faster arm/base dynamics, though no physical collision occurred.
+        start=float(r.sim.data.time);origin=r.base.pose().copy();heading=float(origin[2])
+        while not passage.free(passage.cell(r.base.pose()[:2])) or np.linalg.norm(r.base.pose()[:2]-origin[:2])<.08:
+            if r.sim.data.time-start>8.:raise TaskFailure('door_clearance','No free passage start after bounded physical retreat')
+            error=wrap_angle(heading-r.base.pose()[2])
+            r.base.command(-.18,float(np.clip(3.*error,-.5,.5)));r.tick()
+            if r.collision_events:raise TaskFailure('base_collision','Collision during open-door retreat')
+        r.base.command(0,0);r.hold(.4)
+    else:r.base.command(-.08,0);r.hold(2.);r.base.command(0,0);r.hold(.4)
+    r.transition(State.NAVIGATE,'contact_enter_room')
     r.navigate([1.,0.,0.],passage,timeout=180)
     entered_minimum=whole_robot_min_x(r)
     if entered_minimum<=.07:raise TaskFailure('not_entered','Whole robot has not cleared the door before closing')
     r.transition(State.NAVIGATE,'contact_return_to_inner_latch',timeout=200)
     goal=arc_station(metadata,door_angle(r),True)
     r.navigate(goal,grid,timeout=150)
-    dock_station(r,goal,timeout=60,tolerance=.025)
+    if r.config.get('door_direct_terminal_dock',False):r.dock(goal,timeout=60,tolerance=.025)
+    else:dock_station(r,goal,timeout=60,tolerance=.025)
     closing=run_contact_phase(r,metadata,0.,True)
     r.transition(State.APPROACH,'contact_close_release_stow',timeout=100)
     release_and_stow(r,metadata,True)
@@ -389,7 +430,7 @@ def execute_contact_task(runtime,metadata):
         if r.sim.data.time-start>35.:raise TaskFailure('navigation_timeout','Straight room clearance timed out')
         error=wrap_angle(heading-r.base.pose()[2]);velocity=r.sim.data.qvel[r.base_velocity_dof:r.base_velocity_dof+6]
         angular=float(np.clip(4.*error-.55*velocity[5]+(.45*math.copysign(1.,error) if abs(error)>.012 else 0.),-.65,.65))
-        r.base.command(-.06,angular);r.tick()
+        r.base.command(-float(r.config.get('door_inside_clearance_speed_m_s',.06)),angular);r.tick()
         if r.collision_events:raise TaskFailure('base_collision','Unexpected collision during straight clearance')
     r.base.command(0,0);r.hold(2.)
     velocity=r.sim.data.qvel[r.base_velocity_dof:r.base_velocity_dof+6]

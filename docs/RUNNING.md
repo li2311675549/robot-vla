@@ -60,3 +60,15 @@ MUJOCO_GL=egl python scripts/verify_documented_principles.py --output outputs/ne
 当前版本的运行结果另存新目录，并记录源码版本、配置与全部回合结果。
 
 Release v1.0.0 保留发布时附件，最新文字说明以 main 分支为准。
+
+## 当前提速演示版本
+
+以下为已出现完整成功的开发配置，不改变历史冻结评测协议。门与书为Oracle，水果由RGB-D生成目标并使用仿真辅助评分。
+
+```bash
+MUJOCO_GL=egl python scripts/run_task.py --task door --seed 2101 --mode oracle --door-profile aligned_handles_v3 --config configs/door_speed_v2.json --output outputs/new_speed_door --record
+MUJOCO_GL=egl python scripts/run_task.py --task fruit --seed 412 --mode vision --config configs/fruit_speed_v2.json --output outputs/new_speed_fruit --record
+MUJOCO_GL=egl python scripts/run_task.py --task drawer --seed 200009 --mode oracle --book-profile distinct_v2 --config configs/books_speed_v2.json --output outputs/new_speed_books --record
+```
+
+使用新输出目录，保留原始结果；速度问题、未采用的尝试及限制见PROBLEMS_AND_SOLUTIONS.md。VLA配置与视频保持原版本。

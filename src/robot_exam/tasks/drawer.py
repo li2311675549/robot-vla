@@ -11,10 +11,17 @@ from robot_exam.perception.objects import grasp_candidates
 
 
 def execute(runtime,metadata,mode='vision'):
+    if runtime.config.get('book_cabinet_station') is not None:
+        station=np.asarray(runtime.config['book_cabinet_station'],dtype=float)
+        if station.shape!=(3,) or not np.isfinite(station).all():raise ValueError('Finite cabinet operating pose required')
+        metadata={**metadata,'cabinet_dock':station.tolist()}
     r=runtime;initial=np.asarray(metadata['start']);grid=OccupancyGrid();r.grid=grid
     for box in metadata['obstacles']:grid.rectangle(*box)
-    r.hold(.6);r.transition(State.NAVIGATE,'five_metre_book_table')
-    r.navigate([-.40,-.65,0],grid);r.dock(metadata['book_dock'])
+    initial_cabinet=bool(mode=='oracle' and r.config.get('book_oracle_initial_cabinet_approach',False))
+    r.hold(.6);r.transition(State.NAVIGATE,'five_metre_cabinet_preparation' if initial_cabinet else 'five_metre_book_table')
+    if initial_cabinet:
+        r.navigate([-.45,metadata['cabinet_dock'][1],0],grid);r.dock(metadata['cabinet_dock'])
+    else:r.navigate([-.40,-.65,0],grid);r.dock(metadata['book_dock'])
     camera=RGBDCamera(r.sim);operations=[]
     try:
         r.transition(State.OBSERVE,'rgbd_book_size_sort')
@@ -29,12 +36,17 @@ def execute(runtime,metadata,mode='vision'):
         observed.sort(key=lambda o:o['area'])
         for rank,book in enumerate(observed):
             r.transition(State.NAVIGATE,'cabinet_open_layer_'+str(rank))
-            r.stow();r.backout(-.40);r.navigate([-.45,.50,0],grid);r.dock(metadata['cabinet_dock'])
+            r.stow()
+            if not(rank==0 and initial_cabinet):
+                r.backout(-.40);r.navigate([-.45,metadata['cabinet_dock'][1],0],grid);r.dock(metadata['cabinet_dock'])
             opened=drawer_operation(r,rank,.26,metadata)
             # Drawer contact operation has ended. Its 60 s deadline must not
             # keep running during the subsequent drive back to the worktable.
             r.transition(State.NAVIGATE,'return_to_book_table',timeout=240)
-            r.backout(-.50);r.stow();r.navigate([-.40,-.65,0],grid);r.dock(metadata['book_dock'])
+            r.backout(-.50);r.stow()
+            direct_push=(mode=='oracle' and r.config.get('book_pick_strategy')=='oracle_push_side'
+                         and r.config.get('book_direct_push_bay',False))
+            if not direct_push:r.navigate([-.40,-.65,0],grid);r.dock(metadata['book_dock'])
             r.transition(State.OBSERVE,'reobserve_selected_book')
             rgb,depth=camera.capture();detections=observe_objects(camera,rgb,depth,workspace=workspace,kind='book')
             if mode=='vision':
@@ -129,6 +141,25 @@ def _place_side_book(r,metadata,rank,book,target,grasp,grid,opened,operations):
         r.payload_docking=True
     else:r.joint_move(r.STOW,4)
     try:
+        if joint_carry and r.config.get('book_compact_held_transport',False):
+            # Keep the jaws closed. The normal stow() opens them, so use a
+            # collision-checked held-book joint path, never a rigid attachment.
+            from robot_exam.control.joint_rrt import plan_joint_rrt
+            compact_q=r.STOW
+            if r.config.get('book_compact_target_in_base') is not None:
+                relative=np.asarray(r.config['book_compact_target_in_base'],dtype=float)
+                if relative.shape!=(3,) or not np.isfinite(relative).all():
+                    raise ValueError('Finite compact carry x/y offsets and absolute height required')
+                pose=r.base.pose();c,s=np.cos(pose[2]),np.sin(pose[2])
+                xy=pose[:2]+np.array([[c,-s],[s,c]])@relative[:2]
+                compact_q,_=r.solve_ik(np.r_[xy,relative[2]],r.arm.pose()[1],
+                                       context='held_book_compact_pose')
+            path,report=plan_joint_rrt(r.arm,compact_q,allowed_bodies=[target['body']],
+                                       held_body=target['body'],wall_seconds=5.)
+            r.ik_diagnostics.append({'context':'held_book_compact_transport','planning':report})
+            r.joint_path(path,seconds=2.,_collision_checked=True)
+            if not r.bilateral(target['body']):
+                raise TaskFailure('gripper_slip','Book lost while folding for transport')
         r.backout(-.45)
         staging_x=min(-.45,station[0]-.15)
         if joint_carry:
@@ -136,7 +167,30 @@ def _place_side_book(r,metadata,rank,book,target,grasp,grid,opened,operations):
             # top drawer's front and physically pushes it closed before drop.
             # Stay clear of that front, then raise with real arm actuators.
             staging_x=min(staging_x,-.55)
-        r.navigate([staging_x,.50,0],grid)
+            if r.config.get('side_book_braking_clearance_staging',False):
+                from robot_exam.tasks.scoring import body_bounds
+                _,upper=body_bounds(r.sim,target['body']);tool=r.sim.model.body('tool0').id
+                for bid in range(r.sim.model.nbody):
+                    parent=bid
+                    while parent>0 and parent!=tool:parent=int(r.sim.model.body_parentid[parent])
+                    if parent==tool:
+                        _,extent=body_bounds(r.sim,r.sim.model.body(bid).name)
+                        if np.isfinite(extent).all():upper=np.maximum(upper,extent)
+                front,_=body_bounds(r.sim,f'drawer_{rank}')
+                carry_extent=float(upper[0]-r.base.pose()[0])
+                speed=float(r.config.get('payload_linear_speed_m_s',.1))
+                braking=float(r.config.get('payload_linear_braking_m_s2',.2))
+                gap=speed*speed/(2*max(braking,.05))+.06
+                staging_x=min(staging_x,float(front[0])-carry_extent-gap)
+                if r.output:(r.output/f'book_braking_staging_{rank}.json').write_text(__import__('json').dumps(
+                    {'drawer_front_x_m':float(front[0]),'assembly_extent_x_m':carry_extent,
+                     'braking_and_margin_m':gap,'selected_staging_x_m':staging_x},indent=2)+'\n')
+        workspace_transport=bool(r.config.get('book_workspace_transport',False) and joint_carry)
+        if workspace_transport:
+            from robot_exam.control.workspace_approach import corridor_to_y
+            corridor_to_y(r,grid,float(station[1]),x_corridor=-1.,linear_limit=.25)
+            grasp['rotation']=r.arm.pose()[1].copy()
+        else:r.navigate([staging_x,station[1],0],grid)
         if joint_carry:
             from robot_exam.tasks.scoring import body_bounds
             lower,_=body_bounds(r.sim,target['body'])
@@ -160,10 +214,29 @@ def _place_side_book(r,metadata,rank,book,target,grasp,grid,opened,operations):
                     'includes_end_effector':bool(r.config.get('side_book_assembly_clearance',False))},indent=2))
             if dz:
                 tip,rotation=r.arm.pose()
+                forward_shift=float(r.config.get('side_book_clearance_forward_shift_m',0.)) if r.config.get('book_compact_held_transport',False) else 0.
+                if not 0.<=forward_shift<=.2:raise ValueError('Clearance approach shift must be in0–.2m')
+                clearance_target=tip+[forward_shift,0,dz]
                 if r.config.get('side_book_collision_planned_clearance',False):
-                    _checked_side_book_move(r,tip+[0,0,dz],rotation,target['body'])
-                else:r.move(tip+[0,0,dz],rotation,seconds=3.)
-        r.dock(station,timeout=30)
+                    _checked_side_book_move(r,clearance_target,rotation,target['body'])
+                else:r.move(clearance_target,rotation,seconds=3.)
+        if workspace_transport:
+            from robot_exam.control.workspace_approach import approach_feasible_workspace
+            body_id=r.sim.model.body(target['body']).id;tip,current_R=r.arm.pose()
+            relative=current_R.T@(r.sim.data.xpos[body_id]-tip)
+            object_R=r.sim.data.xmat[body_id].reshape(3,3)
+            angle=rectangular_axis_alignment(np.arctan2(object_R[1,0],object_R[0,0]))
+            c,s=np.cos(angle),np.sin(angle);release_R=np.array([[c,-s,0],[s,c,0],[0,0,1.]])@current_R
+            clearance=float(r.config['side_book_release_clearance_by_rank'][rank])
+            height=metadata['drawer_bottoms'][rank]+.008+target['size'][2]/2+clearance
+            drop_x=float(r.config['side_book_drop_center_x_by_rank'][rank]);release_tip=np.array([drop_x,.5,height])-release_R@relative
+            pre_height=min(max(.90,height+.16),float(r.config.get('side_book_max_pre_height_m',2.)))
+            targets=[('above_drawer',[.36,.5,pre_height],current_R,[target['body']]),
+                     ('release',release_tip,release_R,[target['body']]),
+                     ('retreat',release_tip+[0,0,.06],release_R,[target['body']])]
+            approach_feasible_workspace(r,targets,minimum_x=-.24,maximum_x=0.,linear_limit=.25,
+                                        tolerance=.023,name=f'book_workspace_{rank}')
+        else:r.dock(station,timeout=30)
     finally:
         if world_carry or joint_carry:r.end_payload();r.payload_docking=previous_precision
     if not r.bilateral(target['body']):raise TaskFailure('gripper_slip','Side-held book lost during transport')
@@ -199,7 +272,7 @@ def _checked_side_book_move(r,position,rotation,body,allow_held_contact=True):
                     raise TaskFailure('gripper_slip',f'Book lowering contact guard: drift={drift:.4f}m turn={turn:.4f}rad')
         guard=HeldBookGuard();r.sim.add_step_controller(guard)
         try:
-            for waypoint in path:r.joint_move(waypoint,seconds=.7,
+            r.joint_path(path,seconds=.7,
                 _collision_checked=bool(r.config.get('side_book_execute_checked_path',False)))
         finally:r.sim.remove_step_controller(guard)
         error=float(np.linalg.norm(r.arm.pose()[0]-position))
@@ -212,7 +285,7 @@ def _checked_side_book_move(r,position,rotation,body,allow_held_contact=True):
             q,_=r.arm.solve(position,rotation,seed=seed,max_iterations=500)
             path,report=plan_joint_rrt(r.arm,q,allowed_bodies=[body] if allow_held_contact else [],
                 held_body=body if allow_held_contact and r.config.get('side_book_full_assembly_joint_path',False) else None)
-            for waypoint in path:r.joint_move(waypoint,seconds=2.,
+            r.joint_path(path,seconds=2.,
                 _collision_checked=bool(r.config.get('side_book_execute_checked_path',False)))
             error=float(np.linalg.norm(r.arm.pose()[0]-position))
             if error>.018:raise TaskFailure('arm_tracking',f'Collision-planned book endpoint error {error}')
@@ -307,7 +380,7 @@ def _insert_side_book(r,metadata,rank,book,target,grasp,opened,operations):
             # Keep the exact preflighted IK branch. Re-solving from the old
             # seed can silently select the wrist-folded branch just rejected
             # by the complete lowering-path check.
-            for waypoint in alignment_waypoints:r.joint_move(waypoint,seconds=2.,
+            r.joint_path(alignment_waypoints,seconds=2.,
                 _collision_checked=bool(r.config.get('side_book_execute_checked_path',False)))
             if np.linalg.norm(r.arm.pose()[0]-[.36,.50,pre_height])>.018:
                 raise TaskFailure('arm_tracking','Validated book-alignment branch did not physically arrive')

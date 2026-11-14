@@ -47,11 +47,55 @@ class BaseController:
         self.command(v, w)
         return distance, abs(wrap_angle(goal[2] - yaw))
 
-    def rotate(self, anchor, yaw):
+    def rotate(self, anchor, yaw, max_angular=2., linear_limit=.25,
+               velocity_damping=0., yaw_damping=0., feedforward=.45):
         """Correct skid-induced drift along the heading while rotating."""
         x, y, heading = self.pose()
         along = (x-anchor[0])*math.cos(heading) + (y-anchor[1])*math.sin(heading)
         error = wrap_angle(yaw-heading)
-        self.command(np.clip(-3*along, -.25, .25),
-                     np.clip(4*error + (.45*np.sign(error) if abs(error) > .015 else 0), -2, 2))
+        forward_velocity=yaw_rate=0.
+        if velocity_damping or yaw_damping:
+            joint=int(self.sim.model.body_jntadr[self.body]);dof=int(self.sim.model.jnt_dofadr[joint])
+            velocity=self.sim.data.qvel[dof:dof+6]
+            forward_velocity=float(velocity[:2]@[math.cos(heading),math.sin(heading)])
+            yaw_rate=float(velocity[5])
+        self.command(np.clip(-3*along-velocity_damping*forward_velocity,-linear_limit,linear_limit),
+                     np.clip(4*error + (feedforward*np.sign(error) if abs(error) > .015 else 0)-yaw_damping*yaw_rate,-max_angular,max_angular))
         self.precision_turn = True
+
+    def rotate_velocity(self,anchor,yaw,body_yaw_limit=.8):
+        """Opt-in measured-twist PI turn, with bounded integral compensation.
+
+        A payload's asymmetric wheel loading creates forward motion during
+        differential steering. Regulate actual forward velocity, rather than
+        treating a zero wheel-command mean as proof of a stationary pivot.
+        """
+        pose=self.pose();anchor=np.asarray(anchor);heading=np.array([math.cos(pose[2]),math.sin(pose[2])])
+        joint=int(self.sim.model.body_jntadr[self.body]);dof=int(self.sim.model.jnt_dofadr[joint])
+        velocity=self.sim.data.qvel[dof:dof+6];forward=float(velocity[:2]@heading)
+        if not self.precision_turn or not np.array_equal(anchor,getattr(self,'_turn_anchor',None)):
+            self._turn_anchor=anchor.copy();self._turn_integral=np.zeros(2);self._turn_yaw_reference=0.
+            wheels=self.sim.data.ctrl[self.ids]
+            self._turn_last_request=np.array([self.wheel_radius*.5*(wheels[0]+wheels[1]),self.wheel_radius/self.wheel_track*(wheels[1]-wheels[0])])
+        along=float((pose[:2]-anchor)@heading);error=wrap_angle(yaw-pose[2])
+        dt=float(self.sim.model.opt.timestep)
+        # Precision/load paths have an additional wheel-command ramp. Shape
+        # the body reference to that bandwidth instead of integrating into
+        # an actuator delay and reversing full yaw targets at the endpoint.
+        precision=body_yaw_limit<=.4
+        rate=.3 if precision else 1.2;gain=1.2 if precision else 1.5
+        wanted=float(np.clip(gain*error,-body_yaw_limit,body_yaw_limit))
+        self._turn_yaw_reference+=float(np.clip(wanted-self._turn_yaw_reference,-rate*dt,rate*dt))
+        reference=np.array([np.clip(-2*along,-.2,.2),self._turn_yaw_reference])
+        measured=np.array([forward,float(velocity[5])])
+        self._turn_integral+=np.array([3.,2.])*(reference-measured)*dt
+        if hasattr(self,'_turn_last_request'):
+            wheels=self.sim.data.ctrl[self.ids]
+            applied=np.array([self.wheel_radius*.5*(wheels[0]+wheels[1]),self.wheel_radius/self.wheel_track*(wheels[1]-wheels[0])])
+            self._turn_integral+=5.*(applied-self._turn_last_request)*dt
+        self._turn_integral=np.clip(self._turn_integral,[-.5,-1.5],[.5,1.5])
+        command=reference*np.array([1.,5.])+np.array([1.5,2.])*(reference-measured)+self._turn_integral
+        self.command(float(np.clip(command[0],-.6,.6)),float(np.clip(command[1],-6,6)))
+        wheels=self.wheel_target
+        self._turn_last_request=np.array([self.wheel_radius*.5*(wheels[0]+wheels[1]),self.wheel_radius/self.wheel_track*(wheels[1]-wheels[0])])
+        self.precision_turn=True

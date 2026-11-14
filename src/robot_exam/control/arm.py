@@ -34,6 +34,7 @@ class ArmController:
         self.reference = sim.data.ctrl[self.actuators].copy()
         self.last_successful = []
         self.last_solve_report = {}
+        self.check_self_collisions=False
 
     def pose(self):
         return (self.sim.data.site_xpos[self.site].copy(),
@@ -109,6 +110,13 @@ class ArmController:
             mujoco.mj_forward(model,self.scratch)
             for contact in self.scratch.contact:
                 g1,g2=map(int,contact.geom);b1,b2=map(int,model.geom_bodyid[[g1,g2]])
+                if b1 in robot and b2 in robot:
+                    if self.check_self_collisions and alpha>=1.-1e-12 and contact.dist<-.0003:
+                        bodies=[model.body(b).name or '' for b in (b1,b2)]
+                        if not all(name.startswith('grip_') for name in bodies):
+                            key=('self:'+('/'.join(bodies)), '/'.join(bodies))
+                            risk[key]=max(risk.get(key,0.),-float(contact.dist))
+                    continue
                 if (b1 in robot)==(b2 in robot):continue
                 other=g2 if b1 in robot else g1;other_body=b2 if b1 in robot else b1
                 body_name=model.body(other_body).name or ''

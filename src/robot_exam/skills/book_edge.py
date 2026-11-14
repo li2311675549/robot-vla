@@ -153,7 +153,9 @@ def _pick_pushed_book(r,obj,grid,raised):
         if report['selected'] is None:
             raise TaskFailure('ik_unreachable','No collision-safe physical push bay reaches both above-book and contact entry targets')
         dock_pose=report['selected']['pose']
-    r.dock(dock_pose,timeout=45)
+    if r.config.get('book_use_certified_stopped_bay',False) and r.config.get('book_push_base_precheck',False):
+        _certified_push_bay(r,dock_pose,targets,obj['body'])
+    else:r.dock(dock_pose,timeout=45)
     r.transition(State.MANIPULATE,'oracle_push_book_edge',target=obj['body'],timeout=180)
     r.gripper.command(1);r.hold(.5)
     center=r.sim.data.xpos[body].copy();initial=center.copy()
@@ -199,6 +201,8 @@ def _pick_pushed_book(r,obj,grid,raised):
     else:
         grasp=center.copy();grasp[0]-=halfx-.015;pre=grasp-[.075,0,0];rotation=side_rotation()
     if grasp[0]>.27:raise TaskFailure('edge_clearance','Pushed edge still lacks lower-finger clearance')
+    if r.config.get('book_separate_push_grasp_profiles',False):
+        r.transition(State.APPROACH,'side_book_edge_grasp',target=obj['body'],timeout=120)
     r.stow();r.backout(-.30);r.gripper.command(0)
     r.move([pre[0],pre[1],.90],rotation,seconds=3)
     path=None;failures=[]
@@ -208,11 +212,15 @@ def _pick_pushed_book(r,obj,grid,raised):
             path,planning=plan_joint_rrt(r.arm,q,allowed_bodies=[obj['body']]);break
         except RuntimeError as exc:failures.append(str(exc))
     if path is None:raise TaskFailure('book_joint_path',' | '.join(failures))
-    for q in path:r.joint_move(q,seconds=2)
+    if r.config.get('retime_checked_joint_paths',False):r.joint_path(path,seconds=2,_collision_checked=True)
+    else:
+        for q in path:r.joint_move(q,seconds=2)
     r.move(grasp,rotation,seconds=1.5);r.gripper.command(1);r.hold(.8)
     if not r.bilateral(obj['body']):raise TaskFailure('grasp_contact','No physical bilateral book contact')
     tip,actual_rotation=r.arm.pose()
     relative_before_lift=actual_rotation.T@(r.sim.data.xpos[body]-tip)
+    if r.config.get('book_separate_push_grasp_profiles',False):
+        r.transition(State.MANIPULATE,'side_book_lift_hold',target=obj['body'],timeout=60)
     r.move(grasp+[0,0,.10],rotation,seconds=2)
     lift=float(r.sim.data.xpos[body,2]-center[2])
     stable=(stable_edge_book(r,obj,relative_before_lift) if r.config.get('book_geometry_aware_grasp_witness',False)
@@ -222,3 +230,35 @@ def _pick_pushed_book(r,obj,grid,raised):
     return {'rotation':rotation,'lift_m':lift,'candidate_count':len(failures)+1,
             'scope':'Oracle physical push-and-side-pinch','push_displacement_m':(center-initial).tolist(),
             'joint_path_planning':planning,'ik':ik,'push_feedback_trace':push_trace}
+
+
+def _certified_push_bay(r,nominal,targets,body):
+    """Choose a real stopped, IK-feasible bay instead of chasing an arbitrary XY.
+
+    Nominal workspace coordinates are design variables, not task scoring.
+    The new actual pose must pass the same collision/IK tests and original
+    strict dock stability criteria. This is not a claim of reaching nominal.
+    """
+    from robot_exam.control.base_pose import evaluate_operational_base_poses
+    from robot_exam.control.base import wrap_angle
+    goal=np.asarray(nominal);start=float(r.sim.data.time)
+    while True:
+        pose=r.base.pose();dx=goal[0]-pose[0];dy=goal[1]-pose[1]
+        if abs(dx)<.035 and abs(dy)<.04:break
+        if r.sim.data.time-start>10.:
+            r.base.command(0,0);return r.dock(nominal,timeout=45)
+        yaw=wrap_angle(goal[2]-pose[2])
+        velocity=r.sim.data.qvel[r.base_velocity_dof:r.base_velocity_dof+6]
+        v=float(np.clip(1.2*dx-.4*velocity[0],-.22,.22)) if abs(yaw)<.12 else 0.
+        r.base.command(v,float(np.clip(3*yaw+2*dy-.5*velocity[5],-.7,.7)));r.tick()
+        if r.collision_events:raise TaskFailure('base_collision','Collision while approaching physical push workspace')
+    r.base.command(0,0);r.hold(.6);actual=r.base.pose().copy()
+    previous_grid=getattr(r,'grid',None);r.grid=None
+    try:report=evaluate_operational_base_poses(r,actual,targets,offsets=[(0,0,0)])
+    finally:r.grid=previous_grid
+    if r.output:
+        (r.output/f'certified_push_bay_{body}.json').write_text(__import__('json').dumps(
+            {'nominal':goal.tolist(),'actual_selected':actual.tolist(),'feasibility':report,
+             'scope':'New feasible operating pose, not nominal dock accuracy'},indent=2)+'\n')
+    if report['selected'] is None:return r.dock(nominal,timeout=45)
+    return r.dock(actual,timeout=10.,tolerance=.023)

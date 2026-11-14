@@ -137,7 +137,7 @@ class TaskRuntime:
         if self.grip_force_feedback:
             from robot_exam.control.contact_grip import update_contact_feedback
             update_contact_feedback(self)
-        arm_speed=float(self.config.get('payload_arm_speed_rad_s',1.2)) if self.payload else .7
+        arm_speed=float(self.config.get('payload_arm_speed_rad_s',1.2)) if self.payload else float(self.motion_setting('free_arm_speed_rad_s',.7))
         self.arm.command(self.qgoal,max_speed=arm_speed)
         wheel_acceleration=np.zeros(4)
         if self.payload:
@@ -181,7 +181,8 @@ class TaskRuntime:
                     # skid-steer wheels without walking into the worktable.
                     angular_limit=max(angular_limit,.45)
                     angular=np.sign(angular)*min(angular_limit,abs(angular)+.35)
-                    linear=float(np.clip(linear,-.02,.02)) if precision_turn else 0.
+                    turn_linear_limit=float(self.config.get('payload_precision_turn_linear_limit_m_s',.02))
+                    linear=float(np.clip(linear,-turn_linear_limit,turn_linear_limit)) if precision_turn else 0.
                 elif not strict_pivot:
                     linear=float(self.config.get('payload_turn_creep_m_s',.035))
             linear=np.clip(linear,-linear_limit,linear_limit)
@@ -193,7 +194,7 @@ class TaskRuntime:
                 .35 if profile=='banana' else .8))
             increment=acceleration*self.sim.model.opt.timestep
             previous_wheels=self.wheel_applied.copy()
-            if (getattr(self,'payload_docking',False) and self.config.get('payload_precision_twist_slew',False)
+            if ((getattr(self,'payload_docking',False) or self.config.get('payload_twist_slew_all_motion',False)) and self.config.get('payload_precision_twist_slew',False)
                     and profile in self.config.get('payload_twist_slew_categories',[profile])):
                 # Independent wheel ramps retain forward velocity while the
                 # outer pose loop requests a pivot. Brake translation as a
@@ -201,18 +202,40 @@ class TaskRuntime:
                 previous_linear=radius*.5*(previous_wheels[0]+previous_wheels[1])
                 previous_angular=radius/track*(previous_wheels[1]-previous_wheels[0])
                 braking=(linear*previous_linear<=0 or abs(linear)<abs(previous_linear))
-                linear_acceleration=.20 if braking else .06
+                linear_acceleration=float(self.config.get('payload_linear_braking_m_s2',.20) if braking else self.config.get('payload_linear_acceleration_m_s2',.06))
                 applied_linear=previous_linear+np.clip(linear-previous_linear,
                     -linear_acceleration*self.sim.model.opt.timestep,linear_acceleration*self.sim.model.opt.timestep)
                 applied_angular=previous_angular+np.clip(angular-previous_angular,
-                    -.8*self.sim.model.opt.timestep,.8*self.sim.model.opt.timestep)
+                    -float(self.config.get('payload_yaw_acceleration_rad_s2',.8))*self.sim.model.opt.timestep,float(self.config.get('payload_yaw_acceleration_rad_s2',.8))*self.sim.model.opt.timestep)
                 left=(applied_linear-applied_angular*track/2)/radius
                 right=(applied_linear+applied_angular*track/2)/radius
                 self.wheel_applied=np.array([left,right,left,right])
             else:self.wheel_applied+=np.clip(desired-self.wheel_applied,-increment,increment)
             wheel_acceleration=(self.wheel_applied-previous_wheels)/self.sim.model.opt.timestep
             self.sim.data.ctrl[self.base.ids]=self.wheel_applied
-        else:self.wheel_applied=self.sim.data.ctrl[self.base.ids].copy()
+        else:
+            desired=self.sim.data.ctrl[self.base.ids].copy()
+            slew=bool(self.config.get('empty_twist_slew',False) and not getattr(self,'precision_docking',False)
+                      and not self.base.precision_turn
+                      and self.stage not in ('continuous_outer_open','continuous_inner_close'))
+            if slew:
+                # Keep ramping towards the persistent requested target during
+                # hold()/braking. Reusing last applied ctrl here would freeze
+                # the ramp after one step when no new command is issued.
+                desired=getattr(self.base,'wheel_target',desired)
+                radius=self.base.wheel_radius;track=self.base.wheel_track;dt=self.sim.model.opt.timestep
+                previous_v=radius*.5*(self.wheel_applied[0]+self.wheel_applied[1])
+                previous_w=radius/track*(self.wheel_applied[1]-self.wheel_applied[0])
+                wanted_v=radius*.5*(desired[0]+desired[1]);wanted_w=radius/track*(desired[1]-desired[0])
+                braking=wanted_v*previous_v<=0 or abs(wanted_v)<abs(previous_v)
+                acceleration=float(self.config.get('empty_braking_m_s2',.8) if braking else self.config.get('empty_acceleration_m_s2',.5))
+                v=previous_v+np.clip(wanted_v-previous_v,-acceleration*dt,acceleration*dt)
+                angular_acceleration=float(self.config.get('empty_angular_acceleration_rad_s2',3.))
+                w=previous_w+np.clip(wanted_w-previous_w,-angular_acceleration*dt,angular_acceleration*dt)
+                left=(v-w*track/2)/radius;right=(v+w*track/2)/radius
+                self.wheel_applied=np.clip([left,right,left,right],-12,12)
+                self.sim.data.ctrl[self.base.ids]=self.wheel_applied
+            else:self.wheel_applied=desired
         if self.data_logger:self.data_logger.capture_pre_step(self.stage,arm_target=self.qgoal,
             arm_reference=self.arm.reference,max_speed=arm_speed)
         self.sim.step(self.sim.data.ctrl)
@@ -313,8 +336,14 @@ class TaskRuntime:
             self.tick()
 
     def solve_ik(self,position,rotation,seed=None,max_iterations=300,context=None):
+        self.arm.check_self_collisions=bool(self.config.get('ik_check_self_collisions',False))
         try:
             q,metrics=self.arm.solve(position,rotation,seed=seed,max_iterations=max_iterations)
+            if self.arm.check_self_collisions:
+                collisions=self.arm._collision_report(q)
+                if collisions:
+                    self.arm.last_solve_report={'status':'first_branch_collision','collisions':collisions,'metrics':metrics}
+                    raise RuntimeError('Converged IK branch intersects the physical assembly')
             if not metrics.get('approximate_convergence',False):return q,metrics
             # Search other branches before accepting the legacy bounded
             # approximation. The convergence thresholds themselves stay fixed.
@@ -354,6 +383,21 @@ class TaskRuntime:
                     self.write_trace('ik_diagnostics',self.ik_diagnostics)
                 raise
 
+    def motion_setting(self, key, default):
+        # Opt-in phase profiles keep contact actions conservative while empty
+        # travel and free-space arm motion run faster. Legacy defaults match.
+        value=self.config.get(key,default)
+        for prefix,profile in self.config.get('motion_phase_profiles',{}).items():
+            if self.stage.startswith(prefix) and key in profile:value=profile[key]
+        return value
+
+    def effective_trajectory_speed(self):
+        commanded=(float(self.config.get('payload_arm_speed_rad_s',1.2)) if self.payload
+                   else float(self.motion_setting('free_arm_speed_rad_s',.7)))
+        planned=float(self.motion_setting('trajectory_joint_speed_rad_s',.7))
+        if min(commanded,planned)<=0:raise ValueError('Positive actual and planned arm speed limits required')
+        return min(commanded,planned)
+
     def joint_move(self, q, seconds=3., _collision_checked=False):
         self._ensure_operation_hold()
         if self.config.get('collision_planned_joint_moves',False) and not _collision_checked:
@@ -362,11 +406,12 @@ class TaskRuntime:
                      if self.bilateral(self.sim.model.body(i).name)]
             path,report=plan_joint_rrt(self.arm,q,allowed_bodies=allowed)
             self.ik_diagnostics.append({'context':self.stage+':joint_path','planning':report})
-            for waypoint in path:self.joint_move(waypoint,seconds,_collision_checked=True)
+            self.joint_path(path,seconds,_collision_checked=True)
             return
         q=np.asarray(q).copy()
         start=self.sim.data.qpos[self.arm.qadr].copy()
-        seconds=max(seconds,1.6*float(np.max(np.abs(q-start)))/.7)
+        speed=self.effective_trajectory_speed()
+        seconds=max(seconds*float(self.motion_setting('motion_duration_scale',1.)),1.6*float(np.max(np.abs(q-start)))/speed)
         steps=max(1,round(seconds/self.sim.model.opt.timestep))
         # Synchronize all six joints along the same path. Independent saturated
         # joint ramps can sweep through the chassis even when the straight
@@ -375,13 +420,45 @@ class TaskRuntime:
             f=(i+1)/steps;f=f*f*(3-2*f)
             self.qgoal=start+f*(q-start)
             self.tick()
-        self.qgoal=q;self.hold(.8)
+        self.qgoal=q
+        if not getattr(self,'_joint_path_intermediate',False):
+            self.hold(float(self.motion_setting('joint_settle_seconds',.8)))
         error = float(np.max(np.abs(self.sim.data.qpos[self.arm.qadr]-q)))
         if error > .06:
             raise TaskFailure("arm_tracking", f"Joint tracking error {error:.4f}rad")
 
+    def joint_path(self,path,seconds=2.,_collision_checked=True):
+        """Retime the same checked nodes; retain endpoint tracking checks.
+
+        Optional per-segment cubic bounds replace an arbitrary multi-second
+        minimum at every densely sampled node. No node/collision is removed.
+        """
+        points=list(path)
+        if not self.config.get('retime_checked_joint_paths',False):
+            for q in points:self.joint_move(q,seconds,_collision_checked=_collision_checked)
+            return
+        previous=getattr(self,'_joint_path_intermediate',False)
+        try:
+            for index,q in enumerate(points):
+                delta=float(np.max(np.abs(np.asarray(q)-self.sim.data.qpos[self.arm.qadr])))
+                speed=self.effective_trajectory_speed()
+                acceleration=float(self.config.get('checked_path_acceleration_rad_s2',2.))
+                scale=float(self.motion_setting('motion_duration_scale',1.))
+                if acceleration<=0 or scale<=0:raise ValueError('Positive path acceleration and time scale required')
+                duration=max(.04,1.6*delta/speed,math.sqrt(6*delta/acceleration))
+                self._joint_path_intermediate=index<len(points)-1
+                self.joint_move(q,duration/scale,_collision_checked=_collision_checked)
+        finally:self._joint_path_intermediate=previous
+
     def stow(self):
         self.gripper.command(0)
+        if (self.config.get('skip_redundant_stow',False)
+                and np.max(np.abs(self.sim.data.qpos[self.arm.qadr]-self.STOW))<.03
+                and np.max(np.abs(self.arm.reference-self.STOW))<.03
+                and np.max(np.abs(self.sim.data.qvel[self.arm.dofs]))<.03):
+            self._ensure_operation_hold()
+            self.qgoal=self.STOW.copy();self.hold(.1)
+            return
         self.joint_move(self.STOW, 3.5)
 
     def move(self, position, rotation=None, seconds=2., tolerance=.018):
@@ -395,8 +472,9 @@ class TaskRuntime:
             final_q, _ = self.solve_ik(position, rotation, seed=self.qgoal,context=f"{self.stage}:endpoint")
         except RuntimeError as exc:
             raise TaskFailure("ik_unreachable", str(exc)) from exc
-        if (self.config.get('collision_planned_reorientation',False) and
-                np.arccos(np.clip((np.trace(start_r.T@rotation)-1)/2,-1,1))>.20):
+        if (self.config.get('collision_planned_cartesian_moves',False) or
+                (self.config.get('collision_planned_reorientation',False) and
+                 np.arccos(np.clip((np.trace(start_r.T@rotation)-1)/2,-1,1))>.20)):
             from robot_exam.control.joint_rrt import plan_joint_rrt
             allowed=[self.sim.model.body(i).name for i in self.dynamic_bodies if self.bilateral(self.sim.model.body(i).name)]
             failures=[]
@@ -404,7 +482,7 @@ class TaskRuntime:
                 try:
                     q=final_q if seed is None else self.arm.solve(position,rotation,seed=seed,max_iterations=500)[0]
                     path,planning=plan_joint_rrt(self.arm,q,allowed_bodies=allowed)
-                    for waypoint in path:self.joint_move(waypoint,seconds,_collision_checked=True)
+                    self.joint_path(path,seconds,_collision_checked=True)
                     error=float(np.linalg.norm(self.arm.pose()[0]-position))
                     if error>tolerance:raise TaskFailure('arm_tracking',f'Collision-planned reorientation endpoint {error:.4f}m')
                     self.ik_diagnostics.append({'context':self.stage+':reorientation','planning':planning})
@@ -412,7 +490,8 @@ class TaskRuntime:
                 except TaskFailure:raise
                 except RuntimeError as exc:failures.append(str(exc))
             raise TaskFailure('arm_collision_path',' | '.join(failures))
-        seconds=max(seconds,1.8*float(np.max(np.abs(final_q-self.arm.reference)))/.7)
+        speed=self.effective_trajectory_speed()
+        seconds=max(seconds*float(self.motion_setting('motion_duration_scale',1.)),1.8*float(np.max(np.abs(final_q-self.arm.reference)))/speed)
         steps=round(seconds/self.sim.model.opt.timestep)
         for i in range(steps):
             if i % 20 == 0:
@@ -437,7 +516,7 @@ class TaskRuntime:
             self.tick()
         # The mobile base can settle under arm reaction forces. Recompute in
         # the current base frame instead of restoring a stale pre-motion IK q.
-        for j in range(round(.45/self.sim.model.opt.timestep)):
+        for j in range(round(float(self.motion_setting('cartesian_settle_seconds',.45))/self.sim.model.opt.timestep)):
             if j%20==0:
                 self.qgoal,_=self.solve_ik(position,rotation,seed=self.qgoal,max_iterations=160,context=f"{self.stage}:settle")
             self.tick()
@@ -659,9 +738,11 @@ class TaskRuntime:
         leave=max(enter+.025,2.0*tolerance)
         start=float(self.sim.data.time)
         previous_payload_docking=getattr(self,'payload_docking',False)
+        previous_precision_docking=getattr(self,'precision_docking',False)
+        self.precision_docking=True
         self.payload_docking=bool(self.payload)
         mode='position'
-        stable_for=0.;trace=[];switches=[];residual_stall=0.
+        stable_for=0.;trace=[];switches=[];residual_stall=0.;dock_turn_anchor=None
         wheel_dofs=[int(self.sim.model.jnt_dofadr[int(self.sim.model.actuator_trnid[a,0])])
                     for a in self.base.ids]
         previous_applied=self.sim.data.ctrl[self.base.ids].copy()
@@ -702,6 +783,7 @@ class TaskRuntime:
                     stable_for=0.;residual_stall=0.
                 heading=np.array([math.cos(pose[2]),math.sin(pose[2])])
                 forward_speed=float(free_velocity[:2]@heading)
+                pi_heading=None
                 if mode=='position':
                     goal_heading=np.array([math.cos(goal[2]),math.sin(goal[2])])
                     along=float(delta@goal_heading)
@@ -710,7 +792,8 @@ class TaskRuntime:
                         # Final approach follows the requested docking frame.
                         # Turning to face a bearing that swings rapidly near
                         # the goal caused an unnecessary skid pivot at 3 cm.
-                        linear=float(np.clip(.9*along-.55*forward_speed,-.055,.055))
+                        along_limit=float(self.config.get('dock_along_linear_limit_m_s',.055))
+                        linear=float(np.clip(.9*along-.55*forward_speed,-along_limit,along_limit))
                         lateral_sign=(-1. if along<0 and self.config.get('dock_reverse_lateral_sign',False) else 1.)
                         angular=float(np.clip(2.3*yaw_error+2.0*lateral_sign*lateral-.55*yaw_rate,-.75,.75))
                     else:
@@ -721,14 +804,18 @@ class TaskRuntime:
                             direction=-1.
                             heading_error=wrap_angle(bearing+math.pi-pose[2])
                         angular=float(np.clip(2.0*heading_error-.55*yaw_rate,-.75,.75))
-                        if abs(heading_error)>.12:linear=0.
+                        if abs(heading_error)>.12:
+                            linear=0.
+                            if self.config.get('dock_rotation_controller')=='velocity_pi_v1':pi_heading=bearing if direction>0 else wrap_angle(bearing+math.pi)
                         else:
-                            limit=.06 if distance<.12 else (.10 if self.payload else .14)
+                            limit=.06 if distance<.12 else (float(self.config.get('dock_payload_position_speed_m_s',.10)) if self.payload else .14)
                             linear=direction*float(np.clip(1.0*distance-.75*direction*forward_speed,0.,limit))
                 elif mode=='heading':
                     along=float(delta@heading)
                     linear=float(np.clip(.6*along-.5*forward_speed,-.025,.025))
                     angular=float(np.clip(1.8*yaw_error-.55*yaw_rate,-.55,.55))
+                    if self.config.get('dock_rotation_controller')=='velocity_pi_v1' and abs(yaw_error)>=.025:
+                        pi_heading=float(goal[2])
                     if (self.config.get('banana_staging_pure_yaw',False)
                             and self.payload and getattr(self,'payload_motion_profile','')=='banana'
                             and tolerance>=.08 and abs(yaw_error)>.25):
@@ -740,17 +827,28 @@ class TaskRuntime:
                         linear=0.
                 else:
                     linear=angular=0.
+                if self.config.get('dock_pure_heading',False) and mode=='heading':
+                    linear=0.
+                    if abs(yaw_error)<.025:angular=0.
                 if mode!='settle' and abs(angular)>.03:
                     # The four wheel skid-steer needs a finite differential
                     # wheel target to overcome static tire scrub. This term
                     # is actuator feedback, not a direct base pose change.
-                    feedforward=.35 if self.payload else .45
-                    max_angular=.85 if self.payload else 1.25
+                    feedforward=float(self.config.get('dock_angular_feedforward',.35 if self.payload else .45))
+                    max_angular=float(self.config.get('dock_max_angular_speed_rad_s',.85 if self.payload else 1.25))
                     angular=float(np.clip(angular+feedforward*np.sign(angular),-max_angular,max_angular))
-                self.base.command(linear,angular)
+                if pi_heading is not None:
+                    if dock_turn_anchor is None:dock_turn_anchor=pose[:2].copy()
+                    anchor=goal[:2] if mode=='heading' else dock_turn_anchor
+                    self.base.rotate_velocity(anchor,pi_heading,body_yaw_limit=.25 if self.payload else .4)
+                    wheels=self.base.wheel_target
+                    linear=float(self.base.wheel_radius*.5*(wheels[0]+wheels[1]))
+                    angular=float(self.base.wheel_radius/self.base.wheel_track*(wheels[1]-wheels[0]))
+                else:
+                    dock_turn_anchor=None;self.base.command(linear,angular)
                 desired=self.sim.data.ctrl[self.base.ids].copy()
                 if not self.payload:
-                    step=.8*dt
+                    step=float(self.config.get('empty_dock_wheel_acceleration_rad_s2',.8))*dt
                     applied=previous_applied+np.clip(desired-previous_applied,-step,step)
                     self.sim.data.ctrl[self.base.ids]=applied
                     previous_applied=applied
@@ -784,6 +882,7 @@ class TaskRuntime:
                 raise TaskFailure('navigation_accuracy','Dock drifted during the 2 s stability window')
         finally:
             self.payload_docking=previous_payload_docking
+            self.precision_docking=previous_precision_docking
             self.dock_traces.append({'controller':'hysteresis_v1','goal':goal.tolist(),
                 'position_tolerance_m':tolerance,'heading_tolerance_rad':.035,
                 'elapsed_seconds':float(self.sim.data.time-start),'mode_switches':switches,
@@ -808,7 +907,13 @@ class TaskRuntime:
                                self.config.get('payload_direct_visible_categories',['banana'])
                                and grid.free(grid.cell(goal))
                                and grid.visible(grid.cell(current[:2]),grid.cell(goal)))
-                if direct_banana:
+                direct_empty=(not self.payload and self.config.get('navigation_direct_visible_empty',False)
+                              and grid.visible(grid.cell(current),grid.cell(goal)))
+                if direct_empty:
+                    # A free direct segment needs no artificial approach
+                    # dogleg. Final heading and strict dock remain separate.
+                    path=[current[:2].tolist(),list(goal[:2])]
+                elif direct_banana:
                     # The inflated occupancy grid certifies the straight
                     # corridor. The old mandatory pre-goal waypoint caused
                     # slow banana carries to loop backward near the bin.
@@ -818,6 +923,13 @@ class TaskRuntime:
                     path.append(list(goal[:2]))
                 else:
                     path=grid.plan(self.base.pose(),goal)
+                if self.output:
+                    with (self.output/'navigation_plans.jsonl').open('a') as log:
+                        log.write(json.dumps({'time':float(self.sim.data.time),'attempt':attempt,
+                            'payload':bool(self.payload),'profile':getattr(self,'payload_motion_profile','default'),
+                            'goal':list(goal),'path':path,'direct_shortcut':bool(direct_banana or direct_empty),
+                            'direct_empty_visible':bool(direct_empty),
+                            'intermediate_handoff_m':self.config.get('navigation_intermediate_handoff_m',0)})+'\n')
                 for segment_index,point in enumerate(path[1:]):
                     segment_start = self.sim.data.time
                     segment_budget=55.
@@ -871,21 +983,78 @@ class TaskRuntime:
                                 f"Waypoint progress timeout segment={segment_index} "
                                 f"point={point} distance={distance:.3f}m "
                                 f"budget={segment_budget:.1f}s")
+                        if self.config.get('navigation_tracker')=='velocity_pursuit_v2' and not self.payload:
+                            from robot_exam.navigation.pursuit import velocity_pursuit_twist
+                            if (segment_index<len(path)-2 and distance<.25
+                                    and grid.visible(grid.cell(pose[:2]),grid.cell(path[segment_index+2]))):break
+                            velocity=self.sim.data.qvel[self.base_velocity_dof:self.base_velocity_dof+6]
+                            forward=float(velocity[:2]@[math.cos(pose[2]),math.sin(pose[2])])
+                            v,w,pivot=velocity_pursuit_twist(pose,point,
+                                float(self.config.get('navigation_linear_speed_m_s',.20)),forward,float(velocity[5]))
+                            if pivot:
+                                if turn_anchor is None:turn_anchor=pose[:2].copy()
+                                self.base.rotate(turn_anchor,math.atan2(point[1]-pose[1],point[0]-pose[0]),
+                                    max_angular=6.,linear_limit=.6,velocity_damping=1.5,yaw_damping=2.,feedforward=1.)
+                            else:turn_anchor=None;self.base.command(v,w)
+                            self.tick();continue
+                        if self.config.get('navigation_tracker')=='pursuit_v1':
+                            from robot_exam.navigation.pursuit import pursuit_twist,arc_is_free
+                            if (segment_index<len(path)-2 and distance<float(self.config.get('navigation_corner_handoff_m',.45))
+                                    and grid.visible(grid.cell(pose[:2]),grid.cell(path[segment_index+2]))):
+                                break
+                            speed=float(self.config.get('navigation_linear_speed_m_s',.20))
+                            yaw_limit=2.
+                            if self.payload:
+                                banana=getattr(self,'payload_motion_profile','')=='banana'
+                                speed=min(speed,float(self.config.get('payload_banana_linear_speed_m_s'if banana else'payload_linear_speed_m_s',.05 if banana else .10)))
+                                yaw_limit=float(self.config.get('payload_banana_angular_speed_rad_s'if banana else'payload_angular_speed_rad_s',.035 if banana else 1.))
+                            v,w,pivot=pursuit_twist(pose,point,speed,segment_index==len(path)-2,max_yaw=yaw_limit)
+                            if not arc_is_free(grid,pose,v,w):
+                                v=0.;w=float(np.clip(3*wrap_angle(math.atan2(point[1]-pose[1],point[0]-pose[0])-pose[2]),-2,2));pivot=True
+                            self.base.command(v,w);self.base.precision_turn=pivot;self.tick()
+                            continue
+                        if (segment_index<len(path)-2 and distance<float(self.config.get('navigation_intermediate_handoff_m',.0))
+                                and grid.visible(grid.cell(pose[:2]),grid.cell(path[segment_index+2]))):
+                            break
                         heading = math.atan2(point[1]-pose[1], point[0]-pose[0])
+                        direction=1.
+                        if (self.config.get('navigation_allow_reverse',False) and
+                                (not self.payload or self.config.get('navigation_reverse_payload',True))):
+                            forward_turn=abs(wrap_angle(heading-pose[2]))
+                            reverse_heading=wrap_angle(heading+math.pi)
+                            reverse_turn=abs(wrap_angle(reverse_heading-pose[2]))
+                            if segment_index==len(path)-2:
+                                forward_turn+=abs(wrap_angle(goal[2]-heading))
+                                reverse_turn+=abs(wrap_angle(goal[2]-reverse_heading))
+                            if reverse_turn+.10<forward_turn:
+                                heading=reverse_heading;direction=-1.
                         error=wrap_angle(heading-pose[2])
-                        if abs(error)>.08:
+                        if abs(error)>float(self.config.get('navigation_heading_gate_rad',.08)):
                             if turn_anchor is None:turn_anchor=pose[:2].copy()
-                            self.base.rotate(turn_anchor,heading)
+                            if (self.config.get('navigation_rotation_controller')=='velocity_pi_v1'
+                                    and (not self.payload or self.config.get('navigation_rotation_payload',True))):
+                                self.base.rotate_velocity(turn_anchor,heading,body_yaw_limit=float(self.config.get('navigation_payload_turn_body_rate_rad_s',.4)) if self.payload else .8)
+                            elif self.config.get('navigation_fast_empty_turn',False) and not self.payload:
+                                self.base.rotate(turn_anchor,heading,max_angular=6.,linear_limit=.6,
+                                                 velocity_damping=1.5,yaw_damping=2.,feedforward=1.)
+                            else:self.base.rotate(turn_anchor,heading)
                         else:
                             turn_anchor=None
-                            self.base.command(min(.20,1.1*distance),np.clip(10*error+(.4*np.sign(error) if abs(error)>.02 else 0),-2,2))
+                            self.base.command(direction*min(float(self.config.get('navigation_linear_speed_m_s',.20)),float(self.config.get('navigation_position_gain',1.1))*distance),np.clip(10*error+(.4*np.sign(error) if abs(error)>.02 else 0),-2,2))
                         self.tick()
                 self.base.command(0, 0)
                 anchor = self.base.pose()[:2].copy()
-                for _ in range(round(12/self.sim.model.opt.timestep)):
+                align_final=not(self.payload and self.config.get('payload_navigation_skip_final_yaw',False))
+                for _ in range(round(12/self.sim.model.opt.timestep) if align_final else 0):
                     if abs(wrap_angle(goal[2]-self.base.pose()[2])) < .03:
                         break
-                    self.base.rotate(anchor, goal[2])
+                    if (self.config.get('navigation_rotation_controller')=='velocity_pi_v1'
+                            and (not self.payload or self.config.get('navigation_rotation_payload',True))):
+                        self.base.rotate_velocity(anchor,goal[2],body_yaw_limit=float(self.config.get('navigation_payload_turn_body_rate_rad_s',.4)) if self.payload else .8)
+                    elif self.config.get('navigation_fast_empty_turn',False) and not self.payload:
+                        self.base.rotate(anchor,goal[2],max_angular=6.,linear_limit=.6,
+                                         velocity_damping=1.5,yaw_damping=2.,feedforward=1.)
+                    else:self.base.rotate(anchor, goal[2])
                     self.tick()
                 self.base.command(0, 0)
                 self.hold(.6)
@@ -929,11 +1098,23 @@ class TaskRuntime:
             speed_key='payload_banana_linear_speed_m_s' if profile=='banana' else 'payload_linear_speed_m_s'
             speed=float(self.config.get(speed_key,.035 if profile=='banana' else .10))
             timeout=max(timeout,1.5*max(0.,self.base.pose()[0]-x)/max(speed,.01)+2.)
-        while self.base.pose()[0]>x+.012:
+        reverse_entry_margin=.008 if self.config.get('backout_distance_braking',False) else .012
+        while self.base.pose()[0]>x+reverse_entry_margin:
             if self.sim.data.time-start>timeout:raise TaskFailure('navigation_timeout','Work-bay reverse clearance timeout')
             yaw=self.base.pose()[2]
             w=np.clip(-6*yaw-.4*np.sign(yaw),-1.5,1.5) if abs(yaw)>.025 else 0
-            self.base.command(-.12,w);self.tick()
+            reverse_speed=float(self.config.get('backout_linear_speed_m_s',.12))
+            if self.config.get('backout_distance_braking',False):
+                # A fixed high reverse command followed by stop can overshoot
+                # the upper-drawer working distance and lose closing reach.
+                # Shape speed from the remaining real distance; leave the
+                # requested clearance and the normal stop conditions unchanged.
+                remaining=max(0.,self.base.pose()[0]-x)
+                braking=float(self.config.get('empty_braking_m_s2',.8))
+                reverse_speed=min(reverse_speed,1.8*remaining,
+                                  math.sqrt(2.*max(.05,braking)*remaining))
+                if self.payload:reverse_speed=min(reverse_speed,speed)
+            self.base.command(-reverse_speed,w);self.tick()
         self.base.command(0,0);self.hold(.5)
 
     def write_trace(self,name,data):

@@ -14,12 +14,38 @@ def execute(runtime,metadata,mode='vision'):
     r=runtime;grid=OccupancyGrid();r.grid=grid
     for box in metadata['obstacles']:grid.rectangle(*box)
     r.hold(.7);r.transition(State.NAVIGATE,'five_metre_table_approach')
-    r.navigate(metadata['staging'],grid);r.dock(metadata['dock'])
+    r.navigate(metadata['staging'],grid)
     camera=RGBDCamera(r.sim)
+    initial_bins={}
+    if mode=='vision' and r.config.get('fruit_inplace_bin_survey',False):
+        # Observe the existing labels by turning at the safe staging point,
+        # instead of visiting the bin table and immediately returning empty.
+        # Only image/depth detections assign categories or metric bin centres.
+        r.transition(State.OBSERVE,'survey_labels_from_initial_staging',timeout=60)
+        r.stow();r._release_operation_hold();anchor=r.base.pose()[:2].copy()
+        view_yaw=float(r.config.get('fruit_initial_survey_yaw_rad',.85))
+        start=float(r.sim.data.time);next_frame=start
+        while r.sim.data.time-start<12.:
+            r.base.rotate(anchor,view_yaw);r.tick()
+            if r.sim.data.time<next_frame:continue
+            next_frame=float(r.sim.data.time)+.4
+            rgb,depth=camera.capture();seen=observe_bins(camera,rgb,depth)
+            if len([v for v in seen.values() if v['pixels']>=200])!=3:continue
+            # This is a camera viewpoint search, not precision docking.
+            # Select only an actually observed, physically stopped viewpoint.
+            r.base.command(0,0);r.hold(2.)
+            rgb,depth=camera.capture();seen=observe_bins(camera,rgb,depth)
+            initial_bins={key:value for key,value in seen.items() if value['pixels']>=200}
+            if len(initial_bins)==3:
+                if r.output:camera.save(r.output/'initial_bin_survey',rgb,depth)
+                break
+        r.base.command(0,0)
+        if len(initial_bins)!=3:initial_bins={}
+    r.dock(metadata['dock'])
     attempts=[];counts={'apple':0,'banana':0,'orange':0};processed=set()
     try:
-        bins={}
-        if mode=='vision':
+        bins=initial_bins
+        if mode=='vision' and len(bins)!=3:
             # Known station approach waypoints are navigation map information;
             # class assignment and metric bin centres come from visible labels.
             if r.config.get('fruit_central_bin_survey',False):
@@ -164,24 +190,55 @@ def execute(runtime,metadata,mode='vision'):
                     base_report=evaluate_operational_base_poses(
                         r,desired,place_targets,
                         offsets=[(dx,dy,dyaw) for dx in (.12,.16,.20)
-                                 for dy in (0,-.06,.06) for dyaw in (-.3,0,.3)])
+                                 for dy in (0,-.06,.06) for dyaw in r.config.get('fruit_place_base_yaws',(-.3,0,.3))])
                     if r.output:
                         (r.output/'base_pose_trials.json').write_text(__import__('json').dumps(base_report,indent=2))
-                    if base_report['selected'] is None:
+                    if base_report['selected'] is None and not r.config.get('fruit_workspace_transport',False):
                         raise TaskFailure('placement_unreachable','No collision-free, A*-reachable base pose can reach the bin release path')
-                    selected_base=base_report['selected']['pose']
+                    selected_base=base_report['selected']['pose'] if base_report['selected'] is not None else desired.tolist()
                 try:
                     staging=np.asarray(selected_base);staging=staging.copy();staging[0]-=.40*np.cos(staging[2]);staging[1]-=.40*np.sin(staging[2])
                     navigation_timeout=(float(r.config.get('banana_navigation_timeout_seconds',180))
                                         if category=='banana' else 120.)
                     if r.config.get('fruit_split_transport_deadlines',False):
                         r.transition(State.NAVIGATE,'carry_global_navigation',target=category,timeout=navigation_timeout)
-                    r.navigate(staging,grid,timeout=navigation_timeout)
+                    actual_station=bool(r.config.get('fruit_replan_station_from_stopped_pose',False))
+                    local_transport=bool(r.config.get('fruit_local_transport_only',False))
+                    workspace_transport=bool(r.config.get('fruit_workspace_transport',False))
+                    if not local_transport and not workspace_transport:r.navigate(selected_base if actual_station else staging,grid,timeout=navigation_timeout)
                     r.payload_docking=True
                     try:
                         if r.config.get('fruit_split_transport_deadlines',False):
-                            r.transition(State.NAVIGATE,'carry_precision_dock',target=selected_base,timeout=50.)
-                        if r.config.get('fruit_guarded_precision_dock',False):
+                            r.transition(State.NAVIGATE,'carry_online_workspace' if workspace_transport else 'carry_collision_checked_local_route' if local_transport else 'carry_precision_dock',target=selected_base,timeout=100. if workspace_transport else 80. if local_transport else 50.)
+                        if workspace_transport:
+                            from robot_exam.control.workspace_approach import corridor_to_y,approach_feasible_workspace
+                            corridor_to_y(r,grid,float(bincenter[1]),
+                                          x_corridor=float(r.config.get('fruit_workspace_corridor_x_m',-.85)))
+                            release_R=r.arm.pose()[1].copy()
+                            targets=[('approach',target+[0,0,.045],release_R,[body]),
+                                     ('release',target,release_R,[body]),
+                                     ('retreat',target+[0,0,.06],release_R,[body])]
+                            selected_base=approach_feasible_workspace(r,targets,name=f'fruit_workspace_{body}').tolist()
+                            grasp['rotation']=release_R
+                        elif local_transport:
+                            r.dock(selected_base,timeout=75.,tolerance=.03)
+                        elif actual_station:
+                            # Operational pose is a planning variable, not a
+                            # scoring threshold. Certify all real release/exit
+                            # targets at the stopped pose, then hold that newly
+                            # selected feasible goal with the unchanged dock
+                            # position/yaw/velocity and two-second criteria.
+                            r.base.command(0,0);r.hold(.6)
+                            actual=r.base.pose().copy();release_R=r.arm.pose()[1].copy()
+                            targets=[('approach',target+[0,0,.045],release_R,[body]),
+                                     ('release',target,release_R,[body]),
+                                     ('retreat',target+[0,0,.06],release_R,[body])]
+                            report=evaluate_operational_base_poses(r,actual,targets,offsets=[(0,0,0)])
+                            if r.output:(r.output/f'stopped_station_{body}.json').write_text(__import__('json').dumps({'nominal':selected_base,'actual':actual.tolist(),'release_rotation':release_R.tolist(),'feasibility':report},indent=2))
+                            if report['selected'] is None:raise TaskFailure('placement_unreachable','Stopped pose cannot execute the complete release/retreat path')
+                            selected_base=actual.tolist();grasp['rotation']=release_R
+                            r.dock(selected_base,timeout=10.,tolerance=.03)
+                        elif r.config.get('fruit_guarded_precision_dock',False):
                             from robot_exam.control.payload_dock import dock_held_object
                             dock_held_object(r,body,selected_base,grasp['rotation'],float(selected['initial'][2])+.055,
                                              strategy='direct',timeout=45.,maximum_recoveries=1,
@@ -249,6 +306,20 @@ def execute(runtime,metadata,mode='vision'):
                         raise TaskFailure('gripper_slip','Bounded re-clamp could not restore a stable physical grasp') from exc
                     attempts[-1]['transport_recoveries']=attempts[-1].get('transport_recoveries',0)+1
                     r.transition(State.NAVIGATE,'replanned_fruit_transport',target=category,timeout=120)
+            if r.config.get('fruit_preserve_arrival_grasp_orientation',False):
+                # The bin has no prescribed fruit yaw. Preserve the actually
+                # held orientation and certify approach/release/withdrawal,
+                # rather than undoing a chassis yaw with a wrist rotation
+                # immediately above a partly filled physical bin.
+                arrived=r.base.pose().copy();arrival_R=r.arm.pose()[1].copy()
+                arrival_targets=[('approach',target+[0,0,.045],arrival_R,[body]),
+                                 ('release',target,arrival_R,[body]),
+                                 ('retreat',target+[0,0,.06],arrival_R,[body])]
+                previous_grid=getattr(r,'grid',None);r.grid=None
+                try:arrival_report=evaluate_operational_base_poses(r,arrived,arrival_targets,offsets=[(0,0,0)])
+                finally:r.grid=previous_grid
+                if r.output:(r.output/f'arrival_release_path_{body}.json').write_text(__import__('json').dumps(arrival_report,indent=2))
+                if arrival_report['selected'] is not None:grasp['rotation']=arrival_R
             r.end_payload()
             if r.config.get('fruit_split_transport_deadlines',False):
                 # Dock's finite deadline ends when transport ends. It must
@@ -266,7 +337,13 @@ def execute(runtime,metadata,mode='vision'):
             processed.add(body);counts[category]+=1
             if len(processed)<10:
                 r.transition(State.NAVIGATE,'return_to_table_after_placement',target=body,timeout=120)
-                r.stow();r.backout(-.40);r.navigate(metadata['staging'],grid)
+                r.stow();r.backout(-.40)
+                if r.config.get('fruit_workspace_return',False):
+                    from robot_exam.control.workspace_approach import corridor_to_y
+                    corridor_to_y(r,grid,float(metadata['dock'][1]),
+                                  x_corridor=float(r.config.get('fruit_workspace_corridor_x_m',-.85)),
+                                  linear_limit=float(r.config.get('navigation_linear_speed_m_s',.2)))
+                else:r.navigate(metadata['staging'],grid)
                 try:r.dock(metadata['dock'])
                 except TaskFailure as dock_error:
                     if dock_error.category!='navigation_timeout':raise

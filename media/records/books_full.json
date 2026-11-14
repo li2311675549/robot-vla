@@ -7,26 +7,26 @@
         "book": "book_1",
         "rank": 1,
         "inside_correct_layer": true,
-        "opening": 4.668323193426744e-19
+        "opening": 0.002338774746006371
       },
       {
         "book": "book_0",
         "rank": 0,
         "inside_correct_layer": true,
-        "opening": 4.2669098450287306e-20
+        "opening": 0.001964364910778665
       },
       {
         "book": "book_2",
         "rank": 2,
         "inside_correct_layer": true,
-        "opening": 0.005250722939818675
+        "opening": 0.0034344966895029374
       }
     ],
     "returned": true,
     "final_base": [
-      -4.775056839131647,
-      -0.6800972067285059,
-      0.028840555481424484
+      -4.774115306637065,
+      -0.6404485185492134,
+      -0.02923437068256595
     ]
   },
   "operations": [
@@ -36,21 +36,21 @@
       "area": 0.0096,
       "opened": {
         "layer": 0,
-        "initial": 0.00022389859386035848,
+        "initial": 0.00022882547830548083,
         "target": 0.26,
-        "actual": 0.27161289727252946,
-        "error": 0.011612897272529454,
+        "actual": 0.26241268980161725,
+        "error": 0.0024126898016172404,
         "expert": "oracle joint constraint geometry"
       },
       "closed": {
         "layer": 0,
-        "initial": 0.2688213799781191,
+        "initial": 0.26263735321882353,
         "target": 0.0,
-        "actual": 0.007527851388236327,
-        "error": 0.007527851388236327,
+        "actual": 0.001956988118607737,
+        "error": 0.001956988118607737,
         "expert": "oracle joint constraint geometry"
       },
-      "lift_m": 0.09348096527271521,
+      "lift_m": 0.09354315455491902,
       "strategy": "Oracle physical push-and-side-pinch"
     },
     {
@@ -59,21 +59,21 @@
       "area": 0.021599999999999998,
       "opened": {
         "layer": 1,
-        "initial": 0.00022013300033939988,
+        "initial": 0.0002727870482043614,
         "target": 0.26,
-        "actual": 0.2717557541620425,
-        "error": 0.011755754162042498,
+        "actual": 0.2626511966275496,
+        "error": 0.00265119662754959,
         "expert": "oracle joint constraint geometry"
       },
       "closed": {
         "layer": 1,
-        "initial": 0.2693152134526217,
+        "initial": 0.27007013633678795,
         "target": 0.0,
-        "actual": 0.00791832606554058,
-        "error": 0.00791832606554058,
+        "actual": 0.0023302235828100803,
+        "error": 0.0023302235828100803,
         "expert": "oracle joint constraint geometry"
       },
-      "lift_m": 0.09515718413776131,
+      "lift_m": 0.09505483068513065,
       "strategy": "Oracle physical push-and-side-pinch"
     },
     {
@@ -82,21 +82,21 @@
       "area": 0.0384,
       "opened": {
         "layer": 2,
-        "initial": 0.00020889764947703757,
+        "initial": 0.0003342668218164622,
         "target": 0.26,
-        "actual": 0.27000000000000096,
-        "error": 0.010000000000000953,
+        "actual": 0.26290417195414684,
+        "error": 0.002904171954146828,
         "expert": "oracle joint constraint geometry; released wheel-clearance retreat"
       },
       "closed": {
         "layer": 2,
-        "initial": 0.26633029623353016,
+        "initial": 0.260610976400913,
         "target": 0.0,
-        "actual": 0.005250722939818675,
-        "error": 0.005250722939818675,
+        "actual": 0.0034344966895029374,
+        "error": 0.0034344966895029374,
         "expert": "oracle joint constraint geometry; released wheel-clearance retreat"
       },
-      "lift_m": 0.08433409797328673,
+      "lift_m": 0.0947404977476114,
       "strategy": "Oracle physical push-and-side-pinch"
     }
   ],
@@ -108,19 +108,19 @@
   "video": {
     "status": "PASS",
     "fps": 5,
-    "frames": 6031,
+    "frames": 2193,
     "stream": {
       "width": 640,
       "height": 480,
-      "duration": "1206.200000",
-      "nb_read_frames": "6031"
+      "duration": "438.600000",
+      "nb_read_frames": "2193"
     },
     "opengl": {
-      "vendor": "NVIDIA Corporation",
-      "renderer": "NVIDIA GeForce RTX 4070 Laptop GPU/PCIe/SSE2"
+      "vendor": "Mesa",
+      "renderer": "llvmpipe (LLVM 15.0.7, 256 bits)"
     },
     "first_sim_seconds": 0.002,
-    "last_sim_seconds": 1206.0039999853057,
+    "last_sim_seconds": 438.4020000013652,
     "continuous": true,
     "cadence_validated": true,
     "full_decode": "PASS"
@@ -128,16 +128,16 @@
   "task": "drawer",
   "seed": 200009,
   "policy_mode": "oracle",
-  "sim_seconds": 1206.0539999853045,
-  "wall_seconds": 304.3746439229999,
+  "sim_seconds": 438.4240000013653,
+  "wall_seconds": 282.18327328500163,
   "num_retries": 0,
   "collision_events": [],
-  "timestamp": "2026-11-05T20:31:42.687335+08:00",
+  "timestamp": "2026-11-14T16:02:05.032151+08:00",
   "model": {
     "nq": 49,
     "nv": 45,
     "nu": 11,
-    "path": "outputs/stage20/books_dynamic_edge_dev200009_v27_recorded/scene.xml"
+    "path": "../scene.xml"
   },
   "initial_base": [
     -4.72,

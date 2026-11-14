@@ -40,7 +40,8 @@ def evaluate_operational_base_poses(runtime, nominal, targets, offsets=None):
         data.qpos[qadr+3:qadr+7]=[np.cos(pose[2]/2),0,0,np.sin(pose[2]/2)]
         mujoco.mj_forward(model,data)
         proxy=SimpleNamespace(model=model,data=data)
-        arm=ArmController(proxy);seed=sim.data.qpos[runtime.arm.qadr].copy()
+        arm=ArmController(proxy);arm.check_self_collisions=bool(runtime.config.get('ik_check_self_collisions',False))
+        seed=sim.data.qpos[runtime.arm.qadr].copy()
         ik=[];feasible=True
         for target_spec in targets:
             name,position,rotation=target_spec[:3]
