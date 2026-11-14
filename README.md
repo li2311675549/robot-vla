@@ -88,7 +88,7 @@ Husky A200 · 原版 UR5 · Robotiq 2F-85 · MuJoCo 3.6.0
 
 用门角统一组织底盘运动和把手轨迹，使底盘随开门进度移动，机械臂根据实际位置修正动作。同一起点的完整任务中，夹爪闭合次数从 36 次降到 5 次，仿真耗时从 2144.9 秒降到 462.3 秒，减少约 78%。
 
-[查看诊断过程与实验记录](docs/PROBLEMS_AND_SOLUTIONS.md) · [设计依据与推导](docs/DESIGN_REASONING.md)
+[查看诊断、设计取舍与实验记录](docs/PROBLEMS_AND_SOLUTIONS.md)
 
 ## 架构
 
@@ -104,7 +104,7 @@ VLA 与传统系统共用机器人和底层执行器，目前承担已驻车状�
 
 ![VLA 驻车抓取闭环](docs/media/vla_stationary_skill_flow.svg)
 
-[从图像到动作的实现解析](docs/IMPLEMENTATION_GUIDE.md) · [任务判据与控制参数](docs/SUCCESS_CRITERIA_AND_PARAMETERS.md)
+[实现解析、任务判据与控制参数](docs/IMPLEMENTATION_GUIDE.md)
 
 ## 进一步探索：VLA 训练
 
@@ -112,7 +112,7 @@ VLA 与传统系统共用机器人和底层执行器，目前承担已驻车状�
 
 训练使用 405 个片段、25,517 帧，batch size 为 4，完成 10,000 次更新。当前已经获得多类水果的抓取实例，接下来的重点是定位目标选择、接近和闭合阶段的失败，并扩展到抓取后放置。
 
-[数据与训练配置](docs/VLA_DATA_TRAINING.md) · [模型执行接口](docs/VLA_TECHNICAL.md) · [VLA 结果](docs/VLA_RESULTS.md)
+[VLA 数据、训练与执行接口](docs/VLA.md) · [实验结果](docs/FINAL_RESULTS.md)
 
 ## 运行与资料
 
@@ -135,7 +135,18 @@ MUJOCO_GL=egl python scripts/run_stage7_isolated.py \
 |[技术报告](docs/TECHNICAL_REPORT.md)|系统设计、关键改进与实验分析|
 |[实现解析](docs/IMPLEMENTATION_GUIDE.md)|感知、规划、抓取与轮臂配合|
 |[运行说明](docs/RUNNING.md)|环境安装、任务运行与评测入口|
-|[测试记录](docs/VALIDATION.md)|代码测试、模型加载和数学检查|
+|[VLA 说明](docs/VLA.md)|双视角数据、动作定义、训练及部署|
 |[完整附件](https://github.com/li2311675549/robot-vla/releases/tag/v1.0.0)|视频包、报告与原始记录|
 
 源码在 `src/robot_exam/`，场景与配置在 `scenes/`、`configs/`，实验记录在 `evidence/`。VLA 复现还需要模型权重、Tokenizer 和原始训练数据，这些文件未随仓库发布。第三方模型和代码的许可随各资产保存。
+
+```text
+src/robot_exam/  机器人控制、感知、规划、任务与 VLA 接口
+scripts/        仿真、评测、数据与训练入口
+configs/        当前运行配置及回归所需协议
+assets/ scenes/ third_party/  模型、场景与许可证
+server/         OpenPI 源码、依赖锁文件和归一化统计
+tests/          自动化回归
+docs/           六份主题文档及配图
+media/ evidence/  代表视频、评分与实验依据
+```

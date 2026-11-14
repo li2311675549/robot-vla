@@ -2,7 +2,7 @@
 
 ## 只阅读报告和制作PPT
 
-其他系统不需要GPU或MuJoCo。浏览GitHub README，下载本仓库，阅读docs/TECHNICAL_REPORT.md与PROBLEMS_AND_SOLUTIONS.md；图表位于docs/media，原始统计在evidence，代表视频在media/demos。完整展示集合已发布为[v1.0.0附件](https://github.com/li2311675549/robot-vla/releases/tag/v1.0.0)，需另行下载。
+其他系统不需要GPU或MuJoCo。浏览GitHub README，下载本仓库，阅读docs/TECHNICAL_REPORT.md与PROBLEMS_AND_SOLUTIONS.md；图表位于docs/media，原始统计在evidence，代表视频在media/demos。传统提速视频见[v1.1.0-speed附件](https://github.com/li2311675549/robot-vla/releases/tag/v1.1.0-speed)，VLA视频保留于[v1.0.0附件](https://github.com/li2311675549/robot-vla/releases/tag/v1.0.0)。
 
 ```bash
 git clone https://github.com/li2311675549/robot-vla.git
@@ -37,7 +37,7 @@ MUJOCO_GL=egl python scripts/run_stage7_isolated.py  --task drawer --mode oracle
 
 ## VLA训练与推理
 
-服务器使用独立Python3.11 OpenPI环境，源码和锁文件见server/snapshots/actual_training_20261108。实际batch4/10000更新配置在configs/pi05_multifruit_stage22_batch4_v2.json，norm见服务器快照checkpoint9999_assets。权重、Tokenizer和完整训练数据需作者另行提供，未随GitHub发布；视频不能代替动作标签。
+服务器使用独立Python3.11 OpenPI环境，源码和锁文件见server/。实际batch4/10000更新配置在configs/pi05_multifruit_stage22_batch4_v2.json，norm见server/assets。权重、Tokenizer和完整训练数据需作者另行提供，未随GitHub发布；视频不能代替动作标签。
 
 训练和推理入口分别为 `scripts/stage22_launch_training.sh`、`scripts/stage22_serve_policy.sh`。启动前按脚本要求配置资源限制与运行开关，并将 `ROBOT_EXAM_STAGE22_ROOT`、`ROBOT_EXAM_BASE_ROOT` 设置为本机数据路径。
 
@@ -72,3 +72,35 @@ MUJOCO_GL=egl python scripts/run_task.py --task drawer --seed 200009 --mode orac
 ```
 
 使用新输出目录，保留原始结果；速度问题、未采用的尝试及限制见PROBLEMS_AND_SOLUTIONS.md。VLA配置与视频保持原版本。
+
+---
+
+## 代码与模型测试记录
+
+### 自动化测试
+
+精简后完整回归为 **268 项通过，耗时 158.19 秒**，运行环境为 Python 3.10 与 MuJoCo。记录见[完整测试日志](../evidence/validation/pytest.log)。
+
+### 数学与模型检查
+
+|检查|内容|
+|---|---|
+|几何计算|反投影、书边截面、侧夹方向和工具坐标等 5 项算例|
+|场景加载|门、水果、三书模型各运行 50 个物理步，模型警告计数为 0|
+|执行器|每个场景 11 个执行器；门和抽屉由接触驱动|
+|逆运动学|在独立运动学副本中求解距当前 TCP 5 mm 的目标，达到既定容差|
+
+这些检查覆盖函数计算、模型初始化和接口；任务完成情况见[实验结果](FINAL_RESULTS.md)。
+
+在已安装的仿真环境中运行：
+
+```bash
+MUJOCO_GL=egl python scripts/verify_documented_principles.py \
+  --output outputs/new_documentation_check --model-smoke
+```
+
+输出目录需尚未存在。[数学与模型记录](../evidence/validation/principles_and_model_checks.json) · [IK 记录](../evidence/validation/ik_scratch_check.json)
+
+### 训练复现资料
+
+训练源码及归一化文件保存在[服务器目录](../server/)。仿真测试使用上述本地Linux安装步骤。
