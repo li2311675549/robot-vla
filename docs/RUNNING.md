@@ -53,11 +53,11 @@ MUJOCO_GL=egl python scripts/verify_documented_principles.py --output outputs/ne
 
 脚本检查反投影、书本几何和相对坐标等 5 项计算，并加载三个模型各推进 50 步，用于确认计算与场景初始化。输出目录需尚未存在。
 
-## 运行版本化的10回合评测
+## 历史冻结协议的10回合评测（不等于当前公布记录）
 
-评测入口为`scripts/evaluate_frozen.py --protocol <协议JSON> --output <新目录>`。门/水果/书本协议分别为`configs/door_continuous_contact_formal_v4.json`、`configs/stage11_fruit_formal_protocol_v1.json`、`configs/stage20_books_scatter_formal_v28_protocol.json`。每次保存代码版本、协议与全部回合结果。检验新策略时应使用未参与调参的种子。
+评测入口为`scripts/evaluate_frozen.py --protocol <协议JSON> --output <新目录>`。以下为**历史冻结协议复跑入口**：门/水果/书本协议分别为`configs/door_continuous_contact_formal_v4.json`、`configs/stage11_fruit_formal_protocol_v1.json`、`configs/stage20_books_scatter_formal_v28_protocol.json`。它们并非README现行10组已发布操作记录的统一评测协议，所得结果不得直接覆盖[当前公布结果](../evidence/current_benchmarks.json)。每次运行需保存代码版本、协议与全部回合结果。检验新策略时应使用未参与调参的种子。
 
-当前版本的运行结果另存新目录，并记录源码版本、配置与全部回合结果。
+新实验应另存目录并记录源码版本、配置与全部回合结果；历史数据参见[历史协议索引](../evidence/history/README.md)，当前对外记录参见[实验结果](FINAL_RESULTS.md)。
 
 Release v1.0.0 保留发布时附件，最新文字说明以 main 分支为准。
 

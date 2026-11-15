@@ -8,7 +8,7 @@
       "success": 10,
       "failure": 0,
       "records": 10,
-      "success_share_percent": 100.0,
+      "success_share_percent": 100,
       "successful_mean_sim_seconds": 116.26399999991044,
       "all_record_mean_sim_seconds": 116.26399999991044,
       "distinct_parent_count": 10
@@ -18,7 +18,7 @@
       "success": 10,
       "failure": 0,
       "records": 10,
-      "success_share_percent": 100.0,
+      "success_share_percent": 100,
       "successful_mean_sim_seconds": 48.729000000230286,
       "all_record_mean_sim_seconds": 48.729000000230286,
       "distinct_parent_count": 4
@@ -28,7 +28,7 @@
       "success": 9,
       "failure": 1,
       "records": 10,
-      "success_share_percent": 90.0,
+      "success_share_percent": 90,
       "successful_mean_sim_seconds": 49.016888889016755,
       "all_record_mean_sim_seconds": 63.12080000020583,
       "distinct_parent_count": 5
@@ -38,7 +38,7 @@
       "success": 10,
       "failure": 0,
       "records": 10,
-      "success_share_percent": 100.0,
+      "success_share_percent": 100,
       "successful_mean_sim_seconds": 51.27019999927815,
       "all_record_mean_sim_seconds": 51.27019999927815,
       "distinct_parent_count": 4
@@ -48,7 +48,7 @@
       "success": 10,
       "failure": 0,
       "records": 10,
-      "success_share_percent": 100.0,
+      "success_share_percent": 100,
       "successful_mean_sim_seconds": 118.9239999999312,
       "all_record_mean_sim_seconds": 118.9239999999312,
       "distinct_parent_count": 10
@@ -58,7 +58,7 @@
       "success": 10,
       "failure": 0,
       "records": 10,
-      "success_share_percent": 100.0,
+      "success_share_percent": 100,
       "successful_mean_sim_seconds": 127.09800000060687,
       "all_record_mean_sim_seconds": 127.09800000060687,
       "distinct_parent_count": 10
@@ -68,7 +68,7 @@
       "success": 7,
       "failure": 3,
       "records": 10,
-      "success_share_percent": 70.0,
+      "success_share_percent": 70,
       "successful_mean_sim_seconds": 158.1400000007551,
       "all_record_mean_sim_seconds": 186.46719999913213,
       "distinct_parent_count": 10
@@ -106,12 +106,6 @@
       "scope": "Existing package unchanged; instructed grasp/hold only, no bin placement"
     }
   ],
-  "original_fixed_evaluation_unchanged": {
-    "door": "10/10",
-    "ten_fruit": "2/10",
-    "scattered_books": "4/10",
-    "vla_grasp_hold": "14/30"
-  },
   "source_manifest_sha256": {
     "traditional": "7942e8784e8ca04367a5155944be3c7e4f6ac617403cdf77a34dc11e29e73a31",
     "vla": "22b4597d7d8fcfdf75bf016fd48e202e6cf1ae53d7919f20d901b0e118352556"
@@ -340,5 +334,8 @@
     }
   ],
   "successful_full_parent_count": 24,
-  "timing_definition": "Successful simulation execution intervals only; all-record stop means separately in package"
+  "timing_definition": "Successful simulation execution intervals only; all-record stop means separately in package",
+  "publication_current_index": "evidence/current_benchmarks.json",
+  "historical_full_task_benchmarks_path": "evidence/history/previous_full_task_benchmarks.json",
+  "reporting_note": "当前公布10组数据是交付记录中各类别的成功占比，不代表连续独立测试成功率；历史冻结评测不与单项操作/展示记录混用。"
 }
