@@ -129,8 +129,8 @@
       "statistical_unit": "single_operation_record_in_published_package"
     }
   ],
-  "full_parent_development_timing": {
-    "0": {
+  "full_parent_development_timing": [
+    {
       "task": "drawer",
       "episode": "/home/li/projects/robot_exam/outputs/speed_sprint_20261114/books_v31_seed200009",
       "success": true,
@@ -139,7 +139,7 @@
       "code_scope": "current successful frozen speed policy",
       "result_sha256": "032374563c0fffcf515ecefa838be2a840af728c589ab7c4f550e0db8a852105"
     },
-    "1": {
+    {
       "task": "drawer",
       "episode": "/home/li/projects/robot_exam/outputs/speed_collection_20261114/parents_gpu_v3/drawer/attempt_00/episode",
       "success": true,
@@ -148,7 +148,7 @@
       "code_scope": "current successful frozen speed policy",
       "result_sha256": "ac56d546ca5ad4d0b106707c0e0d9e153f6cea4e136aa409010b9dd8ab958d87"
     },
-    "2": {
+    {
       "task": "drawer",
       "episode": "/home/li/projects/robot_exam/outputs/speed_collection_20261114/parents_gpu_v3/drawer/attempt_01/episode",
       "success": true,
@@ -157,7 +157,7 @@
       "code_scope": "current successful frozen speed policy",
       "result_sha256": "631d5660d46e1fa3060b57bb12ddba67a1f49cb284e8208ded4ee51e9db74a7c"
     },
-    "3": {
+    {
       "task": "drawer",
       "episode": "/home/li/projects/robot_exam/outputs/speed_collection_20261114/parents_gpu_v3/drawer/attempt_02/episode",
       "success": true,
@@ -166,7 +166,7 @@
       "code_scope": "current successful frozen speed policy",
       "result_sha256": "4687d54731a0d5a3f10be677e7031166e2dba3da6955821c5ddbd32f66596842"
     },
-    "4": {
+    {
       "task": "drawer",
       "episode": "/home/li/projects/robot_exam/outputs/speed_collection_20261114/parents_gpu_v3/drawer/attempt_03/episode",
       "success": true,
@@ -175,7 +175,7 @@
       "code_scope": "current successful frozen speed policy",
       "result_sha256": "8bdc1bd93ab2c6f594be04089ce594b41b5653c721ce14dc10c7f1c10a2b983c"
     },
-    "5": {
+    {
       "task": "drawer",
       "episode": "/home/li/projects/robot_exam/outputs/speed_collection_20261114/parents_gpu_v3/drawer/attempt_04/episode",
       "success": true,
@@ -184,7 +184,7 @@
       "code_scope": "current successful frozen speed policy",
       "result_sha256": "2a78d9ff38da46a2790ee1a566f578015363b961082b084e21cbfd39ecdbe098"
     },
-    "6": {
+    {
       "task": "drawer",
       "episode": "/home/li/projects/robot_exam/outputs/speed_collection_20261114/parents_gpu_v3/drawer/attempt_05/episode",
       "success": true,
@@ -193,7 +193,7 @@
       "code_scope": "current successful frozen speed policy",
       "result_sha256": "64218486600a508da97eb08d0f413c0f30651b516886c45e2511b0f52de67719"
     },
-    "7": {
+    {
       "task": "drawer",
       "episode": "/home/li/projects/robot_exam/outputs/speed_collection_20261114/parents_gpu_v3/drawer/attempt_06/episode",
       "success": true,
@@ -202,7 +202,7 @@
       "code_scope": "current successful frozen speed policy",
       "result_sha256": "fd6fddf78653cbe41f17df6b286eb5e11ff2b1689dea19006b48127344d2b47c"
     },
-    "8": {
+    {
       "task": "drawer",
       "episode": "/home/li/projects/robot_exam/outputs/speed_collection_20261114/parents_gpu_v3/drawer/attempt_07/episode",
       "success": true,
@@ -211,7 +211,7 @@
       "code_scope": "current successful frozen speed policy",
       "result_sha256": "d79f43a187c4019e87f9d09559ab27ef98e5691f40696b1a476bd46bc2ccc033"
     },
-    "9": {
+    {
       "task": "drawer",
       "episode": "/home/li/projects/robot_exam/outputs/speed_collection_20261114/parents_gpu_v3/drawer/attempt_08/episode",
       "success": true,
@@ -220,7 +220,7 @@
       "code_scope": "current successful frozen speed policy",
       "result_sha256": "87b5996a6791a8c34510fa30c7ceb76e81b002afaefff0c7b89b323a2130b7d7"
     },
-    "10": {
+    {
       "task": "fruit",
       "episode": "/home/li/projects/robot_exam/outputs/speed_sprint_20261114/fruit_v33_seed412",
       "success": true,
@@ -229,7 +229,7 @@
       "code_scope": "current successful frozen speed policy",
       "result_sha256": "88568869db1abe952d35d3080ecfb4f79e8772f49bf462bf35e1c03a9e4e084f"
     },
-    "11": {
+    {
       "task": "fruit",
       "episode": "/home/li/projects/robot_exam/outputs/speed_collection_20261114/parents_gpu_v3/fruit/attempt_00/episode",
       "success": true,
@@ -238,7 +238,7 @@
       "code_scope": "current successful frozen speed policy",
       "result_sha256": "07224fb24c5798dac3295e55a132f0b58877678ee4384bc9d8ec8b154709afa4"
     },
-    "12": {
+    {
       "task": "fruit",
       "episode": "/home/li/projects/robot_exam/outputs/speed_collection_20261114/parents_gpu_v3/fruit/attempt_01/episode",
       "success": true,
@@ -247,7 +247,7 @@
       "code_scope": "current successful frozen speed policy",
       "result_sha256": "2c2e267627ec1fd5baed34a3bb803cf352872228dae34bff84dac8834dff8750"
     },
-    "13": {
+    {
       "task": "fruit",
       "episode": "/home/li/projects/robot_exam/outputs/speed_collection_20261114/parents_gpu_v3/fruit/attempt_02/episode",
       "success": true,
@@ -256,7 +256,7 @@
       "code_scope": "current successful frozen speed policy",
       "result_sha256": "3496565390b034dec118df2ba3afc648f0a5321b64b3c0335617a7746bb6e7df"
     },
-    "14": {
+    {
       "task": "door",
       "episode": "/home/li/projects/robot_exam/outputs/speed_sprint_20261114/door_v16_seed2101",
       "success": true,
@@ -265,7 +265,7 @@
       "code_scope": "current successful frozen speed policy",
       "result_sha256": "e51a080acb0f7316df618494476735a1adaf79bd0219c10d839172b653c24855"
     },
-    "15": {
+    {
       "task": "door",
       "episode": "/home/li/projects/robot_exam/outputs/speed_collection_20261114/parents_v1/door/attempt_00/episode",
       "success": true,
@@ -274,7 +274,7 @@
       "code_scope": "current successful frozen speed policy",
       "result_sha256": "3e767dc4f67c5e4c9d6101ca476721c97889ec195d9cd105f0d313e2ed1d1983"
     },
-    "16": {
+    {
       "task": "door",
       "episode": "/home/li/projects/robot_exam/outputs/speed_collection_20261114/parents_gpu_v3/door/attempt_00/episode",
       "success": true,
@@ -283,7 +283,7 @@
       "code_scope": "current successful frozen speed policy",
       "result_sha256": "63e4167ae194b8200d9824c10f9969add082ee1f55aa3c62e5d7eb40173c4f6c"
     },
-    "17": {
+    {
       "task": "door",
       "episode": "/home/li/projects/robot_exam/outputs/speed_collection_20261114/parents_gpu_v3/door/attempt_01/episode",
       "success": true,
@@ -292,7 +292,7 @@
       "code_scope": "current successful frozen speed policy",
       "result_sha256": "cc0654069a600a1d04738d4ce85fd019231b5d6e0fddabdbd141622e846f24da"
     },
-    "18": {
+    {
       "task": "door",
       "episode": "/home/li/projects/robot_exam/outputs/speed_collection_20261114/parents_gpu_v3/door/attempt_02/episode",
       "success": true,
@@ -301,7 +301,7 @@
       "code_scope": "current successful frozen speed policy",
       "result_sha256": "bf86fc4218b268e5b8be18705cd9e513f7de6174acd8072e61868b3faf105965"
     },
-    "19": {
+    {
       "task": "door",
       "episode": "/home/li/projects/robot_exam/outputs/speed_collection_20261114/parents_gpu_v3/door/attempt_03/episode",
       "success": true,
@@ -310,7 +310,7 @@
       "code_scope": "current successful frozen speed policy",
       "result_sha256": "c29e0de00ab7d4e77a6c8fafd8565f901ea395fe1c259e9aea72c0fceaddb356"
     },
-    "20": {
+    {
       "task": "door",
       "episode": "/home/li/projects/robot_exam/outputs/speed_collection_20261114/parents_gpu_v3/door/attempt_04/episode",
       "success": true,
@@ -319,7 +319,7 @@
       "code_scope": "current successful frozen speed policy",
       "result_sha256": "38af1e6ec9227a23c00c532dcb64076286456a3ace1b76a5352d59ca9dff6a5d"
     },
-    "21": {
+    {
       "task": "door",
       "episode": "/home/li/projects/robot_exam/outputs/speed_collection_20261114/parents_gpu_v3/door/attempt_05/episode",
       "success": true,
@@ -328,7 +328,7 @@
       "code_scope": "current successful frozen speed policy",
       "result_sha256": "0a13db2d240c3775de7680e4630a190a0b886d80b892c5e806458c4c880e1206"
     },
-    "22": {
+    {
       "task": "door",
       "episode": "/home/li/projects/robot_exam/outputs/speed_collection_20261114/parents_gpu_v3/door/attempt_06/episode",
       "success": true,
@@ -337,7 +337,7 @@
       "code_scope": "current successful frozen speed policy",
       "result_sha256": "e5e05810c2aa6d6b8ffc284d0c97c2b1326ad84f1a14652f01b07b3cf4e3ed74"
     },
-    "23": {
+    {
       "task": "door",
       "episode": "/home/li/projects/robot_exam/outputs/speed_collection_20261114/parents_gpu_v3/door/attempt_07/episode",
       "success": true,
@@ -345,16 +345,18 @@
       "wall_seconds": 50.78677509300178,
       "code_scope": "current successful frozen speed policy",
       "result_sha256": "9b73271fbeba99e4898bf5dcbeac4b8c2e86c194d15cc710543975f40d44792a"
-    },
-    "source": "evidence/display_case_summary.json",
-    "counting_unit": "complete_successful_development_parent_episode",
-    "success_counts_only": true,
-    "explanation": "仅记录已知开发初态中完成任务的父回合数量及执行时间，不报告尝试总数，不能作为完整任务成功率。"
-  },
+    }
+  ],
   "historical_benchmarks_file": "evidence/history/previous_full_task_benchmarks.json",
   "historical_scope_note": "旧门、十果完整任务及三书随机散落冻结协议数据保留为历史版本；历史数值与现行发布的单项操作统计不是同一测量对象，均不用于相互替换。",
   "provenance_files": [
     "evidence/issues/traditional_object_showcase.json",
     "evidence/issues/vla_showcase.json"
-  ]
+  ],
+  "full_parent_development_timing_metadata": {
+    "source": "evidence/display_case_summary.json",
+    "counting_unit": "complete_successful_development_parent_episode",
+    "success_counts_only": true,
+    "explanation": "仅记录已知开发初态中完成任务的父回合数量及执行时间，不报告尝试总数，不能作为完整任务成功率。"
+  }
 }

@@ -147,6 +147,6 @@ configs/        当前运行配置及回归所需协议
 assets/ scenes/ third_party/  模型、场景与许可证
 server/         OpenPI 源码、依赖锁文件和归一化统计
 tests/          自动化回归
-docs/           六份主题文档及配图
+docs/           七份主题文档及配图
 media/ evidence/  代表视频、评分与实验依据
 ```

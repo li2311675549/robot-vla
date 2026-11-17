@@ -79,7 +79,13 @@ MUJOCO_GL=egl python scripts/run_task.py --task drawer --seed 200009 --mode orac
 
 ### 自动化测试
 
-精简后完整回归为 **268 项通过，耗时 158.19 秒**，运行环境为 Python 3.10 与 MuJoCo。记录见[完整测试日志](../evidence/validation/pytest.log)。
+2026-11-14 仓库精简阶段的历史回归记录为 **268 项通过，耗时 158.19 秒**，环境为 Python 3.10 与 MuJoCo。原始记录见[测试日志](../evidence/validation/pytest.log)。**该日志不代表此后各提交（包括当前结果说明的修改）已经重新运行测试**。新检出的版本应在装好依赖后独立执行：
+
+```bash
+MUJOCO_GL=egl python -m pytest -q
+```
+
+需以实际运行的退出状态和新日志判断当前代码是否通过；无 GitHub Actions 自动回归时，不能将历史日志当作最新 CI。
 
 ### 数学与模型检查
 
