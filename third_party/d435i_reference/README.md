@@ -5,7 +5,7 @@
 
 ## Changelog
 
-See [CHANGELOG.md](./CHANGELOG.md) for a full history of changes.
+The upstream changelog is not included in this trimmed source release.
 
 ## Overview
 
@@ -16,9 +16,7 @@ available](https://github.com/IntelRealSense/realsense-ros/blob/ros2-development
 URDF description with modifications by [Binit
 Shah](https://www.linkedin.com/in/binit-shah) to include colors.
 
-<p float="left">
-  <img src="d435i.png" width="400">
-</p>
+> Note: the upstream illustration `d435i.png` is not included in this trimmed source release; the camera MJCF remains available below.
 
 ## URDF → MJCF derivation steps
 
